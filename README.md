@@ -1,14 +1,14 @@
 # Validação por projeto: microbioma cervicovaginal e câncer cervical
 
-Documento de acompanhamento técnico do meu próprio projeto de pesquisa, descrito em:
+Documento de acompanhamento técnico do projeto de pesquisa da autora, descrito em:
 
 > "Validação por projeto em meta-análises de microbioma: um estudo de caso em câncer cervical", LATINOWARE / Latin.Science, 2026 (autoria própria).
 
-Segue o mesmo formato do repositório de réplica do Hagen et al. (2024) sobre microbioma do solo e estresse hídrico — esse sim um exercício de replicação de terceiros — mas aqui o objeto é o andamento do meu próprio artigo: um site em React/Vite que documenta o pipeline passo a passo, com glossário interativo e comandos prontos pra copiar.
+Segue o mesmo formato do repositório de réplica do Hagen et al. (2024) sobre microbioma do solo e estresse hídrico, esse sim um exercício de replicação de terceiros, mas aqui o objeto é o andamento do próprio artigo: um site em React/Vite que documenta o pipeline passo a passo, com glossário interativo e comandos prontos pra copiar.
 
 ## Contexto
 
-Etapa preparatória da dissertação de mestrado da autora no PPGTCA/UTFPR, cujo objeto é a classificação de sanidade em soja a partir do microbioma, com validação leave-one-project-out entre múltiplos projetos de origem. O artigo aqui acompanhado investiga exatamente esse problema — confundimento entre projeto de origem e condição clínica em dados agregados de microbioma — num dataset de câncer cervical (997 amostras, 10 BioProjects), e foi submetido como trabalho em andamento: a avaliação empírica do protocolo de validação proposto ficou para uma etapa seguinte, que é o que este caderno documenta.
+Etapa preparatória da dissertação de mestrado da autora no PPGTCA/UTFPR, cujo objeto é a classificação de sanidade em soja a partir do microbioma, com validação leave-one-project-out entre múltiplos projetos de origem. O artigo aqui acompanhado investiga exatamente esse problema, confundimento entre projeto de origem e condição clínica em dados agregados de microbioma, num dataset de câncer cervical (997 amostras, 10 BioProjects), e foi submetido como trabalho em andamento: a avaliação empírica do protocolo de validação proposto ficou para uma etapa seguinte, que é o que este caderno documenta.
 
 ## O que o site documenta
 
@@ -42,18 +42,18 @@ Os arquivos finais são gerados em `dist/`.
 
 ```
 src/
-  App.tsx        — todo o conteúdo e a lógica do documento
-  main.tsx       — ponto de entrada React
-  index.css      — reset mínimo de estilos
+  App.tsx       , todo o conteúdo e a lógica do documento
+  main.tsx      , ponto de entrada React
+  index.css     , reset mínimo de estilos
 ```
 
 ## Status
 
-Documento vivo — a seção 4 (comandos) e a seção 5 (status) devem ser atualizadas conforme o trabalho avança de fato.
+Documento vivo, a seção 4 (comandos) e a seção 5 (status) devem ser atualizadas conforme o trabalho avança de fato.
 
 **Concluído:**
-- Confirmação dos primers de amplificação 16S para 8 dos 10 BioProjects, por cruzamento manual do artigo-fonte de cada projeto (Tabela 1b, seção 4). Os outros 2 (P2, P21) foram verificados exaustivamente — artigo principal e material suplementar de ambos — e a sequência do primer nunca foi publicada, pois o sequenciamento foi terceirizado a fornecedores comerciais (Second Genome Inc. e Novogene) que tratam o protocolo como proprietário.
-- Accessions e metadados clínicos (Run/Sample → classe clínica) para as 1.042 amostras catalogadas, via `metadata.txt` compartilhado pela coautora Paola Gyuliane Gonçalves — bate célula a célula com a Tabela I do artigo.
+- Confirmação dos primers de amplificação 16S para 8 dos 10 BioProjects, por cruzamento manual do artigo-fonte de cada projeto (Tabela 1b, seção 4). Os outros 2 (P2, P21) foram verificados exaustivamente, artigo principal e material suplementar de ambos, e a sequência do primer nunca foi publicada, pois o sequenciamento foi terceirizado a fornecedores comerciais (Second Genome Inc. e Novogene) que tratam o protocolo como proprietário.
+- Accessions e metadados clínicos (Run/Sample → classe clínica) para as 1.042 amostras catalogadas, via `metadata.txt` compartilhado pela coautora Paola Gyuliane Gonçalves, bate célula a célula com a Tabela I do artigo.
 - Evidência de que o processamento (download, import, corte de primer, deblur, taxonomia SILVA) já ocorreu: `feature-table.txt` traz 997 amostras com taxonomia atribuída, subconjunto exato das 1.042 do metadata, batendo com o número final publicado.
 
-**Pendente:** confirmar a proveniência exata do `feature-table.txt` (parâmetros de deblur, versão do classificador SILVA) antes de tratá-lo como definitivamente fechado; decidir a nota metodológica sobre P2/P21 (primer não publicado) e sobre a divergência do P16 entre o TCC de M. T. S. Figueiredo (2025) e o artigo LATINOWARE (26 vs. 55 amostras de câncer); e, principalmente, rodar as três etapas estatísticas que faltam — PERMANOVA, GLLVM e a avaliação empírica do protocolo leave-one-project-out com Random Forest, que é a contribuição central declarada como trabalho em andamento no artigo. Lista detalhada em "O que falta até o final" na seção 5 do site.
+**Pendente:** confirmar a proveniência exata do `feature-table.txt` (parâmetros de deblur, versão do classificador SILVA) antes de tratá-lo como definitivamente fechado; decidir a nota metodológica sobre P2/P21 (primer não publicado) e sobre a divergência do P16 entre o TCC de M. T. S. Figueiredo (2025) e o artigo LATINOWARE (26 vs. 55 amostras de câncer); e, principalmente, rodar as três etapas estatísticas que faltam, PERMANOVA, GLLVM e a avaliação empírica do protocolo leave-one-project-out com Random Forest, que é a contribuição central declarada como trabalho em andamento no artigo. Lista detalhada em "O que falta até o final" na seção 5 do site.
