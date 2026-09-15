@@ -1191,15 +1191,25 @@ export default function App() {
               <thead><tr><th>Etapa</th><th>Status</th></tr></thead>
               <tbody>
                 <tr><td>1. Accessions e metadados clínicos</td><td><span className="status-badge done">concluído</span></td></tr>
-                <tr><td>2. Download dos FASTQ (10 BioProjects)</td><td><span className="status-badge pending">pendente</span></td></tr>
+                <tr><td>2. Download dos FASTQ (10 BioProjects)</td><td><span className="status-badge done">concluído (evidenciado por feature-table.txt)</span></td></tr>
                 <tr><td>3a. Confirmação de primers por BioProject</td><td><span className="status-badge done">concluído (8/10)</span></td></tr>
-                <tr><td>3b–4. Import, corte de primers, deblur (V3-V4 / V4)</td><td><span className="status-badge blocked">bloqueado — depende do download (etapa 2)</span></td></tr>
-                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
-                <tr><td>7. PERMANOVA</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
-                <tr><td>8. GLLVM</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
-                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
+                <tr><td>3b–4. Import, corte de primers, deblur (V3-V4 / V4)</td><td><span className="status-badge done">concluído (evidenciado por feature-table.txt)</span></td></tr>
+                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge done">concluído — 997/1042 amostras retidas, batendo com o artigo</span></td></tr>
+                <tr><td>7. PERMANOVA</td><td><span className="status-badge pending">pendente — dados prontos, falta rodar</span></td></tr>
+                <tr><td>8. GLLVM</td><td><span className="status-badge pending">pendente — dados prontos, falta rodar</span></td></tr>
+                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge pending">pendente — dados prontos, falta rodar</span></td></tr>
               </tbody>
             </table>
+            <p style={{ fontSize: 13, fontStyle: "italic", marginTop: 8 }}>
+              Etapas 2–6 inferidas como concluídas a partir de{" "}
+              <code>feature-table.txt</code> (997 amostras, taxonomia
+              atribuída, cruzado amostra a amostra com{" "}
+              <code>metadata.txt</code>) — não a partir de artefatos QIIME 2
+              (.qza/.qzv) inspecionados diretamente. Vale confirmar a
+              proveniência exata (parâmetros de deblur, versão do
+              classificador SILVA) antes de citar como replicação
+              verificada.
+            </p>
 
             <table className="formal">
               <caption><span className="cap-label">Tabela 2b.</span> Resumo da confirmação de primers.</caption>
@@ -1224,38 +1234,24 @@ export default function App() {
             <h3 style={{ fontSize: 15, marginTop: 24 }}>O que falta até o final</h3>
             <ol style={{ fontSize: 13.5, lineHeight: 1.7, paddingLeft: 20 }}>
               <li>
-                <strong>Decidir o tratamento de P2 e P21</strong>: excluir os
-                dois do dataset agregado (ficando com 8 BioProjects), ou
-                mantê-los e documentar a limitação de proveniência no texto
-                — decisão pendente antes de seguir para o corte de primers.
+                <strong>Confirmar a proveniência do <code>feature-table.txt</code></strong>{" "}
+                antes de citar como replicação verificada: parâmetros exatos
+                do deblur, versão do classificador SILVA, e se corresponde à
+                execução da Maria Thalillian, da Paola, ou a uma rodada nova
+                — 997/1042 amostras batem com o artigo, mas os parâmetros
+                de processamento ainda não foram conferidos linha a linha.
               </li>
               <li>
-                <strong>Verificar o <code>feature-table.txt</code></strong>{" "}
-                (pasta Resultados/Results do Drive): confirmar se já é a
-                tabela final pós-filtragem (deblur + taxonomia SILVA) ou uma
-                etapa intermediária — se aproveitável, adianta as Etapas
-                3b–6 inteiras.
+                <strong>Decidir o tratamento de P2 e P21</strong>: os dois já
+                estão presentes no <code>feature-table.txt</code> (77 e 105
+                amostras mantidas, respectivamente, nenhuma filtrada) — a
+                decisão agora é se a limitação de proveniência do primer
+                (Tabela 1b) precisa de nota metodológica no texto, já que os
+                dados em si não foram excluídos do processamento.
               </li>
               <li>
-                <strong>Etapa 2</strong>: baixar os FASTQ brutos de cada
-                projeto via SRA Toolkit / ENA, organizados por código
-                (P1..P22) — caso o <code>feature-table.txt</code> não seja
-                reaproveitável.
-              </li>
-              <li>
-                <strong>Etapa 3b–4</strong>: importar no QIIME 2 e rodar o
-                corte de primers com os pares já confirmados (comandos
-                prontos na seção 4), separando por região (V3-V4 / V4) antes
-                do deblur.
-              </li>
-              <li>
-                <strong>Etapas 5–6</strong>: taxonomia via SILVA e filtragem
-                (cloroplasto/mitocôndria/arqueia/singletons), conferindo se o
-                total final bate com as 997 amostras publicadas (ou o número
-                ajustado, caso P2/P21 sejam excluídos).
-              </li>
-              <li>
-                <strong>Etapa 7</strong>: PERMANOVA sobre Bray-Curtis,
+                <strong>Etapa 7</strong>: PERMANOVA sobre Bray-Curtis a partir
+                de <code>feature-table.txt</code> + <code>metadata.txt</code>,
                 comparando com os valores-alvo da Tabela 3 (13,5% de variância
                 explicada por condição+localidade+projeto).
               </li>
@@ -1268,12 +1264,15 @@ export default function App() {
                 <strong>Etapa 9</strong>: protocolo de validação Random
                 Forest — CV estratificada aleatória vs. leave-one-project-out,
                 mais o controle negativo prevendo projeto a partir da
-                composição.
+                composição. Esta é a etapa central declarada como "em
+                andamento" no artigo.
               </li>
               <li>
                 <strong>Fechamento</strong>: redigir a seção de metodologia
                 da dissertação com base no que foi replicado, incluindo a
-                limitação documentada de P2/P21 como nota metodológica.
+                nota sobre P16 (55 vs. 26 amostras de câncer entre o
+                TCC de 2025 e o artigo LATINOWARE) e a proveniência do
+                primer de P2/P21 como notas metodológicas.
               </li>
             </ol>
 
