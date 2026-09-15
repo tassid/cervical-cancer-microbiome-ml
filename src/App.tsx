@@ -188,6 +188,100 @@ function Listing({ command }: { command: string }) {
   );
 }
 
+interface PrimerRow {
+  codigo: string;
+  regiao: string;
+  fwd: string;
+  rev: string;
+  fonte: string;
+  status: "done" | "partial" | "notfound";
+  statusLabel: string;
+}
+
+const PRIMERS: PrimerRow[] = [
+  { codigo: "P1", regiao: "V3-V4", fwd: "ACTCCTACGGGAGGCAGCA", rev: "GGACTACHVGGGTWTCTAAT", fonte: "338F/806R", status: "done", statusLabel: "confirmado" },
+  {
+    codigo: "P2",
+    regiao: "V4",
+    fwd: "—",
+    rev: "—",
+    fonte:
+      "ŁANIEWSKI, P. et al. Sci. Rep. 8:7593, 2018 (artigo + suplementar): sequenciamento terceirizado à Second Genome Inc., \"fusion primers\" sem par nomeado nem sequência publicada",
+    status: "notfound",
+    statusLabel: "não publicado",
+  },
+  { codigo: "P6", regiao: "V3-V4", fwd: "ACTCCTACGGGAGGCAGCA", rev: "GGACTACHVGGGTWTCTAAT", fonte: "WANG, Z. et al. Microb. Ecol. 84:302-313, 2022 — 338F/806R", status: "done", statusLabel: "confirmado" },
+  { codigo: "P9", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "515F/806R", status: "done", statusLabel: "confirmado" },
+  { codigo: "P10", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "515F/806R", status: "done", statusLabel: "confirmado" },
+  {
+    codigo: "P14",
+    regiao: "V3-V4",
+    fwd: "CCTACGGGNGGCWGCAG",
+    rev: "GACTACHVGGGTATCTAATCC",
+    fonte: "BRITTO, A. M. A. et al. Front. Immunol., 2023, doi:10.3389/fimmu.2023.1147950 — kit \"16S Metagenomic Sequencing Library Preparation\" (Illumina) nomeado explicitamente (341F/805R)",
+    status: "done",
+    statusLabel: "confirmado",
+  },
+  { codigo: "P16", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "TORTELLI, B. A. et al. JCI Insight 10(6):e176839, 2025 — 515F/806R", status: "done", statusLabel: "confirmado" },
+  { codigo: "P19", regiao: "V3-V4", fwd: "—", rev: "—", fonte: "357wF/806R", status: "done", statusLabel: "confirmado" },
+  {
+    codigo: "P21",
+    regiao: "V3-V4",
+    fwd: "—",
+    rev: "—",
+    fonte:
+      "ROSAS CANCIO-SUÁREZ, M. et al. Front. Med. 12:1615571, 2025 (texto completo): sequenciamento terceirizado à Novogene, região confirmada, par de primers não nomeado nem publicado",
+    status: "notfound",
+    statusLabel: "não publicado",
+  },
+  {
+    codigo: "P22",
+    regiao: "V3-V4",
+    fwd: "CCTAYGGGRBGCASCAG",
+    rev: "GGACTACNNGGGTATCTAAT",
+    fonte: "FAN, Q. et al. Cell Death Dis. 12(12):1094, 2021, doi:10.1038/s41419-021-04388-y — 341F/806R, BioProject citado explicitamente",
+    status: "done",
+    statusLabel: "confirmado",
+  },
+];
+
+function PrimerTable() {
+  return (
+    <table className="formal">
+      <caption>
+        <span className="cap-label">Tabela 1b.</span> Confirmação de primers por
+        BioProject (8 de 10 confirmados com sequência exata; 2 documentados como
+        não publicados após verificação exaustiva de artigo principal e material
+        suplementar).
+      </caption>
+      <thead>
+        <tr>
+          <th>Cód.</th>
+          <th>Região</th>
+          <th>Forward</th>
+          <th>Reverse</th>
+          <th>Fonte / observação</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {PRIMERS.map((p) => (
+          <tr key={p.codigo}>
+            <td>{p.codigo}</td>
+            <td>{p.regiao}</td>
+            <td style={{ fontFamily: "var(--mono-font, monospace)", fontSize: 12 }}>{p.fwd}</td>
+            <td style={{ fontFamily: "var(--mono-font, monospace)", fontSize: 12 }}>{p.rev}</td>
+            <td style={{ fontSize: 12.5 }}>{p.fonte}</td>
+            <td>
+              <span className={`status-badge ${p.status}`}>{p.statusLabel}</span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 type CommandEntry = string | { code: string; caption: React.ReactNode };
 
 interface Step {
@@ -248,11 +342,25 @@ cd ../..`,
     title: "Importar e remover primers",
     note: (
       <>
-        Importar cada projeto no QIIME 2 e cortar os <em>primers</em> com o
-        plugin cutadapt, separando desde já os lotes por região amplificada:
-        um lote V3-V4 e um lote V4. Os pares de primer exatos usados em cada
-        estudo original ainda precisam ser confirmados individualmente — a
-        Tabela I só registra a região, não a sequência do primer.
+        <p style={{ marginTop: 0 }}>
+          Importar cada projeto no QIIME 2 e cortar os <em>primers</em> com o
+          plugin cutadapt, separando os lotes por região amplificada (V3-V4 /
+          V4) e, dentro de cada região, pelo par de primer exato usado no
+          estudo original — que não é o mesmo em todos os projetos, mesmo
+          quando a região nominal é a mesma.
+        </p>
+        <p>
+          <strong>Atualização:</strong> os primers de 8 dos 10 BioProjects
+          foram confirmados por sequência exata, cruzando cada artigo-fonte
+          individualmente (ver Tabela 1b). Os 2 restantes (P2 e P21) tiveram
+          o sequenciamento terceirizado a fornecedores comerciais (Second
+          Genome Inc. e Novogene, respectivamente), que não publicam a
+          sequência do primer nem no artigo principal nem no material
+          suplementar — verificado exaustivamente nos dois casos. Esses dois
+          projetos entram no corte como <code>SKIP</code> documentado, não
+          como uma lacuna da busca.
+        </p>
+        <PrimerTable />
       </>
     ),
     commands: [
@@ -261,11 +369,53 @@ cd ../..`,
   --input-path manifest_P1.csv \\
   --input-format PairedEndFastqManifestPhred33V2 \\
   --output-path P1_demux.qza`,
-      `qiime cutadapt trim-paired \\
+      {
+        code: `# Grupo 338F/806R (V3-V4): P1, P6
+qiime cutadapt trim-paired \\
   --i-demultiplexed-sequences P1_demux.qza \\
+  --p-front-f ACTCCTACGGGAGGCAGCA \\
+  --p-front-r GGACTACHVGGGTWTCTAAT \\
+  --p-discard-untrimmed \\
+  --o-trimmed-sequences P1_trimmed.qza`,
+        caption: "Repetir para P6 trocando apenas o artefato de entrada/saída.",
+      },
+      {
+        code: `# Grupo 515F/806R (V4): P9, P10, P16
+qiime cutadapt trim-paired \\
+  --i-demultiplexed-sequences P9_demux.qza \\
+  --p-front-f GTGYCAGCMGCCGCGGTAA \\
+  --p-front-r GGACTACNVGGGTWTCTAAT \\
+  --p-discard-untrimmed \\
+  --o-trimmed-sequences P9_trimmed.qza`,
+        caption: "Repetir para P10 e P16.",
+      },
+      `# 341F/805R (V3-V4), via kit Illumina — P14
+qiime cutadapt trim-paired \\
+  --i-demultiplexed-sequences P14_demux.qza \\
   --p-front-f CCTACGGGNGGCWGCAG \\
   --p-front-r GACTACHVGGGTATCTAATCC \\
-  --o-trimmed-sequences P1_trimmed.qza`,
+  --p-discard-untrimmed \\
+  --o-trimmed-sequences P14_trimmed.qza`,
+      `# 357wF/806R (V3-V4) — P19
+qiime cutadapt trim-single \\
+  --i-demultiplexed-sequences P19_demux.qza \\
+  --p-front CTCCTACGGGAGGCAGCAG \\
+  --p-discard-untrimmed \\
+  --o-trimmed-sequences P19_trimmed.qza`,
+      `# 341F/806R (V3-V4), sequência específica do estudo — P22
+qiime cutadapt trim-paired \\
+  --i-demultiplexed-sequences P22_demux.qza \\
+  --p-front-f CCTAYGGGRBGCASCAG \\
+  --p-front-r GGACTACNNGGGTATCTAAT \\
+  --p-discard-untrimmed \\
+  --o-trimmed-sequences P22_trimmed.qza`,
+      {
+        code: `# P2 e P21: primer nunca publicado (terceirizado) — SKIP documentado
+echo "P2 e P21 excluidos do corte de primer: sequencia proprietaria" \\
+  >> primers_skip.log`,
+        caption:
+          "Decisão em aberto: excluir P2/P21 do dataset agregado, ou mantê-los documentando a limitação no texto final.",
+      },
     ],
   },
   {
@@ -664,6 +814,9 @@ export default function App() {
         }
         .status-badge.pending { background: #f3f1ea; }
         .status-badge.blocked { background: #f0e3d8; }
+        .status-badge.done { background: #e1ead8; }
+        .status-badge.partial { background: #ece0c8; }
+        .status-badge.notfound { background: #ecdcdc; }
 
         .refs { padding-left: 20px; font-size: 13.5px; line-height: 1.7; }
         .refs li { margin-bottom: 10px; }
@@ -938,10 +1091,11 @@ export default function App() {
           <section id="s4b" ref={(el) => { refs.current["s4b"] = el; }}>
             <h2 className="sec"><span className="sec-num">5.</span>Status da replicação</h2>
             <p>
-              Diferente da réplica do Hagen, esta ainda não tem nenhuma
-              etapa executada — o que segue é o ponto de partida e os
-              valores publicados no paper, usados como alvo de comparação
-              conforme cada etapa for concluída.
+              A confirmação dos primers por BioProject (sub-etapa da Etapa 3)
+              já foi concluída — foi o primeiro trabalho de fato executado
+              nesta replicação, feito por cruzamento manual do artigo-fonte
+              de cada projeto (ver Tabela 1b, seção 4). O restante do
+              pipeline segue no ponto de partida.
             </p>
             <table className="formal">
               <caption><span className="cap-label">Tabela 2.</span> Etapas do pipeline e status atual.</caption>
@@ -949,13 +1103,88 @@ export default function App() {
               <tbody>
                 <tr><td>1. Accessions e metadados clínicos</td><td><span className="status-badge pending">pendente</span></td></tr>
                 <tr><td>2. Download dos FASTQ (10 BioProjects)</td><td><span className="status-badge pending">pendente</span></td></tr>
-                <tr><td>3–4. Import, primers, deblur (V3-V4 / V4)</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
+                <tr><td>3a. Confirmação de primers por BioProject</td><td><span className="status-badge done">concluído (8/10)</span></td></tr>
+                <tr><td>3b–4. Import, corte de primers, deblur (V3-V4 / V4)</td><td><span className="status-badge blocked">bloqueado — depende do download (etapa 2)</span></td></tr>
                 <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
                 <tr><td>7. PERMANOVA</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
                 <tr><td>8. GLLVM</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
                 <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge blocked">bloqueado</span></td></tr>
               </tbody>
             </table>
+
+            <table className="formal">
+              <caption><span className="cap-label">Tabela 2b.</span> Resumo da confirmação de primers.</caption>
+              <thead><tr><th>Situação</th><th>Projetos</th><th>Qtde.</th></tr></thead>
+              <tbody>
+                <tr><td><span className="status-badge done">confirmado</span></td><td>P1, P6, P9, P10, P14, P16, P19, P22</td><td>8</td></tr>
+                <tr><td><span className="status-badge notfound">não publicado (verificado)</span></td><td>P2, P21</td><td>2</td></tr>
+              </tbody>
+            </table>
+            <p style={{ fontSize: 13.5 }}>
+              P2 e P21 foram verificados de forma exaustiva: artigo principal
+              e material suplementar de ambos confirmam apenas a região
+              amplificada (V4 e V3-V4, respectivamente) e o fornecedor
+              comercial responsável pelo sequenciamento (Second Genome Inc. e
+              Novogene), mas nenhum dos dois documentos nomeia o par de
+              primer nem publica sua sequência de nucleotídeos — protocolo
+              tratado como proprietário pelo fornecedor. Ver Tabela 1b
+              (seção 4) e Referências para os DOIs exatos consultados.
+            </p>
+
+            <h3 style={{ fontSize: 15, marginTop: 24 }}>O que falta até o final</h3>
+            <ol style={{ fontSize: 13.5, lineHeight: 1.7, paddingLeft: 20 }}>
+              <li>
+                <strong>Decidir o tratamento de P2 e P21</strong>: excluir os
+                dois do dataset agregado (ficando com 8 BioProjects), ou
+                mantê-los e documentar a limitação de proveniência no texto
+                — decisão pendente antes de seguir para o corte de primers.
+              </li>
+              <li>
+                <strong>Etapa 1</strong>: levantar accessions e metadados
+                clínicos (Run/Sample → classe clínica) dos 10 (ou 8)
+                BioProjects, cruzando SraRunTable/ENA com os artigos-fonte já
+                identificados nesta etapa de primers.
+              </li>
+              <li>
+                <strong>Etapa 2</strong>: baixar os FASTQ brutos de cada
+                projeto via SRA Toolkit / ENA, organizados por código
+                (P1..P22).
+              </li>
+              <li>
+                <strong>Etapa 3b–4</strong>: importar no QIIME 2 e rodar o
+                corte de primers com os pares já confirmados (comandos
+                prontos na seção 4), separando por região (V3-V4 / V4) antes
+                do deblur.
+              </li>
+              <li>
+                <strong>Etapas 5–6</strong>: taxonomia via SILVA e filtragem
+                (cloroplasto/mitocôndria/arqueia/singletons), conferindo se o
+                total final bate com as 997 amostras publicadas (ou o número
+                ajustado, caso P2/P21 sejam excluídos).
+              </li>
+              <li>
+                <strong>Etapa 7</strong>: PERMANOVA sobre Bray-Curtis,
+                comparando com os valores-alvo da Tabela 3 (13,5% de variância
+                explicada por condição+localidade+projeto).
+              </li>
+              <li>
+                <strong>Etapa 8</strong>: GLLVM com e sem projeto como
+                covariável, pra ver se o eixo dominante separa condição
+                clínica ou projeto de origem.
+              </li>
+              <li>
+                <strong>Etapa 9</strong>: protocolo de validação Random
+                Forest — CV estratificada aleatória vs. leave-one-project-out,
+                mais o controle negativo prevendo projeto a partir da
+                composição.
+              </li>
+              <li>
+                <strong>Fechamento</strong>: redigir a seção de metodologia
+                da dissertação com base no que foi replicado, incluindo a
+                limitação documentada de P2/P21 como nota metodológica.
+              </li>
+            </ol>
+
             <table className="formal">
               <caption><span className="cap-label">Tabela 3.</span> Valores publicados no paper, usados como alvo de comparação.</caption>
               <thead><tr><th>Métrica</th><th>Valor publicado</th></tr></thead>
@@ -1032,6 +1261,57 @@ export default function App() {
                 QUAST, C. et al. The SILVA ribosomal RNA gene database
                 project: improved data processing and web-based tools.{" "}
                 <em>Nucleic Acids Research</em>, v.&nbsp;41, p.&nbsp;D590-D596, 2013.
+              </li>
+              <li>
+                Artigos-fonte consultados para confirmação de primers
+                (Tabela 1b):
+                <ol style={{ marginTop: 8 }}>
+                  <li>
+                    WANG, Z. et al. The diversity of vaginal microbiota
+                    predicts neoadjuvant chemotherapy responsiveness in
+                    locally advanced cervical cancer.{" "}
+                    <em>Microbial Ecology</em>, v.&nbsp;84, p.&nbsp;302-313,
+                    2022. doi:10.1007/s00248-021-01800-0. (P1, P6)
+                  </li>
+                  <li>
+                    TORTELLI, B.&nbsp;A. et al. Characterization of the
+                    vaginal microbiome of postmenopausal patients receiving
+                    chemoradiation for locally advanced cervical cancer.{" "}
+                    <em>JCI Insight</em>, v.&nbsp;10, n.&nbsp;6, e176839,
+                    2025. doi:10.1172/jci.insight.176839. (P9, P10, P16)
+                  </li>
+                  <li>
+                    BRITTO, A.&nbsp;M.&nbsp;A. et al. Microbiome analysis of
+                    Brazilian women cervix reveals specific bacterial
+                    abundance correlation to RIG-like receptor gene
+                    expression. <em>Frontiers in Immunology</em>, 2023.
+                    doi:10.3389/fimmu.2023.1147950. (P14)
+                  </li>
+                  <li>
+                    FAN, Q. et al. Lactobacillus spp. create a protective
+                    micro-ecological environment through regulating the core
+                    fucosylation of vaginal epithelial cells against cervical
+                    cancer. <em>Cell Death &amp; Disease</em>, v.&nbsp;12,
+                    n.&nbsp;12, 1094, 2021. doi:10.1038/s41419-021-04388-y.
+                    (P22)
+                  </li>
+                  <li>
+                    ŁANIEWSKI, P. et al. Linking cervicovaginal immune
+                    signatures, HPV and microbiota composition in cervical
+                    carcinogenesis in non-Hispanic and Hispanic women.{" "}
+                    <em>Scientific Reports</em>, v.&nbsp;8, 7593, 2018.
+                    doi:10.1038/s41598-018-25879-7. Primer não publicado
+                    (artigo e material suplementar verificados). (P2)
+                  </li>
+                  <li>
+                    ROSAS CANCIO-SUÁREZ, M. et al. Cervical microbiota
+                    diversity and functional shifts in the development of
+                    cervical high-grade squamous intraepithelial lesions.{" "}
+                    <em>Frontiers in Medicine</em>, v.&nbsp;12, 1615571,
+                    2025. doi:10.3389/fmed.2025.1615571. Primer não
+                    publicado (texto completo verificado). (P21)
+                  </li>
+                </ol>
               </li>
             </ol>
           </section>

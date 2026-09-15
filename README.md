@@ -49,4 +49,8 @@ src/
 
 ## Status
 
-Documento vivo — a seção 4 (comandos) e a seção 5 (status) devem ser atualizadas conforme a replicação avançar de fato: accessions/metadados clínicos por BioProject, download dos FASTQ, processamento QIIME2 (deblur por região, taxonomia SILVA), PERMANOVA, GLLVM, e por fim a avaliação empírica do protocolo leave-one-project-out com Random Forest.
+Documento vivo — a seção 4 (comandos) e a seção 5 (status) devem ser atualizadas conforme a replicação avançar de fato.
+
+**Concluído:** confirmação dos primers de amplificação 16S para 8 dos 10 BioProjects, por cruzamento manual do artigo-fonte de cada projeto (Tabela 1b, seção 4). Os outros 2 (P2, P21) foram verificados exaustivamente — artigo principal e material suplementar de ambos — e a sequência do primer nunca foi publicada, pois o sequenciamento foi terceirizado a fornecedores comerciais (Second Genome Inc. e Novogene) que tratam o protocolo como proprietário. Essa ausência está documentada com DOI e citação exata, não é uma lacuna de busca.
+
+**Pendente:** accessions/metadados clínicos por BioProject, download dos FASTQ, corte de primers nos 8 projetos confirmados (comandos prontos na seção 4), decisão sobre incluir ou excluir P2/P21 do dataset agregado, processamento QIIME2 (deblur por região, taxonomia SILVA), PERMANOVA, GLLVM, e por fim a avaliação empírica do protocolo leave-one-project-out com Random Forest. Lista detalhada em "O que falta até o final" na seção 5 do site.
