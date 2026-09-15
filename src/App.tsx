@@ -196,6 +196,7 @@ interface PrimerRow {
   fonte: string;
   status: "done" | "partial" | "notfound";
   statusLabel: string;
+  assumido?: { fwd: string; rev: string; nota: React.ReactNode };
 }
 
 const PRIMERS: PrimerRow[] = [
@@ -209,6 +210,27 @@ const PRIMERS: PrimerRow[] = [
       "ŁANIEWSKI, P. et al. Sci. Rep. 8:7593, 2018 (artigo + suplementar): sequenciamento terceirizado à Second Genome Inc., \"fusion primers\" sem par nomeado nem sequência publicada",
     status: "notfound",
     statusLabel: "não publicado",
+    assumido: {
+      fwd: "GTGYCAGCMGCCGCGGTAA",
+      rev: "GGACTACNVGGGTWTCTAAT",
+      nota: (
+        <>
+          Suposição documentada, <strong>não confirmada</strong>: par EMP
+          515F (Parada, 2016) / 806R (Apprill, 2015), o padrão da comunidade
+          já vigente em 2018 — mesmo par confirmado para P9/P10/P16 nesta
+          tabela. Fonte do protocolo:{" "}
+          <a href="https://earthmicrobiome.ucsd.edu/protocols-and-standards/16s/" target="_blank" rel="noreferrer">
+            Earth Microbiome Project, 16S Illumina Amplicon Protocol
+          </a>
+          . O EMP também documenta um par anterior (Caporaso 2011/2012:
+          FWD GTGCCAGCMGCCGCGGTAA / REV GGACTACHVGGGTWTCTAAT) que a Second
+          Genome pode ter usado em vez do atualizado — nenhum dos dois é
+          citado no artigo do Łaniewski, então a adoção do par EMP
+          atualizado é uma convenção de análise, não uma citação do método
+          original.
+        </>
+      ),
+    },
   },
   { codigo: "P6", regiao: "V3-V4", fwd: "ACTCCTACGGGAGGCAGCA", rev: "GGACTACHVGGGTWTCTAAT", fonte: "WANG, Z. et al. Microb. Ecol. 84:302-313, 2022 — 338F/806R", status: "done", statusLabel: "confirmado" },
   { codigo: "P9", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "515F/806R", status: "done", statusLabel: "confirmado" },
@@ -266,16 +288,30 @@ function PrimerTable() {
       </thead>
       <tbody>
         {PRIMERS.map((p) => (
-          <tr key={p.codigo}>
-            <td>{p.codigo}</td>
-            <td>{p.regiao}</td>
-            <td style={{ fontFamily: "var(--mono-font, monospace)", fontSize: 12 }}>{p.fwd}</td>
-            <td style={{ fontFamily: "var(--mono-font, monospace)", fontSize: 12 }}>{p.rev}</td>
-            <td style={{ fontSize: 12.5 }}>{p.fonte}</td>
-            <td>
-              <span className={`status-badge ${p.status}`}>{p.statusLabel}</span>
-            </td>
-          </tr>
+          <React.Fragment key={p.codigo}>
+            <tr>
+              <td>{p.codigo}</td>
+              <td>{p.regiao}</td>
+              <td style={{ fontFamily: "var(--mono-font, monospace)", fontSize: 12 }}>{p.fwd}</td>
+              <td style={{ fontFamily: "var(--mono-font, monospace)", fontSize: 12 }}>{p.rev}</td>
+              <td style={{ fontSize: 12.5 }}>{p.fonte}</td>
+              <td>
+                <span className={`status-badge ${p.status}`}>{p.statusLabel}</span>
+              </td>
+            </tr>
+            {p.assumido && (
+              <tr style={{ background: "rgba(0,0,0,0.02)" }}>
+                <td colSpan={2} style={{ fontSize: 11.5, fontStyle: "italic", color: "var(--ink-soft)" }}>
+                  ↳ se assumido
+                </td>
+                <td style={{ fontFamily: "var(--mono-font, monospace)", fontSize: 12 }}>{p.assumido.fwd}</td>
+                <td style={{ fontFamily: "var(--mono-font, monospace)", fontSize: 12 }}>{p.assumido.rev}</td>
+                <td colSpan={2} style={{ fontSize: 12, fontStyle: "italic" }}>
+                  {p.assumido.nota}
+                </td>
+              </tr>
+            )}
+          </React.Fragment>
         ))}
       </tbody>
     </table>
@@ -352,13 +388,15 @@ cd ../..`,
         <p>
           <strong>Atualização:</strong> os primers de 8 dos 10 BioProjects
           foram confirmados por sequência exata, cruzando cada artigo-fonte
-          individualmente (ver Tabela 1b). Os 2 restantes (P2 e P21) tiveram
-          o sequenciamento terceirizado a fornecedores comerciais (Second
-          Genome Inc. e Novogene, respectivamente), que não publicam a
-          sequência do primer nem no artigo principal nem no material
-          suplementar — verificado exaustivamente nos dois casos. Esses dois
-          projetos entram no corte como <code>SKIP</code> documentado, não
-          como uma lacuna da busca.
+          individualmente (ver Tabela 1b). Dos 2 restantes, o <strong>P2</strong>{" "}
+          tem uma suposição documentada (par EMP 515F/806R, não confirmada —
+          ver nota na Tabela 1b) que pode ser usada opcionalmente com o
+          artefato marcado como tal; o <strong>P21</strong> segue sem
+          nenhuma suposição plausível e entra como <code>SKIP</code>{" "}
+          documentado. Em ambos os casos o sequenciamento foi terceirizado a
+          fornecedores comerciais (Second Genome Inc. e Novogene) que não
+          publicam a sequência do primer nem no artigo principal nem no
+          material suplementar — verificado exaustivamente nos dois casos.
         </p>
         <PrimerTable />
       </>
@@ -410,11 +448,23 @@ qiime cutadapt trim-paired \\
   --p-discard-untrimmed \\
   --o-trimmed-sequences P22_trimmed.qza`,
       {
-        code: `# P2 e P21: primer nunca publicado (terceirizado) — SKIP documentado
-echo "P2 e P21 excluidos do corte de primer: sequencia proprietaria" \\
+        code: `# P2 (V4): sem primer publicado. Se optar por rodar com a suposição
+# documentada (par EMP 515F Parada / 806R Apprill, NAO confirmado):
+qiime cutadapt trim-paired \\
+  --i-demultiplexed-sequences P2_demux.qza \\
+  --p-front-f GTGYCAGCMGCCGCGGTAA \\
+  --p-front-r GGACTACNVGGGTWTCTAAT \\
+  --p-discard-untrimmed \\
+  --o-trimmed-sequences P2_trimmed_ASSUMIDO.qza`,
+        caption:
+          "Marcar o artefato de saída como resultado de suposição (sufixo _ASSUMIDO), não como dado confirmado — ver Tabela 1b.",
+      },
+      {
+        code: `# P21: nenhuma suposição documentada até agora — SKIP
+echo "P21 excluido do corte de primer: sequencia proprietaria (Novogene), sem par de referencia plausivel identificado" \\
   >> primers_skip.log`,
         caption:
-          "Decisão em aberto: excluir P2/P21 do dataset agregado, ou mantê-los documentando a limitação no texto final.",
+          "Decisão em aberto: excluir P21 do dataset agregado, ou manter e documentar a limitação no texto final.",
       },
     ],
   },
@@ -1117,7 +1167,8 @@ export default function App() {
               <thead><tr><th>Situação</th><th>Projetos</th><th>Qtde.</th></tr></thead>
               <tbody>
                 <tr><td><span className="status-badge done">confirmado</span></td><td>P1, P6, P9, P10, P14, P16, P19, P22</td><td>8</td></tr>
-                <tr><td><span className="status-badge notfound">não publicado (verificado)</span></td><td>P2, P21</td><td>2</td></tr>
+                <tr><td><span className="status-badge partial">não publicado, suposição documentada</span></td><td>P2</td><td>1</td></tr>
+                <tr><td><span className="status-badge notfound">não publicado, sem suposição</span></td><td>P21</td><td>1</td></tr>
               </tbody>
             </table>
             <p style={{ fontSize: 13.5 }}>
@@ -1301,7 +1352,19 @@ export default function App() {
                     carcinogenesis in non-Hispanic and Hispanic women.{" "}
                     <em>Scientific Reports</em>, v.&nbsp;8, 7593, 2018.
                     doi:10.1038/s41598-018-25879-7. Primer não publicado
-                    (artigo e material suplementar verificados). (P2)
+                    (artigo e material suplementar verificados); ver nota de
+                    suposição documentada na Tabela 1b. (P2)
+                  </li>
+                  <li>
+                    EARTH MICROBIOME PROJECT. 16S Illumina Amplicon
+                    Protocol.{" "}
+                    <a href="https://earthmicrobiome.ucsd.edu/protocols-and-standards/16s/" target="_blank" rel="noreferrer">
+                      earthmicrobiome.ucsd.edu/protocols-and-standards/16s
+                    </a>
+                    . Fonte dos pares 515F/806R (Parada 2016 / Apprill 2015,
+                    e Caporaso 2011/2012) usados na suposição documentada
+                    para o P2 — não confirma qual par a Second Genome Inc.
+                    de fato usou.
                   </li>
                   <li>
                     ROSAS CANCIO-SUÁREZ, M. et al. Cervical microbiota
