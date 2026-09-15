@@ -333,24 +333,61 @@ const STEPS: Step[] = [
     title: "Levantar accessions e metadados clínicos",
     note: (
       <>
-        Antes de baixar qualquer coisa, é preciso resolver, para cada{" "}
-        <Term id="bioproject">BioProject</Term> da Tabela I, o mapeamento
-        entre cada Run/Sample e a classe clínica (câncer, <Term id="hsil">HSIL</Term>,{" "}
-        <Term id="lsil">LSIL</Term> ou controle). Isso normalmente não está no
-        nível do BioProject inteiro, e sim no <em>SraRunTable</em> (NCBI) ou
-        nos metadados do <Term id="ena">ENA</Term>, às vezes exigindo cruzar
-        com o artigo original de cada estudo pra confirmar a codificação.
+        <p style={{ marginTop: 0 }}>
+          <strong>Concluído.</strong> O mapeamento entre cada Run/Sample e a
+          classe clínica (câncer, <Term id="hsil">HSIL</Term>,{" "}
+          <Term id="lsil">LSIL</Term> ou controle) para as 1.042 amostras
+          catalogadas já existe — arquivo <code>metadata.txt</code>,
+          compartilhado pela coautora Paola Gyuliane Gonçalves (pasta{" "}
+          <em>Cancer Cervical</em> no Google Drive do grupo). O arquivo traz,
+          por Run: accession de amostra, classe clínica (
+          <code>tipo_amostra</code>), status de HPV, centro de origem, país e
+          código do projeto (P1–P22).
+        </p>
+        <p>
+          A contagem por projeto e por classe extraída desse arquivo bate,
+          célula a célula, com a Tabela I do artigo — incluindo o total de
+          1.042 amostras (314 CC + 170 HSIL + 112 LSIL + 446 Ctrl). Isso
+          confirma que <code>metadata.txt</code> é de fato a fonte usada para
+          montar a Tabela I, não uma reconstrução aproximada.
+        </p>
+        <p style={{ fontSize: 13.5 }}>
+          Nota: o P16 registra 55 amostras de câncer neste arquivo, contra 26
+          numa versão anterior do mesmo agregado (TCC de M. T. S. Figueiredo,
+          2025, referência [16] do artigo) — provavelmente uma atualização do
+          BioProject entre os dois trabalhos. Vale documentar essa diferença
+          como nota metodológica caso apareça alguma discrepância downstream.
+        </p>
+        <p style={{ fontSize: 13.5 }}>
+          Também foi localizado, na mesma pasta, um <code>feature-table.txt</code>{" "}
+          com contagens de ASV/OTU já anotadas por taxonomia — a confirmar se
+          corresponde à tabela final pós-filtragem (997 amostras) ou a uma
+          etapa intermediária, o que pode adiantar as Etapas 3–6 abaixo.
+        </p>
       </>
     ),
     commands: [
       {
-        code: `# BioProjects no NCBI (PRJNA...)\nesearch -db sra -query "PRJNA687644" | efetch -format runinfo > P1_runinfo.csv`,
-        caption: "Repetir para P1, P2, P6, P9, P14, P16, P19, P22 (todos PRJNA).",
+        code: `# metadata.txt — colunas: #NAME (run);sample_accession;tipo_amostra;HPV;Center;Location;Project
+# 1042 linhas (1041 amostras + cabecalho), delimitador ";"
+# Contagem por projeto e classe clinica, conferida nesta sessao:
+#   P1  : cancer=68 control=4
+#   P2  : cancer=10 lesion_high=27 lesion_low=11 control=29
+#   P6  : cancer=26
+#   P9  : cancer=58
+#   P10 : cancer=1 lesion_high=59 lesion_low=43 control=216
+#   P14 : lesion_high=22 control=21
+#   P16 : cancer=55
+#   P19 : cancer=31 lesion_high=60 lesion_low=58 control=19
+#   P21 : lesion_high=2 control=103
+#   P22 : cancer=65 control=54
+#   TOTAL: cancer=314 lesion_high=170 lesion_low=112 control=446 (1042)`,
+        caption:
+          "Bate exatamente com a Tabela I do artigo — a Etapa 1 está fechada para os 10 projetos.",
       },
-      {
-        code: `# BioProjects no ENA (PRJEB...)\ncurl "https://www.ebi.ac.uk/ena/portal/api/filereport?accession=PRJEB51893&result=read_run&fields=run_accession,sample_title,fastq_ftp,library_strategy&format=tsv" -o P10_runinfo.tsv`,
-        caption: "Repetir para P10 e P21 (PRJEB).",
-      },
+      `# Próximo passo real: confirmar se feature-table.txt já corresponde
+# a uma etapa processada (deblur + taxonomia) reaproveitável, ou se
+# é preciso reprocessar do FASTQ bruto com os primers da Tabela 1b.`,
     ],
   },
   {
@@ -1141,17 +1178,19 @@ export default function App() {
           <section id="s4b" ref={(el) => { refs.current["s4b"] = el; }}>
             <h2 className="sec"><span className="sec-num">5.</span>Status da replicação</h2>
             <p>
-              A confirmação dos primers por BioProject (sub-etapa da Etapa 3)
-              já foi concluída — foi o primeiro trabalho de fato executado
-              nesta replicação, feito por cruzamento manual do artigo-fonte
-              de cada projeto (ver Tabela 1b, seção 4). O restante do
-              pipeline segue no ponto de partida.
+              Duas etapas já estão concluídas: a confirmação dos primers por
+              BioProject (Tabela 1b, seção 4) e o levantamento de accessions
+              e metadados clínicos (Tabela 2b abaixo) — o mapeamento
+              Run/Sample → classe clínica veio de <code>metadata.txt</code>,
+              compartilhado pela coautora Paola Gyuliane Gonçalves, e bate
+              célula a célula com a Tabela I do artigo. O restante do
+              pipeline segue a partir daqui.
             </p>
             <table className="formal">
               <caption><span className="cap-label">Tabela 2.</span> Etapas do pipeline e status atual.</caption>
               <thead><tr><th>Etapa</th><th>Status</th></tr></thead>
               <tbody>
-                <tr><td>1. Accessions e metadados clínicos</td><td><span className="status-badge pending">pendente</span></td></tr>
+                <tr><td>1. Accessions e metadados clínicos</td><td><span className="status-badge done">concluído</span></td></tr>
                 <tr><td>2. Download dos FASTQ (10 BioProjects)</td><td><span className="status-badge pending">pendente</span></td></tr>
                 <tr><td>3a. Confirmação de primers por BioProject</td><td><span className="status-badge done">concluído (8/10)</span></td></tr>
                 <tr><td>3b–4. Import, corte de primers, deblur (V3-V4 / V4)</td><td><span className="status-badge blocked">bloqueado — depende do download (etapa 2)</span></td></tr>
@@ -1191,15 +1230,17 @@ export default function App() {
                 — decisão pendente antes de seguir para o corte de primers.
               </li>
               <li>
-                <strong>Etapa 1</strong>: levantar accessions e metadados
-                clínicos (Run/Sample → classe clínica) dos 10 (ou 8)
-                BioProjects, cruzando SraRunTable/ENA com os artigos-fonte já
-                identificados nesta etapa de primers.
+                <strong>Verificar o <code>feature-table.txt</code></strong>{" "}
+                (pasta Resultados/Results do Drive): confirmar se já é a
+                tabela final pós-filtragem (deblur + taxonomia SILVA) ou uma
+                etapa intermediária — se aproveitável, adianta as Etapas
+                3b–6 inteiras.
               </li>
               <li>
                 <strong>Etapa 2</strong>: baixar os FASTQ brutos de cada
                 projeto via SRA Toolkit / ENA, organizados por código
-                (P1..P22).
+                (P1..P22) — caso o <code>feature-table.txt</code> não seja
+                reaproveitável.
               </li>
               <li>
                 <strong>Etapa 3b–4</strong>: importar no QIIME 2 e rodar o
