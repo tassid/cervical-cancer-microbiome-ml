@@ -50,7 +50,7 @@ const TERMS: Record<string, string> = {
     "Uma das sub-regiões variáveis do gene 16S rRNA mais usadas em estudos de microbioma. Estudos diferentes às vezes sequenciam regiões diferentes (V3-V4 ou só V4), o que dificulta comparar diretamente os resultados.",
   deblur:
     "Um dos programas (plugin do QIIME 2) que transforma as leituras brutas de sequenciamento em ASVs, corrigindo erros de leitura e removendo sequências espúrias, de forma parecida com o que o DADA2 faz.",
-  asv: "Uma sequência de DNA específica encontrada na amostra, tratada como uma bactéria (ou linhagem) diferente das outras — a unidade básica de contagem em estudos de microbioma modernos.",
+  asv: "Uma sequência de DNA específica encontrada na amostra, tratada como uma bactéria (ou linhagem) diferente das outras, a unidade básica de contagem em estudos de microbioma modernos.",
   silva:
     "Um grande banco de dados online com sequências de bactérias já identificadas, usado como \"dicionário\" pra dar nome (taxonomia) a cada ASV encontrada.",
   efeitoDeLote:
@@ -204,8 +204,8 @@ const PRIMERS: PrimerRow[] = [
   {
     codigo: "P2",
     regiao: "V4",
-    fwd: "—",
-    rev: "—",
+    fwd: "N/D",
+    rev: "N/D",
     fonte:
       "ŁANIEWSKI, P. et al. Sci. Rep. 8:7593, 2018 (artigo + suplementar): sequenciamento terceirizado à Second Genome Inc., \"fusion primers\" sem par nomeado nem sequência publicada",
     status: "notfound",
@@ -217,14 +217,14 @@ const PRIMERS: PrimerRow[] = [
         <>
           Suposição documentada, <strong>não confirmada</strong>: par EMP
           515F (Parada, 2016) / 806R (Apprill, 2015), o padrão da comunidade
-          já vigente em 2018 — mesmo par confirmado para P9/P10/P16 nesta
+          já vigente em 2018, mesmo par confirmado para P9/P10/P16 nesta
           tabela. Fonte do protocolo:{" "}
           <a href="https://earthmicrobiome.ucsd.edu/protocols-and-standards/16s/" target="_blank" rel="noreferrer">
             Earth Microbiome Project, 16S Illumina Amplicon Protocol
           </a>
           . O EMP também documenta um par anterior (Caporaso 2011/2012:
           FWD GTGCCAGCMGCCGCGGTAA / REV GGACTACHVGGGTWTCTAAT) que a Second
-          Genome pode ter usado em vez do atualizado — nenhum dos dois é
+          Genome pode ter usado em vez do atualizado. Nenhum dos dois é
           citado no artigo do Łaniewski, então a adoção do par EMP
           atualizado é uma convenção de análise, não uma citação do método
           original.
@@ -232,7 +232,7 @@ const PRIMERS: PrimerRow[] = [
       ),
     },
   },
-  { codigo: "P6", regiao: "V3-V4", fwd: "ACTCCTACGGGAGGCAGCA", rev: "GGACTACHVGGGTWTCTAAT", fonte: "WANG, Z. et al. Microb. Ecol. 84:302-313, 2022 — 338F/806R", status: "done", statusLabel: "confirmado" },
+  { codigo: "P6", regiao: "V3-V4", fwd: "ACTCCTACGGGAGGCAGCA", rev: "GGACTACHVGGGTWTCTAAT", fonte: "WANG, Z. et al. Microb. Ecol. 84:302-313, 2022, 338F/806R", status: "done", statusLabel: "confirmado" },
   { codigo: "P9", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "515F/806R", status: "done", statusLabel: "confirmado" },
   { codigo: "P10", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "515F/806R", status: "done", statusLabel: "confirmado" },
   {
@@ -240,17 +240,17 @@ const PRIMERS: PrimerRow[] = [
     regiao: "V3-V4",
     fwd: "CCTACGGGNGGCWGCAG",
     rev: "GACTACHVGGGTATCTAATCC",
-    fonte: "BRITTO, A. M. A. et al. Front. Immunol., 2023, doi:10.3389/fimmu.2023.1147950 — kit \"16S Metagenomic Sequencing Library Preparation\" (Illumina) nomeado explicitamente (341F/805R)",
+    fonte: "BRITTO, A. M. A. et al. Front. Immunol., 2023, doi:10.3389/fimmu.2023.1147950, kit \"16S Metagenomic Sequencing Library Preparation\" (Illumina) nomeado explicitamente (341F/805R)",
     status: "done",
     statusLabel: "confirmado",
   },
-  { codigo: "P16", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "TORTELLI, B. A. et al. JCI Insight 10(6):e176839, 2025 — 515F/806R", status: "done", statusLabel: "confirmado" },
-  { codigo: "P19", regiao: "V3-V4", fwd: "—", rev: "—", fonte: "357wF/806R", status: "done", statusLabel: "confirmado" },
+  { codigo: "P16", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "TORTELLI, B. A. et al. JCI Insight 10(6):e176839, 2025, 515F/806R", status: "done", statusLabel: "confirmado" },
+  { codigo: "P19", regiao: "V3-V4", fwd: "N/D", rev: "N/D", fonte: "357wF/806R", status: "done", statusLabel: "confirmado" },
   {
     codigo: "P21",
     regiao: "V3-V4",
-    fwd: "—",
-    rev: "—",
+    fwd: "N/D",
+    rev: "N/D",
     fonte:
       "ROSAS CANCIO-SUÁREZ, M. et al. Front. Med. 12:1615571, 2025 (texto completo): sequenciamento terceirizado à Novogene, região confirmada, par de primers não nomeado nem publicado",
     status: "notfound",
@@ -261,7 +261,7 @@ const PRIMERS: PrimerRow[] = [
     regiao: "V3-V4",
     fwd: "CCTAYGGGRBGCASCAG",
     rev: "GGACTACNNGGGTATCTAAT",
-    fonte: "FAN, Q. et al. Cell Death Dis. 12(12):1094, 2021, doi:10.1038/s41419-021-04388-y — 341F/806R, BioProject citado explicitamente",
+    fonte: "FAN, Q. et al. Cell Death Dis. 12(12):1094, 2021, doi:10.1038/s41419-021-04388-y, 341F/806R, BioProject citado explicitamente",
     status: "done",
     statusLabel: "confirmado",
   },
@@ -337,7 +337,7 @@ const STEPS: Step[] = [
           <strong>Concluído.</strong> O mapeamento entre cada Run/Sample e a
           classe clínica (câncer, <Term id="hsil">HSIL</Term>,{" "}
           <Term id="lsil">LSIL</Term> ou controle) para as 1.042 amostras
-          catalogadas já existe — arquivo <code>metadata.txt</code>,
+          catalogadas já existe: o arquivo <code>metadata.txt</code>,
           compartilhado pela coautora Paola Gyuliane Gonçalves (pasta{" "}
           <em>Cancer Cervical</em> no Google Drive do grupo). O arquivo traz,
           por Run: accession de amostra, classe clínica (
@@ -346,7 +346,7 @@ const STEPS: Step[] = [
         </p>
         <p>
           A contagem por projeto e por classe extraída desse arquivo bate,
-          célula a célula, com a Tabela I do artigo — incluindo o total de
+          célula a célula, com a Tabela I do artigo, incluindo o total de
           1.042 amostras (314 CC + 170 HSIL + 112 LSIL + 446 Ctrl). Isso
           confirma que <code>metadata.txt</code> é de fato a fonte usada para
           montar a Tabela I, não uma reconstrução aproximada.
@@ -354,13 +354,13 @@ const STEPS: Step[] = [
         <p style={{ fontSize: 13.5 }}>
           Nota: o P16 registra 55 amostras de câncer neste arquivo, contra 26
           numa versão anterior do mesmo agregado (TCC de M. T. S. Figueiredo,
-          2025, referência [16] do artigo) — provavelmente uma atualização do
+          2025, referência [16] do artigo), provavelmente uma atualização do
           BioProject entre os dois trabalhos. Vale documentar essa diferença
           como nota metodológica caso apareça alguma discrepância downstream.
         </p>
         <p style={{ fontSize: 13.5 }}>
           Também foi localizado, na mesma pasta, um <code>feature-table.txt</code>{" "}
-          com contagens de ASV/OTU já anotadas por taxonomia — a confirmar se
+          com contagens de ASV/OTU já anotadas por taxonomia, a confirmar se
           corresponde à tabela final pós-filtragem (997 amostras) ou a uma
           etapa intermediária, o que pode adiantar as Etapas 3–6 abaixo.
         </p>
@@ -368,7 +368,7 @@ const STEPS: Step[] = [
     ),
     commands: [
       {
-        code: `# metadata.txt — colunas: #NAME (run);sample_accession;tipo_amostra;HPV;Center;Location;Project
+        code: `# metadata.txt, colunas: #NAME (run);sample_accession;tipo_amostra;HPV;Center;Location;Project
 # 1042 linhas (1041 amostras + cabecalho), delimitador ";"
 # Contagem por projeto e classe clinica, conferida nesta sessao:
 #   P1  : cancer=68 control=4
@@ -383,7 +383,7 @@ const STEPS: Step[] = [
 #   P22 : cancer=65 control=54
 #   TOTAL: cancer=314 lesion_high=170 lesion_low=112 control=446 (1042)`,
         caption:
-          "Bate exatamente com a Tabela I do artigo — a Etapa 1 está fechada para os 10 projetos.",
+          "Bate exatamente com a Tabela I do artigo, a Etapa 1 está fechada para os 10 projetos.",
       },
       `# Próximo passo real: confirmar se feature-table.txt já corresponde
 # a uma etapa processada (deblur + taxonomia) reaproveitável, ou se
@@ -397,7 +397,7 @@ const STEPS: Step[] = [
       <>
         Um projeto por vez, usando o SRA Toolkit, organizando o resultado por
         código de projeto (P1..P22) pra manter rastreável de onde cada
-        amostra veio — importante porque a região do gene sequenciada (
+        amostra veio, importante porque a região do gene sequenciada (
         <Term id="regiaoV3V4">V3-V4</Term> ou V4) muda de um projeto pro
         outro, e isso condiciona toda a etapa seguinte.
       </>
@@ -419,21 +419,21 @@ cd ../..`,
           Importar cada projeto no QIIME 2 e cortar os <em>primers</em> com o
           plugin cutadapt, separando os lotes por região amplificada (V3-V4 /
           V4) e, dentro de cada região, pelo par de primer exato usado no
-          estudo original — que não é o mesmo em todos os projetos, mesmo
+          estudo original, que não é o mesmo em todos os projetos, mesmo
           quando a região nominal é a mesma.
         </p>
         <p>
           <strong>Atualização:</strong> os primers de 8 dos 10 BioProjects
           foram confirmados por sequência exata, cruzando cada artigo-fonte
           individualmente (ver Tabela 1b). Dos 2 restantes, o <strong>P2</strong>{" "}
-          tem uma suposição documentada (par EMP 515F/806R, não confirmada —
+          tem uma suposição documentada (par EMP 515F/806R, não confirmada,
           ver nota na Tabela 1b) que pode ser usada opcionalmente com o
           artefato marcado como tal; o <strong>P21</strong> segue sem
           nenhuma suposição plausível e entra como <code>SKIP</code>{" "}
           documentado. Em ambos os casos o sequenciamento foi terceirizado a
           fornecedores comerciais (Second Genome Inc. e Novogene) que não
           publicam a sequência do primer nem no artigo principal nem no
-          material suplementar — verificado exaustivamente nos dois casos.
+          material suplementar, verificado exaustivamente nos dois casos.
         </p>
         <PrimerTable />
       </>
@@ -464,20 +464,20 @@ qiime cutadapt trim-paired \\
   --o-trimmed-sequences P9_trimmed.qza`,
         caption: "Repetir para P10 e P16.",
       },
-      `# 341F/805R (V3-V4), via kit Illumina — P14
+      `# 341F/805R (V3-V4), via kit Illumina, P14
 qiime cutadapt trim-paired \\
   --i-demultiplexed-sequences P14_demux.qza \\
   --p-front-f CCTACGGGNGGCWGCAG \\
   --p-front-r GACTACHVGGGTATCTAATCC \\
   --p-discard-untrimmed \\
   --o-trimmed-sequences P14_trimmed.qza`,
-      `# 357wF/806R (V3-V4) — P19
+      `# 357wF/806R (V3-V4), P19
 qiime cutadapt trim-single \\
   --i-demultiplexed-sequences P19_demux.qza \\
   --p-front CTCCTACGGGAGGCAGCAG \\
   --p-discard-untrimmed \\
   --o-trimmed-sequences P19_trimmed.qza`,
-      `# 341F/806R (V3-V4), sequência específica do estudo — P22
+      `# 341F/806R (V3-V4), sequência específica do estudo, P22
 qiime cutadapt trim-paired \\
   --i-demultiplexed-sequences P22_demux.qza \\
   --p-front-f CCTAYGGGRBGCASCAG \\
@@ -494,10 +494,10 @@ qiime cutadapt trim-paired \\
   --p-discard-untrimmed \\
   --o-trimmed-sequences P2_trimmed_ASSUMIDO.qza`,
         caption:
-          "Marcar o artefato de saída como resultado de suposição (sufixo _ASSUMIDO), não como dado confirmado — ver Tabela 1b.",
+          "Marcar o artefato de saída como resultado de suposição (sufixo _ASSUMIDO), não como dado confirmado, ver Tabela 1b.",
       },
       {
-        code: `# P21: nenhuma suposição documentada até agora — SKIP
+        code: `# P21: nenhuma suposição documentada até agora, SKIP
 echo "P21 excluido do corte de primer: sequencia proprietaria (Novogene), sem par de referencia plausivel identificado" \\
   >> primers_skip.log`,
         caption:
@@ -534,7 +534,7 @@ echo "P21 excluido do corte de primer: sequencia proprietaria (Novogene), sem pa
       <>
         Classificar as sequências representativas contra o banco{" "}
         <Term id="silva">SILVA</Term>, pra dar nome (taxonomia) a cada ASV.
-        É essa taxonomia — não o ASV bruto — que depois permite unir as
+        É essa taxonomia, não o ASV bruto, que depois permite unir as
         tabelas das duas regiões num único conjunto agregado.
       </>
     ),
@@ -553,7 +553,7 @@ echo "P21 excluido do corte de primer: sequencia proprietaria (Novogene), sem pa
         Remover cloroplasto, mitocôndria, arqueia e singletons, depois
         filtrar amostras com profundidade insuficiente. A meta é bater com
         as <strong>997 amostras finais</strong> reportadas no paper (de 1.042
-        catalogadas na Tabela I) — é o número que valida se a filtragem ficou
+        catalogadas na Tabela I). É o número que valida se a filtragem ficou
         equivalente à do estudo original.
       </>
     ),
@@ -580,7 +580,7 @@ echo "P21 excluido do corte de primer: sequencia proprietaria (Novogene), sem pa
       <>
         Rodar <Term id="permanova">PERMANOVA</Term> sobre dissimilaridade de{" "}
         <Term id="brayCurtis">Bray-Curtis</Term>, com condição clínica,
-        localidade e projeto como termos — e depois os contrastes par a par
+        localidade e projeto como termos, e depois os contrastes par a par
         entre condições clínicas isoladamente.
       </>
     ),
@@ -608,8 +608,8 @@ for (p in pares) {
     title: "Ordenação por variáveis latentes (GLLVM)",
     note: (
       <>
-        Ajustar um modelo <Term id="gllvm">GLLVM</Term> em duas configurações
-        — sem covariáveis e com o projeto como efeito fixo — pra comparar se
+        Ajustar um modelo <Term id="gllvm">GLLVM</Term> em duas configurações,
+        sem covariáveis e com o projeto como efeito fixo, pra comparar se
         o eixo dominante de variação separa condição clínica ou projeto de
         origem.
       </>
@@ -940,14 +940,14 @@ export default function App() {
           <div className="abstract">
             <div className="abstract-heading">Resumo</div>
             <p style={{ marginBottom: 0 }}>
-              Este caderno acompanha o andamento do meu próprio artigo,
+              Este caderno acompanha o andamento do próprio artigo,
               "Validação por projeto em meta-análises de microbioma: um
               estudo de caso em câncer cervical", que reanalisa 997 amostras
               cervicovaginais agregadas de dez BioProjects públicos e mostra
               que o efeito de projeto/lote domina a variação composicional,
               mascarando o sinal clínico. O artigo, apresentado como trabalho
               em andamento, deixou em aberto a avaliação empírica do
-              protocolo de validação leave-one-project-out proposto — é essa
+              protocolo de validação leave-one-project-out proposto. É essa
               etapa que este caderno documenta a partir daqui. O mesmo
               problema de confundimento entre projeto de origem e condição
               biológica é o cerne da dissertação, aplicado à soja.
@@ -969,30 +969,30 @@ export default function App() {
               atraente agregar dados de repositórios públicos.
             </p>
             <p>
-              Meu artigo, publicado no LATINOWARE/Latin.Science, não tenta
-              maximizar acurácia de classificação — ele investiga um problema
+              O artigo, publicado no LATINOWARE/Latin.Science, não tenta
+              maximizar acurácia de classificação, ele investiga um problema
               anterior: quando se agregam dez estudos diferentes, cada um com
               seu próprio protocolo, região de sequenciamento e composição de
               classes, o efeito técnico entre estudos (<Term id="efeitoDeLote">efeito de lote</Term>)
               pode ficar indistinguível do sinal biológico de interesse. A
               conclusão central: o eixo dominante de variação nesse conjunto
-              agregado separa <em>estudos</em>, não condições clínicas — e por
-              isso propus um protocolo de validação por{" "}
+              agregado separa <em>estudos</em>, não condições clínicas, e por
+              isso o artigo propõe um protocolo de validação por{" "}
               <Term id="looPo">exclusão de um projeto por vez</Term> pra
               classificadores treinados sobre esse tipo de dado.
             </p>
             <p>
               O artigo foi submetido como trabalho em andamento, com a
               avaliação empírica desse protocolo declarada como próxima
-              etapa. É essa etapa — treinar Random Forest sob os dois
-              esquemas de validação e medir a diferença — que este caderno
+              etapa. É essa etapa, treinar Random Forest sob os dois
+              esquemas de validação e medir a diferença, que este caderno
               acompanha agora. O motivo de documentar isso passo a passo é o
-              mesmo que me levou a montar um caderno equivalente pro
+              mesmo que levou a autora a montar um caderno equivalente pro
               exercício de réplica do Hagen et al. (solo e seca): a
-              dissertação vai lidar com exatamente esse mesmo problema —
-              combinar múltiplos projetos de soja — então faz sentido deixar
+              dissertação vai lidar com exatamente esse mesmo problema:
+              combinar múltiplos projetos de soja, então faz sentido deixar
               o pipeline e o diagnóstico de confundimento bem documentados
-              num projeto que já é meu antes de aplicar o mesmo raciocínio a
+              num projeto próprio antes de aplicar o mesmo raciocínio a
               um dado que ninguém nunca processou.
             </p>
           </section>
@@ -1037,7 +1037,7 @@ export default function App() {
               <Term id="regiaoV3V4">V3-V4</Term> e V4 (não dá pra rodar um
               denoising único pra tudo); a distribuição de classes é
               fortemente desbalanceada dentro de cada projeto (P6, P9 e P16
-              são monoclasse — só câncer); e cada estudo vem de um único
+              são monoclasse, só câncer); e cada estudo vem de um único
               centro e de um único país, o que faz a <em>localidade</em>{" "}
               ficar totalmente <Term id="aliasing">aliasada</Term> ao{" "}
               <em>projeto</em>.
@@ -1102,7 +1102,7 @@ export default function App() {
                 <span className="concept-text">
                   <Term id="looPo"><span className="term-name">Leave-one-project-out</span></Term>{": "}
                   a validação que deixa um projeto inteiro de fora do teste
-                  por vez — o protocolo que o paper propõe e que a
+                  por vez, o protocolo que o paper propõe e que a
                   dissertação também pretende usar.
                 </span>
               </li>
@@ -1185,7 +1185,7 @@ export default function App() {
             <p>
               Duas etapas já estão concluídas: a confirmação dos primers por
               BioProject (Tabela 1b, seção 4) e o levantamento de accessions
-              e metadados clínicos (Tabela 2b abaixo) — o mapeamento
+              e metadados clínicos (Tabela 2b abaixo). O mapeamento
               Run/Sample → classe clínica veio de <code>metadata.txt</code>,
               compartilhado pela coautora Paola Gyuliane Gonçalves, e bate
               célula a célula com a Tabela I do artigo. O restante do
@@ -1199,17 +1199,17 @@ export default function App() {
                 <tr><td>2. Download dos FASTQ (10 BioProjects)</td><td><span className="status-badge done">concluído (evidenciado por feature-table.txt)</span></td></tr>
                 <tr><td>3a. Confirmação de primers por BioProject</td><td><span className="status-badge done">concluído (8/10)</span></td></tr>
                 <tr><td>3b–4. Import, corte de primers, deblur (V3-V4 / V4)</td><td><span className="status-badge done">concluído (evidenciado por feature-table.txt)</span></td></tr>
-                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge done">concluído — 997/1042 amostras retidas, batendo com o artigo</span></td></tr>
-                <tr><td>7. PERMANOVA</td><td><span className="status-badge pending">pendente — dados prontos, falta rodar</span></td></tr>
-                <tr><td>8. GLLVM</td><td><span className="status-badge pending">pendente — dados prontos, falta rodar</span></td></tr>
-                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge pending">pendente — dados prontos, falta rodar</span></td></tr>
+                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge done">concluído, 997/1042 amostras retidas, batendo com o artigo</span></td></tr>
+                <tr><td>7. PERMANOVA</td><td><span className="status-badge pending">pendente, dados prontos, falta rodar</span></td></tr>
+                <tr><td>8. GLLVM</td><td><span className="status-badge pending">pendente, dados prontos, falta rodar</span></td></tr>
+                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge pending">pendente, dados prontos, falta rodar</span></td></tr>
               </tbody>
             </table>
             <p style={{ fontSize: 13, fontStyle: "italic", marginTop: 8 }}>
               Etapas 2–6 inferidas como concluídas a partir de{" "}
               <code>feature-table.txt</code> (997 amostras, taxonomia
               atribuída, cruzado amostra a amostra com{" "}
-              <code>metadata.txt</code>) — não a partir de artefatos QIIME 2
+              <code>metadata.txt</code>), não a partir de artefatos QIIME 2
               (.qza/.qzv) inspecionados diretamente. Vale confirmar a
               proveniência exata (parâmetros de deblur, versão do
               classificador SILVA) antes de tratar o dado como
@@ -1231,7 +1231,7 @@ export default function App() {
               amplificada (V4 e V3-V4, respectivamente) e o fornecedor
               comercial responsável pelo sequenciamento (Second Genome Inc. e
               Novogene), mas nenhum dos dois documentos nomeia o par de
-              primer nem publica sua sequência de nucleotídeos — protocolo
+              primer nem publica sua sequência de nucleotídeos, protocolo
               tratado como proprietário pelo fornecedor. Ver Tabela 1b
               (seção 4) e Referências para os DOIs exatos consultados.
             </p>
@@ -1243,14 +1243,14 @@ export default function App() {
                 antes de tratar os dados como definitivamente fechados:
                 parâmetros exatos do deblur, versão do classificador SILVA, e
                 se corresponde à execução da Maria Thalillian, da Paola, ou a
-                uma rodada nova
-                — 997/1042 amostras batem com o artigo, mas os parâmetros
-                de processamento ainda não foram conferidos linha a linha.
+                uma rodada nova. Os números batem, 997/1042 amostras, com o
+                artigo, mas os parâmetros de processamento ainda não foram
+                conferidos linha a linha.
               </li>
               <li>
                 <strong>Decidir o tratamento de P2 e P21</strong>: os dois já
                 estão presentes no <code>feature-table.txt</code> (77 e 105
-                amostras mantidas, respectivamente, nenhuma filtrada) — a
+                amostras mantidas, respectivamente, nenhuma filtrada). A
                 decisão agora é se a limitação de proveniência do primer
                 (Tabela 1b) precisa de nota metodológica no texto, já que os
                 dados em si não foram excluídos do processamento.
@@ -1268,7 +1268,7 @@ export default function App() {
               </li>
               <li>
                 <strong>Etapa 9</strong>: protocolo de validação Random
-                Forest — CV estratificada aleatória vs. leave-one-project-out,
+                Forest, CV estratificada aleatória vs. leave-one-project-out,
                 mais o controle negativo prevendo projeto a partir da
                 composição. Esta é a etapa central declarada como "em
                 andamento" no artigo.
@@ -1292,7 +1292,7 @@ export default function App() {
                 <tr><td>Contraste HSIL vs. câncer</td><td>3,6%</td></tr>
                 <tr><td>Contraste LSIL vs. câncer</td><td>2,2%</td></tr>
                 <tr><td>Contraste HSIL vs. LSIL</td><td>não significativo (p = 0,067)</td></tr>
-                <tr><td>Amostras com contraste de 4 classes identificável</td><td>245 (23,5%) — só P2 e P19</td></tr>
+                <tr><td>Amostras com contraste de 4 classes identificável</td><td>245 (23,5%), só P2 e P19</td></tr>
               </tbody>
             </table>
           </section>
@@ -1318,8 +1318,8 @@ export default function App() {
               </tbody>
             </table>
             <p>
-              Concluir esse diagnóstico de confundimento — e ir além dele,
-              avaliando de fato o protocolo de validação com Random Forest —
+              Concluir esse diagnóstico de confundimento, e ir além dele,
+              avaliando de fato o protocolo de validação com Random Forest,
               é uma forma direta de já chegar aos dados de soja sabendo
               reconhecer esse problema, em vez de descobri-lo tarde demais.
             </p>
@@ -1409,7 +1409,7 @@ export default function App() {
                     </a>
                     . Fonte dos pares 515F/806R (Parada 2016 / Apprill 2015,
                     e Caporaso 2011/2012) usados na suposição documentada
-                    para o P2 — não confirma qual par a Second Genome Inc.
+                    para o P2, não confirma qual par a Second Genome Inc.
                     de fato usou.
                   </li>
                   <li>
