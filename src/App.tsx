@@ -24,9 +24,9 @@ import {
 } from "lucide-react";
 
 /**
- * Documento de acompanhamento: Réplica do estudo de validação por projeto
- * em meta-análises de microbioma cervicovaginal / câncer cervical.
- * Baseado em: "Validação por projeto em meta-análises de microbioma: um
+ * Documento de acompanhamento do próprio projeto de pesquisa: validação por
+ * projeto em meta-análises de microbioma cervicovaginal / câncer cervical.
+ * Artigo próprio: "Validação por projeto em meta-análises de microbioma: um
  * estudo de caso em câncer cervical" (LATINOWARE / Latin.Science, 2026).
  * Visual: artigo acadêmico (estilo LaTeX). Voz: estudante explicando, casual.
  */
@@ -127,7 +127,7 @@ const TOC: TocEntry[] = [
   { id: "s2", number: "2", label: "O dataset", icon: <FlaskConical size={14} /> },
   { id: "s3", number: "3", label: "Conceitos que precisam ficar claros", icon: <BookOpen size={14} /> },
   { id: "s4", number: "4", label: "Comandos do pipeline", icon: <ListChecks size={14} /> },
-  { id: "s4b", number: "5", label: "Status da replicação", icon: <BarChart3 size={14} /> },
+  { id: "s4b", number: "5", label: "Status do projeto", icon: <BarChart3 size={14} /> },
   { id: "s5", number: "6", label: "Por que isso importa pra tese", icon: <GraduationCap size={14} /> },
   { id: "refs", number: "", label: "Referências", icon: <BookOpen size={14} /> },
 ];
@@ -927,29 +927,30 @@ export default function App() {
         <main className="paper">
           <div className="masthead">
             <div className="doc-title">
-              Réplica: validação por projeto em meta-análises de microbioma
+              Validação por projeto em meta-análises de microbioma
               cervicovaginal e câncer cervical
             </div>
             <div className="doc-authors">Tassiane Anzolin</div>
             <div className="doc-affil">
               PPGTCA, Universidade Tecnológica Federal do Paraná
             </div>
-            <div className="doc-note">caderno de acompanhamento, atualizado conforme o trabalho avança</div>
+            <div className="doc-note">caderno de acompanhamento do próprio projeto de pesquisa, atualizado conforme o trabalho avança</div>
           </div>
 
           <div className="abstract">
             <div className="abstract-heading">Resumo</div>
             <p style={{ marginBottom: 0 }}>
-              Replicando, do zero, a análise descrita no paper "Validação por
-              projeto em meta-análises de microbioma: um estudo de caso em
-              câncer cervical", que reanalisa 997 amostras cervicovaginais
-              agregadas de dez BioProjects públicos e mostra que o efeito de
-              projeto/lote domina a variação composicional, mascarando o
-              sinal clínico. Refazer esse pipeline inteiro — do dado bruto ao
-              protocolo de validação leave-one-project-out — serve pra
-              validar a competência técnica sobre agregação de microbioma
-              entre múltiplos projetos, o mesmo problema central da
-              dissertação, aplicado à soja.
+              Este caderno acompanha o andamento do meu próprio artigo,
+              "Validação por projeto em meta-análises de microbioma: um
+              estudo de caso em câncer cervical", que reanalisa 997 amostras
+              cervicovaginais agregadas de dez BioProjects públicos e mostra
+              que o efeito de projeto/lote domina a variação composicional,
+              mascarando o sinal clínico. O artigo, apresentado como trabalho
+              em andamento, deixou em aberto a avaliação empírica do
+              protocolo de validação leave-one-project-out proposto — é essa
+              etapa que este caderno documenta a partir daqui. O mesmo
+              problema de confundimento entre projeto de origem e condição
+              biológica é o cerne da dissertação, aplicado à soja.
             </p>
           </div>
 
@@ -968,27 +969,31 @@ export default function App() {
               atraente agregar dados de repositórios públicos.
             </p>
             <p>
-              O paper que serve de base aqui não tenta maximizar acurácia de
-              classificação — ele investiga um problema anterior: quando se
-              agregam dez estudos diferentes, cada um com seu próprio
-              protocolo, região de sequenciamento e composição de classes, o
-              efeito técnico entre estudos (<Term id="efeitoDeLote">efeito de lote</Term>)
+              Meu artigo, publicado no LATINOWARE/Latin.Science, não tenta
+              maximizar acurácia de classificação — ele investiga um problema
+              anterior: quando se agregam dez estudos diferentes, cada um com
+              seu próprio protocolo, região de sequenciamento e composição de
+              classes, o efeito técnico entre estudos (<Term id="efeitoDeLote">efeito de lote</Term>)
               pode ficar indistinguível do sinal biológico de interesse. A
               conclusão central: o eixo dominante de variação nesse conjunto
               agregado separa <em>estudos</em>, não condições clínicas — e por
-              isso propõe um protocolo de validação por{" "}
+              isso propus um protocolo de validação por{" "}
               <Term id="looPo">exclusão de um projeto por vez</Term> pra
               classificadores treinados sobre esse tipo de dado.
             </p>
             <p>
-              O motivo de refazer tudo isso, passo a passo, é o mesmo da
-              réplica anterior (Hagen et al., sobre solo e seca): a
+              O artigo foi submetido como trabalho em andamento, com a
+              avaliação empírica desse protocolo declarada como próxima
+              etapa. É essa etapa — treinar Random Forest sob os dois
+              esquemas de validação e medir a diferença — que este caderno
+              acompanha agora. O motivo de documentar isso passo a passo é o
+              mesmo que me levou a montar um caderno equivalente pro
+              exercício de réplica do Hagen et al. (solo e seca): a
               dissertação vai lidar com exatamente esse mesmo problema —
-              combinar múltiplos projetos de soja — então faz sentido
-              dominar o pipeline inteiro (e o diagnóstico de confundimento
-              entre projeto e classe) num estudo que já tem resultado
-              publicado antes de aplicar isso num dado que ninguém nunca
-              processou.
+              combinar múltiplos projetos de soja — então faz sentido deixar
+              o pipeline e o diagnóstico de confundimento bem documentados
+              num projeto que já é meu antes de aplicar o mesmo raciocínio a
+              um dado que ninguém nunca processou.
             </p>
           </section>
 
@@ -1004,7 +1009,7 @@ export default function App() {
               Illumina.
             </p>
             <table className="formal">
-              <caption><span className="cap-label">Tabela 1.</span> Composição do conjunto de dados agregado (Tabela I do paper).</caption>
+              <caption><span className="cap-label">Tabela 1.</span> Composição do conjunto de dados agregado (Tabela I do artigo).</caption>
               <thead>
                 <tr><th>Cód.</th><th>BioProject</th><th>País</th><th>Região</th><th>CC</th><th>HSIL</th><th>LSIL</th><th>Ctrl</th><th>Total</th></tr>
               </thead>
@@ -1176,7 +1181,7 @@ export default function App() {
 
           {/* 5 - STATUS */}
           <section id="s4b" ref={(el) => { refs.current["s4b"] = el; }}>
-            <h2 className="sec"><span className="sec-num">5.</span>Status da replicação</h2>
+            <h2 className="sec"><span className="sec-num">5.</span>Status do projeto</h2>
             <p>
               Duas etapas já estão concluídas: a confirmação dos primers por
               BioProject (Tabela 1b, seção 4) e o levantamento de accessions
@@ -1207,8 +1212,8 @@ export default function App() {
               <code>metadata.txt</code>) — não a partir de artefatos QIIME 2
               (.qza/.qzv) inspecionados diretamente. Vale confirmar a
               proveniência exata (parâmetros de deblur, versão do
-              classificador SILVA) antes de citar como replicação
-              verificada.
+              classificador SILVA) antes de tratar o dado como
+              definitivamente fechado.
             </p>
 
             <table className="formal">
@@ -1235,9 +1240,10 @@ export default function App() {
             <ol style={{ fontSize: 13.5, lineHeight: 1.7, paddingLeft: 20 }}>
               <li>
                 <strong>Confirmar a proveniência do <code>feature-table.txt</code></strong>{" "}
-                antes de citar como replicação verificada: parâmetros exatos
-                do deblur, versão do classificador SILVA, e se corresponde à
-                execução da Maria Thalillian, da Paola, ou a uma rodada nova
+                antes de tratar os dados como definitivamente fechados:
+                parâmetros exatos do deblur, versão do classificador SILVA, e
+                se corresponde à execução da Maria Thalillian, da Paola, ou a
+                uma rodada nova
                 — 997/1042 amostras batem com o artigo, mas os parâmetros
                 de processamento ainda não foram conferidos linha a linha.
               </li>
@@ -1312,7 +1318,7 @@ export default function App() {
               </tbody>
             </table>
             <p>
-              Replicar esse diagnóstico de confundimento — e ir além dele,
+              Concluir esse diagnóstico de confundimento — e ir além dele,
               avaliando de fato o protocolo de validação com Random Forest —
               é uma forma direta de já chegar aos dados de soja sabendo
               reconhecer esse problema, em vez de descobri-lo tarde demais.
@@ -1324,11 +1330,11 @@ export default function App() {
             <h2 className="sec">Referências</h2>
             <ol className="refs">
               <li>
-                Paper-base desta replicação: "Validação por projeto em
-                meta-análises de microbioma: um estudo de caso em câncer
-                cervical", 23º Congresso Latino-americano de Software Livre
-                e Tecnologias Abertas (LATINOWARE) / Latin.Science, 2026
-                (nomes e afiliações omitidos para avaliação cega no
+                Artigo próprio acompanhado neste caderno: "Validação por
+                projeto em meta-análises de microbioma: um estudo de caso em
+                câncer cervical", 23º Congresso Latino-americano de Software
+                Livre e Tecnologias Abertas (LATINOWARE) / Latin.Science,
+                2026 (nomes e afiliações omitidos para avaliação cega no
                 original).
               </li>
               <li>
