@@ -1,5 +1,16 @@
 import React, { useState, useRef } from "react";
 import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  Cell,
+} from "recharts";
+import {
   Copy,
   Check,
   Download,
@@ -324,6 +335,111 @@ function PrimerTable() {
         ))}
       </tbody>
     </table>
+  );
+}
+
+const DATASET_COMPOSITION = [
+  { codigo: "P1", CC: 68, HSIL: 0, LSIL: 0, Ctrl: 4 },
+  { codigo: "P2", CC: 10, HSIL: 27, LSIL: 11, Ctrl: 29 },
+  { codigo: "P6", CC: 26, HSIL: 0, LSIL: 0, Ctrl: 0 },
+  { codigo: "P9", CC: 58, HSIL: 0, LSIL: 0, Ctrl: 0 },
+  { codigo: "P10", CC: 1, HSIL: 59, LSIL: 43, Ctrl: 216 },
+  { codigo: "P14", CC: 0, HSIL: 22, LSIL: 0, Ctrl: 21 },
+  { codigo: "P16", CC: 55, HSIL: 0, LSIL: 0, Ctrl: 0 },
+  { codigo: "P19", CC: 31, HSIL: 60, LSIL: 58, Ctrl: 19 },
+  { codigo: "P21", CC: 0, HSIL: 2, LSIL: 0, Ctrl: 103 },
+  { codigo: "P22", CC: 65, HSIL: 0, LSIL: 0, Ctrl: 54 },
+];
+
+const CLASS_COLORS: Record<string, string> = {
+  CC: "#8b3a3a",
+  HSIL: "#c07830",
+  LSIL: "#a8944f",
+  Ctrl: "#5b7a5b",
+};
+
+function DatasetCompositionChart() {
+  return (
+    <div style={{ width: "100%", height: 320, margin: "20px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={DATASET_COMPOSITION} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis dataKey="codigo" tick={{ fontSize: 12 }} />
+          <YAxis tick={{ fontSize: 12 }} label={{ value: "amostras", angle: -90, position: "insideLeft", fontSize: 12 }} />
+          <Tooltip contentStyle={{ fontSize: 12 }} />
+          <Legend wrapperStyle={{ fontSize: 12 }} />
+          <Bar dataKey="CC" stackId="a" fill={CLASS_COLORS.CC} name="Câncer" />
+          <Bar dataKey="HSIL" stackId="a" fill={CLASS_COLORS.HSIL} name="HSIL" />
+          <Bar dataKey="LSIL" stackId="a" fill={CLASS_COLORS.LSIL} name="LSIL" />
+          <Bar dataKey="Ctrl" stackId="a" fill={CLASS_COLORS.Ctrl} name="Controle" />
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+        Fig. A. Composição de classe por projeto (Tabela I). P6, P9 e P16
+        são monoclasse (só câncer); P1 e P21 são quase monoclasse.
+      </div>
+    </div>
+  );
+}
+
+const AUC_COMPARISON = [
+  { classe: "cancer", aleatoria: 0.967, lopo: 0.69 },
+  { classe: "control", aleatoria: 0.862, lopo: 0.497 },
+  { classe: "HSIL", aleatoria: 0.779, lopo: 0.46 },
+  { classe: "LSIL", aleatoria: 0.746, lopo: 0.297 },
+];
+
+function AucComparisonChart() {
+  return (
+    <div style={{ width: "100%", height: 300, margin: "20px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={AUC_COMPARISON} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis dataKey="classe" tick={{ fontSize: 12 }} />
+          <YAxis domain={[0, 1]} tick={{ fontSize: 12 }} label={{ value: "AUC", angle: -90, position: "insideLeft", fontSize: 12 }} />
+          <Tooltip contentStyle={{ fontSize: 12 }} />
+          <Legend wrapperStyle={{ fontSize: 12 }} />
+          <Bar dataKey="aleatoria" fill="#5b7a9e" name="CV aleatória" />
+          <Bar dataKey="lopo" fill="#a85b5b" name="Leave-one-project-out" />
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+        Fig. B. AUC por classe clínica, CV aleatória vs. leave-one-project-out
+        (preview exploratório sobre o dado da Paola, Tabela 2c). A linha de
+        0,5 é o nível de acaso.
+      </div>
+    </div>
+  );
+}
+
+const PERMANOVA_R2 = [
+  { fator: "Condição clínica", r2: 3.32 },
+  { fator: "Localidade", r2: 5.09 },
+  { fator: "Projeto", r2: 12.08 },
+];
+
+function PermanovaChart() {
+  return (
+    <div style={{ width: "100%", height: 260, margin: "20px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={PERMANOVA_R2} layout="vertical" margin={{ top: 8, right: 24, left: 8, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis type="number" domain={[0, 14]} tick={{ fontSize: 12 }} unit="%" />
+          <YAxis type="category" dataKey="fator" tick={{ fontSize: 12 }} width={110} />
+          <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v) => `${v}%`} />
+          <Bar dataKey="r2" name="R² aproximado" radius={[0, 4, 4, 0]}>
+            {PERMANOVA_R2.map((entry, i) => (
+              <Cell key={entry.fator} fill={i === 2 ? "#a85b5b" : "#8a8370"} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+        Fig. C. Variação composicional explicada por fator, modelos
+        marginais (preview exploratório, Tabela 2c). Projeto sozinho já
+        explica quase tanto quanto o modelo completo publicado (13,5%).
+      </div>
+    </div>
   );
 }
 
@@ -1095,6 +1211,7 @@ export default function App() {
               CC: câncer cervical · HSIL: lesão de alto grau · LSIL: lesão de baixo grau · Ctrl: controle.
               Contagens antes da filtragem de qualidade (após: 997 amostras).
             </div>
+            <DatasetCompositionChart />
             <p>
               Três características desta tabela condicionam o pipeline
               inteiro: a região sequenciada alterna entre{" "}
@@ -1304,6 +1421,8 @@ export default function App() {
                 <tr><td>Controle negativo</td><td>Acurácia ao prever projeto</td><td>90,4%</td></tr>
               </tbody>
             </table>
+            <PermanovaChart />
+            <AucComparisonChart />
             <p style={{ fontSize: 13, fontStyle: "italic" }}>
               O padrão (projeto domina sobre condição clínica; desempenho
               despenca sob LOPO; projeto é previsível a partir da composição)
