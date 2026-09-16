@@ -245,7 +245,16 @@ const PRIMERS: PrimerRow[] = [
     statusLabel: "confirmado",
   },
   { codigo: "P16", regiao: "V4", fwd: "GTGYCAGCMGCCGCGGTAA", rev: "GGACTACNVGGGTWTCTAAT", fonte: "TORTELLI, B. A. et al. JCI Insight 10(6):e176839, 2025, 515F/806R", status: "done", statusLabel: "confirmado" },
-  { codigo: "P19", regiao: "V3-V4", fwd: "N/D", rev: "N/D", fonte: "357wF/806R", status: "done", statusLabel: "confirmado" },
+  {
+    codigo: "P19",
+    regiao: "V3-V4",
+    fwd: "CCTACGGGNGGCWGCAG",
+    rev: "GACTACHVGGGTATCTAATCC",
+    fonte:
+      "MUSA, J. et al. BMC Cancer 23(1):683, 2023 cita 357wF/806R, mas a execução real do cutadapt reteve só 55% das leituras com esse par; testando 341F/805R a retenção subiu para 83,7%. Primer corrigido empiricamente, não pela fonte original.",
+    status: "done",
+    statusLabel: "corrigido empiricamente",
+  },
   {
     codigo: "P21",
     regiao: "V3-V4",
@@ -412,97 +421,149 @@ cd ../..`,
   },
   {
     n: 3,
-    title: "Importar e remover primers",
+    title: "Importar, cortar primers e preparar para o deblur",
     note: (
       <>
         <p style={{ marginTop: 0 }}>
-          Importar cada projeto no QIIME 2 e cortar os <em>primers</em> com o
-          plugin cutadapt, separando os lotes por região amplificada (V3-V4 /
-          V4) e, dentro de cada região, pelo par de primer exato usado no
-          estudo original, que não é o mesmo em todos os projetos, mesmo
-          quando a região nominal é a mesma.
+          Importar cada projeto no QIIME 2 (<code>import_all.sh</code>,
+          detecção automática pareado/single-end por amostra), cortar os{" "}
+          <em>primers</em> com o plugin cutadapt e preparar as sequências
+          para o deblur (mesclar pares e filtrar por qualidade). Nem todos
+          os projetos precisam do mesmo tratamento: isso só ficou claro na
+          execução real, checando a taxa de retenção do cutadapt projeto a
+          projeto.
         </p>
         <p>
-          <strong>Atualização:</strong> os primers de 8 dos 10 BioProjects
-          foram confirmados por sequência exata, cruzando cada artigo-fonte
-          individualmente (ver Tabela 1b). Dos 2 restantes, o <strong>P2</strong>{" "}
-          tem uma suposição documentada (par EMP 515F/806R, não confirmada,
-          ver nota na Tabela 1b) que pode ser usada opcionalmente com o
-          artefato marcado como tal; o <strong>P21</strong> segue sem
-          nenhuma suposição plausível e entra como <code>SKIP</code>{" "}
-          documentado. Em ambos os casos o sequenciamento foi terceirizado a
-          fornecedores comerciais (Second Genome Inc. e Novogene) que não
-          publicam a sequência do primer nem no artigo principal nem no
-          material suplementar, verificado exaustivamente nos dois casos.
+          <strong>Achados da execução real:</strong> P9, P14 e P2 tiveram
+          retenção ~0% ao tentar cortar o primer esperado. Inspecionando as
+          leituras brutas, ficou claro que esses três projetos já vieram{" "}
+          <strong>sem o primer</strong>, removido na origem antes do
+          depósito no repositório. Para esses, o cutadapt é pulado (copia-se
+          o artefato importado direto como "trimmed"). P19 teve retenção de
+          só 55% com o par documentado (357wF/806R); testando 341F/805R a
+          retenção subiu para 83,7%, então o primer real desse projeto foi{" "}
+          <strong>corrigido empiricamente</strong>, e a Tabela 1b será
+          atualizada. P10 e P22 se confirmaram <strong>single-end de
+          verdade</strong> (a leitura cobre quase todo o amplicon V4
+          sozinha), apesar do campo <code>library_layout</code> do
+          ENA/SRA dizer <code>PAIRED</code> para algumas dessas runs, uma
+          inconsistência de metadado documentada, não um erro de download.
         </p>
+        <table className="formal">
+          <caption>
+            <span className="cap-label">Tabela 1c.</span> Resultado real do
+            corte de primer, por projeto (retenção via <code>cutadapt --p-discard-untrimmed</code>).
+          </caption>
+          <thead>
+            <tr><th>Projeto</th><th>Ação</th><th>Retenção</th><th>Observação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>P1</td><td>cutadapt 338F/806R</td><td>~98%</td><td>ok</td></tr>
+            <tr><td>P6</td><td>cutadapt 338F/806R</td><td>~99,8%</td><td>ok</td></tr>
+            <tr><td>P10</td><td>cutadapt 515F(Caporaso), single</td><td>~99,7%</td><td>par diferente de P9/P16, confirmado no artigo-fonte</td></tr>
+            <tr><td>P16</td><td>cutadapt 515F(Parada)/806R</td><td>~98,8%</td><td>ok</td></tr>
+            <tr><td>P22</td><td>cutadapt 341F, single</td><td>~97,8%</td><td>4 runs com R2 vazia migradas para single-end</td></tr>
+            <tr><td>P19</td><td>cutadapt 341F/805R</td><td>83,7%</td><td>corrigido: fonte antiga apontava 357wF/806R (55% de retenção)</td></tr>
+            <tr><td>P9</td><td>sem corte (cópia direta)</td><td>0% com primer esperado</td><td>primer já removido na origem</td></tr>
+            <tr><td>P14</td><td>sem corte (cópia direta)</td><td>0,05% com primer esperado</td><td>primer já removido na origem</td></tr>
+            <tr><td>P2</td><td>sem corte (cópia direta)</td><td>0,0006% com primer esperado</td><td>primer já removido na origem; a suposição do par EMP ficou sem efeito prático</td></tr>
+            <tr><td>P21</td><td>SKIP</td><td>N/D</td><td>sem primer confirmado nem suposição plausível</td></tr>
+          </tbody>
+        </table>
         <PrimerTable />
       </>
     ),
     commands: [
-      `qiime tools import \\
-  --type 'SampleData[PairedEndSequencesWithQuality]' \\
-  --input-path manifest_P1.csv \\
-  --input-format PairedEndFastqManifestPhred33V2 \\
-  --output-path P1_demux.qza`,
+      {
+        code: `# Import (todos os 10 projetos de uma vez, detecta pareado/single por amostra)
+python3 generate_manifests.py --raw-dir raw --out-dir manifests
+conda activate rachis-qiime2-2026.7
+./import_all.sh`,
+        caption:
+          "Gera qiime/{projeto}_paired.qza e/ou qiime/{projeto}_single.qza, com log em qiime/import_log.tsv.",
+      },
       {
         code: `# Grupo 338F/806R (V3-V4): P1, P6
 qiime cutadapt trim-paired \\
-  --i-demultiplexed-sequences P1_demux.qza \\
+  --i-demultiplexed-sequences qiime/P1_paired.qza \\
   --p-front-f ACTCCTACGGGAGGCAGCA \\
   --p-front-r GGACTACHVGGGTWTCTAAT \\
   --p-discard-untrimmed \\
-  --o-trimmed-sequences P1_trimmed.qza`,
-        caption: "Repetir para P6 trocando apenas o artefato de entrada/saída.",
+  --o-trimmed-sequences qiime/P1_trimmed.qza \\
+  --o-stats qiime/P1_cutadapt_stats.qza`,
+        caption: "Repetir para P6 trocando o projeto. --o-stats é obrigatório nesta versão do plugin.",
       },
-      {
-        code: `# Grupo 515F/806R (V4): P9, P10, P16
+      `# 515F(Parada)/806R(Apprill), V4: P16
 qiime cutadapt trim-paired \\
-  --i-demultiplexed-sequences P9_demux.qza \\
+  --i-demultiplexed-sequences qiime/P16_paired.qza \\
   --p-front-f GTGYCAGCMGCCGCGGTAA \\
   --p-front-r GGACTACNVGGGTWTCTAAT \\
   --p-discard-untrimmed \\
-  --o-trimmed-sequences P9_trimmed.qza`,
-        caption: "Repetir para P10 e P16.",
+  --o-trimmed-sequences qiime/P16_trimmed.qza \\
+  --o-stats qiime/P16_cutadapt_stats.qza`,
+      {
+        code: `# P10: 515F(Caporaso original, sem Y), V4, single-end
+qiime cutadapt trim-single \\
+  --i-demultiplexed-sequences qiime/P10_single.qza \\
+  --p-front GTGCCAGCMGCCGCGGTAA \\
+  --p-discard-untrimmed \\
+  --o-trimmed-sequences qiime/P10_trimmed.qza \\
+  --o-stats qiime/P10_cutadapt_stats.qza`,
+        caption: "Par diferente de P9/P16 mesmo sendo a mesma região nominal, confirmado no artigo-fonte (Tosado-Rodríguez et al. 2023).",
       },
-      `# 341F/805R (V3-V4), via kit Illumina, P14
+      `# P19: 341F/805R (corrigido; a fonte antiga indicava 357wF/806R)
 qiime cutadapt trim-paired \\
-  --i-demultiplexed-sequences P14_demux.qza \\
+  --i-demultiplexed-sequences qiime/P19_paired.qza \\
   --p-front-f CCTACGGGNGGCWGCAG \\
   --p-front-r GACTACHVGGGTATCTAATCC \\
   --p-discard-untrimmed \\
-  --o-trimmed-sequences P14_trimmed.qza`,
-      `# 357wF/806R (V3-V4), P19
+  --o-trimmed-sequences qiime/P19_trimmed.qza \\
+  --o-stats qiime/P19_cutadapt_stats.qza`,
+      `# P22: 341F, single-end (dado real; parte das runs tem R2 vazia)
 qiime cutadapt trim-single \\
-  --i-demultiplexed-sequences P19_demux.qza \\
-  --p-front CTCCTACGGGAGGCAGCAG \\
+  --i-demultiplexed-sequences qiime/P22_single.qza \\
+  --p-front CCTAYGGGRBGCASCAG \\
   --p-discard-untrimmed \\
-  --o-trimmed-sequences P19_trimmed.qza`,
-      `# 341F/806R (V3-V4), sequência específica do estudo, P22
-qiime cutadapt trim-paired \\
-  --i-demultiplexed-sequences P22_demux.qza \\
-  --p-front-f CCTAYGGGRBGCASCAG \\
-  --p-front-r GGACTACNNGGGTATCTAAT \\
-  --p-discard-untrimmed \\
-  --o-trimmed-sequences P22_trimmed.qza`,
+  --o-trimmed-sequences qiime/P22_trimmed.qza \\
+  --o-stats qiime/P22_cutadapt_stats.qza`,
       {
-        code: `# P2 (V4): sem primer publicado. Se optar por rodar com a suposição
-# documentada (par EMP 515F Parada / 806R Apprill, NAO confirmado):
-qiime cutadapt trim-paired \\
-  --i-demultiplexed-sequences P2_demux.qza \\
-  --p-front-f GTGYCAGCMGCCGCGGTAA \\
-  --p-front-r GGACTACNVGGGTWTCTAAT \\
-  --p-discard-untrimmed \\
-  --o-trimmed-sequences P2_trimmed_ASSUMIDO.qza`,
+        code: `# P9, P14, P2: primer ja removido na origem, sem corte, so copia o artefato
+cp qiime/P9_paired.qza qiime/P9_trimmed.qza
+cp qiime/P14_paired.qza qiime/P14_trimmed.qza
+cp qiime/P2_paired.qza qiime/P2_trimmed.qza`,
         caption:
-          "Marcar o artefato de saída como resultado de suposição (sufixo _ASSUMIDO), não como dado confirmado, ver Tabela 1b.",
+          "Confirmado por retenção ~0% com o primer esperado, e pela leitura bruta não começar com nenhuma sequência de primer conhecida.",
       },
       {
-        code: `# P21: nenhuma suposição documentada até agora, SKIP
-echo "P21 excluido do corte de primer: sequencia proprietaria (Novogene), sem par de referencia plausivel identificado" \\
+        code: `# P21: sem primer confirmado nem suposicao plausivel, SKIP
+echo "P21 excluido: sequencia proprietaria (Novogene), sem par de referencia plausivel" \\
   >> primers_skip.log`,
         caption:
           "Decisão em aberto: excluir P21 do dataset agregado, ou manter e documentar a limitação no texto final.",
       },
+      {
+        code: `# Mesclar pares (forward+reverse) nos projetos ainda pareados
+for p in P1 P6 P9 P14 P16 P19 P2; do
+  qiime vsearch merge-pairs \\
+    --i-demultiplexed-seqs qiime/\${p}_trimmed.qza \\
+    --o-merged-sequences qiime/\${p}_joined.qza \\
+    --o-unmerged-sequences qiime/\${p}_unmerged.qza
+done`,
+        caption: "P10 e P22 já são single-end, não passam por este passo.",
+      },
+      `# Filtro de qualidade (Q-score), todos os 9 projetos usaveis
+for p in P1 P6 P9 P14 P16 P19 P2; do
+  qiime quality-filter q-score \\
+    --i-demux qiime/\${p}_joined.qza \\
+    --o-filtered-sequences qiime/\${p}_filtered.qza \\
+    --o-filter-stats qiime/\${p}_filter_stats.qza
+done
+for p in P10 P22; do
+  qiime quality-filter q-score \\
+    --i-demux qiime/\${p}_trimmed.qza \\
+    --o-filtered-sequences qiime/\${p}_filtered.qza \\
+    --o-filter-stats qiime/\${p}_filter_stats.qza
+done`,
     ],
   },
   {
@@ -514,12 +575,15 @@ echo "P21 excluido do corte de primer: sequencia proprietaria (Novogene), sem pa
         QIIME 2 2023.2 pra gerar as <Term id="asv">ASVs</Term>. Cada região
         (V3-V4 e V4) precisa de um lote de deblur separado, com seu próprio
         comprimento de corte, porque não dá pra comparar ASVs de regiões
-        diferentes diretamente.
+        diferentes diretamente. Antes disso, os artefatos{" "}
+        <code>*_filtered.qza</code> de cada grupo de região (V3-V4: P1, P6,
+        P14, P19; V4: P2, P9, P10, P16, P22) precisam ser combinados num
+        único artefato por região, passo ainda em execução.
       </>
     ),
     commands: [
       `qiime deblur denoise-16S \\
-  --i-demultiplexed-seqs V3V4_trimmed_merged.qza \\
+  --i-demultiplexed-seqs V3V4_filtered_merged.qza \\
   --p-trim-length 250 \\
   --p-sample-stats \\
   --o-representative-sequences V3V4_repseqs.qza \\
@@ -1183,37 +1247,69 @@ export default function App() {
           <section id="s4b" ref={(el) => { refs.current["s4b"] = el; }}>
             <h2 className="sec"><span className="sec-num">5.</span>Status do projeto</h2>
             <p>
-              Duas etapas já estão concluídas: a confirmação dos primers por
-              BioProject (Tabela 1b, seção 4) e o levantamento de accessions
-              e metadados clínicos (Tabela 2b abaixo). O mapeamento
-              Run/Sample → classe clínica veio de <code>metadata.txt</code>,
-              compartilhado pela coautora Paola Gyuliane Gonçalves, e bate
-              célula a célula com a Tabela I do artigo. O restante do
-              pipeline segue a partir daqui.
+              Duas etapas do pipeline próprio já estão concluídas: a
+              confirmação dos primers por BioProject (Tabela 1b, seção 4) e o
+              levantamento de accessions e metadados clínicos (Tabela 2b
+              abaixo), este último a partir de <code>metadata.txt</code>,
+              compartilhado pela coautora Paola Gyuliane Gonçalves, cuja
+              contagem por projeto e por classe bate célula a célula com a
+              Tabela I do artigo.
+            </p>
+            <p>
+              As Etapas 2 a 6 (download, import, corte de primer, deblur,
+              taxonomia e filtragem) ainda não foram executadas pelo pipeline
+              próprio da autora, mesmo havendo um <code>feature-table.txt</code>{" "}
+              já processado na mesma pasta do Drive. Esse arquivo é o
+              processamento da Paola, útil como dado de referência e para
+              orientação exploratória, mas não substitui rodar o pipeline
+              próprio (scripts <code>download_project.sh</code>,{" "}
+              <code>generate_manifests.py</code> e <code>import_all.sh</code>,
+              já preparados) sobre os FASTQ brutos baixados pela própria
+              autora.
             </p>
             <table className="formal">
-              <caption><span className="cap-label">Tabela 2.</span> Etapas do pipeline e status atual.</caption>
+              <caption><span className="cap-label">Tabela 2.</span> Etapas do pipeline próprio e status atual.</caption>
               <thead><tr><th>Etapa</th><th>Status</th></tr></thead>
               <tbody>
                 <tr><td>1. Accessions e metadados clínicos</td><td><span className="status-badge done">concluído</span></td></tr>
-                <tr><td>2. Download dos FASTQ (10 BioProjects)</td><td><span className="status-badge done">concluído (evidenciado por feature-table.txt)</span></td></tr>
+                <tr><td>2. Download dos FASTQ (10 BioProjects)</td><td><span className="status-badge pending">pendente, script pronto (download_project.sh)</span></td></tr>
                 <tr><td>3a. Confirmação de primers por BioProject</td><td><span className="status-badge done">concluído (8/10)</span></td></tr>
-                <tr><td>3b–4. Import, corte de primers, deblur (V3-V4 / V4)</td><td><span className="status-badge done">concluído (evidenciado por feature-table.txt)</span></td></tr>
-                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge done">concluído, 997/1042 amostras retidas, batendo com o artigo</span></td></tr>
-                <tr><td>7. PERMANOVA</td><td><span className="status-badge pending">pendente, dados prontos, falta rodar</span></td></tr>
-                <tr><td>8. GLLVM</td><td><span className="status-badge pending">pendente, dados prontos, falta rodar</span></td></tr>
-                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge pending">pendente, dados prontos, falta rodar</span></td></tr>
+                <tr><td>3b–4. Import, corte de primers, deblur (V3-V4 / V4)</td><td><span className="status-badge pending">pendente, scripts prontos (generate_manifests.py, import_all.sh)</span></td></tr>
+                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge pending">pendente</span></td></tr>
+                <tr><td>7. PERMANOVA</td><td><span className="status-badge pending">pendente no pipeline próprio; preview exploratório feito sobre dado da Paola</span></td></tr>
+                <tr><td>8. GLLVM</td><td><span className="status-badge pending">pendente no pipeline próprio</span></td></tr>
+                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge pending">pendente no pipeline próprio; preview exploratório feito sobre dado da Paola</span></td></tr>
               </tbody>
             </table>
             <p style={{ fontSize: 13, fontStyle: "italic", marginTop: 8 }}>
-              Etapas 2–6 inferidas como concluídas a partir de{" "}
-              <code>feature-table.txt</code> (997 amostras, taxonomia
-              atribuída, cruzado amostra a amostra com{" "}
-              <code>metadata.txt</code>), não a partir de artefatos QIIME 2
-              (.qza/.qzv) inspecionados diretamente. Vale confirmar a
-              proveniência exata (parâmetros de deblur, versão do
-              classificador SILVA) antes de tratar o dado como
-              definitivamente fechado.
+              Um preview exploratório das Etapas 7 e 9 foi rodado sobre o{" "}
+              <code>feature-table.txt</code> da Paola (Python: scikit-bio,
+              scikit-learn, sem rarefação prévia), só para orientação,
+              resultado na Tabela 2c. Não substitui a execução sobre dados
+              processados pelo pipeline próprio, que é o que de fato conta
+              para o trabalho.
+            </p>
+
+            <table className="formal">
+              <caption><span className="cap-label">Tabela 2c.</span> Preview exploratório (dado da Paola, sem rarefação, não é resultado final).</caption>
+              <thead><tr><th>Etapa</th><th>Métrica</th><th>Valor</th></tr></thead>
+              <tbody>
+                <tr><td rowSpan={3}>PERMANOVA marginal</td><td>Condição clínica (R²)</td><td>3,32%</td></tr>
+                <tr><td>Localidade (R²)</td><td>5,09%</td></tr>
+                <tr><td>Projeto (R²)</td><td>12,08%</td></tr>
+                <tr><td rowSpan={2}>Random Forest, CV aleatória</td><td>Macro-AUC</td><td>0,838</td></tr>
+                <tr><td>Por classe (cancer/control/HSIL/LSIL)</td><td>0,97 / 0,86 / 0,78 / 0,75</td></tr>
+                <tr><td rowSpan={2}>Random Forest, leave-one-project-out</td><td>Macro-AUC</td><td>0,486 (≈ acaso)</td></tr>
+                <tr><td>Por classe (cancer/control/HSIL/LSIL)</td><td>0,69 / 0,50 / 0,46 / 0,30</td></tr>
+                <tr><td>Controle negativo</td><td>Acurácia ao prever projeto</td><td>90,4%</td></tr>
+              </tbody>
+            </table>
+            <p style={{ fontSize: 13, fontStyle: "italic" }}>
+              O padrão (projeto domina sobre condição clínica; desempenho
+              despenca sob LOPO; projeto é previsível a partir da composição)
+              confirma a hipótese do artigo, mas os números não são finais:
+              vieram de dado de terceiros sem rarefação, não do pipeline
+              próprio da autora.
             </p>
 
             <table className="formal">
@@ -1239,27 +1335,35 @@ export default function App() {
             <h3 style={{ fontSize: 15, marginTop: 24 }}>O que falta até o final</h3>
             <ol style={{ fontSize: 13.5, lineHeight: 1.7, paddingLeft: 20 }}>
               <li>
-                <strong>Confirmar a proveniência do <code>feature-table.txt</code></strong>{" "}
-                antes de tratar os dados como definitivamente fechados:
-                parâmetros exatos do deblur, versão do classificador SILVA, e
-                se corresponde à execução da Maria Thalillian, da Paola, ou a
-                uma rodada nova. Os números batem, 997/1042 amostras, com o
-                artigo, mas os parâmetros de processamento ainda não foram
-                conferidos linha a linha.
+                <strong>Etapa 2</strong>: baixar os FASTQ brutos dos 10
+                BioProjects com <code>download_project.sh</code> (SRA
+                Toolkit), um projeto por vez, a partir dos accessions já
+                levantados na Etapa 1.
               </li>
               <li>
-                <strong>Decidir o tratamento de P2 e P21</strong>: os dois já
-                estão presentes no <code>feature-table.txt</code> (77 e 105
-                amostras mantidas, respectivamente, nenhuma filtrada). A
-                decisão agora é se a limitação de proveniência do primer
-                (Tabela 1b) precisa de nota metodológica no texto, já que os
-                dados em si não foram excluídos do processamento.
+                <strong>Decidir o tratamento de P2 e P21</strong> antes do
+                corte de primer: usar a suposição documentada pro P2 (par
+                EMP, artefato marcado <code>_ASSUMIDO</code>) ou excluí-lo
+                junto com o P21, que não tem suposição plausível.
               </li>
               <li>
-                <strong>Etapa 7</strong>: PERMANOVA sobre Bray-Curtis a partir
-                de <code>feature-table.txt</code> + <code>metadata.txt</code>,
-                comparando com os valores-alvo da Tabela 3 (13,5% de variância
-                explicada por condição+localidade+projeto).
+                <strong>Etapa 3b–4</strong>: gerar os manifests com{" "}
+                <code>generate_manifests.py</code>, importar no QIIME 2 com{" "}
+                <code>import_all.sh</code> e cortar os primers já
+                confirmados (comandos na seção 4), separando por região
+                antes do deblur.
+              </li>
+              <li>
+                <strong>Etapas 5–6</strong>: taxonomia via SILVA e filtragem,
+                conferindo se o total final do pipeline próprio bate com as
+                997 amostras publicadas (ou o número ajustado, caso P2/P21
+                sejam excluídos).
+              </li>
+              <li>
+                <strong>Etapa 7</strong>: PERMANOVA sobre Bray-Curtis a
+                partir dos dados do pipeline próprio, comparando com os
+                valores-alvo da Tabela 3 e com o preview exploratório da
+                Tabela 2c.
               </li>
               <li>
                 <strong>Etapa 8</strong>: GLLVM com e sem projeto como
@@ -1270,12 +1374,13 @@ export default function App() {
                 <strong>Etapa 9</strong>: protocolo de validação Random
                 Forest, CV estratificada aleatória vs. leave-one-project-out,
                 mais o controle negativo prevendo projeto a partir da
-                composição. Esta é a etapa central declarada como "em
-                andamento" no artigo.
+                composição, sobre os dados do pipeline próprio. Esta é a
+                etapa central declarada como "em andamento" no artigo, e o
+                preview exploratório (Tabela 2c) já indica o padrão esperado.
               </li>
               <li>
                 <strong>Fechamento</strong>: redigir a seção de metodologia
-                da dissertação com base no que foi replicado, incluindo a
+                da dissertação com base no que foi processado, incluindo a
                 nota sobre P16 (55 vs. 26 amostras de câncer entre o
                 TCC de 2025 e o artigo LATINOWARE) e a proveniência do
                 primer de P2/P21 como notas metodológicas.
