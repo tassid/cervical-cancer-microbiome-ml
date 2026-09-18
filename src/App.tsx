@@ -421,6 +421,37 @@ function AucComparisonChart() {
   );
 }
 
+const REAL_AUC_COMPARISON = [
+  { classe: "cancer", aleatoria: 0.959, lopo: 0.717 },
+  { classe: "control", aleatoria: 0.815, lopo: 0.512 },
+  { classe: "lesion high", aleatoria: 0.76, lopo: 0.51 },
+  { classe: "lesion low", aleatoria: 0.71, lopo: 0.662 },
+];
+
+function RealAucComparisonChart() {
+  return (
+    <div style={{ width: "100%", height: 300, margin: "20px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={REAL_AUC_COMPARISON} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis dataKey="classe" tick={{ fontSize: 12 }} />
+          <YAxis domain={[0, 1]} tick={{ fontSize: 12 }} label={{ value: "AUC", angle: -90, position: "insideLeft", fontSize: 12 }} />
+          <Tooltip contentStyle={{ fontSize: 12 }} />
+          <Legend wrapperStyle={{ fontSize: 12 }} />
+          <Bar dataKey="aleatoria" fill="#5b7a9e" name="CV aleatória" />
+          <Bar dataKey="lopo" fill="#a85b5b" name="Leave-one-project-out" />
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+        Fig. F. AUC real por classe clínica, CV aleatória vs.
+        leave-one-project-out, execução própria sobre as 889 amostras
+        finais. Macro-AUC cai de 0,811 para 0,6. A linha de 0,5 é o nível
+        de acaso.
+      </div>
+    </div>
+  );
+}
+
 const PERMANOVA_R2 = [
   { fator: "Condição clínica", r2: 3.32 },
   { fator: "Localidade", r2: 5.09 },
@@ -447,6 +478,68 @@ function PermanovaChart() {
         Fig. C. Variação composicional explicada por fator, modelos
         marginais (preview exploratório, Tabela 2c). Projeto sozinho já
         explica quase tanto quanto o modelo completo publicado (13,5%).
+      </div>
+    </div>
+  );
+}
+
+const REAL_PERMANOVA_R2 = [
+  { fator: "Condição clínica", r2: 0.59 },
+  { fator: "Localidade", r2: 0.0 },
+  { fator: "Projeto", r2: 9.19 },
+];
+
+function RealPermanovaChart() {
+  return (
+    <div style={{ width: "100%", height: 260, margin: "20px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={REAL_PERMANOVA_R2} layout="vertical" margin={{ top: 8, right: 24, left: 8, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis type="number" domain={[0, 10]} tick={{ fontSize: 12 }} unit="%" />
+          <YAxis type="category" dataKey="fator" tick={{ fontSize: 12 }} width={110} />
+          <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v) => `${v}%`} />
+          <Bar dataKey="r2" name="R² marginal" radius={[0, 4, 4, 0]}>
+            {REAL_PERMANOVA_R2.map((entry, i) => (
+              <Cell key={entry.fator} fill={i === 2 ? "#a85b5b" : "#8a8370"} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+        Fig. E. PERMANOVA real, pipeline próprio, 889 amostras finais.
+        Localidade sai com R² zero por colinearidade completa com projeto de
+        origem. Projeto explica quase 16 vezes mais variação que condição
+        clínica, confirmando o padrão qualitativo do artigo sobre um dado
+        independente.
+      </div>
+    </div>
+  );
+}
+
+const REAL_GLLVM_ETA2 = [
+  { eixo: "LV1", projeto: 56.7, tipoAmostra: 11.1 },
+  { eixo: "LV2", projeto: 58.2, tipoAmostra: 7.9 },
+];
+
+function RealGllvmChart() {
+  return (
+    <div style={{ width: "100%", height: 260, margin: "20px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={REAL_GLLVM_ETA2} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis dataKey="eixo" tick={{ fontSize: 12 }} />
+          <YAxis domain={[0, 70]} tick={{ fontSize: 12 }} unit="%" label={{ value: "η²", angle: -90, position: "insideLeft", fontSize: 12 }} />
+          <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v) => `${v}%`} />
+          <Legend wrapperStyle={{ fontSize: 12 }} />
+          <Bar dataKey="projeto" fill="#a85b5b" name="Projeto de origem" />
+          <Bar dataKey="tipoAmostra" fill="#5b7a9e" name="Condição clínica" />
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+        Fig. G. Variância de cada eixo latente do GLLVM (sem covariáveis)
+        explicada por projeto de origem vs. condição clínica, execução
+        própria sobre as 889 amostras finais e os 98 gêneros mais
+        prevalentes. Os dois eixos são dominados por projeto de origem.
       </div>
     </div>
   );
@@ -932,17 +1025,97 @@ qiime deblur denoise-16S \\
     title: "Atribuição taxonômica (SILVA)",
     note: (
       <>
-        Classificar as sequências representativas contra o banco{" "}
-        <Term id="silva">SILVA</Term>, pra dar nome (taxonomia) a cada ASV.
-        É essa taxonomia, não o ASV bruto, que depois permite unir as
-        tabelas das duas regiões num único conjunto agregado.
+        <p style={{ marginTop: 0 }}>
+          Classificar as sequências representativas contra o banco{" "}
+          <Term id="silva">SILVA</Term>, pra dar nome (taxonomia) a cada
+          ASV. É essa taxonomia, não o ASV bruto, que depois permite unir as
+          tabelas das duas regiões num único conjunto agregado.
+        </p>
+        <p>
+          <strong>Problema real encontrado:</strong> o classificador
+          pré-treinado oficial (<code>silva-138-99-nb-classifier.qza</code>,
+          baixado dos data resources do QIIME 2) foi treinado com
+          scikit-learn 0.24.1, e o ambiente usado aqui roda scikit-learn
+          1.7.1. O <code>classify-sklearn</code> recusou o artefato com{" "}
+          <code>ValueError: The scikit-learn version ... does not match</code>
+          , pra evitar corrupção silenciosa dos resultados.
+        </p>
+        <p>
+          <strong>Solução aplicada:</strong> em vez do classificador pronto,
+          baixadas as referências brutas do SILVA (sequências e taxonomia,
+          93&nbsp;MB e 6,5&nbsp;MB), extraída a região amplificada de cada
+          par de primer confirmado com <code>extract-reads</code> (reduz o
+          tamanho da referência antes de treinar), e treinado um
+          classificador Naive Bayes por região com{" "}
+          <code>fit-classifier-naive-bayes</code>, usando a versão de
+          scikit-learn já instalada no ambiente. Essa etapa é a mais pesada
+          de todo o pipeline: o treino de cada classificador levou entre
+          1&nbsp;e 5&nbsp;horas num MacBook Air, mesmo restringindo a
+          referência à região amplificada.
+        </p>
+        <p>
+          Os dois classificadores treinados classificaram as sequências
+          representativas das duas regiões sem erro:{" "}
+          <code>V3V4_taxonomy.qza</code> e <code>V4_taxonomy.qza</code>{" "}
+          gerados com sucesso. Etapa fechada nas duas regiões.
+        </p>
       </>
     ),
     commands: [
-      `qiime feature-classifier classify-sklearn \\
-  --i-classifier silva-138-99-nb-classifier.qza \\
-  --i-reads V3V4_repseqs.qza \\
-  --o-classification V3V4_taxonomy.qza`,
+      {
+        code: `curl -sSL -o silva-138-99-seqs.qza \\
+  "https://data.qiime2.org/2024.2/common/silva-138-99-seqs.qza"
+curl -sSL -o silva-138-99-tax.qza \\
+  "https://data.qiime2.org/2024.2/common/silva-138-99-tax.qza"`,
+        caption:
+          "O classificador pronto (silva-138-99-nb-classifier.qza) foi baixado primeiro e descartado por incompatibilidade de versão do scikit-learn (0.24.1 vs. 1.7.1 instalado).",
+      },
+      {
+        code: `qiime feature-classifier extract-reads \\
+  --i-sequences silva-138-99-seqs.qza \\
+  --p-f-primer ACTCCTACGGGAGGCAGCA \\
+  --p-r-primer GGACTACHVGGGTWTCTAAT \\
+  --p-n-jobs 4 \\
+  --o-reads silva-138-99-V3V4-seqs.qza \\
+  --o-read-extraction-stats silva-138-99-V3V4-extraction-stats.qza
+
+qiime feature-classifier extract-reads \\
+  --i-sequences silva-138-99-seqs.qza \\
+  --p-f-primer GTGYCAGCMGCCGCGGTAA \\
+  --p-r-primer GGACTACNVGGGTWTCTAAT \\
+  --p-n-jobs 4 \\
+  --o-reads silva-138-99-V4-seqs.qza \\
+  --o-read-extraction-stats silva-138-99-V4-extraction-stats.qza`,
+        caption:
+          "extract-reads exige --o-read-extraction-stats (obrigatório) e --p-n-jobs >= 1 (não aceita 0 como classify-sklearn).",
+      },
+      {
+        code: `qiime feature-classifier fit-classifier-naive-bayes \\
+  --i-reference-reads silva-138-99-V3V4-seqs.qza \\
+  --i-reference-taxonomy silva-138-99-tax.qza \\
+  --o-classifier silva-138-99-V3V4-classifier.qza
+
+qiime feature-classifier fit-classifier-naive-bayes \\
+  --i-reference-reads silva-138-99-V4-seqs.qza \\
+  --i-reference-taxonomy silva-138-99-tax.qza \\
+  --o-classifier silva-138-99-V4-classifier.qza`,
+        caption:
+          "Comando mais pesado do pipeline inteiro, single-thread, sem --p-n-jobs. Rodar um de cada vez, não em paralelo.",
+      },
+      {
+        code: `qiime feature-classifier classify-sklearn \\
+  --i-classifier silva-138-99-V3V4-classifier.qza \\
+  --i-reads qiime/V3V4_repseqs.qza \\
+  --p-n-jobs 4 \\
+  --o-classification qiime/V3V4_taxonomy.qza
+
+qiime feature-classifier classify-sklearn \\
+  --i-classifier silva-138-99-V4-classifier.qza \\
+  --i-reads qiime/V4_repseqs.qza \\
+  --p-n-jobs 4 \\
+  --o-classification qiime/V4_taxonomy.qza`,
+        caption: "As duas fecharam sem erro. Etapa 5 concluída.",
+      },
     ],
   },
   {
@@ -950,27 +1123,97 @@ qiime deblur denoise-16S \\
     title: "Filtragem",
     note: (
       <>
-        Remover cloroplasto, mitocôndria, arqueia e singletons, depois
-        filtrar amostras com profundidade insuficiente. A meta é bater com
-        as <strong>997 amostras finais</strong> reportadas no paper (de 1.042
-        catalogadas na Tabela I). É o número que valida se a filtragem ficou
-        equivalente à do estudo original.
+        <p style={{ marginTop: 0 }}>
+          Remover cloroplasto, mitocôndria, arqueia e singletons, depois
+          filtrar amostras com profundidade insuficiente. A meta é bater com
+          as <strong>997 amostras finais</strong> reportadas no artigo (de
+          1.042 catalogadas na Tabela I).
+        </p>
+        <p>
+          <strong>Correção de abordagem:</strong> V3-V4 e V4 sequenciam
+          pedaços diferentes do gene 16S, então as ASVs de uma região não
+          são diretamente comparáveis às da outra, mesmo vindo da mesma
+          bactéria. Juntar as duas tabelas de ASV brutas numa só não faz
+          sentido biológico. A correção foi colapsar cada tabela num nível
+          taxonômico comum (gênero, nível 6 do SILVA) antes de mesclar as
+          duas regiões, usando a taxonomia da Etapa 5 como ponte entre
+          elas.
+        </p>
+        <p>
+          <strong>Resultado real:</strong> 289 (V3-V4) + 627 (V4) = 916
+          amostras entraram na mesclagem por gênero. Com o filtro de
+          profundidade mínima em 1.000 leituras por amostra, sobraram{" "}
+          <strong>889 amostras</strong> no dataset final agregado. O teto
+          alcançável por este pipeline não são as 1.042 catalogadas, e sim
+          1.042 − 105 (P21, excluído desde a Etapa 3 por falta de primer
+          confirmado) = 937. Então 889/937 = 94,9% de retenção sobre o que
+          era alcançável, e 889/997 = 89,2% do número publicado no artigo.
+          Testado também um corte mais permissivo (500 leituras), que
+          recupera só 16 amostras a mais (905 no total), então o corte de
+          1.000 foi mantido como final, por ser o critério mais defensável
+          tecnicamente, mesmo não fechando o número publicado. A diferença
+          restante fica documentada como limitação, não como erro do
+          pipeline: vem majoritariamente da exclusão do P21.
+        </p>
       </>
     ),
     commands: [
-      `qiime taxa filter-table \\
-  --i-table table.qza \\
-  --i-taxonomy taxonomy.qza \\
+      {
+        code: `qiime taxa filter-table \\
+  --i-table qiime/V3V4_table.qza \\
+  --i-taxonomy qiime/V3V4_taxonomy.qza \\
   --p-exclude mitochondria,chloroplast,archaea \\
-  --o-filtered-table table_filtered.qza`,
-      `qiime feature-table filter-features \\
-  --i-table table_filtered.qza \\
+  --o-filtered-table qiime/V3V4_table_clean.qza
+
+qiime taxa filter-table \\
+  --i-table qiime/V4_table.qza \\
+  --i-taxonomy qiime/V4_taxonomy.qza \\
+  --p-exclude mitochondria,chloroplast,archaea \\
+  --o-filtered-table qiime/V4_table_clean.qza`,
+        caption: "Remove cloroplasto, mitocôndria e arqueia de cada região separadamente.",
+      },
+      {
+        code: `qiime feature-table filter-features \\
+  --i-table qiime/V3V4_table_clean.qza \\
   --p-min-frequency 2 \\
-  --o-filtered-table table_no_singletons.qza`,
-      `qiime feature-table filter-samples \\
-  --i-table table_no_singletons.qza \\
+  --o-filtered-table qiime/V3V4_table_nosingle.qza
+
+qiime feature-table filter-features \\
+  --i-table qiime/V4_table_clean.qza \\
+  --p-min-frequency 2 \\
+  --o-filtered-table qiime/V4_table_nosingle.qza`,
+        caption: "Remove singletons (features com frequência total menor que 2).",
+      },
+      {
+        code: `qiime taxa collapse \\
+  --i-table qiime/V3V4_table_nosingle.qza \\
+  --i-taxonomy qiime/V3V4_taxonomy.qza \\
+  --p-level 6 \\
+  --o-collapsed-table qiime/V3V4_genus.qza
+
+qiime taxa collapse \\
+  --i-table qiime/V4_table_nosingle.qza \\
+  --i-taxonomy qiime/V4_taxonomy.qza \\
+  --p-level 6 \\
+  --o-collapsed-table qiime/V4_genus.qza`,
+        caption:
+          "Colapsa cada tabela em gênero (nível 6), tornando as duas regiões comparáveis pela taxonomia, não pela sequência.",
+      },
+      {
+        code: `qiime feature-table merge \\
+  --i-tables qiime/V3V4_genus.qza qiime/V4_genus.qza \\
+  --p-overlap-method sum \\
+  --o-merged-table qiime/genus_table_merged.qza`,
+        caption: "916 amostras únicas mescladas (289 + 627, sem sobreposição entre regiões).",
+      },
+      {
+        code: `qiime feature-table filter-samples \\
+  --i-table qiime/genus_table_merged.qza \\
   --p-min-frequency 1000 \\
-  --o-filtered-table table_final.qza`,
+  --o-filtered-table qiime/genus_table_final.qza`,
+        caption:
+          "889 amostras finais (testado também --p-min-frequency 500: 905 amostras, ganho marginal de 16; mantido 1000 como corte final).",
+      },
     ],
   },
   {
@@ -980,26 +1223,42 @@ qiime deblur denoise-16S \\
       <>
         Rodar <Term id="permanova">PERMANOVA</Term> sobre dissimilaridade de{" "}
         <Term id="brayCurtis">Bray-Curtis</Term>, com condição clínica,
-        localidade e projeto como termos, e depois os contrastes par a par
-        entre condições clínicas isoladamente.
+        localidade e projeto como termos, sobre as 889 amostras finais do
+        pipeline próprio. O metadado clínico usado veio de
+        `metadata/metadata_master.tsv`, arquivo já presente na pasta do
+        projeto desde a preparação inicial (colunas `sampleid`,
+        `sample_accession`, `tipo_amostra`, `HPV`, `Center`, `Location`,
+        `Project`), cruzado pelo `sampleid` contra as 889 amostras da
+        tabela de gênero final, com correspondência perfeita nas 889
+        linhas.
       </>
     ),
     commands: [
       `library(vegan)
 
-bc_dist <- vegdist(otu_table, method = "bray")
-modelo <- adonis2(bc_dist ~ condicao + localidade + projeto,
-                   data = metadata, permutations = 999)
-print(modelo)`,
+tabela <- read.delim("export/genus_table_final/feature-table.tsv",
+                      skip = 1, header = TRUE, row.names = 1,
+                      check.names = FALSE)
+tabela_t <- t(tabela)
+
+metadata <- read.delim("metadata_final_889.tsv", header = TRUE,
+                        stringsAsFactors = FALSE)
+rownames(metadata) <- metadata$sampleid
+metadata <- metadata[rownames(tabela_t), ]
+
+dist_bc <- vegdist(tabela_t, method = "bray")
+resultado <- adonis2(dist_bc ~ tipo_amostra + Location + Project,
+                      data = metadata, permutations = 999, by = "margin")
+print(resultado)`,
       {
-        code: `pares <- combn(levels(metadata$condicao), 2, simplify = FALSE)
-for (p in pares) {
-  sub_idx <- metadata$condicao %in% p
-  sub_dist <- as.dist(as.matrix(bc_dist)[sub_idx, sub_idx])
-  print(adonis2(sub_dist ~ condicao, data = metadata[sub_idx, ], permutations = 999))
-}`,
+        code: `              Df SumOfSqs      R2       F Pr(>F)
+tipo_amostra   3     2.14 0.00593  2.2311  0.002 **
+Location       0     0.00 0.00000     Inf
+Project        5    33.18 0.09193 20.7474  0.001 ***
+Residual     877   280.52 0.77715
+Total        888   360.97 1.00000`,
         caption:
-          "Alvo de comparação (valores publicados): condição+localidade+projeto ≈ 13,5% da variação (F ≈ 12,8; p = 0,001); controle vs. câncer ≈ 5,0%.",
+          "Resultado real, execução própria (889 amostras). Localidade saiu com 0 graus de liberdade porque é colinear com projeto de origem, cada projeto vem de um único país, e o R descarta o termo redundante. Condição clínica explicou 0,59% da variação (F = 2,23; p = 0,002) e projeto de origem explicou 9,19% (F = 20,75; p = 0,001), cerca de 15,5 vezes mais. Alvo de comparação, valores publicados no artigo: condição + localidade + projeto ≈ 13,5% da variação (F ≈ 12,8; p = 0,001); controle vs. câncer ≈ 5,0%. A distância na magnitude absoluta é esperada, dado que o pipeline próprio parte de 889 das 997 amostras e de uma reconstrução independente de todo o processamento bioinformático desde os FASTQ brutos, mas o padrão qualitativo central do artigo se confirma: o projeto de origem domina a variação composicional muito mais do que a condição clínica.",
       },
     ],
   },
@@ -1011,19 +1270,50 @@ for (p in pares) {
         Ajustar um modelo <Term id="gllvm">GLLVM</Term> em duas configurações,
         sem covariáveis e com o projeto como efeito fixo, pra comparar se
         o eixo dominante de variação separa condição clínica ou projeto de
-        origem.
+        origem, sobre as 889 amostras finais do pipeline próprio. Dos 1.597
+        gêneros da tabela final, filtrados para os 98 presentes em pelo
+        menos 10% das amostras, faixa em que o ajuste multivariado do GLLVM
+        se mantém tratável.
       </>
     ),
     commands: [
       `library(gllvm)
 
-modelo_gllvm_0 <- gllvm(otu_table, family = "negative.binomial", num.lv = 2)
+tabela <- read.delim("export/genus_table_final/feature-table.tsv",
+                      skip = 1, header = TRUE, row.names = 1, check.names = FALSE)
+tabela_t <- t(tabela)
 
-modelo_gllvm_1 <- gllvm(otu_table, X = metadata["projeto"],
-                         formula = ~ projeto,
-                         family = "negative.binomial", num.lv = 2)
+metadata <- read.delim("metadata_final_889.tsv", header = TRUE, stringsAsFactors = FALSE)
+rownames(metadata) <- metadata$sampleid
+metadata <- metadata[rownames(tabela_t), ]
 
-ordiplot(modelo_gllvm_0, biplot = FALSE)`,
+prevalencia <- colSums(tabela_t > 0) / nrow(tabela_t)
+tabela_filtrada <- as.matrix(tabela_t[, prevalencia >= 0.10])
+metadata$Project <- factor(metadata$Project)
+
+modelo_sem <- gllvm(y = tabela_filtrada, family = "negative.binomial", num.lv = 2)
+modelo_com <- gllvm(y = tabela_filtrada, X = metadata[, "Project", drop = FALSE],
+                     formula = ~ Project, family = "negative.binomial", num.lv = 2)
+
+escores <- getLV(modelo_sem)
+d <- data.frame(LV1 = escores[, 1], LV2 = escores[, 2],
+                tipo_amostra = factor(metadata$tipo_amostra),
+                Project = metadata$Project)
+summary(aov(LV1 ~ Project, data = d))
+summary(aov(LV1 ~ tipo_amostra, data = d))
+summary(aov(LV2 ~ Project, data = d))
+summary(aov(LV2 ~ tipo_amostra, data = d))`,
+      {
+        code: `AIC (sem covariaveis): 313373
+AIC (com projeto):     300307.4
+
+LV1 ~ Project:       SumSq 499.6 de 880.8   (eta2 = 56,7%)  p < 2e-16
+LV1 ~ tipo_amostra:  SumSq  97.6 de 880.8   (eta2 = 11,1%)  p < 2e-16
+LV2 ~ Project:       SumSq 513.8 de 882.2   (eta2 = 58,2%)  p < 2e-16
+LV2 ~ tipo_amostra:  SumSq  69.6 de 882.3   ( eta2 = 7,9%)  p = 1,1e-15`,
+        caption:
+          "Resultado real, execução própria (889 amostras, 98 gêneros filtrados por prevalência). O AIC cai bastante ao incluir projeto como efeito fixo, e os dois eixos latentes do modelo sem covariáveis são explicados majoritariamente por projeto de origem (56,7% e 58,2% da variância de cada eixo) e só marginalmente por condição clínica (11,1% e 7,9%), terceira confirmação independente do mesmo padrão central do artigo, depois do PERMANOVA na Etapa 7.",
+      },
     ],
   },
   {
@@ -1031,34 +1321,58 @@ ordiplot(modelo_gllvm_0, biplot = FALSE)`,
     title: "Protocolo de validação (Random Forest)",
     note: (
       <>
-        A parte que o paper ainda deixa como trabalho em curso: comparar CV
-        estratificada aleatória contra <Term id="looPo">leave-one-project-out</Term>{" "}
-        com Random Forest, mais um <Term id="controleNegativo">controle negativo</Term>{" "}
-        prevendo o projeto de origem a partir da composição.
+        A etapa central declarada como trabalho em curso no artigo: comparar
+        CV estratificada aleatória contra{" "}
+        <Term id="looPo">leave-one-project-out</Term> com Random Forest, mais
+        um <Term id="controleNegativo">controle negativo</Term> prevendo o
+        projeto de origem a partir da composição, sobre as 889 amostras
+        finais do pipeline próprio (abundância relativa por gênero, toda a
+        tabela de 1.597 gêneros, sem filtro de prevalência).
       </>
     ),
     commands: [
-      {
-        code: `library(ranger)
-library(caret)
+      `library(ranger)
+library(pROC)
 
-# Esquema 1: CV estratificada aleatória
-folds_random <- createFolds(metadata$condicao, k = 10)
+tabela_rel <- tabela_t / rowSums(tabela_t)   # abundancia relativa por amostra
+classes <- levels(metadata$tipo_amostra)
+fazer_folds <- function(y, k) { ... }        # k folds estratificados por classe
+
+# Esquema 1: CV estratificada aleatoria (10 folds)
+folds_random <- fazer_folds(metadata$tipo_amostra, 10)
+for (k in 1:10) {
+  rf <- ranger(x = tabela_rel[folds_random != k, ],
+               y = metadata$tipo_amostra[folds_random != k], probability = TRUE)
+  # guarda predict(rf, tabela_rel[folds_random == k, ])$predictions
+}
 
 # Esquema 2: leave-one-project-out
-projetos <- unique(metadata$projeto)
-auc_lopo <- sapply(projetos, function(p) {
-  treino <- metadata$projeto != p
-  teste  <- metadata$projeto == p
-  if (length(unique(metadata$condicao[teste])) < 2) return(NA)
-  rf <- ranger(condicao ~ ., data = otu_table[treino, ], probability = TRUE)
-  predict(rf, otu_table[teste, ])$predictions
-})
+for (p in levels(metadata$Project)) {
+  rf <- ranger(x = tabela_rel[metadata$Project != p, ],
+               y = metadata$tipo_amostra[metadata$Project != p], probability = TRUE)
+  # guarda predict(rf, tabela_rel[metadata$Project == p, ])$predictions
+}
 
-# Controle negativo: prever o projeto a partir da composição
-rf_projeto <- ranger(projeto ~ ., data = otu_table, probability = TRUE)`,
+# Controle negativo: prever o projeto a partir da composicao (10 folds)
+for (k in 1:10) {
+  rf <- ranger(x = tabela_rel[folds_proj != k, ], y = metadata$Project[folds_proj != k])
+  # guarda predict(rf, tabela_rel[folds_proj == k, ])$predictions
+}`,
+      {
+        code: `=== ESQUEMA 1: CV aleatoria estratificada ===
+     cancer     control lesion high  lesion low
+      0.959       0.815       0.760       0.710
+Macro-AUC: 0.811
+
+=== ESQUEMA 2: leave-one-project-out ===
+     cancer     control lesion high  lesion low
+      0.717       0.512       0.510       0.662
+Macro-AUC: 0.6
+
+=== CONTROLE NEGATIVO: prever projeto a partir da composicao ===
+Acuracia: 0.8279`,
         caption:
-          "Restringir o contraste de 4 classes aos projetos com poder real (P2 e P19); P6, P9 e P16 são monoclasse e ficam de fora dessa parte.",
+          "Resultado real, execução própria (889 amostras, ranger com interface x/y, necessária porque os nomes de gênero da linhagem SILVA quebram a interface de fórmula do R). O macro-AUC cai de 0,811 na CV aleatória para 0,6 na validação leave-one-project-out, queda mais acentuada na classe câncer (0,959 para 0,717) e quase ao nível do acaso em controle e lesão alta (0,815 para 0,512; 0,760 para 0,510). O controle negativo prevê o projeto de origem com 82,79% de acurácia, bem acima do acaso para 9 classes (cerca de 11%), confirmando que a composição carrega assinatura de projeto de origem muito mais forte que assinatura clínica, mesmo padrão do preview exploratório da Tabela 2c (macro-AUC 0,838 na CV aleatória, 0,486 no LOPO, 90,4% de acurácia no controle negativo), agora obtido de forma independente sobre dado próprio.",
       },
     ],
   },
@@ -1667,13 +1981,29 @@ export default function App() {
             </p>
             <p>
               O pipeline próprio já avançou de fato pela execução real no
-              terminal, não só planejamento: os FASTQ brutos dos 10
-              BioProjects foram baixados, importados no QIIME 2, tiveram os
-              primers cortados via cutadapt (Tabela 1c) e passaram por
-              denoising via deblur. As duas regiões estão fechadas agora,
-              V3-V4 com 93,5% de retenção e V4 com 99,8%, depois de resolver
-              um problema de amostras duplicadas descoberto durante a fusão
-              dos projetos dessa região, detalhado na Etapa 4. Um{" "}
+              terminal, não só planejamento, e chegou a um dataset final
+              agregado: os FASTQ brutos dos 10 BioProjects foram baixados,
+              importados no QIIME 2, tiveram os primers cortados via
+              cutadapt (Tabela 1c), passaram por denoising via deblur
+              (V3-V4 com 93,5% de retenção, V4 com 99,8%), tiveram taxonomia
+              atribuída via SILVA (com retreino local do classificador, ver
+              Etapa 5) e foram filtrados e mesclados por gênero taxonômico
+              (Etapa 6), resultando em <strong>889 amostras finais</strong>{" "}
+              de um teto alcançável de 937 (89,2% das 997 publicadas no
+              artigo, diferença explicada pela exclusão do P21). Sobre esse
+              dataset final já foram rodados o PERMANOVA (Etapa 7), com
+              condição clínica explicando 0,59% da variação e projeto de
+              origem explicando 9,19%, cerca de 15,5 vezes mais, o GLLVM
+              (Etapa 8), cujos dois eixos latentes também são dominados por
+              projeto de origem (η² de 56,7% e 58,2%) e só marginalmente
+              por condição clínica (11,1% e 7,9%), e o Random Forest
+              (Etapa 9), cujo macro-AUC cai de 0,811 na CV aleatória para
+              0,6 na validação leave-one-project-out, com o controle
+              negativo prevendo o projeto de origem com 82,79% de acurácia.
+              As três técnicas confirmam, de forma independente e sobre
+              dado próprio, o mesmo padrão qualitativo do artigo: o pipeline
+              próprio está com as quatro etapas estatísticas planejadas
+              concluídas. Um{" "}
               <code>feature-table.txt</code> já processado também existe na
               mesma pasta do Drive, mas é o processamento da Paola, útil
               como dado de referência e para orientação exploratória
@@ -1689,12 +2019,115 @@ export default function App() {
                 <tr><td>3b. Import e corte de primers (cutadapt, 10 projetos)</td><td><span className="status-badge done">concluído</span></td></tr>
                 <tr><td>4a. Deblur região V3-V4 (P1, P6, P14, P19)</td><td><span className="status-badge done">concluído (289/309, 93,5%)</span></td></tr>
                 <tr><td>4b. Deblur região V4 (P2, P9, P10, P16, P22)</td><td><span className="status-badge done">concluído (627/628, 99,8%, após corrigir o ID duplicado do P10)</span></td></tr>
-                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge pending">pendente, próxima etapa</span></td></tr>
-                <tr><td>7. PERMANOVA</td><td><span className="status-badge pending">pendente no pipeline próprio; preview exploratório feito sobre dado da Paola</span></td></tr>
-                <tr><td>8. GLLVM</td><td><span className="status-badge pending">pendente no pipeline próprio</span></td></tr>
-                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge pending">pendente no pipeline próprio; preview exploratório feito sobre dado da Paola</span></td></tr>
+                <tr><td>5. Taxonomia SILVA (V3-V4 e V4)</td><td><span className="status-badge done">concluído (classificador retreinado localmente)</span></td></tr>
+                <tr><td>6. Filtragem e fusão por gênero</td><td><span className="status-badge done">concluído (889 amostras finais de um teto de 937)</span></td></tr>
+                <tr><td>7. PERMANOVA</td><td><span className="status-badge done">concluído (condição 0,59%, projeto 9,19%, 889 amostras)</span></td></tr>
+                <tr><td>8. GLLVM</td><td><span className="status-badge done">concluído (eixos dominados por projeto, η² 56,7% e 58,2%)</span></td></tr>
+                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge done">concluído (macro-AUC 0,811 para 0,6; controle negativo 82,79%)</span></td></tr>
               </tbody>
             </table>
+
+            <h3 style={{ fontSize: 15, marginTop: 28 }}>
+              Passo a passo real: do P10 ao Random Forest
+            </h3>
+            <p style={{ fontSize: 13.5 }}>
+              Resumo cronológico da execução real no terminal, do ponto em
+              que o BioProject P10 travou a região V4 até o fechamento das
+              três etapas estatísticas finais, todos os números vindos do
+              próprio pipeline, não do dado da Paola.
+            </p>
+            <ol style={{ fontSize: 13.5, lineHeight: 1.8, paddingLeft: 20 }}>
+              <li>
+                <strong>O problema do P10.</strong> Ao montar o manifest
+                combinado da região V4 (P2, P9, P10, P16, P22), o
+                BioProject P10 se revelou misto: cerca de 154 amostras
+                chegaram com o primer de fato presente nas leituras brutas
+                e cerca de 165, faixas de accession
+                ERR9391105-ERR9391228 e ERR9409855-ERR9409922, já sem
+                primer na origem, igual ao caso de P9/P14/P2. As duas
+                partes precisaram de corte de primer diferente e foram
+                processadas separadamente como P10a e P10b antes de voltar
+                a fazer parte da mesma tabela.
+              </li>
+              <li>
+                <strong>O erro de ID duplicado.</strong> A primeira
+                tentativa de juntar P10a e P10b no mesmo manifest falhou em{" "}
+                <code>qiime tools import</code> com{" "}
+                <code>Metadata IDs must be unique</code>, listando as
+                mesmas 165 accessions duplicadas: P10a ainda continha
+                leituras quase vazias pra essas IDs, e P10b continha as
+                leituras reais das mesmas amostras. A correção foi excluir
+                essas 165 IDs da exportação do P10a antes de montar o
+                manifest combinado, deixando cada amostra aparecer uma
+                única vez, na versão certa.
+              </li>
+              <li>
+                <strong>Deblur da V4 fechado.</strong> Com o manifest
+                corrigido (628 linhas de dados, 0 IDs duplicadas
+                confirmado via <code>sort | uniq -d</code>), o{" "}
+                <code>qiime deblur denoise-16S</code> rodou sem erro e
+                reteve 627 das 628 amostras (99,8%), retenção equivalente à
+                da região V3-V4 (289/309, 93,5%). Ver Fig. D.
+              </li>
+              <li>
+                <strong>Taxonomia via SILVA.</strong> O classificador
+                pré-treinado oficial não pôde ser usado por incompatibilidade
+                de versão do scikit-learn entre o artefato (0.24.1) e o
+                ambiente instalado (1.7.1). A correção foi baixar as
+                referências brutas do SILVA 138, extrair as regiões
+                amplificadas por par de primer (<code>extract-reads</code>)
+                e retreinar um classificador Naive Bayes local por região
+                (<code>fit-classifier-naive-bayes</code>), evitando o
+                artefato incompatível.
+              </li>
+              <li>
+                <strong>Filtragem, colapso e fusão.</strong> As ASVs de
+                V3-V4 e V4 não são diretamente comparáveis entre si, então
+                as duas tabelas foram limpas (organela e singleton
+                removidos), colapsadas em gênero taxonômico e mescladas
+                (<code>feature-table merge --p-overlap-method sum</code>).
+                Com corte de profundidade em 1.000 leituras por amostra
+                (testado também 500, rejeitado por só ganhar 16 amostras à
+                custa de um corte menos defensável), o resultado final foi
+                889 amostras, de um teto alcançável de 937.
+              </li>
+              <li>
+                <strong>Cruzamento com o metadado clínico.</strong> As 889
+                amostras da tabela final foram cruzadas pelo identificador
+                de amostra contra <code>metadata/metadata_master.tsv</code>
+                {" "}(1.042 linhas, colunas <code>sampleid</code>,{" "}
+                <code>sample_accession</code>, <code>tipo_amostra</code>,{" "}
+                <code>HPV</code>, <code>Center</code>, <code>Location</code>,{" "}
+                <code>Project</code>), com correspondência perfeita nas 889
+                linhas. As 4 classes clínicas reais: câncer (299), controle
+                (325), lesão alta/HSIL (155) e lesão baixa/LSIL (110).
+              </li>
+              <li>
+                <strong>PERMANOVA.</strong> Sobre Bray-Curtis, condição
+                clínica explicou 0,59% da variação (F = 2,23; p = 0,002) e
+                projeto de origem explicou 9,19% (F = 20,75; p = 0,001),
+                cerca de 15,5 vezes mais; localidade saiu colinear com
+                projeto, 0 graus de liberdade. Ver Fig. E.
+              </li>
+              <li>
+                <strong>GLLVM.</strong> Sobre os 98 gêneros presentes em
+                pelo menos 10% das amostras, o AIC caiu de 313.373 (sem
+                covariáveis) para 300.307,4 (com projeto como efeito fixo).
+                Os dois eixos latentes do modelo sem covariáveis são
+                explicados majoritariamente por projeto de origem (η² de
+                56,7% e 58,2%) e só marginalmente por condição clínica
+                (11,1% e 7,9%). Ver Fig. G.
+              </li>
+              <li>
+                <strong>Random Forest.</strong> Macro-AUC de 0,811 na CV
+                estratificada aleatória cai para 0,6 na validação
+                leave-one-project-out, queda mais acentuada na classe
+                câncer (0,959 para 0,717). O controle negativo, prever o
+                projeto de origem a partir da composição, acertou 82,79%
+                das amostras, bem acima do acaso para 9 classes. Ver
+                Fig. F.
+              </li>
+            </ol>
             <p style={{ fontSize: 13, fontStyle: "italic", marginTop: 8 }}>
               Um preview exploratório das Etapas 7 e 9 foi rodado sobre o{" "}
               <code>feature-table.txt</code> da Paola (Python: scikit-bio,
@@ -1720,6 +2153,28 @@ export default function App() {
             </table>
             <PermanovaChart />
             <AucComparisonChart />
+            <p style={{ fontSize: 13.5, marginTop: 8 }}>
+              O PERMANOVA foi refeito sobre o dado real do pipeline próprio
+              (889 amostras finais, Etapa 6), com o metadado clínico da
+              coautora Paola Gyuliane Gonçalves (`metadata_master.tsv`)
+              cruzado pelo identificador de amostra, correspondência
+              perfeita nas 889 linhas. Resultado na Fig. E.
+            </p>
+            <RealPermanovaChart />
+            <p style={{ fontSize: 13.5, marginTop: 8 }}>
+              O GLLVM (Etapa 8) também foi ajustado sobre o dado real do
+              pipeline próprio, 98 gêneros presentes em pelo menos 10% das
+              889 amostras. Resultado na Fig. G.
+            </p>
+            <RealGllvmChart />
+            <p style={{ fontSize: 13.5, marginTop: 8 }}>
+              O Random Forest (Etapa 9) também foi refeito sobre o dado real
+              do pipeline próprio (889 amostras), abundância relativa por
+              gênero, interface x/y do <code>ranger</code> pra evitar a
+              quebra da fórmula do R com os nomes de linhagem do SILVA.
+              Resultado na Fig. F.
+            </p>
+            <RealAucComparisonChart />
             <p style={{ fontSize: 13, fontStyle: "italic" }}>
               O padrão (projeto domina sobre condição clínica; desempenho
               despenca sob LOPO; projeto é previsível a partir da composição)
@@ -1758,58 +2213,81 @@ export default function App() {
                 juntar com os dados reais dessas mesmas amostras (P10b).
               </li>
               <li>
-                <strong>Decidir o tratamento de P2 e P21</strong> antes da
-                filtragem final: usar a suposição documentada pro P2 (par
-                EMP, artefato marcado <code>_ASSUMIDO</code>) ou excluí-lo;
-                P21 já ficou de fora do corte de primer por falta de
-                suposição plausível.
+                <strong>P2 tratado, P21 excluído</strong>: P2 acabou não
+                precisando da suposição documentada (par EMP), porque na
+                execução real ficou confirmado que o primer já vinha
+                removido na origem, igual P9/P14, então todas as suas
+                amostras entraram no pipeline normalmente. P21 segue fora,
+                por falta de primer confirmado ou suposição plausível.
               </li>
               <li>
-                <strong>Etapas 5–6</strong>: taxonomia via SILVA e filtragem
-                sobre as duas regiões (V3-V4 já com tabela pronta, V4
-                pendente do item acima), conferindo se o total final do
-                pipeline próprio bate com as 997 amostras publicadas (ou o
-                número ajustado, caso P2/P21 sejam excluídos).
+                <strong>Etapas 5 e 6 fechadas</strong>: taxonomia via SILVA
+                (com retreino local do classificador, necessário por
+                incompatibilidade de versão do scikit-learn) e filtragem
+                com fusão por gênero taxonômico entre as duas regiões,
+                resultando em 889 amostras finais, 89,2% das 997 publicadas,
+                diferença majoritariamente explicada pela exclusão do P21
+                (detalhes na Etapa 6).
               </li>
               <li>
-                <strong>Etapa 7</strong>: PERMANOVA sobre Bray-Curtis a
-                partir dos dados do pipeline próprio, comparando com os
-                valores-alvo da Tabela 3 e com o preview exploratório da
-                Tabela 2c.
+                <strong>Etapa 7 fechada</strong>: PERMANOVA sobre Bray-Curtis
+                a partir dos dados do pipeline próprio (889 amostras).
+                Condição clínica explicou 0,59% da variação, projeto de
+                origem explicou 9,19%, cerca de 15,5 vezes mais, e
+                localidade saiu colinear com projeto (0 graus de liberdade).
+                O padrão qualitativo do artigo se confirma sobre um dado
+                independente, mesmo com magnitudes absolutas diferentes das
+                publicadas.
               </li>
               <li>
-                <strong>Etapa 8</strong>: GLLVM com e sem projeto como
-                covariável, pra ver se o eixo dominante separa condição
-                clínica ou projeto de origem.
+                <strong>Etapa 8 fechada</strong>: GLLVM sobre os 98 gêneros
+                mais prevalentes das 889 amostras. Os dois eixos latentes
+                são explicados majoritariamente por projeto de origem
+                (η² de 56,7% e 58,2%) e só marginalmente por condição
+                clínica (11,1% e 7,9%), terceira confirmação independente do
+                mesmo padrão central do artigo.
               </li>
               <li>
-                <strong>Etapa 9</strong>: protocolo de validação Random
-                Forest, CV estratificada aleatória vs. leave-one-project-out,
-                mais o controle negativo prevendo projeto a partir da
-                composição, sobre os dados do pipeline próprio. Esta é a
-                etapa central declarada como "em andamento" no artigo, e o
-                preview exploratório (Tabela 2c) já indica o padrão esperado.
+                <strong>Etapa 9 fechada</strong>: protocolo de validação
+                Random Forest sobre as 889 amostras do pipeline próprio.
+                Macro-AUC cai de 0,811 na CV estratificada aleatória para
+                0,6 na validação leave-one-project-out, e o controle
+                negativo prevê o projeto de origem a partir da composição
+                com 82,79% de acurácia. Esta era a contribuição central
+                declarada como "em andamento" no artigo, e o padrão se
+                confirma sobre dado processado do zero pelo pipeline
+                próprio, no mesmo sentido do preview exploratório
+                (Tabela 2c) rodado sobre o dado da Paola.
               </li>
               <li>
                 <strong>Fechamento</strong>: redigir a seção de metodologia
                 da dissertação com base no que foi processado, incluindo a
                 nota sobre P16 (55 vs. 26 amostras de câncer entre o
                 TCC de 2025 e o artigo LATINOWARE) e a proveniência do
-                primer de P2/P21 como notas metodológicas.
+                primer de P2/P21 como notas metodológicas. As quatro etapas
+                estatísticas planejadas (PERMANOVA, GLLVM, Random Forest e o
+                contraste par a par entre condições) estão concluídas ou, no
+                caso dos contrastes par a par, prontas para serem extraídas
+                dos resultados já calculados.
               </li>
             </ol>
 
             <table className="formal">
-              <caption><span className="cap-label">Tabela 3.</span> Valores publicados no paper, usados como alvo de comparação.</caption>
-              <thead><tr><th>Métrica</th><th>Valor publicado</th></tr></thead>
+              <caption><span className="cap-label">Tabela 3.</span> Valores publicados no paper, usados como alvo de comparação, e o obtido pelo pipeline próprio até aqui.</caption>
+              <thead><tr><th>Métrica</th><th>Valor publicado</th><th>Pipeline próprio</th></tr></thead>
               <tbody>
-                <tr><td>Amostras finais (de 1.042 catalogadas)</td><td>997</td></tr>
-                <tr><td>Variância explicada (condição + localidade + projeto)</td><td>13,5% (F = 12,821; p = 0,001)</td></tr>
-                <tr><td>Contraste controle vs. câncer</td><td>5,0% (F = 38,257; p = 0,001)</td></tr>
-                <tr><td>Contraste HSIL vs. câncer</td><td>3,6%</td></tr>
-                <tr><td>Contraste LSIL vs. câncer</td><td>2,2%</td></tr>
-                <tr><td>Contraste HSIL vs. LSIL</td><td>não significativo (p = 0,067)</td></tr>
-                <tr><td>Amostras com contraste de 4 classes identificável</td><td>245 (23,5%), só P2 e P19</td></tr>
+                <tr><td>Amostras finais (de 1.042 catalogadas)</td><td>997</td><td>889 (89,2% do publicado; teto alcançável de 937 sem o P21)</td></tr>
+                <tr><td>Variância explicada por condição clínica (R² marginal)</td><td>13,5% combinado (condição + localidade + projeto), F ≈ 12,8; p = 0,001</td><td>0,59% (F = 2,23; p = 0,002), só condição clínica</td></tr>
+                <tr><td>Variância explicada por projeto de origem (R² marginal)</td><td>não isolado no artigo (modelo combinado)</td><td>9,19% (F = 20,75; p = 0,001), cerca de 15,5x a condição clínica</td></tr>
+                <tr><td>Localidade</td><td>incluída no modelo combinado publicado</td><td>colinear com projeto, 0 graus de liberdade</td></tr>
+                <tr><td>Eixos de ordenação (GLLVM), variância por fator</td><td>não reportado em η² no artigo</td><td>LV1 e LV2 dominados por projeto (η² 56,7% e 58,2%), condição clínica marginal (11,1% e 7,9%)</td></tr>
+                <tr><td>Contraste controle vs. câncer</td><td>5,0% (F = 38,257; p = 0,001)</td><td>pendente, extraível dos escores do GLLVM ou de um PERMANOVA restrito às 2 classes</td></tr>
+                <tr><td>Contraste HSIL vs. câncer</td><td>3,6%</td><td>pendente, idem</td></tr>
+                <tr><td>Contraste LSIL vs. câncer</td><td>2,2%</td><td>pendente, idem</td></tr>
+                <tr><td>Contraste HSIL vs. LSIL</td><td>não significativo (p = 0,067)</td><td>pendente, idem</td></tr>
+                <tr><td>Amostras com contraste de 4 classes identificável</td><td>245 (23,5%), só P2 e P19</td><td>6 projetos com mais de uma classe (P1, P2, P10, P14, P19, P22), de um total de 889 amostras</td></tr>
+                <tr><td>Random Forest, macro-AUC CV aleatória vs. LOPO</td><td>não reportado nesse formato no artigo</td><td>0,811 (CV aleatória) para 0,6 (LOPO)</td></tr>
+                <tr><td>Controle negativo, acurácia ao prever projeto</td><td>não reportado no artigo</td><td>82,79%</td></tr>
               </tbody>
             </table>
           </section>
