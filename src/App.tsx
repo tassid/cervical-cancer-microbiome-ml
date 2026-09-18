@@ -1675,6 +1675,14 @@ export default function App() {
         }
 
         .fig-block { padding: 20px 16px 8px; background: var(--paper-soft, #faf7f0); border: 1px solid var(--rule-light); border-radius: 6px; }
+        .recharts-responsive-container {
+          display: block;
+          width: 100%;
+        }
+        .recharts-legend-wrapper {
+          position: relative !important;
+          margin-top: 10px;
+        }
 
         table.formal { width: 100%; border-collapse: collapse; margin: 18px 0 4px; font-size: 13.5px; }
         table.formal caption { text-align: left; font-size: 13px; margin-bottom: 8px; }
