@@ -1260,6 +1260,20 @@ Total        888   360.97 1.00000`,
         caption:
           "Resultado real, execução própria (889 amostras). Localidade saiu com 0 graus de liberdade porque é colinear com projeto de origem, cada projeto vem de um único país, e o R descarta o termo redundante. Condição clínica explicou 0,59% da variação (F = 2,23; p = 0,002) e projeto de origem explicou 9,19% (F = 20,75; p = 0,001), cerca de 15,5 vezes mais. Alvo de comparação, valores publicados no artigo: condição + localidade + projeto ≈ 13,5% da variação (F ≈ 12,8; p = 0,001); controle vs. câncer ≈ 5,0%. A distância na magnitude absoluta é esperada, dado que o pipeline próprio parte de 889 das 997 amostras e de uma reconstrução independente de todo o processamento bioinformático desde os FASTQ brutos, mas o padrão qualitativo central do artigo se confirma: o projeto de origem domina a variação composicional muito mais do que a condição clínica.",
       },
+      {
+        code: `pares <- list(c("control", "cancer"), c("lesion high", "cancer"),
+              c("lesion low", "cancer"), c("lesion high", "lesion low"))
+
+for (p in pares) {
+  idx <- metadata$tipo_amostra %in% p
+  sub_dist <- as.dist(dist_bc_matriz[idx, idx])
+  sub_meta <- metadata[idx, ]
+  sub_meta$tipo_amostra <- factor(sub_meta$tipo_amostra, levels = p)
+  print(adonis2(sub_dist ~ tipo_amostra, data = sub_meta, permutations = 999))
+}`,
+        caption:
+          "Resultado real, contraste par a par restrito a 2 classes por vez, removendo o confundimento com as outras condições clínicas: controle vs. câncer 6,52% (F = 43,36; p = 0,001; n = 624), HSIL vs. câncer 5,75% (F = 27,56; p = 0,001; n = 454), LSIL vs. câncer 4,44% (F = 18,93; p = 0,001; n = 409), HSIL vs. LSIL não significativo (F = 1,60; p = 0,107; n = 265). Os quatro contrastes ficam bem próximos das magnitudes publicadas no artigo (5,0%; 3,6%; 2,2%; não significativo com p = 0,067), inclusive reproduzindo qual par não é significativo, resultado mais próximo do publicado do que o modelo combinado de 3 termos, porque aqui o confundimento entre condição e projeto de origem é parcialmente controlado ao restringir a comparação a 2 classes por vez.",
+      },
     ],
   },
   {
@@ -2110,6 +2124,14 @@ export default function App() {
                 projeto, 0 graus de liberdade. Ver Fig. E.
               </li>
               <li>
+                <strong>Contrastes par a par.</strong> Restringindo o
+                PERMANOVA a 2 classes clínicas por vez, controle vs. câncer
+                deu 6,52% (n = 624), HSIL vs. câncer 5,75% (n = 454), LSIL
+                vs. câncer 4,44% (n = 409) e HSIL vs. LSIL não significativo
+                (p = 0,107; n = 265), valores próximos aos publicados no
+                artigo (5,0%; 3,6%; 2,2%; não significativo).
+              </li>
+              <li>
                 <strong>GLLVM.</strong> Sobre os 98 gêneros presentes em
                 pelo menos 10% das amostras, o AIC caiu de 313.373 (sem
                 covariáveis) para 300.307,4 (com projeto como efeito fixo).
@@ -2260,15 +2282,23 @@ export default function App() {
                 (Tabela 2c) rodado sobre o dado da Paola.
               </li>
               <li>
-                <strong>Fechamento</strong>: redigir a seção de metodologia
-                da dissertação com base no que foi processado, incluindo a
-                nota sobre P16 (55 vs. 26 amostras de câncer entre o
-                TCC de 2025 e o artigo LATINOWARE) e a proveniência do
-                primer de P2/P21 como notas metodológicas. As quatro etapas
-                estatísticas planejadas (PERMANOVA, GLLVM, Random Forest e o
-                contraste par a par entre condições) estão concluídas ou, no
-                caso dos contrastes par a par, prontas para serem extraídas
-                dos resultados já calculados.
+                <strong>Contrastes par a par fechados</strong>: PERMANOVA
+                restrito a 2 classes por vez reproduz de perto as
+                magnitudes publicadas (controle vs. câncer 6,52% contra
+                5,0%; HSIL vs. câncer 5,75% contra 3,6%; LSIL vs. câncer
+                4,44% contra 2,2%; HSIL vs. LSIL não significativo nos
+                dois), inclusive acertando qual par não chega a ser
+                significativo.
+              </li>
+              <li>
+                <strong>Fechamento</strong>: todas as quatro etapas
+                estatísticas planejadas (PERMANOVA, GLLVM, Random Forest e
+                os contrastes par a par) estão concluídas sobre as 889
+                amostras do pipeline próprio. Resta redigir a seção de
+                metodologia da dissertação com base no que foi processado,
+                incluindo a nota sobre P16 (55 vs. 26 amostras de câncer
+                entre o TCC de 2025 e o artigo LATINOWARE) e a proveniência
+                do primer de P2/P21 como notas metodológicas.
               </li>
             </ol>
 
@@ -2281,10 +2311,10 @@ export default function App() {
                 <tr><td>Variância explicada por projeto de origem (R² marginal)</td><td>não isolado no artigo (modelo combinado)</td><td>9,19% (F = 20,75; p = 0,001), cerca de 15,5x a condição clínica</td></tr>
                 <tr><td>Localidade</td><td>incluída no modelo combinado publicado</td><td>colinear com projeto, 0 graus de liberdade</td></tr>
                 <tr><td>Eixos de ordenação (GLLVM), variância por fator</td><td>não reportado em η² no artigo</td><td>LV1 e LV2 dominados por projeto (η² 56,7% e 58,2%), condição clínica marginal (11,1% e 7,9%)</td></tr>
-                <tr><td>Contraste controle vs. câncer</td><td>5,0% (F = 38,257; p = 0,001)</td><td>pendente, extraível dos escores do GLLVM ou de um PERMANOVA restrito às 2 classes</td></tr>
-                <tr><td>Contraste HSIL vs. câncer</td><td>3,6%</td><td>pendente, idem</td></tr>
-                <tr><td>Contraste LSIL vs. câncer</td><td>2,2%</td><td>pendente, idem</td></tr>
-                <tr><td>Contraste HSIL vs. LSIL</td><td>não significativo (p = 0,067)</td><td>pendente, idem</td></tr>
+                <tr><td>Contraste controle vs. câncer</td><td>5,0% (F = 38,257; p = 0,001)</td><td>6,52% (F = 43,36; p = 0,001; n = 624)</td></tr>
+                <tr><td>Contraste HSIL vs. câncer</td><td>3,6%</td><td>5,75% (F = 27,56; p = 0,001; n = 454)</td></tr>
+                <tr><td>Contraste LSIL vs. câncer</td><td>2,2%</td><td>4,44% (F = 18,93; p = 0,001; n = 409)</td></tr>
+                <tr><td>Contraste HSIL vs. LSIL</td><td>não significativo (p = 0,067)</td><td>não significativo (F = 1,60; p = 0,107; n = 265)</td></tr>
                 <tr><td>Amostras com contraste de 4 classes identificável</td><td>245 (23,5%), só P2 e P19</td><td>6 projetos com mais de uma classe (P1, P2, P10, P14, P19, P22), de um total de 889 amostras</td></tr>
                 <tr><td>Random Forest, macro-AUC CV aleatória vs. LOPO</td><td>não reportado nesse formato no artigo</td><td>0,811 (CV aleatória) para 0,6 (LOPO)</td></tr>
                 <tr><td>Controle negativo, acurácia ao prever projeto</td><td>não reportado no artigo</td><td>82,79%</td></tr>
