@@ -454,7 +454,7 @@ function PermanovaChart() {
 
 const RETENTION_DATA = [
   { regiao: "V3-V4", importadas: 309, retidas: 289 },
-  { regiao: "V4 (parcial)", importadas: 624, retidas: 469 },
+  { regiao: "V4", importadas: 628, retidas: 627 },
 ];
 
 function RetentionChart() {
@@ -473,9 +473,9 @@ function RetentionChart() {
       </ResponsiveContainer>
       <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
         Fig. D. Retenção do deblur por região, execução real do pipeline
-        próprio. V3-V4 já fechado em 93,5% (--p-trim-length 250). V4 ainda
-        parcial em 75,2% (--p-trim-length 220), travado pelo problema de
-        amostras duplicadas do P10 explicado no texto.
+        próprio. V3-V4 fechado em 93,5% (--p-trim-length 250). V4 fechado em
+        99,8% (--p-trim-length 220), depois de corrigir o manifest
+        duplicado do P10 explicado no texto.
       </div>
     </div>
   );
@@ -619,7 +619,7 @@ cd ../..`,
           <tbody>
             <tr><td>P1</td><td>cutadapt 338F/806R</td><td>~98%</td><td>ok</td></tr>
             <tr><td>P6</td><td>cutadapt 338F/806R</td><td>~99,8%</td><td>ok</td></tr>
-            <tr><td>P10</td><td>cutadapt 515F(Caporaso), single</td><td>~99,7% no sublote com primer; ~0,008% no sublote sem primer</td><td>BioProject misto (ver Etapa 4): par diferente de P9/P16, confirmado no artigo-fonte; ~165 das 319 amostras precisaram de tratamento à parte (P10b)</td></tr>
+            <tr><td>P10</td><td>cutadapt 515F(Caporaso), single</td><td>~99,7% no sublote com primer; ~0,008% no sublote sem primer</td><td>BioProject misto (ver Etapa 4): par diferente de P9/P16, confirmado no artigo-fonte; ~165 das 319 amostras precisaram de tratamento à parte (P10b), resolvido, deblur da V4 fechado em 99,8%</td></tr>
             <tr><td>P16</td><td>cutadapt 515F(Parada)/806R</td><td>~98,8%</td><td>ok</td></tr>
             <tr><td>P22</td><td>cutadapt 341F, single</td><td>~97,8%</td><td>4 runs com R2 vazia migradas para single-end</td></tr>
             <tr><td>P19</td><td>cutadapt 341F/805R</td><td>83,7%</td><td>corrigido: fonte antiga apontava 357wF/806R (55% de retenção)</td></tr>
@@ -773,7 +773,6 @@ done`,
           pra 469 de 624 (75,2%), ainda abaixo da taxa de ~93% obtida na
           V3-V4.
         </p>
-        <RetentionChart />
         <p>
           <strong>Isolando o restante da perda em V4:</strong> cruzando os
           IDs de amostra retidos contra os manifests de cada projeto, P2,
@@ -782,32 +781,36 @@ done`,
           leituras por amostra, estatísticas do cutadapt por amostra via{" "}
           <code>qiime metadata tabulate</code>, inspeção dos prefixos das
           leituras brutas), ficou claro que o próprio P10 mistura dois
-          sublotes: cerca de 154-160 amostras com o primer 515F(Caporaso) de
+          sublotes: cerca de 154 amostras com o primer 515F(Caporaso) de
           fato presente (retenção do cutadapt ~99,7%), e cerca de 165
           amostras (faixas de accession ERR9391105-ERR9391228 e
           ERR9409855-ERR9409922) já sem primer na origem (retenção do
           cutadapt ~0,008%, leituras brutas começando direto na sequência
           16S pós-primer). É o mesmo padrão de P9/P14/P2, só que como um
           sublote dentro de um único projeto, não o projeto inteiro, um
-          achado novo e mais complexo que exigiu tratamento separado.
+          achado novo e mais complexo que exigiu tratamento separado. Essas
+          165 amostras quase vazias pós-cutadapt explicam a maior parte da
+          perda: sem leitura real, o deblur simplesmente as descartava.
         </p>
         <p>
-          A correção começou extraindo as 165 IDs do sublote sem primer via
-          um filtro nas estatísticas do cutadapt, montando um manifest só
-          pra elas apontando pro FASTQ bruto (sem corte), reimportando
-          diretamente como <code>SampleData[SequencesWithQuality]</code> e
-          rodando o filtro de qualidade, produzindo{" "}
-          <code>P10_sem_primer_filtered.qza</code> ("P10b"), com os dados
-          reais dessas 165 amostras. O problema em aberto agora é que{" "}
-          <code>P10_filtered.qza</code> ("P10a") ainda contém essas mesmas
-          165 IDs, só que com leituras quase vazias (cortadas pelo cutadapt
-          contra um primer que não existia nelas). Ao montar o manifest
-          combinado da região V4 incluindo P10a e P10b, as 165 IDs aparecem
-          duplicadas, e o <code>qiime tools import</code> rejeita o
-          manifest com <code>Metadata IDs must be unique</code>. A correção
-          pendente é excluir essas 165 IDs da exportação do P10a antes de
-          combinar com o P10b, ainda não aplicada com sucesso.
+          A correção extraiu as 165 IDs do sublote sem primer via um filtro
+          nas estatísticas do cutadapt, montou um manifest só pra elas
+          apontando pro FASTQ bruto (sem corte), reimportou diretamente como{" "}
+          <code>SampleData[SequencesWithQuality]</code> e rodou o filtro de
+          qualidade, produzindo <code>P10_sem_primer_filtered.qza</code>{" "}
+          ("P10b"), com os dados reais dessas 165 amostras. A primeira
+          tentativa de juntar P10b ao restante da região V4 falhou com{" "}
+          <code>Metadata IDs must be unique</code>, porque{" "}
+          <code>P10_filtered.qza</code> ("P10a") ainda continha essas mesmas
+          165 IDs, só que com leituras quase vazias. Corrigindo o script de
+          manifest combinado pra excluir essas 165 IDs da exportação do
+          P10a antes de juntar com o P10b, o import passou a fechar sem
+          duplicata (628 amostras únicas, conferido com{" "}
+          <code>sort | uniq -d</code>), e o deblur da região V4 refeito
+          sobre esse manifest corrigido reteve 627 de 628 amostras (99,8%),
+          essencialmente fechado, no mesmo patamar da V3-V4.
         </p>
+        <RetentionChart />
       </>
     ),
     commands: [
@@ -842,7 +845,7 @@ for regiao, projetos in [("V3V4", ["P1","P6","P14","P19"]), ("V4", ["P2","P9","P
     print(f"{out}: {len(rows)} amostras")
 PYEOF`,
         caption:
-          "manifests/V3V4_combined_manifest.csv: 309 amostras. manifests/V4_combined_manifest.csv: 624 amostras (antes da correção do P10).",
+          "Primeira rodada: manifests/V3V4_combined_manifest.csv: 309 amostras. manifests/V4_combined_manifest.csv: 624 amostras (antes de incluir o P10b, ver correção abaixo).",
       },
       {
         code: `qiime tools import \\
@@ -878,7 +881,7 @@ qiime tools import \\
   --o-table qiime/V4_table.qza \\
   --o-stats qiime/V4_stats.qza`,
         caption:
-          "Segunda tentativa (a primeira usou --p-trim-length 250 e reteve só 243/624, 38,9%): 469 de 624 amostras retidas (75,2%), ainda abaixo do alvo por causa do P10.",
+          "Primeira rodada com esse manifest (antes da correção do P10; a tentativa anterior com --p-trim-length 250 reteve só 243/624, 38,9%): 469 de 624 amostras retidas (75,2%), abaixo do alvo por causa do sublote sem primer do P10.",
       },
       {
         code: `awk -F'\\t' 'NR>2 && $3<10 {print $1}' /tmp/p10_cutadapt_stats/metadata.tsv > /tmp/p10_sem_primer.txt
@@ -899,15 +902,28 @@ qiime quality-filter q-score \\
   --o-filtered-sequences qiime/P10_sem_primer_filtered.qza \\
   --o-filter-stats qiime/P10_sem_primer_filter_stats.qza`,
         caption:
-          "Manifest construído com os.path.abspath() (paths relativos causam ValueError). Pula o cutadapt: o primer já não existe nessas leituras.",
+          "Manifest construído com os.path.abspath() (paths relativos causam ValueError). Pula o cutadapt: o primer já não existe nessas leituras. Produz P10_sem_primer_filtered.qza (\"P10b\").",
       },
       {
-        code: `# PENDENTE: corrigir o script de manifest combinado da V4 para excluir
-# as 165 IDs do sublote sem primer ao exportar P10a (qiime/P10_filtered.qza),
-# antes de juntar com P10b (qiime/P10_sem_primer_filtered.qza).
-# Sem essa exclusao, o import falha com "Metadata IDs must be unique".`,
+        code: `# Correcao: excluir as 165 IDs do sublote sem primer ao exportar P10a
+# (qiime/P10_filtered.qza) antes de gerar o manifest combinado da V4,
+# para nao duplicar essas IDs com as vindas de P10b.
+
+qiime tools import \\
+  --type 'SampleData[SequencesWithQuality]' \\
+  --input-path manifests/V4_combined_manifest.csv \\
+  --input-format SingleEndFastqManifestPhred33V2 \\
+  --output-path qiime/V4_filtered_merged.qza
+
+qiime deblur denoise-16S \\
+  --i-demultiplexed-seqs qiime/V4_filtered_merged.qza \\
+  --p-trim-length 220 \\
+  --p-sample-stats \\
+  --o-representative-sequences qiime/V4_repseqs.qza \\
+  --o-table qiime/V4_table.qza \\
+  --o-stats qiime/V4_stats.qza`,
         caption:
-          "Bloqueio em aberto no momento: precisa ser resolvido antes de rerodar o deblur final da região V4.",
+          "Manifest corrigido: 628 linhas de dados, 0 IDs duplicadas (sort | uniq -d). Deblur refeito sobre esse manifest reteve 627/628 amostras (99,8%). Região V4 fechada.",
       },
     ],
   },
@@ -1581,14 +1597,14 @@ export default function App() {
               terminal, não só planejamento: os FASTQ brutos dos 10
               BioProjects foram baixados, importados no QIIME 2, tiveram os
               primers cortados via cutadapt (Tabela 1c) e passaram por
-              denoising via deblur. A região V3-V4 está fechada, com 93,5%
-              de retenção. A região V4 está parcial, travada num problema de
-              amostras duplicadas descoberto durante a fusão dos projetos
-              dessa região, detalhado na Etapa 4. Um <code>feature-table.txt</code>{" "}
-              já processado também existe na mesma pasta do Drive, mas é o
-              processamento da Paola, útil como dado de referência e para
-              orientação exploratória (Tabela 2c), e não substitui o
-              resultado do pipeline próprio uma vez destravado.
+              denoising via deblur. As duas regiões estão fechadas agora,
+              V3-V4 com 93,5% de retenção e V4 com 99,8%, depois de resolver
+              um problema de amostras duplicadas descoberto durante a fusão
+              dos projetos dessa região, detalhado na Etapa 4. Um{" "}
+              <code>feature-table.txt</code> já processado também existe na
+              mesma pasta do Drive, mas é o processamento da Paola, útil
+              como dado de referência e para orientação exploratória
+              (Tabela 2c), e não substitui o resultado do pipeline próprio.
             </p>
             <table className="formal">
               <caption><span className="cap-label">Tabela 2.</span> Etapas do pipeline próprio e status atual.</caption>
@@ -1599,8 +1615,8 @@ export default function App() {
                 <tr><td>3a. Confirmação de primers por BioProject</td><td><span className="status-badge done">concluído (8/10; nota do P10 misto)</span></td></tr>
                 <tr><td>3b. Import e corte de primers (cutadapt, 10 projetos)</td><td><span className="status-badge done">concluído</span></td></tr>
                 <tr><td>4a. Deblur região V3-V4 (P1, P6, P14, P19)</td><td><span className="status-badge done">concluído (289/309, 93,5%)</span></td></tr>
-                <tr><td>4b. Deblur região V4 (P2, P9, P10, P16, P22)</td><td><span className="status-badge blocked">bloqueado (ID duplicado no P10; 469/624 obtido até agora)</span></td></tr>
-                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge pending">pendente</span></td></tr>
+                <tr><td>4b. Deblur região V4 (P2, P9, P10, P16, P22)</td><td><span className="status-badge done">concluído (627/628, 99,8%, após corrigir o ID duplicado do P10)</span></td></tr>
+                <tr><td>5–6. Taxonomia SILVA e filtragem</td><td><span className="status-badge pending">pendente, próxima etapa</span></td></tr>
                 <tr><td>7. PERMANOVA</td><td><span className="status-badge pending">pendente no pipeline próprio; preview exploratório feito sobre dado da Paola</span></td></tr>
                 <tr><td>8. GLLVM</td><td><span className="status-badge pending">pendente no pipeline próprio</span></td></tr>
                 <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge pending">pendente no pipeline próprio; preview exploratório feito sobre dado da Paola</span></td></tr>
@@ -1662,21 +1678,11 @@ export default function App() {
             <h3 style={{ fontSize: 15, marginTop: 24 }}>O que falta até o final</h3>
             <ol style={{ fontSize: 13.5, lineHeight: 1.7, paddingLeft: 20 }}>
               <li>
-                <strong>Resolver o ID duplicado do P10</strong>: o script que
-                monta o manifest combinado da região V4 precisa excluir
-                explicitamente as 165 IDs do sublote sem primer ao exportar
-                <code>qiime/P10_filtered.qza</code> ("P10a"), antes de
-                combinar com <code>qiime/P10_sem_primer_filtered.qza</code>{" "}
-                ("P10b"), que já tem os dados reais dessas mesmas amostras.
-                Sem isso, o <code>qiime tools import</code> rejeita o
-                manifest com <code>Metadata IDs must be unique</code>.
-              </li>
-              <li>
-                <strong>Etapa 4</strong>: reimportar o manifest V4 corrigido
-                e rerodar o deblur dessa região até obter a retenção
-                completa esperada (até 628 amostras: 77+58+55+119+154+165),
-                hoje travada em 469/624 (75,2%) por causa da duplicidade
-                acima.
+                <strong>Etapa 4 fechada</strong>: o deblur das duas regiões
+                está concluído, V3-V4 com 93,5% e V4 com 99,8% de retenção,
+                depois de corrigir o manifest combinado da V4 pra excluir as
+                165 IDs duplicadas do sublote sem primer do P10 antes de
+                juntar com os dados reais dessas mesmas amostras (P10b).
               </li>
               <li>
                 <strong>Decidir o tratamento de P2 e P21</strong> antes da
