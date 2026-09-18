@@ -1448,6 +1448,79 @@ export default function App() {
           {/* 3 */}
           <section id="s3" ref={(el) => { refs.current["s3"] = el; }}>
             <h2 className="sec"><span className="sec-num">3.</span>Conceitos que precisam ficar claros</h2>
+
+            <h3 style={{ fontSize: 15.5, marginBottom: 6 }}>Por que os primers importam numa meta-análise</h3>
+            <p>
+              Um <em>primer</em> (ou oligonucleotídeo iniciador) é uma
+              sequência curta de DNA sintético usada na reação em cadeia da
+              polimerase (PCR) pra selecionar e amplificar uma região
+              específica do genoma dos micro-organismos presentes numa
+              amostra{" "}
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7991656/" target="_blank" rel="noreferrer">[1]</a>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7023036/" target="_blank" rel="noreferrer">[2]</a>
+              . Na maioria dos estudos de microbioma baseados no gene 16S
+              rRNA, os pesquisadores não sequenciam o genoma inteiro, mas
+              sim uma região assinatura dentro dele. O gene 16S tem nove
+              regiões hipervariáveis (V1 a V9), e a escolha do par de
+              primers define qual delas será lida: pra ler a região V4, por
+              exemplo, usa-se habitualmente o par 515F/806R; pra ler V3-V4,
+              outro par, como os confirmados na Tabela 1b (seção 4){" "}
+              <a href="https://www.mdpi.com/2076-2607/8/1/131" target="_blank" rel="noreferrer">[3]</a>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7991656/" target="_blank" rel="noreferrer">[4]</a>
+              <a href="https://onlinelibrary.wiley.com/doi/10.1111/1755-0998.13215" target="_blank" rel="noreferrer">[5]</a>
+              .
+            </p>
+            <p>
+              Quando uma meta-análise combina dados de estudos
+              independentes, o primer usado em cada um vira uma fonte
+              direta de <Term id="efeitoDeLote">efeito de lote</Term>, por
+              três motivos principais{" "}
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6708278/" target="_blank" rel="noreferrer">[6]</a>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10989904/" target="_blank" rel="noreferrer">[7]</a>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12309989/" target="_blank" rel="noreferrer">[8]</a>
+              :
+            </p>
+            <ol style={{ fontSize: 14, lineHeight: 1.7, paddingLeft: 20, marginBottom: 16 }}>
+              <li>
+                <strong>Abundância diferencial artificial:</strong> pares de
+                primers diferentes têm afinidades diferentes por certos
+                grupos de bactérias. Um par pode amplificar melhor
+                Firmicutes, outro pode amplificar melhor Bacteroidetes na
+                mesma amostra exata, distorcendo a proporção real da
+                comunidade se os dados forem juntados sem correção.
+              </li>
+              <li>
+                <strong>Pontos cegos taxonômicos:</strong> alguns primers
+                universais falham em se ligar ao DNA de gêneros específicos
+                (como Bifidobacterium), omitindo completamente a presença
+                deles nos estudos que usaram esse par.
+              </li>
+              <li>
+                <strong>Resolução de espécies:</strong> um primer voltado à
+                V4 dá uma boa visão geral da comunidade, mas pode não
+                diferenciar espécies tão bem quanto um primer voltado à
+                V1-V3.
+              </li>
+            </ol>
+            <p>
+              As estratégias usuais pra lidar com isso incluem restringir a
+              meta-análise a estudos que usaram exatamente o mesmo par de
+              primer, aplicar correções bioinformáticas que tentam remover
+              matematicamente o efeito de lote (pacotes como MMUPHin ou
+              Melody), ou recorrer a sequenciamento shotgun, que evita esse
+              viés específico por não depender de amplificação por primer{" "}
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7023036/" target="_blank" rel="noreferrer">[9]</a>
+              <a href="https://link.springer.com/article/10.1186/s13059-025-03721-4" target="_blank" rel="noreferrer">[10]</a>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11334437/" target="_blank" rel="noreferrer">[11]</a>
+              . O artigo aqui acompanhado não segue nenhuma dessas três
+              saídas: ele mantém os primers diferentes entre projetos e usa
+              o próprio efeito de lote resultante como objeto de estudo, daí
+              a importância de documentar exatamente qual par cada
+              BioProject usou (Tabela 1b) antes de qualquer análise
+              estatística.
+            </p>
+
+            <h3 style={{ fontSize: 15.5, marginTop: 28, marginBottom: 6 }}>Glossário</h3>
             <p>
               Clique em cada termo abaixo pra ver a explicação em linguagem
               simples.
@@ -1865,6 +1938,36 @@ export default function App() {
                     publicado (texto completo verificado). (P21)
                   </li>
                 </ol>
+              </li>
+              <li>
+                Fontes consultadas para a explicação sobre o papel dos
+                primers em meta-análises de microbioma (seção 3):{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7991656/" target="_blank" rel="noreferrer">pmc.ncbi.nlm.nih.gov/articles/PMC7991656</a>
+                ,{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7023036/" target="_blank" rel="noreferrer">PMC7023036</a>
+                ,{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10989904/" target="_blank" rel="noreferrer">PMC10989904</a>
+                ,{" "}
+                <a href="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pcbi.1000667&type=printable" target="_blank" rel="noreferrer">PLOS Comp. Biol. 10.1371/journal.pcbi.1000667</a>
+                ,{" "}
+                <a href="https://onlinelibrary.wiley.com/doi/10.1111/1755-0998.13215" target="_blank" rel="noreferrer">Mol. Ecol. Resour. 10.1111/1755-0998.13215</a>
+                ,{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9415448/" target="_blank" rel="noreferrer">PMC9415448</a>
+                ,{" "}
+                <a href="https://www.mdpi.com/2076-2607/8/1/131" target="_blank" rel="noreferrer">Microorganisms 8(1):131</a>
+                ,{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6708278/" target="_blank" rel="noreferrer">PMC6708278</a>
+                ,{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12309989/" target="_blank" rel="noreferrer">PMC12309989</a>
+                ,{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10569954/" target="_blank" rel="noreferrer">PMC10569954</a>
+                ,{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12081361/" target="_blank" rel="noreferrer">PMC12081361</a>
+                ,{" "}
+                <a href="https://link.springer.com/article/10.1186/s13059-025-03721-4" target="_blank" rel="noreferrer">Genome Biology 10.1186/s13059-025-03721-4</a>{" "}
+                (pacote Melody) e{" "}
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11334437/" target="_blank" rel="noreferrer">PMC11334437</a>
+                .
               </li>
             </ol>
           </section>
