@@ -9,6 +9,7 @@ import {
   Legend,
   ResponsiveContainer,
   Cell,
+  LabelList,
 } from "recharts";
 import {
   Copy,
@@ -369,7 +370,7 @@ const CLASS_COLORS: Record<string, string> = {
 
 function DatasetCompositionChart() {
   return (
-    <div style={{ width: "100%", height: 320, margin: "20px 0" }}>
+    <div className="fig-block" style={{ width: "100%", height: 340, margin: "40px 0" }}>
       <ResponsiveContainer>
         <BarChart data={DATASET_COMPOSITION} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
@@ -377,15 +378,27 @@ function DatasetCompositionChart() {
           <YAxis tick={{ fontSize: 12 }} label={{ value: "amostras", angle: -90, position: "insideLeft", fontSize: 12 }} />
           <Tooltip contentStyle={{ fontSize: 12 }} />
           <Legend wrapperStyle={{ fontSize: 12 }} />
-          <Bar dataKey="CC" stackId="a" fill={CLASS_COLORS.CC} name="Câncer" />
-          <Bar dataKey="HSIL" stackId="a" fill={CLASS_COLORS.HSIL} name="HSIL" />
-          <Bar dataKey="LSIL" stackId="a" fill={CLASS_COLORS.LSIL} name="LSIL" />
-          <Bar dataKey="Ctrl" stackId="a" fill={CLASS_COLORS.Ctrl} name="Controle" />
+          <Bar dataKey="CC" stackId="a" fill={CLASS_COLORS.CC} name="Câncer">
+            <LabelList dataKey="CC" position="inside" fontSize={10} fill="#fff" formatter={(v: any) => (v > 0 ? v : "")} />
+          </Bar>
+          <Bar dataKey="HSIL" stackId="a" fill={CLASS_COLORS.HSIL} name="HSIL">
+            <LabelList dataKey="HSIL" position="inside" fontSize={10} fill="#fff" formatter={(v: any) => (v > 0 ? v : "")} />
+          </Bar>
+          <Bar dataKey="LSIL" stackId="a" fill={CLASS_COLORS.LSIL} name="LSIL">
+            <LabelList dataKey="LSIL" position="inside" fontSize={10} fill="#fff" formatter={(v: any) => (v > 0 ? v : "")} />
+          </Bar>
+          <Bar dataKey="Ctrl" stackId="a" fill={CLASS_COLORS.Ctrl} name="Controle">
+            <LabelList dataKey="Ctrl" position="inside" fontSize={10} fill="#fff" formatter={(v: any) => (v > 0 ? v : "")} />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
-        Fig. A. Composição de classe por projeto (Tabela I). P6, P9 e P16
-        são monoclasse (só câncer); P1 e P21 são quase monoclasse.
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
+        Fig. A. Composição de classe por projeto (Tabela I), números dentro
+        de cada segmento. P6, P9 e P16 são monoclasse (só câncer); P1 e P21
+        são quase monoclasse. Essa distribuição desigual é a raiz do
+        problema: quando quase todo projeto tem uma classe clínica
+        dominante, projeto de origem e condição clínica ficam
+        estatisticamente quase impossíveis de separar num modelo agregado.
       </div>
     </div>
   );
@@ -400,22 +413,30 @@ const AUC_COMPARISON = [
 
 function AucComparisonChart() {
   return (
-    <div style={{ width: "100%", height: 300, margin: "20px 0" }}>
+    <div className="fig-block" style={{ width: "100%", height: 320, margin: "40px 0" }}>
       <ResponsiveContainer>
-        <BarChart data={AUC_COMPARISON} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+        <BarChart data={AUC_COMPARISON} margin={{ top: 20, right: 16, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
           <XAxis dataKey="classe" tick={{ fontSize: 12 }} />
           <YAxis domain={[0, 1]} tick={{ fontSize: 12 }} label={{ value: "AUC", angle: -90, position: "insideLeft", fontSize: 12 }} />
           <Tooltip contentStyle={{ fontSize: 12 }} />
           <Legend wrapperStyle={{ fontSize: 12 }} />
-          <Bar dataKey="aleatoria" fill="#5b7a9e" name="CV aleatória" />
-          <Bar dataKey="lopo" fill="#a85b5b" name="Leave-one-project-out" />
+          <Bar dataKey="aleatoria" fill="#5b7a9e" name="CV aleatória">
+            <LabelList dataKey="aleatoria" position="top" fontSize={11} formatter={(v: any) => v.toFixed(2)} />
+          </Bar>
+          <Bar dataKey="lopo" fill="#a85b5b" name="Leave-one-project-out">
+            <LabelList dataKey="lopo" position="top" fontSize={11} formatter={(v: any) => v.toFixed(2)} />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
         Fig. B. AUC por classe clínica, CV aleatória vs. leave-one-project-out
         (preview exploratório sobre o dado da Paola, Tabela 2c). A linha de
-        0,5 é o nível de acaso.
+        0,5 é o nível de acaso. A queda de desempenho de uma coluna azul
+        alta para uma coluna vermelha baixa, em toda classe, é o sinal
+        visual do confundimento: o modelo aprende a reconhecer o projeto
+        de origem, não a condição clínica, e falha quando é testado num
+        projeto que nunca viu.
       </div>
     </div>
   );
@@ -430,23 +451,30 @@ const REAL_AUC_COMPARISON = [
 
 function RealAucComparisonChart() {
   return (
-    <div style={{ width: "100%", height: 300, margin: "20px 0" }}>
+    <div className="fig-block" style={{ width: "100%", height: 320, margin: "40px 0" }}>
       <ResponsiveContainer>
-        <BarChart data={REAL_AUC_COMPARISON} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+        <BarChart data={REAL_AUC_COMPARISON} margin={{ top: 20, right: 16, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
           <XAxis dataKey="classe" tick={{ fontSize: 12 }} />
           <YAxis domain={[0, 1]} tick={{ fontSize: 12 }} label={{ value: "AUC", angle: -90, position: "insideLeft", fontSize: 12 }} />
           <Tooltip contentStyle={{ fontSize: 12 }} />
           <Legend wrapperStyle={{ fontSize: 12 }} />
-          <Bar dataKey="aleatoria" fill="#5b7a9e" name="CV aleatória" />
-          <Bar dataKey="lopo" fill="#a85b5b" name="Leave-one-project-out" />
+          <Bar dataKey="aleatoria" fill="#5b7a9e" name="CV aleatória">
+            <LabelList dataKey="aleatoria" position="top" fontSize={11} formatter={(v: any) => v.toFixed(2)} />
+          </Bar>
+          <Bar dataKey="lopo" fill="#a85b5b" name="Leave-one-project-out">
+            <LabelList dataKey="lopo" position="top" fontSize={11} formatter={(v: any) => v.toFixed(2)} />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
         Fig. F. AUC real por classe clínica, CV aleatória vs.
         leave-one-project-out, execução própria sobre as 889 amostras
-        finais. Macro-AUC cai de 0,811 para 0,6. A linha de 0,5 é o nível
-        de acaso.
+        finais. Macro-AUC cai de 0,811 para 0,6. A queda é maior justamente
+        na classe câncer (0,959 para 0,717), a mais desbalanceada entre
+        projetos (Fig. A). A linha de 0,5 é o nível de acaso: controle e
+        lesão alta ficam bem perto dela sob leave-one-project-out, ou seja,
+        quase não melhor que chutar.
       </div>
     </div>
   );
@@ -460,9 +488,9 @@ const PERMANOVA_R2 = [
 
 function PermanovaChart() {
   return (
-    <div style={{ width: "100%", height: 260, margin: "20px 0" }}>
+    <div className="fig-block" style={{ width: "100%", height: 260, margin: "40px 0" }}>
       <ResponsiveContainer>
-        <BarChart data={PERMANOVA_R2} layout="vertical" margin={{ top: 8, right: 24, left: 8, bottom: 0 }}>
+        <BarChart data={PERMANOVA_R2} layout="vertical" margin={{ top: 8, right: 40, left: 8, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
           <XAxis type="number" domain={[0, 14]} tick={{ fontSize: 12 }} unit="%" />
           <YAxis type="category" dataKey="fator" tick={{ fontSize: 12 }} width={110} />
@@ -471,13 +499,16 @@ function PermanovaChart() {
             {PERMANOVA_R2.map((entry, i) => (
               <Cell key={entry.fator} fill={i === 2 ? "#a85b5b" : "#8a8370"} />
             ))}
+            <LabelList dataKey="r2" position="right" fontSize={11} formatter={(v: any) => `${v}%`} />
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
         Fig. C. Variação composicional explicada por fator, modelos
         marginais (preview exploratório, Tabela 2c). Projeto sozinho já
-        explica quase tanto quanto o modelo completo publicado (13,5%).
+        explica quase tanto quanto o modelo completo publicado (13,5%), o
+        indício inicial de que projeto de origem, e não condição clínica,
+        é o que mais move a composição microbiana nesse dataset agregado.
       </div>
     </div>
   );
@@ -491,9 +522,9 @@ const REAL_PERMANOVA_R2 = [
 
 function RealPermanovaChart() {
   return (
-    <div style={{ width: "100%", height: 260, margin: "20px 0" }}>
+    <div className="fig-block" style={{ width: "100%", height: 260, margin: "40px 0" }}>
       <ResponsiveContainer>
-        <BarChart data={REAL_PERMANOVA_R2} layout="vertical" margin={{ top: 8, right: 24, left: 8, bottom: 0 }}>
+        <BarChart data={REAL_PERMANOVA_R2} layout="vertical" margin={{ top: 8, right: 40, left: 8, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
           <XAxis type="number" domain={[0, 10]} tick={{ fontSize: 12 }} unit="%" />
           <YAxis type="category" dataKey="fator" tick={{ fontSize: 12 }} width={110} />
@@ -502,15 +533,17 @@ function RealPermanovaChart() {
             {REAL_PERMANOVA_R2.map((entry, i) => (
               <Cell key={entry.fator} fill={i === 2 ? "#a85b5b" : "#8a8370"} />
             ))}
+            <LabelList dataKey="r2" position="right" fontSize={11} formatter={(v: any) => `${v}%`} />
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
         Fig. E. PERMANOVA real, pipeline próprio, 889 amostras finais.
         Localidade sai com R² zero por colinearidade completa com projeto de
-        origem. Projeto explica quase 16 vezes mais variação que condição
-        clínica, confirmando o padrão qualitativo do artigo sobre um dado
-        independente.
+        origem, o R descarta o termo redundante porque cada projeto vem de
+        um único país. Projeto explica quase 16 vezes mais variação que
+        condição clínica, confirmando o padrão qualitativo do artigo sobre
+        um dado processado do zero, de forma independente.
       </div>
     </div>
   );
@@ -523,23 +556,30 @@ const REAL_GLLVM_ETA2 = [
 
 function RealGllvmChart() {
   return (
-    <div style={{ width: "100%", height: 260, margin: "20px 0" }}>
+    <div className="fig-block" style={{ width: "100%", height: 280, margin: "40px 0" }}>
       <ResponsiveContainer>
-        <BarChart data={REAL_GLLVM_ETA2} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+        <BarChart data={REAL_GLLVM_ETA2} margin={{ top: 20, right: 16, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
           <XAxis dataKey="eixo" tick={{ fontSize: 12 }} />
           <YAxis domain={[0, 70]} tick={{ fontSize: 12 }} unit="%" label={{ value: "η²", angle: -90, position: "insideLeft", fontSize: 12 }} />
           <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v) => `${v}%`} />
           <Legend wrapperStyle={{ fontSize: 12 }} />
-          <Bar dataKey="projeto" fill="#a85b5b" name="Projeto de origem" />
-          <Bar dataKey="tipoAmostra" fill="#5b7a9e" name="Condição clínica" />
+          <Bar dataKey="projeto" fill="#a85b5b" name="Projeto de origem">
+            <LabelList dataKey="projeto" position="top" fontSize={11} formatter={(v: any) => `${v}%`} />
+          </Bar>
+          <Bar dataKey="tipoAmostra" fill="#5b7a9e" name="Condição clínica">
+            <LabelList dataKey="tipoAmostra" position="top" fontSize={11} formatter={(v: any) => `${v}%`} />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
         Fig. G. Variância de cada eixo latente do GLLVM (sem covariáveis)
         explicada por projeto de origem vs. condição clínica, execução
         própria sobre as 889 amostras finais e os 98 gêneros mais
-        prevalentes. Os dois eixos são dominados por projeto de origem.
+        prevalentes. Os dois eixos, que juntos resumem a maior parte da
+        estrutura de composição do dataset, são dominados por projeto de
+        origem por uma margem de mais de 5 vezes, terceira confirmação
+        independente do mesmo achado do PERMANOVA (Fig. E).
       </div>
     </div>
   );
@@ -552,23 +592,104 @@ const RETENTION_DATA = [
 
 function RetentionChart() {
   return (
-    <div style={{ width: "100%", height: 260, margin: "20px 0" }}>
+    <div className="fig-block" style={{ width: "100%", height: 280, margin: "40px 0" }}>
       <ResponsiveContainer>
-        <BarChart data={RETENTION_DATA} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+        <BarChart data={RETENTION_DATA} margin={{ top: 20, right: 16, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
           <XAxis dataKey="regiao" tick={{ fontSize: 12 }} />
           <YAxis tick={{ fontSize: 12 }} label={{ value: "amostras", angle: -90, position: "insideLeft", fontSize: 12 }} />
           <Tooltip contentStyle={{ fontSize: 12 }} />
           <Legend wrapperStyle={{ fontSize: 12 }} />
-          <Bar dataKey="importadas" fill="#8a8370" name="Importadas para o deblur" />
-          <Bar dataKey="retidas" fill="#5b7a5b" name="Retidas pelo deblur" />
+          <Bar dataKey="importadas" fill="#8a8370" name="Importadas para o deblur">
+            <LabelList dataKey="importadas" position="top" fontSize={11} />
+          </Bar>
+          <Bar dataKey="retidas" fill="#5b7a5b" name="Retidas pelo deblur">
+            <LabelList dataKey="retidas" position="top" fontSize={11} />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
-      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)" }}>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
         Fig. D. Retenção do deblur por região, execução real do pipeline
         próprio. V3-V4 fechado em 93,5% (--p-trim-length 250). V4 fechado em
         99,8% (--p-trim-length 220), depois de corrigir o manifest
-        duplicado do P10 explicado no texto.
+        duplicado do P10 explicado no texto. As duas barras quase do mesmo
+        tamanho mostram que a perda de amostras nessa etapa foi pequena,
+        a maior parte da diferença entre 889 e 997 amostras finais vem de
+        outro lugar, a exclusão do P21 (Etapa 6).
+      </div>
+    </div>
+  );
+}
+
+const SAMPLE_FUNNEL = [
+  { etapa: "Catalogadas", amostras: 1042 },
+  { etapa: "Teto sem P21", amostras: 937 },
+  { etapa: "Pré-corte de profundidade", amostras: 916 },
+  { etapa: "Final (corte 1000)", amostras: 889 },
+];
+
+function SampleFunnelChart() {
+  return (
+    <div className="fig-block" style={{ width: "100%", height: 300, margin: "40px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={SAMPLE_FUNNEL} layout="vertical" margin={{ top: 8, right: 48, left: 8, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis type="number" domain={[0, 1100]} tick={{ fontSize: 12 }} />
+          <YAxis type="category" dataKey="etapa" tick={{ fontSize: 12 }} width={170} />
+          <Tooltip contentStyle={{ fontSize: 12 }} />
+          <Bar dataKey="amostras" name="Amostras" radius={[0, 4, 4, 0]}>
+            {SAMPLE_FUNNEL.map((entry) => (
+              <Cell key={entry.etapa} fill={entry.etapa === "Final (corte 1000)" ? "#5b7a5b" : "#8a8370"} />
+            ))}
+            <LabelList dataKey="amostras" position="right" fontSize={12} />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
+        Fig. H. Funil de amostras do pipeline próprio, do total catalogado
+        até o dataset final. A maior perda (105 amostras) é a exclusão do
+        P21 por falta de primer confirmado, não a bioinformática em si: do
+        teto de 937 amostras alcançável sem o P21, o pipeline chega a 889
+        depois do deblur e do corte de profundidade, uma perda adicional
+        de só 5,1%.
+      </div>
+    </div>
+  );
+}
+
+const PAIRWISE_CONTRASTS = [
+  { par: "Ctrl vs. câncer", publicado: 5.0, proprio: 6.52 },
+  { par: "HSIL vs. câncer", publicado: 3.6, proprio: 5.75 },
+  { par: "LSIL vs. câncer", publicado: 2.2, proprio: 4.44 },
+  { par: "HSIL vs. LSIL", publicado: 0, proprio: 0.61 },
+];
+
+function PairwiseContrastsChart() {
+  return (
+    <div className="fig-block" style={{ width: "100%", height: 300, margin: "40px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={PAIRWISE_CONTRASTS} margin={{ top: 20, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis dataKey="par" tick={{ fontSize: 11 }} />
+          <YAxis tick={{ fontSize: 12 }} unit="%" label={{ value: "R²", angle: -90, position: "insideLeft", fontSize: 12 }} />
+          <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v) => `${v}%`} />
+          <Legend wrapperStyle={{ fontSize: 12 }} />
+          <Bar dataKey="publicado" fill="#8a8370" name="Valor publicado (artigo)">
+            <LabelList dataKey="publicado" position="top" fontSize={11} formatter={(v: any) => (v > 0 ? `${v}%` : "n.s.")} />
+          </Bar>
+          <Bar dataKey="proprio" fill="#5b7a5b" name="Pipeline próprio">
+            <LabelList dataKey="proprio" position="top" fontSize={11} formatter={(v: any) => `${v}%`} />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
+        Fig. I. Contrastes par a par entre condições clínicas, PERMANOVA
+        restrito a 2 classes por vez, valor publicado no artigo contra o
+        pipeline próprio. As magnitudes do pipeline próprio ficam sempre
+        um pouco acima das publicadas, mas na mesma ordem de grandeza e na
+        mesma direção, e o par HSIL vs. LSIL (a barra de 0,61%,
+        rotulada "n.s." no valor publicado) é o único não significativo
+        nos dois casos, a réplica mais próxima do artigo obtida até aqui.
       </div>
     </div>
   );
@@ -1553,6 +1674,8 @@ export default function App() {
           color: var(--ink-soft);
         }
 
+        .fig-block { padding: 20px 16px 8px; background: var(--paper-soft, #faf7f0); border: 1px solid var(--rule-light); border-radius: 6px; }
+
         table.formal { width: 100%; border-collapse: collapse; margin: 18px 0 4px; font-size: 13.5px; }
         table.formal caption { text-align: left; font-size: 13px; margin-bottom: 8px; }
         .cap-label { font-weight: 700; margin-right: 4px; }
@@ -2040,17 +2163,44 @@ export default function App() {
                 <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge done">concluído (macro-AUC 0,811 para 0,6; controle negativo 82,79%)</span></td></tr>
               </tbody>
             </table>
+            <SampleFunnelChart />
 
             <h3 style={{ fontSize: 15, marginTop: 28 }}>
-              Passo a passo real: do P10 ao Random Forest
+              Passo a passo real: do início ao Random Forest
             </h3>
             <p style={{ fontSize: 13.5 }}>
-              Resumo cronológico da execução real no terminal, do ponto em
-              que o BioProject P10 travou a região V4 até o fechamento das
-              três etapas estatísticas finais, todos os números vindos do
-              próprio pipeline, não do dado da Paola.
+              Resumo cronológico de toda a execução real no terminal, do
+              levantamento dos metadados clínicos até o fechamento das
+              quatro etapas estatísticas finais, todos os números vindos
+              do próprio pipeline, não do dado da Paola.
             </p>
             <ol style={{ fontSize: 13.5, lineHeight: 1.8, paddingLeft: 20 }}>
+              <li>
+                <strong>Accessions e metadados clínicos.</strong> O arquivo{" "}
+                <code>metadata_master.tsv</code> (1.042 linhas, delimitado
+                por tabulação) trouxe a contagem clínica por projeto: 314
+                câncer, 170 HSIL, 112 LSIL e 446 controle, batendo célula a
+                célula com a Tabela I do artigo. Essa é a base sobre a qual
+                todo o restante do pipeline foi construído.
+              </li>
+              <li>
+                <strong>Download e import dos FASTQ.</strong> Os FASTQ
+                brutos dos 10 BioProjects foram baixados e importados no
+                QIIME 2 via manifest (<code>SingleEndFastqManifestPhred33V2</code>,
+                tabulado a despeito do nome ".csv"), separadamente por
+                projeto, antes de qualquer corte de primer.
+              </li>
+              <li>
+                <strong>Confirmação de primers e corte com cutadapt.</strong>{" "}
+                8 dos 10 primers foram confirmados por cruzamento com o
+                artigo-fonte de cada BioProject (Tabela 1b). No caminho,
+                descobriu-se que P9, P14 e P2 já chegavam sem primer na
+                origem, que o P19 precisou de correção empírica do par
+                usado, e que o P10 usa o par original de Caporaso,
+                diferente do par mais novo de P9/P16. P2 e P21 ficaram sem
+                confirmação publicada, tratados nas notas metodológicas
+                acima.
+              </li>
               <li>
                 <strong>O problema do P10.</strong> Ao montar o manifest
                 combinado da região V4 (P2, P9, P10, P16, P22), o
@@ -2129,7 +2279,7 @@ export default function App() {
                 deu 6,52% (n = 624), HSIL vs. câncer 5,75% (n = 454), LSIL
                 vs. câncer 4,44% (n = 409) e HSIL vs. LSIL não significativo
                 (p = 0,107; n = 265), valores próximos aos publicados no
-                artigo (5,0%; 3,6%; 2,2%; não significativo).
+                artigo (5,0%; 3,6%; 2,2%; não significativo). Ver Fig. I.
               </li>
               <li>
                 <strong>GLLVM.</strong> Sobre os 98 gêneros presentes em
@@ -2225,6 +2375,51 @@ export default function App() {
               (seção 4) e Referências para os DOIs exatos consultados.
             </p>
 
+            <h3 style={{ fontSize: 15, marginTop: 24 }}>
+              Notas metodológicas para a redação
+            </h3>
+            <p style={{ fontSize: 13.5 }}>
+              Dois pontos levantados durante a execução do pipeline próprio
+              merecem registro explícito na seção de metodologia da
+              dissertação, prontos para adaptação direta.
+            </p>
+            <p style={{ fontSize: 13.5 }}>
+              <strong>Sobre a proveniência do primer de P2 e P21.</strong>{" "}
+              Dos 10 BioProjects agregados, 8 tiveram o par de primer de
+              amplificação 16S confirmado por cruzamento direto com o
+              artigo-fonte ou seu material suplementar (Tabela 1b). Para P2
+              e P21, essa confirmação não foi possível: os dois artigos
+              informam apenas a região amplificada, V4 para P2 e V3-V4 para
+              P21, e o fornecedor comercial responsável pelo sequenciamento
+              (Second Genome Inc. para P2, Novogene para P21), mas nenhum
+              dos dois publica a sequência de nucleotídeos do par de
+              primer usado, tratado como protocolo proprietário pelo
+              fornecedor. Na execução real, essa lacuna se resolveu por si
+              só para P2, cujas leituras já chegaram sem primer na origem,
+              o mesmo padrão de P9 e P14, então nenhuma suposição precisou
+              ser adotada. P21 segue fora do pipeline agregado por falta de
+              primer confirmado ou de uma suposição defensável, e é o
+              principal responsável pela diferença entre as 889 amostras
+              do pipeline próprio e as 997 publicadas no artigo (teto
+              alcançável de 937 amostras sem o P21).
+            </p>
+            <p style={{ fontSize: 13.5 }}>
+              <strong>Sobre a divergência do P16 entre trabalhos.</strong>{" "}
+              O metadado clínico usado neste trabalho (compartilhado pela
+              coautora Paola Gyuliane Gonçalves) registra 55 amostras de
+              câncer para o BioProject P16, enquanto uma versão anterior do
+              mesmo agregado, o TCC de M. T. S. Figueiredo (2025, referência
+              [16] do artigo), registra 26. A contagem usada neste trabalho
+              bate célula a célula com a Tabela I do artigo LATINOWARE, o
+              que indica que a divergência não é um erro de transcrição
+              deste pipeline, e sim uma atualização do BioProject de
+              origem, ou um novo levantamento de amostras, entre a
+              elaboração do TCC e a submissão do artigo. Vale registrar essa
+              diferença como nota metodológica na dissertação, caso
+              apareça alguma discrepância downstream ao comparar resultados
+              com o TCC.
+            </p>
+
             <h3 style={{ fontSize: 15, marginTop: 24 }}>O que falta até o final</h3>
             <ol style={{ fontSize: 13.5, lineHeight: 1.7, paddingLeft: 20 }}>
               <li>
@@ -2294,13 +2489,14 @@ export default function App() {
                 <strong>Fechamento</strong>: todas as quatro etapas
                 estatísticas planejadas (PERMANOVA, GLLVM, Random Forest e
                 os contrastes par a par) estão concluídas sobre as 889
-                amostras do pipeline próprio. Resta redigir a seção de
-                metodologia da dissertação com base no que foi processado,
-                incluindo a nota sobre P16 (55 vs. 26 amostras de câncer
-                entre o TCC de 2025 e o artigo LATINOWARE) e a proveniência
-                do primer de P2/P21 como notas metodológicas.
+                amostras do pipeline próprio, e as duas notas metodológicas
+                pendentes (proveniência do primer de P2/P21 e divergência
+                do P16 entre o TCC de 2025 e o artigo LATINOWARE) já estão
+                redigidas, prontas para adaptação direta na seção de
+                metodologia da dissertação. Resta só essa redação final.
               </li>
             </ol>
+            <PairwiseContrastsChart />
 
             <table className="formal">
               <caption><span className="cap-label">Tabela 3.</span> Valores publicados no paper, usados como alvo de comparação, e o obtido pelo pipeline próprio até aqui.</caption>
