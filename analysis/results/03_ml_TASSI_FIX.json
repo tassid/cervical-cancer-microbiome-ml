@@ -1,0 +1,106 @@
+{
+ "tabela": "TASSI_FIX",
+ "n": 889,
+ "treino_no_treino": {
+  "cancer": 1.0,
+  "control": 0.9999999999999999,
+  "lesion high": 1.0,
+  "lesion low": 1.0
+ },
+ "cv_aleatoria": {
+  "cancer": 0.9639334504846664,
+  "control": 0.8207883251500272,
+  "lesion high": 0.7334007207523953,
+  "lesion low": 0.7079997666005368
+ },
+ "cv_aleatoria_acc_balanceada": 0.49299380142998656,
+ "so_projeto": {
+  "cancer": 0.9425712828070971,
+  "control": 0.8090780141843972,
+  "lesion high": 0.7543333040344555,
+  "lesion low": 0.7634554790523982
+ },
+ "lopo": {
+  "cancer": 0.6222804829658183,
+  "control": 0.4274822695035461,
+  "lesion high": 0.46549617649644015,
+  "lesion low": 0.35414284047146694
+ },
+ "lopo_acc_balanceada": 0.294274021910768,
+ "acuracia_prever_projeto": 0.8638920134983127,
+ "acuracia_prever_projeto_acaso": 0.35208098987626546,
+ "dentro_do_projeto": {
+  "P10": {
+   "control": 0.47707756557646286,
+   "lesion high": 0.42611322291610104,
+   "lesion low": 0.5086452839975794,
+   "n": {
+    "control": 211,
+    "lesion high": 58,
+    "lesion low": 43
+   }
+  },
+  "P14": {
+   "control": 0.5165289256198347,
+   "lesion high": 0.5165289256198347,
+   "n": {
+    "control": 11,
+    "lesion high": 11
+   }
+  },
+  "P19": {
+   "cancer": 0.7931034482758621,
+   "control": 0.5227864583333333,
+   "lesion high": 0.5450578956200705,
+   "lesion low": 0.5779532967032966,
+   "n": {
+    "cancer": 29,
+    "control": 16,
+    "lesion high": 59,
+    "lesion low": 56
+   }
+  },
+  "P2": {
+   "cancer": 0.4246268656716418,
+   "control": 0.5897988505747126,
+   "lesion high": 0.6448148148148147,
+   "lesion low": 0.493801652892562,
+   "n": {
+    "cancer": 10,
+    "control": 29,
+    "lesion high": 27,
+    "lesion low": 11
+   }
+  },
+  "P22": {
+   "cancer": 0.9749287749287749,
+   "control": 0.9749287749287749,
+   "n": {
+    "cancer": 65,
+    "control": 54
+   }
+  }
+ },
+ "so_profundidade_dentro_do_projeto": {
+  "P10": {
+   "lesion high vs control": 0.5768099362640954,
+   "lesion low vs control": 0.4977405488812961
+  },
+  "P14": {
+   "lesion high vs control": 0.33884297520661155
+  },
+  "P19": {
+   "cancer vs control": 0.3760775862068966,
+   "lesion high vs control": 0.49470338983050843,
+   "lesion low vs control": 0.5334821428571429
+  },
+  "P2": {
+   "cancer vs control": 0.43103448275862066,
+   "lesion high vs control": 0.5798212005108556,
+   "lesion low vs control": 0.5862068965517242
+  },
+  "P22": {
+   "cancer vs control": 0.9726495726495726
+  }
+ }
+}

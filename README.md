@@ -67,4 +67,12 @@ Documento vivo, a seção 4 (comandos) e a seção 5 (status) são atualizadas c
 
 PERMANOVA, GLLVM e Random Forest confirmam, de forma independente e sobre dado processado do zero pelo pipeline próprio, o mesmo padrão qualitativo do artigo: projeto de origem domina a variação composicional muito mais do que condição clínica, e a composição carrega assinatura de projeto de origem forte o suficiente para ser prevista diretamente. As quatro etapas estatísticas planejadas estão concluídas.
 
+## Auditoria de viés e comparação com a tabela da Paola (out/2026)
+
+A pasta [`analysis/`](analysis/) compara a tabela usada no artigo da Paola com a do pipeline próprio e testa as conclusões do manuscrito contra o viés de projeto. Resumo em [`analysis/README.md`](analysis/README.md) e relatório em `analysis/relatorio_vies.html`. Pontos principais:
+
+- O AUC ≈ 1 do artigo só é reproduzido avaliando o modelo no próprio treino; CV aleatória dá 0,97/0,85/0,76/0,74 e leave-one-project-out 0,70/0,51/0,46/0,34.
+- Um modelo que recebe só o ID do projeto atinge o mesmo AUC que o microbioma inteiro.
+- O P22 foi processado no ramo V4, mas é V3-V4; 79% das leituras ficaram sem gênero. Corrigido provisoriamente em `analysis/08_corrige_p22.py`; depois disso as duas tabelas concordam (Spearman 0,97–1,00).
+
 **Pendente:** decidir a nota metodológica sobre P2/P21 (primer não publicado) e sobre a divergência do P16 entre o TCC de M. T. S. Figueiredo (2025) e o artigo LATINOWARE (26 vs. 55 amostras de câncer); e redigir a seção de metodologia da dissertação com base em todo o processamento realizado. Lista detalhada em "O que falta até o final" na seção 5 do site.

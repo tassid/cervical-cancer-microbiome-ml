@@ -1,0 +1,132 @@
+
+== PAOLA | HSIL vs control  (* p<0,05  ** p<0,001)
+projeto                                    P10 P14 P19   P2 todos
+genero                                                           
+Lactobacillus                                ↓   ↑  ↓*    ↓   ↓**
+Gardnerella                                  ↑   ↓   ↓    ↑     ↓
+Prevotella                                   ↑   ↑   ↓    ↑    ↑*
+Fusobacterium                                ↑   ↓   ↓    ↓     ↑
+Porphyromonas                                ↓   ↑   ↑    ↓     ↑
+Bacteroides                                  ↓   ↓   ↑    ↓     ↑
+Peptostreptococcus                          ↓*   ↓   ↓    ↓     ↓
+Streptococcus                                ↓   ↓   ↓    ↑     ↑
+Sneathia                                     ↑   ↑   ↓   ↑*     ↑
+Atopobium                                    ↑   ↓   ↓    ↑     ↓
+Pseudomonas                                  ↓   ↓  ↑*    ↓   ↑**
+Burkholderia-Caballeronia-Paraburkholderia   ↓   ↓   ↑    ↓   ↓**
+Enterococcus                                 ↓   ↓   ↓    ↑    ↓*
+Megasphaera                                  ↑  ↑*   ↑  ↑**    ↑*
+Dialister                                    ↓   ↑   ↑    ↑    ↑*
+Anaerococcus                                 ↓   ↓  ↑*    ↓    ↑*
+Peptoniphilus                                ↓   ↓  ↑*    ↓   ↑**
+Campylobacter                                ↓   ↓  ↑*    ↓    ↑*
+
+== PAOLA | LSIL vs control  (* p<0,05  ** p<0,001)
+projeto                                    P10 P19  P2 todos
+genero                                                      
+Lactobacillus                                ↓   ↓   ↓   ↓**
+Gardnerella                                  ↓   ↓   ↑     ↓
+Prevotella                                   ↑   ↓   ↑   ↑**
+Fusobacterium                                ↑   ↓   ↓     ↑
+Porphyromonas                                ↓   ↑   ↑    ↑*
+Bacteroides                                  ↑   ↑   ↓    ↑*
+Peptostreptococcus                           ↓   ↓   ↑     ↓
+Streptococcus                                ↓   ↑   ↓    ↑*
+Sneathia                                     ↓   ↑   ↑    ↑*
+Atopobium                                    ↑   ↓   ↑     ↓
+Pseudomonas                                  ↓   ↑   ↓   ↑**
+Burkholderia-Caballeronia-Paraburkholderia   ↑   ↑   ↓    ↓*
+Enterococcus                                ↓*   ↓   ↑     ↓
+Megasphaera                                  ↓   ↑  ↑*     ↓
+Dialister                                    ↓   ↑   ↑    ↑*
+Anaerococcus                                 ↓  ↑*   ↑    ↑*
+Peptoniphilus                                ↓  ↑*   ↑    ↑*
+Campylobacter                                ↓   ↑   ↓     ↑
+
+== PAOLA | cancer vs control  (* p<0,05  ** p<0,001)
+projeto                                     P1  P19  P2  P22 todos
+genero                                                            
+Lactobacillus                                ↓   ↓*   ↓    ↑   ↓**
+Gardnerella                                  ↓   ↓*   ↑    ↑   ↓**
+Prevotella                                   ↑    ↑   ↑    ↑   ↑**
+Fusobacterium                                ↑    ↑   ↑    ↑   ↑**
+Porphyromonas                               ↑*   ↑*   ↑   ↓*   ↑**
+Bacteroides                                  ↑   ↑*   ↑   ↓*   ↑**
+Peptostreptococcus                           ↑   ↑*   ↑   ↓*   ↑**
+Streptococcus                                ↓    ↓   ↑    ↑   ↑**
+Sneathia                                     ↑    ↑   ↑    ↑    ↓*
+Atopobium                                    ↓    ↓   ↓    ↓   ↓**
+Pseudomonas                                  ↑    ↑   ↑   ↑*   ↑**
+Burkholderia-Caballeronia-Paraburkholderia   ↑    ↓   ↓  ↑**   ↓**
+Enterococcus                                ↑*    ↓   ↓   ↑*   ↑**
+Megasphaera                                  ↑    ↑  ↓*    ↓   ↓**
+Dialister                                    ↑    ↑   ↑   ↓*   ↑**
+Anaerococcus                                ↑*  ↑**   ↑   ↓*   ↑**
+Peptoniphilus                                ↓   ↑*   ↑   ↓*   ↑**
+Campylobacter                                ↑   ↑*   ↓   ↓*   ↑**
+
+== TASSI_FIX | HSIL vs control  (* p<0,05  ** p<0,001)
+projeto                                    P10 P14 P19   P2 todos
+genero                                                           
+Lactobacillus                                ↓   ↑  ↓*    ↓   ↓**
+Gardnerella                                  ↑   ↓  ↓*    ↑     ↓
+Prevotella                                   ↑   ↑   ↓    ↑     ↑
+Fusobacterium                                ↑   ↓   ↓    ↓     ↑
+Porphyromonas                                ↓   ↑   ↑    ↓     ↑
+Bacteroides                                  ↓   ↓   ↑    ↓     ↓
+Peptostreptococcus                          ↓*   ↓   ↓    ↓     ↓
+Streptococcus                                ↓   ↓   ↓    ↑     ↓
+Sneathia                                     ↑   ↑   ↓   ↑*     ↑
+Atopobium                                    ↑   ↓   ↓    ↑     ↑
+Pseudomonas                                  ↓   ↓  ↑*    ↓    ↑*
+Burkholderia-Caballeronia-Paraburkholderia   ↓   ↓   ↑    ↓     ↑
+Enterococcus                                 ↓   ↓   ↓    ↑     ↓
+Megasphaera                                  ↑   ↑   ↑  ↑**     ↑
+Dialister                                    ↓   ↑   ↑    ↑    ↑*
+Anaerococcus                                 ↓   ↓  ↑*    ↓    ↑*
+Peptoniphilus                                ↓   ↓  ↑*    ↓   ↑**
+Campylobacter                                ↓   ↓  ↑*    ↓    ↑*
+
+== TASSI_FIX | LSIL vs control  (* p<0,05  ** p<0,001)
+projeto                                    P10 P19  P2 todos
+genero                                                      
+Lactobacillus                                ↓   ↓   ↓   ↓**
+Gardnerella                                  ↓   ↓   ↑     ↑
+Prevotella                                   ↑   ↓   ↑    ↑*
+Fusobacterium                                ↑   ↓   ↓     ↑
+Porphyromonas                                ↓   ↑   ↑    ↑*
+Bacteroides                                  ↑   ↑   ↓     ↑
+Peptostreptococcus                           ↓   ↓   ↑     ↓
+Streptococcus                                ↓   ↑   ↓     ↑
+Sneathia                                     ↓   ↑   ↑     ↑
+Atopobium                                    ↑   ↓   ↑     ↑
+Pseudomonas                                  ↓   ↑   ↓   ↑**
+Burkholderia-Caballeronia-Paraburkholderia   ↑   ↑   ↓   ↑**
+Enterococcus                                ↓*   ↓   ↑     ↓
+Megasphaera                                  ↓   ↑  ↑*     ↑
+Dialister                                    ↓   ↓   ↑    ↑*
+Anaerococcus                                 ↓  ↑*   ↑    ↑*
+Peptoniphilus                                ↓   ↑   ↑    ↑*
+Campylobacter                                ↓   ↑   ↓     ↑
+
+== TASSI_FIX | cancer vs control  (* p<0,05  ** p<0,001)
+projeto                                     P1  P19  P2 P22 todos
+genero                                                           
+Lactobacillus                                ↓   ↓*   ↓   ↑   ↓**
+Gardnerella                                  ↓   ↓*   ↑   ↑   ↓**
+Prevotella                                   ↑    ↑   ↑   ↑   ↑**
+Fusobacterium                               ↑*    ↑   ↑   ↑   ↑**
+Porphyromonas                               ↑*   ↑*   ↑  ↓*   ↑**
+Bacteroides                                  ↑   ↑*   ↑   ↓   ↑**
+Peptostreptococcus                           ↑   ↑*   ↑   ↓   ↑**
+Streptococcus                                ↓    ↓   ↑   ↑   ↑**
+Sneathia                                     ↑    ↑   ↑   ↑   ↓**
+Atopobium                                    ↓    ↓   ↓   ↓     ↓
+Pseudomonas                                  ↑    ↓   ↑  ↑*   ↑**
+Burkholderia-Caballeronia-Paraburkholderia   ↑    ↑   ↓   ↓     ↑
+Enterococcus                                ↑*    ↓   ↓   ↑   ↑**
+Megasphaera                                  ↑    ↑  ↓*   ↓   ↓**
+Dialister                                    ↑    ↑   ↑   ↓   ↑**
+Anaerococcus                                ↑*  ↑**   ↑  ↓*   ↑**
+Peptoniphilus                                ↓  ↑**   ↑  ↓*   ↑**
+Campylobacter                                ↑   ↑*   ↓   ↓   ↑**
