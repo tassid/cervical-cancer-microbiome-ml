@@ -1,0 +1,4 @@
+contraste,genero,classe,projeto,n_projetos,projetos_testados
+HSIL vs control,Megasphaera,lesion_high,"P14,P2",2,4
+LSIL vs control,Escherichia_Shigella,lesion_low,"P10,P19",2,3
+cancer vs control,Gemella,cancer,"P2,P22",2,3

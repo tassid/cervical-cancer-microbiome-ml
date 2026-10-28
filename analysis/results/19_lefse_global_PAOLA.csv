@@ -1,0 +1,200 @@
+genero,classe,LDA,p,analise
+Lactobacillus,control,5.312350846325244,1.0245401227062643e-33,global 4 classes
+sem_genero,cancer,4.6246380245229926,1.282287894017907e-49,global 4 classes
+Pseudomonas,lesion_high,4.411904712900064,2.717637073719275e-21,global 4 classes
+Gardnerella,control,4.40212811778445,2.3226434936880954e-06,global 4 classes
+Sneathia,lesion_high,4.305456256593278,8.13997085909165e-05,global 4 classes
+Streptococcus,lesion_low,4.264602617052217,1.0753675485906953e-13,global 4 classes
+Fusobacterium,cancer,4.222974311446635,5.975725989275007e-32,global 4 classes
+Porphyromonas,cancer,4.206671129136442,6.74689266133127e-32,global 4 classes
+Prevotella,cancer,4.175351536384311,2.6660743502985626e-07,global 4 classes
+Peptostreptococcus,cancer,4.142533017754405,7.298721058014667e-31,global 4 classes
+Bacteroides,cancer,4.134065325309987,6.536446023207448e-19,global 4 classes
+Anaerococcus,cancer,4.1221978554508665,3.678895232898067e-22,global 4 classes
+Wolbachia,cancer,4.070438904241864,2.187277114103848e-31,global 4 classes
+Atopobium,control,4.038057668083555,8.67600625359948e-05,global 4 classes
+Shuttleworthia,lesion_low,4.018682546071135,9.011717224253514e-19,global 4 classes
+Peptoniphilus,cancer,4.0148940243894,3.257595076514731e-17,global 4 classes
+Enterococcus,cancer,3.985853694811589,1.4491719906481524e-31,global 4 classes
+Staphylococcus,cancer,3.946648859840653,4.2915720176325925e-16,global 4 classes
+Megasphaera,lesion_high,3.909570140371234,5.058355497104124e-07,global 4 classes
+Aeribacillus,cancer,3.882923712240537,1.4014381098043754e-32,global 4 classes
+Bifidobacterium,lesion_low,3.841663294878028,1.441349068521694e-05,global 4 classes
+Escherichia_Shigella,lesion_low,3.8178696343441167,2.1519647915860974e-24,global 4 classes
+Burkholderia_Caballeronia_Paraburkholderia,control,3.7218390658839504,7.4438848869495955e-09,global 4 classes
+Rhodococcus,cancer,3.681664888259703,1.5672922968927585e-34,global 4 classes
+Campylobacter,cancer,3.655118474807988,5.584284126814142e-15,global 4 classes
+Parvimonas,cancer,3.5833506273316447,8.58484786545772e-05,global 4 classes
+Halomonas,cancer,3.576472116950397,3.6084655449052874e-42,global 4 classes
+Fenollaria,cancer,3.5754896064748287,1.2911042734565277e-14,global 4 classes
+Finegoldia,lesion_low,3.568930630966877,8.751683098661206e-05,global 4 classes
+Muribaculaceae,cancer,3.542111516459928,1.1571547978827185e-19,global 4 classes
+Corynebacterium,cancer,3.5293636899812224,2.167394815949877e-30,global 4 classes
+Klebsiella,lesion_low,3.4241026841745072,2.261879934471215e-09,global 4 classes
+Acinetobacter,cancer,3.396954566316414,1.509135193299179e-29,global 4 classes
+Actinomyces,cancer,3.3195941350064424,1.9352144944583816e-08,global 4 classes
+Alloprevotella,cancer,3.304938925557703,2.202434743221164e-11,global 4 classes
+Dialister,cancer,3.287638835057714,8.003872229862477e-06,global 4 classes
+uncultured,cancer,3.234903234794933,3.143089056851016e-09,global 4 classes
+Veillonella,control,3.2219235591528594,0.0018154796050728228,global 4 classes
+Haemophilus,lesion_low,3.0893650793173384,0.03556381893433339,global 4 classes
+Thermus,cancer,3.08525535605586,1.5497742541567984e-15,global 4 classes
+Monoglobus,lesion_low,3.0355256526691408,0.015814475065060906,global 4 classes
+Ezakiella,lesion_low,3.026508253273952,1.1272318603501888e-06,global 4 classes
+Parabacteroides,lesion_low,2.882621834787765,0.04576851528073441,global 4 classes
+Clostridia_UCG_014,cancer,2.848068918968752,3.368467020616241e-11,global 4 classes
+Solobacterium,cancer,2.824576697278956,1.1386872934386187e-15,global 4 classes
+Oceanobacillus,cancer,2.823700572579657,8.778274602444069e-37,global 4 classes
+Mesorhizobium,cancer,2.8198024795909498,4.7579933224798476e-33,global 4 classes
+Sphingomonas,cancer,2.775679788748304,4.469341758639914e-15,global 4 classes
+Mangrovibacter,cancer,2.671971063021326,4.427512131547548e-07,global 4 classes
+Peptococcus,cancer,2.6569041258742523,7.474152789845573e-21,global 4 classes
+W5053,cancer,2.622379638197045,3.0538883072052378e-12,global 4 classes
+Cutibacterium,cancer,2.603488378359644,1.600556330119407e-17,global 4 classes
+Akkermansia,lesion_low,2.598748433142016,0.0006550813031132814,global 4 classes
+Bacillus,cancer,2.5882149631003744,1.530496754416747e-48,global 4 classes
+Saccharimonadales,lesion_low,2.585682869849599,8.629672819001451e-07,global 4 classes
+Psychrobacter,cancer,2.5806311898500622,1.0112821120626757e-17,global 4 classes
+Alistipes,lesion_low,2.577419714430509,6.218894496802603e-07,global 4 classes
+Ralstonia,control,2.5481385591813965,2.880351894297443e-07,global 4 classes
+Anoxybacillus,cancer,2.520812888215735,0.0006502694963674997,global 4 classes
+Brevibacterium,cancer,2.5204468022122177,0.00010504674900025389,global 4 classes
+SM1A02,cancer,2.51735193159018,2.57561011279057e-06,global 4 classes
+Dietzia,cancer,2.495161508604391,7.5767640710291915e-28,global 4 classes
+Cloacibacterium,cancer,2.493038119456696,1.1415623543313274e-16,global 4 classes
+Brevundimonas,control,2.4621105490342376,3.404451032970164e-09,global 4 classes
+Christensenellaceae_R_7_group,lesion_high,2.461649337800412,9.465913914639973e-07,global 4 classes
+A4b,cancer,2.453894566799147,3.6452876514626482e-16,global 4 classes
+Facklamia,cancer,2.4478370370113973,0.0015391207980984904,global 4 classes
+Winogradskyella,control,2.43987911091381,6.76710709012062e-11,global 4 classes
+Turicibacter,cancer,2.418360603012233,1.0253488629221651e-07,global 4 classes
+Paenibacillus,cancer,2.4153275274600388,1.8358806370585017e-20,global 4 classes
+Collinsella,control,2.4027722097555944,7.659944135020192e-10,global 4 classes
+Cobetia,control,2.3955725944902966,1.0875777862378688e-10,global 4 classes
+Clostridium_sensu_stricto_1,control,2.377291898935734,3.2854378696431726e-08,global 4 classes
+S5_A14a,cancer,2.3750701483793493,1.560541856648647e-05,global 4 classes
+Flavobacterium,cancer,2.331775264850162,6.868945784368344e-20,global 4 classes
+Thauera,cancer,2.29339343209991,2.971218648588169e-26,global 4 classes
+Mogibacterium,cancer,2.2884673901844503,9.10488140818469e-06,global 4 classes
+Tumebacillus,cancer,2.280604545934706,1.2907262593731773e-29,global 4 classes
+Stenotrophomonas,lesion_high,2.262448017602712,6.936264699123113e-07,global 4 classes
+Dorea,lesion_low,2.226472840224248,0.04183973294798918,global 4 classes
+Allorhizobium_Neorhizobium_Pararhizobium_Rhizobium,cancer,2.225462399577113,2.4290965881144605e-07,global 4 classes
+Subdoligranulum,cancer,2.2242736103081446,1.6479369190232252e-05,global 4 classes
+Geobacillus,cancer,2.2112819565724164,2.409451441247732e-24,global 4 classes
+Dubosiella,cancer,2.196840791556496,1.05616424508233e-33,global 4 classes
+Rubrobacter,lesion_high,2.162018838571673,0.005138547405537489,global 4 classes
+Veillonellaceae,lesion_high,2.155166940185805,0.0030893055785461993,global 4 classes
+Cetobacterium,cancer,2.1549937922822022,1.4468583448873813e-06,global 4 classes
+Incertae_Sedis,cancer,2.1208149383992536,0.00038340834601794256,global 4 classes
+RF39,cancer,2.11768347548682,6.307571650669192e-09,global 4 classes
+Micrococcus,cancer,2.1156491010981195,0.0018844623065167648,global 4 classes
+Phascolarctobacterium,cancer,2.087448283521204,3.8569962553627475e-07,global 4 classes
+Paracoccus,cancer,2.041633220717189,1.7334534443342446e-13,global 4 classes
+Faecalibaculum,cancer,2.04137704426177,3.04430343091456e-21,global 4 classes
+Bradyrhizobium,cancer,2.015545455554693,2.4974190372800697e-08,global 4 classes
+Enhydrobacter,cancer,2.0112400480493253,2.2911645453130108e-08,global 4 classes
+Lactobacillus,control,5.311082985699375,8.29151086108414e-37,global cancer vs control
+sem_genero,cancer,4.6453117947573,3.2274438853417415e-45,global cancer vs control
+Gardnerella,control,4.4582054496772265,1.29571593590643e-07,global cancer vs control
+Porphyromonas,cancer,4.206272161470704,1.7365521859540103e-31,global cancer vs control
+Fusobacterium,cancer,4.198866701154596,9.499345101513367e-27,global cancer vs control
+Prevotella,cancer,4.165938953078346,1.504087264897887e-07,global cancer vs control
+Peptostreptococcus,cancer,4.129150510132114,2.3130293352579326e-28,global cancer vs control
+Bacteroides,cancer,4.122179100182743,5.434755285955182e-17,global cancer vs control
+Anaerococcus,cancer,4.098591136772292,4.0132736560733996e-24,global cancer vs control
+Wolbachia,cancer,4.058213991588291,4.326740884054481e-21,global cancer vs control
+Atopobium,control,4.022770307009124,2.3300694144853316e-05,global cancer vs control
+Pseudomonas,cancer,4.011392263109525,5.639049183167639e-23,global cancer vs control
+Streptococcus,cancer,3.996956408539919,2.5027332234997425e-15,global cancer vs control
+Peptoniphilus,cancer,3.988946397238027,7.648076558468916e-19,global cancer vs control
+Aeribacillus,cancer,3.97637769953065,1.81065736100322e-22,global cancer vs control
+Staphylococcus,cancer,3.930554210669092,2.0072695089443893e-16,global cancer vs control
+Enterococcus,cancer,3.856149766606989,2.5177990309670987e-23,global cancer vs control
+Megasphaera,control,3.72463522468774,4.0519087016226686e-05,global cancer vs control
+Rhodococcus,cancer,3.700978294822933,9.578556758136801e-30,global cancer vs control
+Campylobacter,cancer,3.677292146398909,3.4741620212875494e-16,global cancer vs control
+Shuttleworthia,control,3.6612260204701967,2.4025536624375164e-20,global cancer vs control
+Burkholderia_Caballeronia_Paraburkholderia,control,3.657205948113846,3.476480443891506e-07,global cancer vs control
+Halomonas,cancer,3.648579580666281,1.1479299634000951e-30,global cancer vs control
+Parvimonas,cancer,3.589114971220335,4.40714248491331e-06,global cancer vs control
+Bifidobacterium,control,3.568851804307029,0.011227363010709215,global cancer vs control
+Fenollaria,cancer,3.55357563912774,1.5316647636406746e-15,global cancer vs control
+Corynebacterium,cancer,3.5389855039325986,3.4102593085684266e-30,global cancer vs control
+Muribaculaceae,cancer,3.497955671183146,4.404954525515284e-15,global cancer vs control
+Escherichia_Shigella,cancer,3.461077164547845,3.040107688977263e-21,global cancer vs control
+Finegoldia,cancer,3.4569305552740937,3.092883093772516e-05,global cancer vs control
+Delftia,cancer,3.4012603690079763,0.016975426975564017,global cancer vs control
+Treponema,cancer,3.388413375975392,0.007275460203206424,global cancer vs control
+Sneathia,control,3.359390479161122,0.0035168152885616632,global cancer vs control
+Dialister,cancer,3.358707610636033,1.1268953025813353e-06,global cancer vs control
+Alloscardovia,control,3.246636049153621,0.003413411744879574,global cancer vs control
+uncultured,cancer,3.20976839751438,8.33404677518903e-08,global cancer vs control
+Alloprevotella,cancer,3.209302968323409,1.7463653433428313e-11,global cancer vs control
+Thermus,cancer,3.199466759549922,6.994438868505948e-09,global cancer vs control
+Gemella,cancer,3.186136896933945,0.006535595012513632,global cancer vs control
+Moryella,cancer,3.152982725311163,9.863561406506968e-06,global cancer vs control
+Acinetobacter,cancer,3.141011171824166,4.310613195283495e-21,global cancer vs control
+Actinomyces,cancer,3.1405194797067515,1.1022139305031103e-07,global cancer vs control
+Ezakiella,cancer,3.016709288709714,1.019747983473905e-07,global cancer vs control
+Monoglobus,control,2.980229884836405,0.012646145790143642,global cancer vs control
+Veillonella,control,2.952623894884151,0.00036800044146987774,global cancer vs control
+Oceanobacillus,cancer,2.88989151247821,3.2203970486900475e-25,global cancer vs control
+Haemophilus,control,2.861148767263351,0.03993869113234056,global cancer vs control
+Clostridia_UCG_014,cancer,2.838089049340552,4.698786428688963e-10,global cancer vs control
+Solobacterium,cancer,2.826994166390324,1.390215444506237e-10,global cancer vs control
+Mesorhizobium,cancer,2.817676273502954,3.978745891026196e-22,global cancer vs control
+Klebsiella,cancer,2.797470729868797,1.5369600679908148e-08,global cancer vs control
+Fastidiosipila,cancer,2.750134685804785,0.03578018740485013,global cancer vs control
+Sphingomonas,cancer,2.7471158601540395,4.922504185411978e-14,global cancer vs control
+Peptococcus,cancer,2.6620076071686056,3.2541835556812165e-18,global cancer vs control
+W5053,cancer,2.6420300722549586,1.398876165500769e-10,global cancer vs control
+Psychrobacter,cancer,2.581019361331211,6.31268442218918e-11,global cancer vs control
+Bacillus,cancer,2.5759952694621417,2.1380031743596353e-31,global cancer vs control
+Mangrovibacter,cancer,2.560104214535657,0.007246132576453915,global cancer vs control
+Cloacibacterium,cancer,2.5580383229208072,1.1702044975684603e-11,global cancer vs control
+Cutibacterium,cancer,2.547882806142388,2.5050412085545763e-07,global cancer vs control
+Ralstonia,control,2.532195585493976,0.0007126737200200834,global cancer vs control
+Saccharimonadales,cancer,2.4664594049153714,4.225502234521909e-07,global cancer vs control
+Mobiluncus,cancer,2.4643968061548227,3.7020074452640486e-06,global cancer vs control
+Brevibacterium,cancer,2.462678687853051,1.877944085995294e-05,global cancer vs control
+Dietzia,cancer,2.460870676028392,4.1679120208627877e-19,global cancer vs control
+Facklamia,cancer,2.457313206062646,0.00015213620931322052,global cancer vs control
+Paenibacillus,cancer,2.4510910987153194,2.6513533267986367e-12,global cancer vs control
+A4b,cancer,2.4404294396919304,1.2363881931926842e-10,global cancer vs control
+Winogradskyella,control,2.431237566092723,1.0184492202049407e-11,global cancer vs control
+Ruminococcus,cancer,2.428369567360068,0.00013352831643845346,global cancer vs control
+S5_A14a,cancer,2.4215553602730995,1.7730293298396741e-06,global cancer vs control
+Turicibacter,cancer,2.412330707377773,3.5790086884524033e-07,global cancer vs control
+Anoxybacillus,cancer,2.407379198882682,0.0009600378345144345,global cancer vs control
+Akkermansia,control,2.3717355359622525,0.0007102478916691453,global cancer vs control
+Blautia,cancer,2.366527560550597,0.04699101687623785,global cancer vs control
+Flavobacterium,cancer,2.365064228285099,3.158484663333755e-15,global cancer vs control
+Rikenellaceae_RC9_gut_group,cancer,2.352926313031077,0.024468076962205456,global cancer vs control
+Cobetia,control,2.3405518678255697,9.984800088481987e-12,global cancer vs control
+Brevundimonas,control,2.3290255466200764,0.0037401698287619,global cancer vs control
+Collinsella,control,2.3194992179482345,7.657346674330748e-07,global cancer vs control
+Thauera,cancer,2.31891540864253,1.1665628722734816e-18,global cancer vs control
+Tumebacillus,cancer,2.315678655893743,1.5556058669090155e-20,global cancer vs control
+Mageibacillus,control,2.302424266583642,0.032567748427371104,global cancer vs control
+Faecalibacterium,cancer,2.289230689160452,8.488132260961568e-06,global cancer vs control
+Mogibacterium,cancer,2.281356361336942,0.0008665902554222579,global cancer vs control
+Alistipes,cancer,2.278220058598456,8.11761616645057e-06,global cancer vs control
+Christensenellaceae_R_7_group,cancer,2.2628631910050645,5.366468438825514e-07,global cancer vs control
+Geobacillus,cancer,2.224850467771928,1.6879842486191903e-16,global cancer vs control
+f__Eubacterium__coprostanoligenes_group,cancer,2.1958609557080337,0.0010221354800075918,global cancer vs control
+Dubosiella,cancer,2.1894411592311984,6.7502026007816e-23,global cancer vs control
+Micrococcus,cancer,2.1847974010212936,0.0010532553174119313,global cancer vs control
+Subdoligranulum,cancer,2.180267798816797,6.579035180244916e-05,global cancer vs control
+Lachnospiraceae_NK4A136_group,cancer,2.1512725117811677,0.0009034039725689084,global cancer vs control
+NK4A214_group,cancer,2.1499342829698387,6.572002479477307e-07,global cancer vs control
+RF39,cancer,2.1460632748217137,4.3787370012129875e-08,global cancer vs control
+Clostridium_sensu_stricto_1,control,2.127533342736612,5.625267161261517e-09,global cancer vs control
+Incertae_Sedis,cancer,2.1225440946415164,0.0005366707367923312,global cancer vs control
+Veillonellaceae,cancer,2.1213737838066065,0.033438003810054164,global cancer vs control
+Phascolarctobacterium,cancer,2.105987170862152,1.1093059565177788e-07,global cancer vs control
+Cetobacterium,cancer,2.09818681020696,7.768096623783507e-07,global cancer vs control
+Varibaculum,cancer,2.068969018759732,0.004437542046252524,global cancer vs control
+Helcococcus,cancer,2.034932849807276,0.0005133862729333532,global cancer vs control
+Stenotrophomonas,cancer,2.031004035517452,2.5206488876668437e-06,global cancer vs control
+Faecalibaculum,cancer,2.023986725823953,3.0553124997569335e-14,global cancer vs control

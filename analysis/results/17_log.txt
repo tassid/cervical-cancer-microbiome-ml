@@ -1,0 +1,32 @@
+
+== PAOLA: Boruta global (4 classes, todos os projetos): 50 confirmados de 160
+   top 15 por importância: sem_genero, Lactobacillus, Pseudomonas, Gardnerella, Streptococcus, Burkholderia-Caballeronia-Paraburkholderia, Prevotella, Finegoldia, Sneathia, Enterococcus, Peptoniphilus, Shuttleworthia, Corynebacterium, Anaerococcus, Staphylococcus
+   cancer vs control em P19 (n=31/18): 4 confirmados
+   cancer vs control em P2 (n=10/29): 0 confirmados
+   cancer vs control em P22 (n=65/54): 18 confirmados
+   HSIL vs control em P10 (n=59/214): 0 confirmados
+   HSIL vs control em P14 (n=13/14): 0 confirmados
+   HSIL vs control em P19 (n=60/18): 2 confirmados
+   HSIL vs control em P2 (n=27/29): 1 confirmados
+   LSIL vs control em P10 (n=43/214): 0 confirmados
+   LSIL vs control em P19 (n=58/18): 1 confirmados
+   LSIL vs control em P2 (n=11/29): 1 confirmados
+   confirmados em >= 2 projetos, mesma direção:
+   nenhum
+   dos 25 primeiros do Boruta global, 0 se repetem dentro de projetos
+
+== TASSI_V2: Boruta global (4 classes, todos os projetos): 37 confirmados de 172
+   top 15 por importância: Lactobacillus, sem_genero, Pseudomonas, Streptococcus, Prevotella, Shuttleworthia, Corynebacterium, Finegoldia, Anaerococcus, Peptoniphilus, Bacteroides, Enterococcus, Porphyromonas, Acinetobacter, Fusobacterium
+   cancer vs control em P19 (n=29/16): 5 confirmados
+   cancer vs control em P2 (n=10/29): 0 confirmados
+   cancer vs control em P22 (n=65/54): 12 confirmados
+   HSIL vs control em P10 (n=58/211): 0 confirmados
+   HSIL vs control em P14 (n=11/11): 0 confirmados
+   HSIL vs control em P19 (n=59/16): 1 confirmados
+   HSIL vs control em P2 (n=27/29): 1 confirmados
+   LSIL vs control em P10 (n=43/211): 0 confirmados
+   LSIL vs control em P19 (n=56/16): 1 confirmados
+   LSIL vs control em P2 (n=11/29): 0 confirmados
+   confirmados em >= 2 projetos, mesma direção:
+   nenhum
+   dos 25 primeiros do Boruta global, 0 se repetem dentro de projetos
