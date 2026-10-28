@@ -1,49 +1,32 @@
 
 == PAOLA: Boruta global (4 classes, todos os projetos): 50 confirmados de 160
    top 15 por importância: sem_genero, Lactobacillus, Pseudomonas, Gardnerella, Streptococcus, Burkholderia-Caballeronia-Paraburkholderia, Prevotella, Finegoldia, Sneathia, Enterococcus, Peptoniphilus, Shuttleworthia, Corynebacterium, Anaerococcus, Staphylococcus
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/dist-packages/boruta/boruta_py.py", line 475, in _get_imp
-    self.estimator.fit(X, y)
-    ~~~~~~~~~~~~~~~~~~^^^^^^
-  File "/usr/local/lib/python3.13/dist-packages/sklearn/base.py", line 1403, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "/usr/local/lib/python3.13/dist-packages/sklearn/ensemble/_forest.py", line 393, in fit
-    y, expanded_class_weight = self._validate_y_class_weight(y, sample_weight)
-                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.13/dist-packages/sklearn/ensemble/_forest.py", line 879, in _validate_y_class_weight
-    expanded_class_weight = compute_sample_weight(class_weight, y_original)
-  File "/usr/local/lib/python3.13/dist-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
-    return func(*args, **kwargs)
-  File "/usr/local/lib/python3.13/dist-packages/sklearn/utils/class_weight.py", line 236, in compute_sample_weight
-    weight_k = compute_class_weight(
-        class_weight_k, classes=classes_full, y=y_full
-    )
-  File "/usr/local/lib/python3.13/dist-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
-    return func(*args, **kwargs)
-  File "/usr/local/lib/python3.13/dist-packages/sklearn/utils/class_weight.py", line 117, in compute_class_weight
-    raise ValueError(
-    ...<2 lines>...
-    )
-ValueError: The classes, [0, 1], are not in class_weight
+   cancer vs control em P19 (n=31/18): 4 confirmados
+   cancer vs control em P2 (n=10/29): 0 confirmados
+   cancer vs control em P22 (n=65/54): 18 confirmados
+   HSIL vs control em P10 (n=59/214): 0 confirmados
+   HSIL vs control em P14 (n=13/14): 0 confirmados
+   HSIL vs control em P19 (n=60/18): 2 confirmados
+   HSIL vs control em P2 (n=27/29): 1 confirmados
+   LSIL vs control em P10 (n=43/214): 0 confirmados
+   LSIL vs control em P19 (n=58/18): 1 confirmados
+   LSIL vs control em P2 (n=11/29): 1 confirmados
+   confirmados em >= 2 projetos, mesma direção:
+   nenhum
+   dos 25 primeiros do Boruta global, 0 se repetem dentro de projetos
 
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/user/cervical-cancer-microbiome-ml/analysis/17_boruta_por_projeto.py", line 58, in <module>
-    sp, wk, _ = boruta(X.values, y)
-                ~~~~~~^^^^^^^^^^^^^
-  File "/home/user/cervical-cancer-microbiome-ml/analysis/17_boruta_por_projeto.py", line 27, in boruta
-    b.fit(np.asarray(X, dtype=float), np.asarray(y).astype(str))
-    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.13/dist-packages/boruta/boruta_py.py", line 222, in fit
-    return self._fit(X, y)
-           ~~~~~~~~~^^^^^^
-  File "/usr/local/lib/python3.13/dist-packages/boruta/boruta_py.py", line 347, in _fit
-    cur_imp = self._add_shadows_get_imps(X, y, dec_reg)
-  File "/usr/local/lib/python3.13/dist-packages/boruta/boruta_py.py", line 503, in _add_shadows_get_imps
-    imp = self._get_imp(np.hstack((x_cur, x_sha)), y)
-  File "/usr/local/lib/python3.13/dist-packages/boruta/boruta_py.py", line 477, in _get_imp
-    raise ValueError('Please check your X and y variable. The provided '
-                     'estimator cannot be fitted to your data.\n' + str(e))
-ValueError: Please check your X and y variable. The provided estimator cannot be fitted to your data.
-The classes, [0, 1], are not in class_weight
+== TASSI_V2: Boruta global (4 classes, todos os projetos): 37 confirmados de 172
+   top 15 por importância: Lactobacillus, sem_genero, Pseudomonas, Streptococcus, Prevotella, Shuttleworthia, Corynebacterium, Finegoldia, Anaerococcus, Peptoniphilus, Bacteroides, Enterococcus, Porphyromonas, Acinetobacter, Fusobacterium
+   cancer vs control em P19 (n=29/16): 5 confirmados
+   cancer vs control em P2 (n=10/29): 0 confirmados
+   cancer vs control em P22 (n=65/54): 12 confirmados
+   HSIL vs control em P10 (n=58/211): 0 confirmados
+   HSIL vs control em P14 (n=11/11): 0 confirmados
+   HSIL vs control em P19 (n=59/16): 1 confirmados
+   HSIL vs control em P2 (n=27/29): 1 confirmados
+   LSIL vs control em P10 (n=43/211): 0 confirmados
+   LSIL vs control em P19 (n=56/16): 1 confirmados
+   LSIL vs control em P2 (n=11/29): 0 confirmados
+   confirmados em >= 2 projetos, mesma direção:
+   nenhum
+   dos 25 primeiros do Boruta global, 0 se repetem dentro de projetos
