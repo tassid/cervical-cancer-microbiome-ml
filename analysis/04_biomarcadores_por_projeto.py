@@ -10,7 +10,7 @@ import pandas as pd
 from scipy.stats import spearmanr
 from sklearn.ensemble import RandomForestClassifier
 
-from common import OUT_DIR, TABELAS, genero, meta, relativa
+from common import OUT_DIR, TABELAS, ativas, genero, meta, relativa
 
 CITADOS = ["Burkholderia-Caballeronia-Paraburkholderia", "Lactobacillus", "Pseudomonas", "Enterococcus",
            "Brochothrix", "Chloroplast", "Peptostreptococcus", "Rhodococcus", "Ralstonia", "Cupriavidus",
@@ -25,7 +25,7 @@ def eta2(v, f):
 
 
 m = meta()
-for nome in ["PAOLA", "TASSI_FIX"]:
+for nome in [n for n, _ in ativas()]:
     rel = relativa(genero(TABELAS[nome]())) * 100
     mm = m.loc[rel.index]
     chave = mm.Project + "|" + mm.tipo_amostra.str.replace("lesion ", "L")

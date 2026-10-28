@@ -62,6 +62,10 @@ def roda(nome):
     P3 = cv_proba(X, y, lopo)
     R["lopo"] = auc_por_classe(y, P3)
     R["lopo_acc_balanceada"] = balanced_accuracy_score(y, np.array(CLASSES)[P3.argmax(1)])
+    for chave, PP in [("cv_aleatoria", P), ("lopo", P3)]:
+        pred = np.array(CLASSES)[PP.argmax(1)]
+        R[f"matriz_confusao_{chave}"] = pd.crosstab(pd.Series(y, name="real"), pd.Series(pred, name="previsto")).reindex(
+            index=CLASSES, columns=CLASSES, fill_value=0).to_dict()
 
     pp = np.empty(len(g), dtype=object)
     for tr, te in StratifiedKFold(10, shuffle=True, random_state=42).split(X, g):
@@ -93,5 +97,5 @@ def roda(nome):
 
 
 if __name__ == "__main__":
-    for nome in (sys.argv[1:] or ["PAOLA", "TASSI_FIX"]):
+    for nome in (sys.argv[1:] or [n for n, _ in ativas()]):
         roda(nome)

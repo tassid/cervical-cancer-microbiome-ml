@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from scipy.spatial.distance import pdist, squareform
 
-from common import OUT_DIR, TABELAS, meta, relativa
+from common import OUT_DIR, TABELAS, ativas, meta, relativa
 
 N_PERM = 499
 rng = np.random.default_rng(1)
@@ -48,7 +48,7 @@ def marginal(G, completo, reduzido, permuta):
 
 m = meta()
 linhas = []
-for nome, carregar in TABELAS.items():
+for nome, carregar in ativas():
     df = carregar()
     mm = m.loc[df.index]
     G = gower(squareform(pdist(relativa(df).values, "braycurtis")))

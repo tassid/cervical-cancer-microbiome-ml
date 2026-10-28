@@ -99,7 +99,30 @@ def tassi_fix():
     return out.loc[:, out.sum() >= 2]
 
 
-TABELAS = {"PAOLA": paola_genus, "TASSI": tassi, "TASSI_FIX": tassi_fix}
+def paola_limpa():
+    """Tabela da Paola sem P21, sem P16 (DNA não bacteriano) e sem amostras < 1.000 leituras."""
+    df = paola_genus()
+    m = meta().loc[df.index]
+    ok = ~m.Project.isin(["P21", "P16"]) & (df.sum(axis=1) >= 1000)
+    return df[ok.values]
+
+
+def tassi_v2():
+    """Tabela da Tassiane com o P22 reprocessado no ramo V3-V4 (ver 08b_reprocessa_p22.py)."""
+    novo = os.path.join(OUT_DIR, "p22_v3v4_genero.pkl")
+    if not os.path.exists(novo):
+        raise SystemExit("Rode 08b_reprocessa_p22.py antes.")
+    g = pd.read_pickle(novo)
+    g = g[g.sum(axis=1) >= 1000]
+    t = tassi()
+    m = meta()
+    t = t.drop(index=t.index.intersection(m.index[m.Project == "P22"]))
+    out = pd.concat([t, g]).fillna(0)
+    return out.loc[:, out.sum() >= 2]
+
+
+TABELAS = {"PAOLA": paola_genus, "TASSI": tassi, "TASSI_FIX": tassi_fix,
+           "PAOLA_LIMPA": paola_limpa, "TASSI_V2": tassi_v2}
 
 
 def genero(df):
@@ -118,3 +141,10 @@ def genero(df):
 
 def relativa(df):
     return df.div(df.sum(axis=1), axis=0)
+
+
+def ativas():
+    """Tabelas a analisar. Padrão: Paola e Tassiane com P22 reprocessado.
+    Troque com TABELAS=PAOLA,TASSI_FIX,PAOLA_LIMPA python ..."""
+    nomes = os.environ.get("TABELAS", "PAOLA,TASSI_V2").split(",")
+    return [(n, TABELAS[n]) for n in nomes]

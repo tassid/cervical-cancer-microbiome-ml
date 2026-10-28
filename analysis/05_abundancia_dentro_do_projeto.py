@@ -6,7 +6,7 @@ e separadamente em cada projeto que tem as duas classes comparadas.
 import pandas as pd
 from scipy.stats import mannwhitneyu
 
-from common import OUT_DIR, TABELAS, genero, meta, relativa
+from common import OUT_DIR, TABELAS, ativas, genero, meta, relativa
 
 GENEROS = ["Lactobacillus", "Gardnerella", "Prevotella", "Fusobacterium", "Porphyromonas", "Bacteroides",
            "Peptostreptococcus", "Streptococcus", "Sneathia", "Atopobium", "Pseudomonas",
@@ -18,7 +18,7 @@ COMPARACOES = {"cancer vs control": ("cancer", "control"),
 
 m = meta()
 linhas = []
-for nome in ["PAOLA", "TASSI_FIX"]:
+for nome in [n for n, _ in ativas()]:
     rel = relativa(genero(TABELAS[nome]())) * 100
     mm = m.loc[rel.index]
     for comp, (a, b) in COMPARACOES.items():

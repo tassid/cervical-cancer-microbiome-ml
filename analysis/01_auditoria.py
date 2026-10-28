@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import chi2_contingency, kruskal
 
-from common import OUT_DIR, REGIAO, TABELAS, meta
+from common import OUT_DIR, REGIAO, TABELAS, ativas, meta
 
 
 def cramer(ct):
@@ -13,7 +13,7 @@ def cramer(ct):
 
 m = meta()
 linhas = []
-for nome, carregar in TABELAS.items():
+for nome, carregar in ativas():
     df = carregar()
     mm = m.loc[df.index].copy()
     mm["regiao"] = mm.Project.map(REGIAO)

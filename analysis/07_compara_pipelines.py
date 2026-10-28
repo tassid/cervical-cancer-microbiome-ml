@@ -7,11 +7,11 @@ import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
 
-from common import OUT_DIR, TABELAS, genero, meta, relativa
+from common import OUT_DIR, TABELAS, ativas, genero, meta, relativa
 
 m = meta()
 P = genero(TABELAS["PAOLA"]())
-for nome in ["TASSI", "TASSI_FIX"]:
+for nome in [n for n, _ in ativas() if n.startswith("TASSI")]:
     T = genero(TABELAS[nome]())
     comum = P.index.intersection(T.index)
     gl = P.columns.union(T.columns)

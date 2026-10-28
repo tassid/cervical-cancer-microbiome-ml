@@ -22,7 +22,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from xgboost import XGBClassifier
 
-from common import OUT_DIR, TABELAS, meta
+from common import OUT_DIR, TABELAS, ativas, meta
 
 warnings.filterwarnings("ignore")
 
@@ -92,5 +92,5 @@ def roda(nome):
 
 
 if __name__ == "__main__":
-    for nome in (sys.argv[1:] or ["PAOLA", "TASSI_FIX"]):
+    for nome in (sys.argv[1:] or [n for n, _ in ativas()]):
         roda(nome)

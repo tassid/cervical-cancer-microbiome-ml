@@ -31,7 +31,23 @@ python 06_permanova.py                  # R² classe, projeto e classe além do 
 python 07_compara_pipelines.py          # mesma amostra nos dois pipelines
 python 09_forca_bruta.py                # 30 combinações de modelo/pré-processamento (demora ~1 h)
 python 10_contabilidade_amostras.py     # onde cada uma das 1.042 amostras se perdeu (precisa de V3V4_stats.qza, V4_stats.qza, P14_cutadapt_stats.qza)
+python 11_contaminantes.py              # gêneros de kit/laboratório: peso por projeto e sensibilidade do ML
+python 12_abundancia_com_projeto.py     # abundância diferencial em CLR com e sem projeto no modelo
+python 13_meta_analise.py               # efeito por projeto (g de Hedges) + efeitos aleatórios (DerSimonian-Laird)
 ```
+
+As tabelas analisadas vêm da variável `TABELAS` (padrão: `PAOLA,TASSI_V2`). Opções: `PAOLA`,
+`PAOLA_LIMPA` (sem P21, sem P16 e sem amostras < 1.000 leituras), `TASSI` (como está no Drive),
+`TASSI_FIX` (P22 corrigido por prefixo) e `TASSI_V2` (P22 reprocessado no ramo V3-V4).
+
+### Reprocessamento do P22
+
+`p22_v3v4.sh` baixa as 119 runs do espelho do SRA na AWS, corta o primer 341F com cutadapt,
+aplica o filtro de qualidade padrão do QIIME 2 (`qfilter_q2.py`) e roda o deblur 1.1.1 com
+corte de 220 nt. Depois, `08b_reprocessa_p22.py` monta a tabela de gêneros (`TASSI_V2`).
+A taxonomia vem das ASVs V3-V4 já classificadas no pipeline; a classificação final deve ser
+refeita com o classificador SILVA V3-V4 no QIIME 2.
+
 
 Os resultados já calculados estão em `results/`.
 

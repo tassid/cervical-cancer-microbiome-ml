@@ -9,7 +9,7 @@ import pandas as pd
 import statsmodels.formula.api as smf
 from scipy.stats import kruskal, mannwhitneyu
 
-from common import OUT_DIR, TABELAS, meta
+from common import OUT_DIR, TABELAS, ativas, meta
 
 RAREFACAO = 5000
 rng = np.random.default_rng(42)
@@ -34,7 +34,7 @@ def alfa(df):
 
 m = meta()
 linhas = []
-for nome, carregar in TABELAS.items():
+for nome, carregar in ativas():
     a = alfa(rarefaz(carregar(), RAREFACAO)).join(m[["tipo_amostra", "Project"]])
     a.to_csv(f"{OUT_DIR}/02_alfa_{nome}.csv")
     multi = a.groupby("Project").tipo_amostra.nunique()
