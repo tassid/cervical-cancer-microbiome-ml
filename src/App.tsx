@@ -43,7 +43,7 @@ import {
  * Visual: artigo acadêmico (estilo LaTeX). Voz: estudante explicando, casual.
  */
 
-type SectionId = "s1" | "s2" | "s3" | "s4" | "s4b" | "s5" | "refs";
+type SectionId = "s1" | "s2" | "s3" | "s4" | "s4b" | "s4c" | "s5" | "refs";
 
 const TERMS: Record<string, string> = {
   microbiotaCervicovaginal:
@@ -140,7 +140,8 @@ const TOC: TocEntry[] = [
   { id: "s3", number: "3", label: "Conceitos que precisam ficar claros", icon: <BookOpen size={14} /> },
   { id: "s4", number: "4", label: "Comandos do pipeline", icon: <ListChecks size={14} /> },
   { id: "s4b", number: "5", label: "Status do projeto", icon: <BarChart3 size={14} /> },
-  { id: "s5", number: "6", label: "Por que isso importa pra tese", icon: <GraduationCap size={14} /> },
+  { id: "s4c", number: "6", label: "Auditoria de viés", icon: <BarChart3 size={14} /> },
+  { id: "s5", number: "7", label: "Por que isso importa pra tese", icon: <GraduationCap size={14} /> },
   { id: "refs", number: "", label: "Referências", icon: <BookOpen size={14} /> },
 ];
 
@@ -443,10 +444,10 @@ function AucComparisonChart() {
 }
 
 const REAL_AUC_COMPARISON = [
-  { classe: "cancer", aleatoria: 0.959, lopo: 0.717 },
-  { classe: "control", aleatoria: 0.815, lopo: 0.512 },
-  { classe: "lesion high", aleatoria: 0.76, lopo: 0.51 },
-  { classe: "lesion low", aleatoria: 0.71, lopo: 0.662 },
+  { classe: "cancer", aleatoria: 0.959, lopo: 0.717, lopoFix: 0.622 },
+  { classe: "control", aleatoria: 0.815, lopo: 0.512, lopoFix: 0.427 },
+  { classe: "lesion high", aleatoria: 0.76, lopo: 0.51, lopoFix: 0.465 },
+  { classe: "lesion low", aleatoria: 0.71, lopo: 0.662, lopoFix: 0.354 },
 ];
 
 function RealAucComparisonChart() {
@@ -465,6 +466,9 @@ function RealAucComparisonChart() {
           <Bar dataKey="lopo" fill="#a85b5b" name="Leave-one-project-out">
             <LabelList dataKey="lopo" position="top" fontSize={11} formatter={(v: any) => v.toFixed(2)} />
           </Bar>
+          <Bar dataKey="lopoFix" fill="#6f4a3a" name="LOPO, P22 corrigido">
+            <LabelList dataKey="lopoFix" position="top" fontSize={11} formatter={(v: any) => v.toFixed(2)} />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
       <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
@@ -474,7 +478,9 @@ function RealAucComparisonChart() {
         na classe câncer (0,959 para 0,717), a mais desbalanceada entre
         projetos (Fig. A). A linha de 0,5 é o nível de acaso: controle e
         lesão alta ficam bem perto dela sob leave-one-project-out, ou seja,
-        quase não melhor que chutar.
+        quase não melhor que chutar. A terceira barra é o LOPO refeito
+        depois de reclassificar o P22 (que tinha entrado no ramo V4 sendo
+        V3-V4, ver seção 6): a queda fica ainda maior, câncer em 0,62.
       </div>
     </div>
   );
@@ -1513,6 +1519,47 @@ Acuracia: 0.8279`,
   },
 ];
 
+const AUDIT_AUC = [
+  { classe: "câncer", treino: 1.0, cv: 0.966, projeto: 0.95, lopo: 0.701 },
+  { classe: "controle", treino: 1.0, cv: 0.849, projeto: 0.846, lopo: 0.51 },
+  { classe: "HSIL", treino: 1.0, cv: 0.763, projeto: 0.77, lopo: 0.458 },
+  { classe: "LSIL", treino: 1.0, cv: 0.737, projeto: 0.787, lopo: 0.338 },
+];
+
+function AuditAucChart() {
+  const fmt = (v: any) => Number(v).toFixed(2);
+  return (
+    <div className="fig-block" style={{ width: "100%", height: 340, margin: "32px 0" }}>
+      <ResponsiveContainer>
+        <BarChart data={AUDIT_AUC} margin={{ top: 20, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e0d5" />
+          <XAxis dataKey="classe" tick={{ fontSize: 12 }} />
+          <YAxis domain={[0, 1]} tick={{ fontSize: 12 }} label={{ value: "AUC", angle: -90, position: "insideLeft", fontSize: 12 }} />
+          <Tooltip contentStyle={{ fontSize: 12 }} formatter={fmt} />
+          <Legend wrapperStyle={{ fontSize: 12 }} />
+          <Bar dataKey="treino" fill="#c9b98a" name="Avaliado no treino" />
+          <Bar dataKey="cv" fill="#5b7a9e" name="CV aleatória">
+            <LabelList dataKey="cv" position="top" fontSize={10} formatter={fmt} />
+          </Bar>
+          <Bar dataKey="projeto" fill="#8a8370" name="Só o projeto, sem microbioma">
+            <LabelList dataKey="projeto" position="top" fontSize={10} formatter={fmt} />
+          </Bar>
+          <Bar dataKey="lopo" fill="#a85b5b" name="Projeto novo (LOPO)">
+            <LabelList dataKey="lopo" position="top" fontSize={10} formatter={fmt} />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+      <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
+        Fig. J. Mesmo Random Forest do artigo (500 árvores, 4 classes,
+        abundância relativa por gênero) sobre a tabela da Paola (997
+        amostras), mudando só a forma de validar. O AUC ≈ 1 do artigo só
+        aparece avaliando no próprio treino. Um modelo que recebe só o
+        código do projeto empata com o microbioma inteiro.
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [, setActive] = useState<SectionId>("s1");
   const refs = useRef<Partial<Record<SectionId, HTMLElement | null>>>({});
@@ -2154,6 +2201,19 @@ export default function App() {
               como dado de referência e para orientação exploratória
               (Tabela 2c), e não substitui o resultado do pipeline próprio.
             </p>
+            <p style={{ fontSize: 13.5, borderLeft: "3px solid #a85b5b", paddingLeft: 12 }}>
+              <strong>Correção (out/2026).</strong> O P22 (PRJNA725946) é
+              V3-V4 (341F/806R, Tabela 1b), mas entrou no lote de deblur e
+              no classificador da V4. As leituras começam em{" "}
+              <code>TAGGGAATCTTCCACAATGG</code>, início de V3, e o
+              classificador V4 deixou 79% delas sem gênero, com gêneros
+              espúrios (<em>Dickeya</em> 9,6%, <em>Nocardia</em> 5,6%). Uma
+              correção provisória por correspondência de sequência com as
+              ASVs V3-V4 (<code>analysis/08_corrige_p22.py</code>) recupera
+              93% das leituras e deixa o P22 igual ao da Paola. Os números
+              recalculados estão na seção 6; o GLLVM ainda usa a tabela
+              antiga e o P22 precisa ser reprocessado no ramo V3-V4.
+            </p>
             <table className="formal">
               <caption><span className="cap-label">Tabela 2.</span> Etapas do pipeline próprio e status atual.</caption>
               <thead><tr><th>Etapa</th><th>Status</th></tr></thead>
@@ -2163,12 +2223,13 @@ export default function App() {
                 <tr><td>3a. Confirmação de primers por BioProject</td><td><span className="status-badge done">concluído (8/10; nota do P10 misto)</span></td></tr>
                 <tr><td>3b. Import e corte de primers (cutadapt, 10 projetos)</td><td><span className="status-badge done">concluído</span></td></tr>
                 <tr><td>4a. Deblur região V3-V4 (P1, P6, P14, P19)</td><td><span className="status-badge done">concluído (289/309, 93,5%)</span></td></tr>
-                <tr><td>4b. Deblur região V4 (P2, P9, P10, P16, P22)</td><td><span className="status-badge done">concluído (627/628, 99,8%, após corrigir o ID duplicado do P10)</span></td></tr>
+                <tr><td>4b. Deblur região V4 (P2, P9, P10, P16, P22)</td><td><span className="status-badge partial">refazer o P22: é V3-V4, entrou no ramo V4 (627/628 retidas)</span></td></tr>
                 <tr><td>5. Taxonomia SILVA (V3-V4 e V4)</td><td><span className="status-badge done">concluído (classificador retreinado localmente)</span></td></tr>
                 <tr><td>6. Filtragem e fusão por gênero</td><td><span className="status-badge done">concluído (889 amostras finais de um teto de 937)</span></td></tr>
-                <tr><td>7. PERMANOVA</td><td><span className="status-badge done">concluído (condição 0,59%, projeto 9,19%, 889 amostras)</span></td></tr>
-                <tr><td>8. GLLVM</td><td><span className="status-badge done">concluído (eixos dominados por projeto, η² 56,7% e 58,2%)</span></td></tr>
-                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge done">concluído (macro-AUC 0,811 para 0,6; controle negativo 82,79%)</span></td></tr>
+                <tr><td>7. PERMANOVA</td><td><span className="status-badge done">concluído (condição 0,59%, projeto 9,19%; com P22 corrigido, classe além do projeto 0,4%)</span></td></tr>
+                <tr><td>8. GLLVM</td><td><span className="status-badge partial">refazer com P22 corrigido (antes: eixos dominados por projeto, η² 56,7% e 58,2%)</span></td></tr>
+                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge done">concluído (macro-AUC 0,811 para 0,6; com P22 corrigido, câncer 0,96 para 0,62; controle negativo 86,4%)</span></td></tr>
+                <tr><td>10. Auditoria de viés e comparação com a tabela da Paola</td><td><span className="status-badge done">concluído (seção 6; scripts em analysis/)</span></td></tr>
               </tbody>
             </table>
             <SampleFunnelChart />
@@ -2431,6 +2492,21 @@ export default function App() {
             <h3 style={{ fontSize: 15, marginTop: 24 }}>O que falta até o final</h3>
             <ol style={{ fontSize: 13.5, lineHeight: 1.7, paddingLeft: 20 }}>
               <li>
+                <strong>Reprocessar o P22 no ramo V3-V4</strong> (deblur com
+                trim 250 e classificador V3-V4) e refazer a fusão por gênero.
+                A correção por prefixo em <code>analysis/08_corrige_p22.py</code>{" "}
+                é provisória.
+              </li>
+              <li>
+                <strong>Refazer o GLLVM</strong> com a tabela corrigida.
+              </li>
+              <li>
+                <strong>Alinhar com a Paola</strong> as incongruências da
+                seção 6: P21 dentro ou fora, filtro de 1.000 leituras, DNA não
+                bacteriano no P16 e a contagem total (997 na tabela, 1.008 no
+                artigo).
+              </li>
+              <li>
                 <strong>Etapa 4 fechada</strong>: o deblur das duas regiões
                 está concluído, V3-V4 com 93,5% e V4 com 99,8% de retenção,
                 depois de corrigir o manifest combinado da V4 pra excluir as
@@ -2501,7 +2577,8 @@ export default function App() {
                 pendentes (proveniência do primer de P2/P21 e divergência
                 do P16 entre o TCC de 2025 e o artigo LATINOWARE) já estão
                 redigidas, prontas para adaptação direta na seção de
-                metodologia da dissertação. Resta só essa redação final.
+                metodologia da dissertação. Com a auditoria de out/2026,
+                entram também os três itens do início desta lista.
               </li>
             </ol>
             <PairwiseContrastsChart />
@@ -2527,8 +2604,69 @@ export default function App() {
           </section>
 
           {/* 6 */}
+          <section id="s4c" ref={(el) => { refs.current["s4c"] = el; }}>
+            <h2 className="sec"><span className="sec-num">6.</span>Auditoria de viés e comparação com a Paola</h2>
+            <p>
+              Em out/2026 a tabela do pipeline próprio foi comparada com a
+              tabela usada no artigo da coautora Paola Gyuliane Gonçalves
+              (<code>feature-table.txt</code>, 997 amostras), e as
+              conclusões do manuscrito foram testadas contra o viés de
+              projeto de origem. Scripts e resultados em{" "}
+              <code>analysis/</code>; relatório completo em{" "}
+              <code>analysis/relatorio_vies.html</code>.
+            </p>
+            <AuditAucChart />
+            <table className="formal">
+              <caption><span className="cap-label">Tabela 5.</span> Mesmas análises nas duas tabelas (pipeline próprio com P22 corrigido).</caption>
+              <thead><tr><th>Análise</th><th>Paola</th><th>Pipeline próprio</th></tr></thead>
+              <tbody>
+                <tr><td>RF, CV aleatória (câncer / controle / HSIL / LSIL)</td><td>0,97 / 0,85 / 0,76 / 0,74</td><td>0,96 / 0,82 / 0,73 / 0,71</td></tr>
+                <tr><td>RF, só o projeto como preditor</td><td>0,95 / 0,85 / 0,77 / 0,79</td><td>0,94 / 0,81 / 0,75 / 0,76</td></tr>
+                <tr><td>RF, leave-one-project-out</td><td>0,70 / 0,51 / 0,46 / 0,34</td><td>0,62 / 0,43 / 0,47 / 0,35</td></tr>
+                <tr><td>Acurácia ao prever o projeto (acaso)</td><td>88,1% (31,8%)</td><td>86,4% (35,2%)</td></tr>
+                <tr><td>PERMANOVA: classe / projeto / classe além do projeto</td><td>7,1% / 16,4% / 0,4%</td><td>6,6% / 14,5% / 0,4%</td></tr>
+                <tr><td>Shannon câncer − controle: sem / com ajuste por projeto</td><td>+0,97 (p &lt; 10⁻²⁶) / +0,09 (p = 0,43)</td><td>+0,99 / +0,14 (p = 0,24)</td></tr>
+                <tr><td>30 combinações de classificador, câncer × controle (mediana)</td><td>CV 0,96; LOPO 0,70</td><td>CV 0,95; LOPO 0,65</td></tr>
+              </tbody>
+            </table>
+            <p style={{ fontSize: 13.5 }}>
+              Os principais biomarcadores do artigo vêm, cada um, de
+              praticamente um único projeto:{" "}
+              <em>Burkholderia-Caballeronia-Paraburkholderia</em> (96% no
+              P21, só controles), <em>Wolbachia</em> (100% no P1),{" "}
+              <em>Aeribacillus</em> (100% no P9), <em>Halomonas</em> (95% no
+              P9). Dentro dos projetos com câncer e controle, o que se
+              repete é perda de <em>Lactobacillus</em> e ganho de{" "}
+              <em>Fusobacterium</em> e <em>Prevotella</em>; o único projeto
+              em que o sinal de câncer se transfere é o P19 (Nigéria, AUC ≈
+              0,7–0,8). No P22, a profundidade de leitura sozinha separa
+              câncer de controle (AUC 0,97), sinal de lote dentro do projeto.
+            </p>
+            <table className="formal">
+              <caption><span className="cap-label">Tabela 6.</span> Incongruências entre a tabela da Paola e a do pipeline próprio.</caption>
+              <thead><tr><th>Ponto</th><th>Paola (artigo)</th><th>Pipeline próprio</th><th>Corrigir</th></tr></thead>
+              <tbody>
+                <tr><td>P22</td><td>classificado corretamente</td><td>processado como V4; 79% sem gênero (Bray-Curtis 0,99 contra a Paola; 0,02 após correção)</td><td><span className="status-badge notfound">pipeline próprio</span></td></tr>
+                <tr><td>P21 (Espanha)</td><td>incluído: 103 controles + 2 HSIL</td><td>excluído (primer não publicado)</td><td><span className="status-badge partial">decisão conjunta</span></td></tr>
+                <tr><td>Amostras com menos de 1.000 leituras</td><td>26 mantidas (mínimo de 2 leituras) em P19, P10, P9 e P14</td><td>filtradas</td><td><span className="status-badge notfound">Paola</span></td></tr>
+                <tr><td>P16</td><td>29 amostras; mediana de 48% Unassigned + Eukaryota (provável DNA humano)</td><td>47 amostras; Bray-Curtis 0,49 nas 29 em comum. Metadados: 55; artigo: 26</td><td><span className="status-badge notfound">Paola</span></td></tr>
+                <tr><td>Profundidade da mesma amostra</td><td>referência</td><td>P19 2,3×, P14 0,59×, P1 0,72× (demais 0,99–1,04×)</td><td><span className="status-badge partial">conferir</span></td></tr>
+                <tr><td>P14 (Brasil)</td><td>13 HSIL / 14 controles</td><td>11 / 11 (artigo: 22 / 21)</td><td><span className="status-badge partial">as duas</span></td></tr>
+                <tr><td>Total e cloroplasto</td><td>997 na tabela, 1.008 no artigo; "Chloroplast" no Boruta, ausente da tabela</td><td>889</td><td><span className="status-badge notfound">Paola</span></td></tr>
+                <tr><td>Método</td><td>DADA2 no texto (pasta tem Deblur), SILVA completo, espécie, sem filtro de profundidade</td><td>Deblur por região, classificador por região, gênero, filtro de 1.000 leituras</td><td><span className="status-badge done">escolha de método</span></td></tr>
+              </tbody>
+            </table>
+            <p style={{ fontSize: 13.5 }}>
+              Com o mesmo esquema de validação, as duas tabelas ficam a
+              0,01–0,03 de AUC uma da outra, e a correlação entre elas nos
+              gêneros principais vai de 0,97 a 1,00. As diferenças de método
+              mudam pouco; o que muda as conclusões é quais amostras e
+              projetos entram (P21, P16 e amostras de baixa profundidade).
+            </p>
+          </section>
+
           <section id="s5" ref={(el) => { refs.current["s5"] = el; }}>
-            <h2 className="sec"><span className="sec-num">6.</span>Por que isso importa pra tese</h2>
+            <h2 className="sec"><span className="sec-num">7.</span>Por que isso importa pra tese</h2>
             <p>
               A dissertação enfrenta exatamente esse mesmo problema
               metodológico, só que com <strong>microbioma de soja</strong>:
