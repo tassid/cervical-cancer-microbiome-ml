@@ -65,7 +65,7 @@ Anaerococcus                                ↑*  ↑**   ↑   ↓*   ↑**
 Peptoniphilus                                ↓   ↑*   ↑   ↓*   ↑**
 Campylobacter                                ↑   ↑*   ↓   ↓*   ↑**
 
-== TASSI_FIX | HSIL vs control  (* p<0,05  ** p<0,001)
+== TASSI_V2 | HSIL vs control  (* p<0,05  ** p<0,001)
 projeto                                    P10 P14 P19   P2 todos
 genero                                                           
 Lactobacillus                                ↓   ↑  ↓*    ↓   ↓**
@@ -87,7 +87,7 @@ Anaerococcus                                 ↓   ↓  ↑*    ↓    ↑*
 Peptoniphilus                                ↓   ↓  ↑*    ↓   ↑**
 Campylobacter                                ↓   ↓  ↑*    ↓    ↑*
 
-== TASSI_FIX | LSIL vs control  (* p<0,05  ** p<0,001)
+== TASSI_V2 | LSIL vs control  (* p<0,05  ** p<0,001)
 projeto                                    P10 P19  P2 todos
 genero                                                      
 Lactobacillus                                ↓   ↓   ↓   ↓**
@@ -109,7 +109,7 @@ Anaerococcus                                 ↓  ↑*   ↑    ↑*
 Peptoniphilus                                ↓   ↑   ↑    ↑*
 Campylobacter                                ↓   ↑   ↓     ↑
 
-== TASSI_FIX | cancer vs control  (* p<0,05  ** p<0,001)
+== TASSI_V2 | cancer vs control  (* p<0,05  ** p<0,001)
 projeto                                     P1  P19  P2 P22 todos
 genero                                                           
 Lactobacillus                                ↓   ↓*   ↓   ↑   ↓**
