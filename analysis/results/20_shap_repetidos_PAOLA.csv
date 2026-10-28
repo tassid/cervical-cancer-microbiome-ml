@@ -1,0 +1,19 @@
+contraste,genero,direcao,projeto,n_projetos,projetos_testados
+HSIL vs control,Atopobium,caso,"P10,P14,P2",3,4
+HSIL vs control,Peptoniphilus,caso,"P10,P14,P19",3,4
+HSIL vs control,Finegoldia,controle,"P14,P2",2,4
+HSIL vs control,Gardnerella,controle,"P14,P19",2,4
+HSIL vs control,Lactobacillus,controle,"P10,P19",2,4
+HSIL vs control,Megasphaera,caso,"P14,P2",2,4
+HSIL vs control,Prevotella,controle,"P10,P14",2,4
+HSIL vs control,Sneathia,caso,"P10,P2",2,4
+HSIL vs control,Streptococcus,controle,"P14,P19",2,4
+LSIL vs control,Gardnerella,controle,"P10,P2",2,3
+LSIL vs control,Lactobacillus,controle,"P10,P19",2,3
+LSIL vs control,Peptoniphilus,caso,"P19,P2",2,3
+LSIL vs control,Ureaplasma,caso,"P10,P19",2,3
+LSIL vs control,sem_genero,caso,"P10,P19",2,3
+cancer vs control,Corynebacterium,caso,"P19,P2",2,3
+cancer vs control,Lactobacillus,controle,"P19,P2",2,3
+cancer vs control,Staphylococcus,caso,"P19,P2",2,3
+cancer vs control,sem_genero,controle,"P2,P22",2,3

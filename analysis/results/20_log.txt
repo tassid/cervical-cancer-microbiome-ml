@@ -1,0 +1,89 @@
+
+== PAOLA: 997 amostras, 160 gêneros
+   A/B. top 20 classe x top 20 projeto: 9 em comum; Spearman |SHAP| classe x projeto = 0.81
+   top 10 cancer: 3/10 com >= 80% da abundância em 1 projeto; 10/10 explicados mais por projeto que por classe
+      sem_genero (P16, 59%), Enterococcus (P6, 48%), Lactobacillus (P14, 20%), Streptococcus (P6, 27%), Peptostreptococcus (P6, 52%), Halomonas (P9, 97%), Bacillus (P1, 53%), Corynebacterium (P6, 26%), Rhodococcus (P1, 95%), Burkholderia-Caballeronia-Paraburkholderia (P21, 96%)
+   top 10 control: 1/10 com >= 80% da abundância em 1 projeto; 10/10 explicados mais por projeto que por classe
+      Burkholderia-Caballeronia-Paraburkholderia (P21, 96%), Lactobacillus (P14, 20%), Pseudomonas (P19, 54%), sem_genero (P16, 59%), Corynebacterium (P6, 26%), Enterococcus (P6, 48%), Ralstonia (P22, 52%), Peptostreptococcus (P6, 52%), Streptococcus (P6, 27%), Prevotella (P9, 28%)
+   top 10 lesion high: 1/10 com >= 80% da abundância em 1 projeto; 10/10 explicados mais por projeto que por classe
+      Pseudomonas (P19, 54%), Burkholderia-Caballeronia-Paraburkholderia (P21, 96%), sem_genero (P16, 59%), Lactobacillus (P14, 20%), Prevotella (P9, 28%), Enterococcus (P6, 48%), Streptococcus (P6, 27%), Peptoniphilus (P9, 32%), Finegoldia (P19, 29%), Gardnerella (P14, 16%)
+   top 10 lesion low: 1/10 com >= 80% da abundância em 1 projeto; 10/10 explicados mais por projeto que por classe
+      Burkholderia-Caballeronia-Paraburkholderia (P21, 96%), Pseudomonas (P19, 54%), Streptococcus (P6, 27%), sem_genero (P16, 59%), Lactobacillus (P14, 20%), Ureaplasma (P19, 26%), Finegoldia (P19, 29%), Prevotella (P9, 28%), Sneathia (P2, 21%), Enterococcus (P6, 48%)
+   C. LOPO: top 20 do projeto deixado de fora tem em média 15.9/20 em comum com o global; Spearman médio entre folds 0.83
+projeto_fora   n  spearman_com_global  top20_em_comum_com_global
+          P1  72                 0.74                         14
+         P10 317                 0.87                         13
+         P14  27                 0.96                         16
+         P16  29                 0.93                         17
+         P19 167                 0.95                         16
+          P2  77                 0.94                         17
+         P21 105                 0.94                         16
+         P22 119                 0.86                         16
+          P6  26                 0.94                         18
+          P9  58                 0.81                         16
+   D. no top 10 de >= 2 projetos, mesma direção:
+        contraste          genero  direcao     projeto  n_projetos  projetos_testados
+  HSIL vs control       Atopobium     caso  P10,P14,P2           3                  4
+  HSIL vs control   Peptoniphilus     caso P10,P14,P19           3                  4
+  HSIL vs control      Finegoldia controle      P14,P2           2                  4
+  HSIL vs control     Gardnerella controle     P14,P19           2                  4
+  HSIL vs control   Lactobacillus controle     P10,P19           2                  4
+  HSIL vs control     Megasphaera     caso      P14,P2           2                  4
+  HSIL vs control      Prevotella controle     P10,P14           2                  4
+  HSIL vs control        Sneathia     caso      P10,P2           2                  4
+  HSIL vs control   Streptococcus controle     P14,P19           2                  4
+  LSIL vs control     Gardnerella controle      P10,P2           2                  3
+  LSIL vs control   Lactobacillus controle     P10,P19           2                  3
+  LSIL vs control   Peptoniphilus     caso      P19,P2           2                  3
+  LSIL vs control      Ureaplasma     caso     P10,P19           2                  3
+  LSIL vs control      sem_genero     caso     P10,P19           2                  3
+cancer vs control Corynebacterium     caso      P19,P2           2                  3
+cancer vs control   Lactobacillus controle      P19,P2           2                  3
+cancer vs control  Staphylococcus     caso      P19,P2           2                  3
+cancer vs control      sem_genero controle      P2,P22           2                  3
+      câncer em P19: Anaerococcus (+), Peptoniphilus (+), sem_genero (+), Porphyromonas (+), Peptostreptococcus (+), Corynebacterium (+), Lactobacillus (-), Bacteroides (+), Gardnerella (-), Staphylococcus (+)
+      câncer em P2: Gemella (+), Megasphaera (+), Lactobacillus (-), Atopobium (+), Prevotella (-), Corynebacterium (+), Finegoldia (+), Gardnerella (+), sem_genero (-), Staphylococcus (+)
+      câncer em P22: Ralstonia (-), Pelomonas (-), Brevundimonas (-), Acinetobacter (-), SM1A02 (-), Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium (-), sem_genero (-), Pseudomonas (+), Finegoldia (-), Rhodococcus (+)
+
+== TASSI_V2: 889 amostras, 172 gêneros
+   A/B. top 20 classe x top 20 projeto: 11 em comum; Spearman |SHAP| classe x projeto = 0.81
+   top 10 cancer: 1/10 com >= 80% da abundância em 1 projeto; 10/10 explicados mais por projeto que por classe
+      Lactobacillus (P14, 25%), sem_genero (P22, 44%), Streptococcus (P6, 26%), Shuttleworthia (P10, 45%), Enterococcus (P6, 46%), Corynebacterium (P16, 38%), Bacillus (P9, 78%), Porphyromonas (P9, 35%), Fusobacterium (P9, 62%), Rhodococcus (P1, 94%)
+   top 10 control: 0/10 com >= 80% da abundância em 1 projeto; 10/10 explicados mais por projeto que por classe
+      Lactobacillus (P14, 25%), Corynebacterium (P16, 38%), Shuttleworthia (P10, 45%), Streptococcus (P6, 26%), sem_genero (P22, 44%), Enterococcus (P6, 46%), Pseudomonas (P19, 54%), Brevundimonas (P22, 70%), Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium (P1, 52%), Gardnerella (P14, 18%)
+   top 10 lesion high: 0/10 com >= 80% da abundância em 1 projeto; 10/10 explicados mais por projeto que por classe
+      sem_genero (P22, 44%), Pseudomonas (P19, 54%), Streptococcus (P6, 26%), Lactobacillus (P14, 25%), Enterococcus (P6, 46%), Corynebacterium (P16, 38%), Shuttleworthia (P10, 45%), Finegoldia (P16, 26%), Atopobium (P2, 23%), Prevotella (P9, 28%)
+   top 10 lesion low: 0/10 com >= 80% da abundância em 1 projeto; 10/10 explicados mais por projeto que por classe
+      sem_genero (P22, 44%), Streptococcus (P6, 26%), Lactobacillus (P14, 25%), Ureaplasma (P16, 45%), Corynebacterium (P16, 38%), Sneathia (P2, 22%), Pseudomonas (P19, 54%), Shuttleworthia (P10, 45%), Enterococcus (P6, 46%), Finegoldia (P16, 26%)
+   C. LOPO: top 20 do projeto deixado de fora tem em média 15.6/20 em comum com o global; Spearman médio entre folds 0.84
+projeto_fora   n  spearman_com_global  top20_em_comum_com_global
+          P1  72                 0.80                         12
+         P10 313                 0.83                         13
+         P14  22                 0.96                         17
+         P16  47                 0.93                         17
+         P19 160                 0.93                         18
+          P2  77                 0.96                         17
+         P22 119                 0.92                         14
+          P6  26                 0.95                         16
+          P9  53                 0.86                         16
+   D. no top 10 de >= 2 projetos, mesma direção:
+        contraste          genero  direcao    projeto  n_projetos  projetos_testados
+  HSIL vs control       Atopobium     caso P10,P14,P2           3                  4
+  HSIL vs control      Finegoldia controle     P14,P2           2                  4
+  HSIL vs control     Gardnerella controle    P14,P19           2                  4
+  HSIL vs control   Lactobacillus controle    P10,P19           2                  4
+  HSIL vs control      Prevotella controle    P10,P14           2                  4
+  HSIL vs control        Sneathia     caso     P10,P2           2                  4
+  HSIL vs control      Ureaplasma     caso    P10,P14           2                  4
+  LSIL vs control   Lactobacillus controle P10,P19,P2           3                  3
+  LSIL vs control Bifidobacterium     caso     P10,P2           2                  3
+cancer vs control    Anaerococcus     caso     P19,P2           2                  3
+cancer vs control Corynebacterium     caso     P19,P2           2                  3
+cancer vs control         Gemella     caso     P2,P22           2                  3
+cancer vs control   Lactobacillus controle     P19,P2           2                  3
+      câncer em P19: Peptoniphilus (+), Anaerococcus (+), Bacteroides (+), Porphyromonas (+), Actinomyces (+), Gardnerella (-), Lactobacillus (-), Corynebacterium (+), Moryella (+), Ezakiella (+)
+      câncer em P2: Lactobacillus (-), Megasphaera (+), Gemella (+), Atopobium (+), Prevotella (-), Corynebacterium (+), Parvimonas (+), Anaerococcus (+), Ureaplasma (+), Staphylococcus (+)
+      câncer em P22: Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium (-), Brevundimonas (-), Pseudomonas (+), Finegoldia (-), Enhydrobacter (-), Delftia (-), Streptococcus (+), sem_genero (-), Gemella (+), Acinetobacter (-)
+  tabela  top20_classe_e_projeto  spearman_classe_projeto  lopo_top20_em_comum  lopo_spearman_entre_folds  repetidos_dentro_projetos
+   PAOLA                       9                     0.81                15.90                       0.83                         18
+TASSI_V2                      11                     0.81                15.56                       0.84                         13

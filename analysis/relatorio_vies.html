@@ -77,7 +77,7 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <ol>
       <li><b>O AUC ≈ 1 do artigo só aparece quando o modelo é avaliado nas próprias amostras de treino.</b> Com validação cruzada, o mesmo Random Forest dá 0,97 para câncer, 0,85 para controle e 0,74–0,76 para as lesões.</li>
       <li><b>Saber só de qual projeto a amostra veio já dá quase o mesmo AUC</b> que usar o microbioma inteiro. Quando o modelo é testado num projeto que não viu, o AUC cai para 0,62–0,70 em câncer e fica no nível do acaso nas lesões.</li>
-      <li><b>A diversidade "maior no câncer" e os principais biomarcadores do Boruta e do LEfSe vêm do projeto de origem.</b> Burkholderia está 96% no P21 (Espanha, quase só controles). Wolbachia está 100% no P1, Aeribacillus 100% no P9.</li>
+      <li><b>A diversidade "maior no câncer" e os principais biomarcadores do Boruta e do LEfSe vêm do projeto de origem.</b> Burkholderia está 96% no P21 (Espanha, quase só controles). Wolbachia está 100% no P1, Aeribacillus 100% no P9. O SHAP do modelo com todos os projetos juntos mostra o mesmo: os 10 gêneros mais importantes de cada classe variam mais entre projetos do que entre classes.</li>
       <li><b>Os dois pipelines concordam depois de reprocessar o P22.</b> Ele tinha entrado no ramo V4 do pipeline da Tassiane, mas é V3-V4. Reprocessado a partir do SRA, a concordância por gênero fica entre 0,97 e 1,00. No caminho apareceu outro problema: no P22, câncer e controle foram sequenciados em corridas diferentes.</li>
       <li><b>O sinal que se sustenta é menor e mais local:</b> perda de <i>Lactobacillus</i> e ganho de anaeróbios (<i>Fusobacterium</i>, <i>Porphyromonas</i>, <i>Peptostreptococcus</i>) no câncer, dentro de projetos com controles próprios, principalmente na Nigéria (P19, AUC ≈ 0,80). Na meta-análise por projeto, <i>Fusobacterium</i> e <i>Sneathia</i> sobem no câncer em 4 de 4 estudos, e <i>Sneathia</i>, <i>Megasphaera</i> e <i>Atopobium</i> sobem na HSIL em 4 de 4. São efeitos pequenos. Para LSIL não há sinal.</li>
     </ol>
@@ -531,12 +531,40 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
   </div>
   <p class="meta">Câncer/HSIL/LSIL/controle. Versão em inglês, com notas e a tabela de validação (os três esquemas lado a lado), em <span class="mono">analysis/results/18_tabelas_artigo.md</span>. Parágrafos prontos para Métodos e Resultados em <span class="mono">analysis/texto_artigo_EN.md</span>.</p>
 
-  <h2>12. Próximos passos sugeridos</h2>
+  <h2>12. SHAP: o que o modelo usa para classificar</h2>
+  <div class="prose">
+    <p>O SHAP mede quanto cada gênero empurra a previsão de cada amostra. O SHAP foi calculado no mesmo Random Forest do artigo (todos os projetos juntos) e comparado com três versões: um modelo que prevê o <b>projeto</b>, o modelo avaliado no projeto deixado de fora e modelos treinados dentro de cada projeto. Script: <span class="mono">20_shap.py</span>.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Pergunta</th><th>Paola</th><th>Tassiane (P22 reprocessado)</th></tr></thead>
+      <tbody>
+        <tr><td>Dos 10 gêneros com maior SHAP em cada classe, quantos variam mais entre projetos do que entre classes (η²)?</td><td class="mono">10/10 nas 4 classes</td><td class="mono">10/10 nas 4 classes</td></tr>
+        <tr><td>Top 20 para a classe × top 20 para o projeto: gêneros em comum</td><td class="mono">9</td><td class="mono">11</td></tr>
+        <tr><td>Correlação entre a importância para a classe e para o projeto (Spearman, todos os gêneros)</td><td class="mono">0,81</td><td class="mono">0,81</td></tr>
+        <tr><td>Projeto fora do treino: top 20 em comum com o modelo global (média)</td><td class="mono">15,9/20</td><td class="mono">15,6/20</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p><b>Com todos os projetos juntos, o SHAP mostra principalmente marcas do projeto.</b> No topo do câncer estão as leituras sem gênero (que se concentram no P16 ou no P22, conforme a tabela), <i>Enterococcus</i> e <i>Peptostreptococcus</i> (P6), <i>Halomonas</i> (97% no P9), <i>Rhodococcus</i> (95% no P1) e <i>Burkholderia</i> (96% no P21). Um gênero importante para dizer a classe também é importante para dizer o projeto (correlação 0,81). Para os 15 gêneros do topo do câncer, a mediana do η² é 0,29–0,30 para o projeto e 0,14–0,15 para a classe.</p>
+    <p><b>O ranking do SHAP é estável, mas isso não valida o biomarcador.</b> Quando um projeto fica fora do treino, o modelo continua usando quase os mesmos gêneros (16 dos 20 primeiros), e mesmo assim o AUC cai para 0,34–0,70. O modelo usa sempre os mesmos gêneros, só que eles não servem para classificar amostras de um estudo novo.</p>
+    <p><b>Dentro dos projetos, o SHAP concorda com a meta-análise.</b> Contando os gêneros que aparecem entre os 10 primeiros em pelo menos dois projetos, com a mesma direção:</p>
+    <ul class="tight">
+      <li>HSIL (4 projetos testados): <i>Atopobium</i> ↑ em 3 (P10, P14, P2) e <i>Sneathia</i> ↑ em 2 (P10, P2), nas duas tabelas; <i>Megasphaera</i> ↑ (P14, P2) só na da Paola. <i>Lactobacillus</i>, <i>Gardnerella</i> e <i>Prevotella</i> mais altos nos controles.</li>
+      <li>Câncer (3 projetos testados): <i>Lactobacillus</i> ↓ e <i>Corynebacterium</i> ↑ em P19 e P2, nas duas tabelas; <i>Anaerococcus</i> ↑ (P19, P2) e <i>Gemella</i> ↑ (P2, P22) na da Tassiane; <i>Staphylococcus</i> ↑ (P19, P2) na da Paola.</li>
+      <li>LSIL (3 projetos testados): <i>Lactobacillus</i> ↓ (3 de 3 na tabela da Tassiane, 2 de 3 na da Paola).</li>
+    </ul>
+    <p>No P22, o câncer é explicado por gêneros de reagente mais baixos (<i>Rhizobium</i>, <i>Brevundimonas</i>, <i>Ralstonia</i>, <i>Delftia</i>), outro sinal de que a diferença ali é de corrida. Entrar no top 10 não é um teste de significância: o SHAP sempre devolve 10 gêneros, por isso essa lista é mais longa que a do Boruta e a do LEfSe. Ela serve para confirmar a meta-análise, não para substituí-la.</p>
+    <p><b>Para o artigo:</b> a figura de SHAP com todos os projetos juntos mostra o que o modelo usa, não biologia. Sugiro trocá-la pelos gráficos de SHAP dentro dos projetos (P19 e P2 para câncer, P10/P14/P2 para HSIL), ou mostrar a global junto do η² do projeto, como em <span class="mono">results/20_shap_cancer_*.png</span>.</p>
+  </div>
+
+  <h2>13. Próximos passos sugeridos</h2>
   <ul class="tight prose">
     <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas).</li>
     <li>Conferir no SRA Run Selector a qual BioProject pertencem as 29 runs SRR26495xxx do P16.</li>
     <li>Levar para o artigo a Tabela 1 corrigida, a tabela de validação e os parágrafos de <span class="mono">texto_artigo_EN.md</span> (P14, P16, P22, validação e biomarcadores).</li>
-    <li>Substituir as figuras de Boruta, LEfSe e SHAP por resultados por projeto ou pela meta-análise.</li>
+    <li>Substituir as figuras de Boruta, LEfSe e SHAP por resultados por projeto ou pela meta-análise (o SHAP por projeto já está em <span class="mono">results/20_shap_por_projeto_*.csv</span>).</li>
   </ul>
 </div>
 

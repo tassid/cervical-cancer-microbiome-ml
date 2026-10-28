@@ -57,6 +57,31 @@ def direcao(x, s):
     return spearmanr(x, s).correlation
 
 
+def figura(A, nome):
+    """Top 15 do câncer: barra = |SHAP| médio; cor = razão eta² projeto / eta² classe."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.colors import LogNorm
+    t = A.nlargest(15, "shap_cancer").iloc[::-1]
+    razao = (t.eta2_projeto / t.eta2_classe.clip(lower=1e-3)).clip(1, 100)
+    norm = LogNorm(1, 100)
+    fig, ax = plt.subplots(figsize=(8, 5.5))
+    ax.barh(t.genero, t.shap_cancer, color=plt.cm.OrRd(0.25 + 0.75 * norm(razao.values)))
+    for i, (v, p, f) in enumerate(zip(t.shap_cancer, t.projeto_dominante, t.fracao_no_projeto_dominante)):
+        ax.text(v, i, f"  {p} {100 * f:.0f}%", va="center", fontsize=8)
+    ax.set_xlabel("mean |SHAP| (cancer class)")
+    ax.set_title(f"{nome}: top 15 genera for cancer, pooled model\n"
+                 "label: study holding most of the genus abundance", fontsize=9)
+    ax.set_xlim(0, t.shap_cancer.max() * 1.3)
+    sm = plt.cm.ScalarMappable(norm=norm, cmap=plt.cm.OrRd)
+    cb = fig.colorbar(sm, ax=ax, pad=0.02)
+    cb.set_label("η² study / η² class (log)", fontsize=8)
+    fig.tight_layout()
+    fig.savefig(f"{OUT_DIR}/20_shap_cancer_{nome}.png", dpi=150)
+    plt.close(fig)
+
+
 m = meta()
 resumo = []
 for nome, carregar in ativas():
@@ -170,19 +195,7 @@ for nome, carregar in ativas():
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    t = A.nlargest(15, "shap_cancer").iloc[::-1]
-    frac = t.eta2_projeto / (t.eta2_projeto + t.eta2_classe)
-    fig, ax = plt.subplots(figsize=(7, 5.5))
-    ax.barh(t.genero, t.shap_cancer, color=plt.cm.RdBu_r(0.15 + 0.7 * frac.values))
-    for i, (v, p, f) in enumerate(zip(t.shap_cancer, t.projeto_dominante, t.fracao_no_projeto_dominante)):
-        ax.text(v, i, f"  {p} {100 * f:.0f}%", va="center", fontsize=8)
-    ax.set_xlabel("mean |SHAP| (cancer class)")
-    ax.set_title(f"{nome}: top 15 genera for cancer (pooled model)\n"
-                 "red = variance explained more by study than by class; label = study with most of the abundance",
-                 fontsize=9)
-    ax.set_xlim(0, t.shap_cancer.max() * 1.35)
-    fig.tight_layout()
-    fig.savefig(f"{OUT_DIR}/20_shap_cancer_{nome}.png", dpi=150)
+    figura(A, nome)
 
     sh = shap.Explanation(S[:, :, cls.index("cancer")], data=X, feature_names=list(gen))
     plt.figure()
