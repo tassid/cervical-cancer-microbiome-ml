@@ -1,0 +1,12 @@
+TASSI_V2: 889 amostras, 1586 gêneros -> /tmp/claude-0/-home-user-cervical-cancer-microbiome-ml/50c1c2b7-3497-5fa2-9353-d82cdeb37757/scratchpad/rrun_v2
+tipo_amostra  cancer  control  lesion high  lesion low
+Project                                               
+P1                68        4            0           0
+P10                1      211           58          43
+P14                0       11           11           0
+P16               47        0            0           0
+P19               29       16           59          56
+P2                10       29           27          11
+P22               65       54            0           0
+P6                26        0            0           0
+P9                53        0            0           0

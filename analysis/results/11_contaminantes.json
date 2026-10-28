@@ -1,0 +1,156 @@
+{
+ "PAOLA": {
+  "generos_contaminantes": [
+   "Burkholderia-Caballeronia-Paraburkholderia",
+   "Ralstonia",
+   "Cupriavidus",
+   "Bradyrhizobium",
+   "Methylobacterium-Methylorubrum",
+   "Sphingomonas",
+   "Delftia",
+   "Brevundimonas",
+   "Caulobacter",
+   "Mesorhizobium",
+   "Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium",
+   "Novosphingobium",
+   "Acidovorax",
+   "Massilia",
+   "Pelomonas",
+   "Variovorax",
+   "Stenotrophomonas",
+   "Halomonas",
+   "Shewanella",
+   "Bacillus",
+   "Brochothrix",
+   "Paenibacillus",
+   "Thermus",
+   "Aeribacillus",
+   "Geobacillus",
+   "Anoxybacillus",
+   "Wolbachia",
+   "Rhodococcus",
+   "Flavobacterium",
+   "Chryseobacterium",
+   "Pedobacter",
+   "Deinococcus",
+   "Microbacterium",
+   "Achromobacter",
+   "Ochrobactrum",
+   "Phyllobacterium",
+   "Bosea",
+   "Aquabacterium",
+   "Comamonas",
+   "Janthinobacterium",
+   "Tepidimonas"
+  ],
+  "mediana_pct_leituras": 0.014667057788207686,
+  "com_contaminantes": {
+   "cv": {
+    "cancer": 0.9649349631719167,
+    "control": 0.8400709741778281,
+    "lesion high": 0.7450778626407917,
+    "lesion low": 0.7304126311541567
+   },
+   "lopo": {
+    "cancer": 0.6693969401347751,
+    "control": 0.49709929843497036,
+    "lesion high": 0.44329326280127196,
+    "lesion low": 0.3298527037933817
+   },
+   "acuracia_projeto": 0.8706118355065195
+  },
+  "sem_contaminantes": {
+   "cv": {
+    "cancer": 0.9504045212349161,
+    "control": 0.8058328836121604,
+    "lesion high": 0.7383317483431899,
+    "lesion low": 0.6962772397094431
+   },
+   "lopo": {
+    "cancer": 0.6525010774173328,
+    "control": 0.5391155211041881,
+    "lesion high": 0.419042913608131,
+    "lesion low": 0.29701372074253435
+   },
+   "acuracia_projeto": 0.827482447342026
+  }
+ },
+ "TASSI_V2": {
+  "generos_contaminantes": [
+   "Burkholderia-Caballeronia-Paraburkholderia",
+   "Ralstonia",
+   "Cupriavidus",
+   "Bradyrhizobium",
+   "Methylobacterium-Methylorubrum",
+   "Sphingomonas",
+   "Delftia",
+   "Brevundimonas",
+   "Caulobacter",
+   "Mesorhizobium",
+   "Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium",
+   "Novosphingobium",
+   "Acidovorax",
+   "Herbaspirillum",
+   "Massilia",
+   "Pelomonas",
+   "Variovorax",
+   "Stenotrophomonas",
+   "Halomonas",
+   "Shewanella",
+   "Bacillus",
+   "Paenibacillus",
+   "Thermus",
+   "Aeribacillus",
+   "Geobacillus",
+   "Anoxybacillus",
+   "Wolbachia",
+   "Rhodococcus",
+   "Flavobacterium",
+   "Chryseobacterium",
+   "Pedobacter",
+   "Deinococcus",
+   "Microbacterium",
+   "Achromobacter",
+   "Ochrobactrum",
+   "Phyllobacterium",
+   "Bosea",
+   "Aquabacterium",
+   "Comamonas",
+   "Janthinobacterium",
+   "Duganella",
+   "Undibacterium",
+   "Tepidimonas"
+  ],
+  "mediana_pct_leituras": 0.004528575310207409,
+  "com_contaminantes": {
+   "cv": {
+    "cancer": 0.9575335865313759,
+    "control": 0.8078750681942171,
+    "lesion high": 0.7280126571152326,
+    "lesion low": 0.6949352316489672
+   },
+   "lopo": {
+    "cancer": 0.6280766396462786,
+    "control": 0.4477659574468085,
+    "lesion high": 0.46630043069350435,
+    "lesion low": 0.3458221496090559
+   },
+   "acuracia_projeto": 0.8470191226096738
+  },
+  "sem_contaminantes": {
+   "cv": {
+    "cancer": 0.951252763448784,
+    "control": 0.7883606110201855,
+    "lesion high": 0.7243781313175706,
+    "lesion low": 0.699054732174116
+   },
+   "lopo": {
+    "cancer": 0.6327985941840032,
+    "control": 0.4569749045280961,
+    "lesion high": 0.47776215170958947,
+    "lesion low": 0.3426770918426888
+   },
+   "acuracia_projeto": 0.829021372328459
+  }
+ }
+}
