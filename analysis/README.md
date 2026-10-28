@@ -40,6 +40,7 @@ python 16_p16_sublotes.py               # os dois grupos de runs do P16 (26 com 
 python 17_boruta_por_projeto.py         # Boruta global e dentro de cada projeto (pip install Boruta)
 LEFSE_BIN=... python 19_lefse_por_projeto.py   # LEfSe global e por projeto (lefse 1.1.2, python 3.9, rpy2 < 3.5)
 python 18_tabelas_artigo.py             # Tabela 1 corrigida e tabela de validação (depois do 03)
+python 20_shap.py                       # SHAP global, do modelo que prevê o projeto, LOPO e dentro de cada projeto (~15 min)
 ```
 
 Textos para o artigo: `texto_metodos_EN.md` (Métodos) e `texto_artigo_EN.md` (exclusões, notas da
@@ -102,5 +103,12 @@ Os resultados já calculados estão em `results/`.
   significativos; HSIL e LSIL caem para 0.
 - **Contaminantes** (`11_contaminantes.py`): até 7,7% das leituras no P1 e 2,8% no P9; removê-los não muda
   o LOPO (0,63) nem a previsão do projeto (83–85%).
+- **SHAP** (`20_shap.py`): no modelo com todos os projetos juntos, os 10 gêneros de maior |SHAP| de cada
+  classe variam mais entre projetos do que entre classes (10/10, nas duas tabelas); a importância para a
+  classe e para o projeto tem Spearman 0,81. Com o projeto fora do treino o ranking quase não muda (16 dos
+  20 primeiros), mas o AUC cai: estabilidade do SHAP não valida biomarcador. Dentro dos projetos, o top 10
+  repete *Atopobium* ↑ (HSIL, 3 de 4 projetos), *Sneathia* ↑ (HSIL), *Lactobacillus* ↓ e *Corynebacterium* ↑
+  (câncer, P19 e P2), em linha com a meta-análise. Figuras: `results/20_shap_cancer_*.png` e
+  `results/20_shap_beeswarm_cancer_*.png`.
 - **P16 na tabela da Paola**: 39% "Unassigned" e 2,5% Eukaryota, provável DNA do hospedeiro
   não filtrado; 29 amostras contra 47 na da Tassiane e 26 no artigo.

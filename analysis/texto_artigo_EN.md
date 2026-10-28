@@ -61,3 +61,18 @@ anaerobes (*Anaerococcus*, *Peptoniphilus*, *Porphyromonas*). The genera that
 remained consistent across studies were therefore those identified by the random-effects
 meta-analysis (*Fusobacterium* and *Sneathia* in cancer; *Sneathia*,
 *Megasphaera* and *Atopobium* in HSIL), each with modest effect sizes.
+
+## Results: SHAP (replaces the pooled SHAP paragraph)
+
+SHAP values from the pooled Random Forest mainly reflected study of origin. For each of the four
+classes, all ten genera with the highest mean |SHAP| varied more between studies than between
+clinical groups (rank-based η²), and several were concentrated in a single study (*Halomonas*,
+97% of its abundance in PRJNA431248; *Rhodococcus*, 95% in PRJNA687644;
+*Burkholderia-Caballeronia-Paraburkholderia*, 96% in PRJEB83336). The importance of each genus for
+predicting clinical group was strongly correlated with its importance in a model trained to predict
+the study (Spearman ρ = 0.81). When each study was held out, the SHAP ranking changed little (on
+average 16 of the top 20 genera were retained), although AUCs fell to 0.34–0.70, indicating that a
+stable SHAP ranking does not imply transferable biomarkers. Within studies, the genera most often
+among the ten highest-ranked by SHAP were *Atopobium* (enriched in HSIL in three of four studies),
+*Sneathia* (HSIL, two studies), and *Lactobacillus* (depleted) and *Corynebacterium* (enriched) in
+cancer (PRJNA914231 and PRJNA518153), in agreement with the meta-analysis.
