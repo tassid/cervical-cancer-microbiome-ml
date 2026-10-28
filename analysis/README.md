@@ -41,6 +41,7 @@ python 17_boruta_por_projeto.py         # Boruta global e dentro de cada projeto
 LEFSE_BIN=... python 19_lefse_por_projeto.py   # LEfSe global e por projeto (lefse 1.1.2, python 3.9, rpy2 < 3.5)
 python 18_tabelas_artigo.py             # Tabela 1 corrigida e tabela de validação (depois do 03)
 python 20_shap.py                       # SHAP global, do modelo que prevê o projeto, LOPO e dentro de cada projeto (~15 min)
+python 21_figuras.py                    # 26 figuras do artigo em figuras/ (PNG e PDF); rode depois dos anteriores
 ```
 
 Textos para o artigo: `texto_metodos_EN.md` (Métodos) e `texto_artigo_EN.md` (exclusões, notas da
