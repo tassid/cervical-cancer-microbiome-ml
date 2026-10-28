@@ -379,7 +379,7 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
         <tr><td>Diversidade alfa e composição taxonômica (barras, heatmap)</td><td><span class="pill good">tem</span></td><td><span class="pill warn">só na auditoria</span></td></tr>
         <tr><td>LEfSe, DESeq2, Boruta, SHAP</td><td><span class="pill good">tem</span> (sem ajuste por projeto)</td><td><span class="pill bad">falta</span></td></tr>
         <tr><td>Rede de coocorrência (NetCoMi)</td><td><span class="pill warn">nos Métodos, sem resultado</span></td><td><span class="pill bad">falta</span></td></tr>
-        <tr><td>GLLVM</td><td><span class="pill warn">no Drive (efeito de projeto removido), fora do artigo</span></td><td><span class="pill warn">refazer com P22 reprocessado (o pacote gllvm não pôde ser instalado nesta análise)</span></td></tr>
+        <tr><td>GLLVM</td><td><span class="pill warn">no Drive (efeito de projeto removido), fora do artigo</span></td><td><span class="pill good">refeito com P22 reprocessado</span></td></tr>
         <tr><td>Matriz de confusão</td><td><span class="pill bad">citada na legenda da Fig. 7, não existe</span></td><td><span class="pill warn">feita na auditoria (seção 10)</span></td></tr>
       </tbody>
     </table>
@@ -459,6 +459,9 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
         <tr><td>RF, LOPO (macro-AUC), direção automática do pROC</td><td>0,596</td><td>0,596</td><td>—</td></tr>
         <tr><td>RF, LOPO (macro-AUC), direção fixa</td><td>—</td><td><b>0,457</b> (câncer 0,61; controle 0,42; HSIL 0,47; LSIL 0,34)</td><td>—</td></tr>
         <tr><td>Controle negativo (prever projeto)</td><td>83,0%</td><td>83,0%</td><td>—</td></tr>
+        <tr><td>GLLVM: AIC sem → com projeto</td><td>313.373 → 300.307,4 (98 gêneros)</td><td>344.982,3 → 334.284,8 (102 gêneros)</td><td>—</td></tr>
+        <tr><td>GLLVM: η² por projeto (LV1 / LV2)</td><td>56,7% / 58,2%</td><td><b>30,3% / 15,9%</b></td><td>—</td></tr>
+        <tr><td>GLLVM: η² por condição (LV1 / LV2)</td><td>11,1% / 7,9%</td><td>15,0% / 4,1%</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -482,7 +485,7 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
 
   <h2>11. Próximos passos sugeridos</h2>
   <ul class="tight prose">
-    <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas) e refazer o GLLVM.</li>
+    <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas).</li>
     <li>Registrar no artigo que, no P22, câncer e controle foram sequenciados em corridas diferentes (leituras de ~222 e ~274 nt).</li>
     <li>Registrar nos Métodos que 21 runs do P14 não são 16S (DNA humano) e corrigir a Tabela 1. Na tabela da Paola, refazer o P16 descartando leituras sem primer.</li>
     <li>Investigar o P16 na tabela da Paola: filtrar leituras não bacterianas e conferir por que há 29, 26 e 55 amostras em lugares diferentes.</li>

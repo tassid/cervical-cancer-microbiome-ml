@@ -1,0 +1,6 @@
+            tabela eixo  eta2_projeto  eta2_tipo_amostra
+original (refeito)  LV1          56.7               11.1
+original (refeito)  LV2          58.2                7.9
+          tabela eixo  eta2_projeto  eta2_tipo_amostra
+P22 reprocessado  LV1          30.3               15.0
+P22 reprocessado  LV2          15.9                4.1

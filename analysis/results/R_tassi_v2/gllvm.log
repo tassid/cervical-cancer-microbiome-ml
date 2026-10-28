@@ -1,0 +1,18 @@
+Loading required package: TMB
+
+Attaching package: 'gllvm'
+
+The following object is masked from 'package:stats':
+
+    simulate
+
+generos antes do filtro: 1586 
+generos depois do filtro (prevalencia >= 10%): 102 
+
+ajustando modelo sem covariaveis...
+AIC (sem covariaveis): 344982.3 
+
+ajustando modelo com projeto como efeito fixo...
+AIC (com projeto): 334284.8 
+
+gllvm_escores.csv salvo
