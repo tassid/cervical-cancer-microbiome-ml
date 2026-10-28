@@ -75,5 +75,19 @@ Os resultados já calculados estão em `results/`.
   da correção, as duas tabelas concordam (Spearman 0,97–1,00 nos gêneros principais;
   Bray-Curtis mediano por amostra ≤ 0,09 em todos os projetos exceto P16).
 - **21 das 43 runs do P14 não são 16S** (DNA humano: Alu e satélite, nenhuma leitura com primer ou início de V3, conferido nos FASTQ do SRA). A exclusão nas duas tabelas é correta. No P16, ~55% das leituras do sublote principal também não são 16S, o que explica o Unassigned da tabela da Paola. Metade do único projeto brasileiro está fora das duas tabelas.
+- **P22 reprocessado** (`TASSI_V2`): mesmas ASVs do pipeline original; câncer e controle do P22 vêm de
+  corridas com leituras de ~222 e ~274 nt (por isso corte de 220 nt). Com essa tabela: LOPO 0,64 / 0,44 /
+  0,48 / 0,35; projeto previsto com 86% de acerto; PERMANOVA classe 6,6%, projeto 14,5%, classe além do
+  projeto 0,4% (p = 0,08).
+- **Scripts R originais rodados de novo** (`results/R_tassi_v2/`): PERMANOVA condição 0,47% e projeto 6,36%;
+  o `random_forest.R` usa `pROC::roc()` com direção automática, que nunca devolve AUC < 0,5. Com
+  `direction = "<"` (`random_forest_direcao_fixa.R`) o LOPO cai de 0,596 para 0,457 de macro-AUC.
+- **Meta-análise por projeto** (`13_meta_analise.py`): *Fusobacterium* e *Sneathia* ↑ no câncer em 4/4
+  estudos (g ≈ 0,33, I² = 0%); *Sneathia*, *Megasphaera* e *Atopobium* ↑ na HSIL em 4/4; LSIL sem sinal;
+  *Lactobacillus* heterogêneo (I² = 86%).
+- **Abundância diferencial com projeto** (`12_abundancia_com_projeto.py`): câncer cai de 72 para 18 gêneros
+  significativos; HSIL e LSIL caem para 0.
+- **Contaminantes** (`11_contaminantes.py`): até 7,7% das leituras no P1 e 2,8% no P9; removê-los não muda
+  o LOPO (0,63) nem a previsão do projeto (83–85%).
 - **P16 na tabela da Paola**: 39% "Unassigned" e 2,5% Eukaryota, provável DNA do hospedeiro
   não filtrado; 29 amostras contra 47 na da Tassiane e 26 no artigo.

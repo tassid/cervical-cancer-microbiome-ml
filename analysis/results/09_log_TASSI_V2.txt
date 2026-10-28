@@ -43,3 +43,18 @@
 {'AUC': 0.642, 'P1': 0.29, 'P2': 0.464, 'P19': 0.681, 'P22': 0.405, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'RF', 'esquema': 'lopo', 'smote': False}
 {'AUC': 0.574, 'P1': 0.274, 'P2': 0.448, 'P19': 0.698, 'P22': 0.411, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'RF', 'esquema': 'lopo', 'smote': True}
 {'AUC': 0.955, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'ExtraTrees', 'esquema': 'aleatoria', 'smote': False}
+{'AUC': 0.561, 'P1': 0.235, 'P2': 0.453, 'P19': 0.641, 'P22': 0.414, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'ExtraTrees', 'esquema': 'lopo', 'smote': False}
+{'AUC': 0.949, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'XGBoost', 'esquema': 'aleatoria', 'smote': False}
+{'AUC': 0.633, 'P1': 0.386, 'P2': 0.507, 'P19': 0.69, 'P22': 0.395, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'XGBoost', 'esquema': 'lopo', 'smote': False}
+{'AUC': 0.952, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'HistGB', 'esquema': 'aleatoria', 'smote': False}
+{'AUC': 0.629, 'P1': 0.294, 'P2': 0.51, 'P19': 0.659, 'P22': 0.402, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'HistGB', 'esquema': 'lopo', 'smote': False}
+{'AUC': 0.947, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'LogReg', 'esquema': 'aleatoria', 'smote': False}
+{'AUC': 0.947, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'LogReg', 'esquema': 'aleatoria', 'smote': True}
+{'AUC': 0.7, 'P1': 0.735, 'P2': 0.352, 'P19': 0.696, 'P22': 0.376, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'LogReg', 'esquema': 'lopo', 'smote': False}
+{'AUC': 0.682, 'P1': 0.732, 'P2': 0.359, 'P19': 0.707, 'P22': 0.378, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'LogReg', 'esquema': 'lopo', 'smote': True}
+{'AUC': 0.954, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'SVM', 'esquema': 'aleatoria', 'smote': False}
+{'AUC': 0.592, 'P1': 0.349, 'P2': 0.472, 'P19': 0.707, 'P22': 0.378, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'SVM', 'esquema': 'lopo', 'smote': False}
+{'AUC': 0.939, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'kNN', 'esquema': 'aleatoria', 'smote': False}
+{'AUC': 0.414, 'P1': 0.248, 'P2': 0.403, 'P19': 0.706, 'P22': 0.442, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'kNN', 'esquema': 'lopo', 'smote': False}
+{'AUC': 0.88, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'NaiveBayes', 'esquema': 'aleatoria', 'smote': False}
+{'AUC': 0.64, 'P1': 0.382, 'P2': 0.431, 'P19': 0.766, 'P22': 0.345, 'tabela': 'TASSI_V2', 'prep': 'pa', 'modelo': 'NaiveBayes', 'esquema': 'lopo', 'smote': False}
