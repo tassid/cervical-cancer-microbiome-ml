@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/user/cervical-cancer-microbiome-ml/analysis/09_forca_bruta.py", line 12, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
