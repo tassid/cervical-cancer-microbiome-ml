@@ -1,0 +1,573 @@
+<title>Auditoria de viés do microbioma cervical</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna de leitura (~70ch) com figuras e tabelas que podem ocupar a largura total do miolo */
+:root{
+  --bg:#f7f8f7; --surface:#ffffff; --ink:#15201d; --ink-2:#4a5752; --ink-3:#77837e; --rule:#dfe4e1;
+  --accent:#0f6b5c; --accent-soft:#e3f0ec; --warn:#a4570a; --warn-soft:#fbefe1; --bad:#b4322d; --bad-soft:#f9e6e4; --good:#1d7a3a; --good-soft:#e5f3e8;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121816; --surface:#19211e; --ink:#e9eeec; --ink-2:#b5c0bb; --ink-3:#8a9691; --rule:#2c3632;
+  --accent:#5cc2ab; --accent-soft:#1d332d; --warn:#e3a35a; --warn-soft:#352816; --bad:#ec7b73; --bad-soft:#3a1f1d; --good:#6fcf8a; --good-soft:#1b3323;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#121816; --surface:#19211e; --ink:#e9eeec; --ink-2:#b5c0bb; --ink-3:#8a9691; --rule:#2c3632;
+  --accent:#5cc2ab; --accent-soft:#1d332d; --warn:#e3a35a; --warn-soft:#352816; --bad:#ec7b73; --bad-soft:#3a1f1d; --good:#6fcf8a; --good-soft:#1b3323;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; color-scheme:dark }
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+.prose{max-width:70ch}
+h1,h2,h3{font-family:var(--display);font-weight:650;text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(28px,4.5vw,42px)}
+h2{font-size:clamp(22px,3vw,28px);margin-top:56px;padding-top:24px;border-top:1px solid var(--rule)}
+h3{font-size:19px;margin-top:28px;font-weight:500}
+p{margin:12px 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:18px;color:var(--ink-2)}
+.meta{font-size:14px;color:var(--ink-3)}
+code,.mono{font-family:var(--mono);font-size:.88em}
+.tldr{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:20px 24px;margin-top:28px;display:grid;gap:10px}
+.tldr ol{margin:0;padding-left:20px;display:grid;gap:8px}
+.figure{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:20px;margin-top:20px;position:relative}
+.figure h4{margin:0 0 4px;font-size:15px;font-weight:600}
+.figure .cap{font-size:13.5px;color:var(--ink-2);margin:4px 0 12px;max-width:75ch}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink-2);margin-bottom:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+svg text{fill:var(--ink-2);font-family:var(--body)}
+svg .tick{fill:var(--ink-3);font-size:11px;font-family:var(--mono)}
+svg .grid{stroke:var(--rule);stroke-width:1}
+svg .zero{stroke:var(--ink-3);stroke-width:1;stroke-dasharray:3 3}
+.chart{width:100%;overflow-x:auto}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:6px 9px;border-radius:6px;white-space:nowrap;transform:translate(-50%,-120%);font-family:var(--body)}
+.tablewrap{overflow-x:auto;margin-top:16px;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;color:var(--ink-2);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.n{text-align:right;font-family:var(--mono);font-size:13px}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.callout{border-left:3px solid var(--warn);background:var(--warn-soft);padding:12px 16px;border-radius:0 8px 8px 0;margin-top:16px}
+.draft{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:20px 24px;margin-top:16px;font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.7}
+.draft p:first-child{margin-top:0}
+.copy{font-family:var(--body);font-size:13px;border:1px solid var(--rule);background:var(--bg);color:var(--ink);padding:6px 12px;border-radius:6px;cursor:pointer;float:right}
+.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+ul.tight{padding-left:20px;display:grid;gap:6px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.two > *{min-width:0}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Meta-análise 16S · câncer cervical · 10 BioProjects</div>
+  <h1>Auditoria de viés do microbioma cervical</h1>
+  <p class="lede prose">Comparação entre a tabela usada no artigo da Paola e a tabela do pipeline próprio da Tassiane, com testes para saber quais conclusões do manuscrito continuam de pé quando o projeto de origem entra na análise.</p>
+  <p class="meta">Dados: <span class="mono">feature-table.txt</span> da Paola (997 amostras) e <span class="mono">genus_table_final.qza</span> da Tassiane (889 amostras), metadados de <span class="mono">metadata_master.tsv</span>. Scripts em <span class="mono">analysis/</span> no repositório <span class="mono">cervical-cancer-microbiome-ml</span>. Outubro de 2026.</p>
+
+  <section class="tldr" aria-label="Resumo">
+    <strong>Resumo em cinco pontos</strong>
+    <ol>
+      <li><b>O AUC ≈ 1 do artigo só aparece quando o modelo é avaliado nas próprias amostras de treino.</b> Com validação cruzada, o mesmo Random Forest dá 0,97 para câncer, 0,85 para controle e 0,74–0,76 para as lesões.</li>
+      <li><b>Saber só de qual projeto a amostra veio já dá quase o mesmo AUC</b> que usar o microbioma inteiro. Quando o modelo é testado num projeto que não viu, o AUC cai para 0,62–0,70 em câncer e fica no nível do acaso nas lesões.</li>
+      <li><b>A diversidade "maior no câncer" e os principais biomarcadores do Boruta e do LEfSe vêm do projeto de origem.</b> Burkholderia está 96% no P21 (Espanha, quase só controles). Wolbachia está 100% no P1, Aeribacillus 100% no P9.</li>
+      <li><b>Os dois pipelines concordam depois de reprocessar o P22.</b> Ele tinha entrado no ramo V4 do pipeline da Tassiane, mas é V3-V4. Reprocessado a partir do SRA, a concordância por gênero fica entre 0,97 e 1,00. No caminho apareceu outro problema: no P22, câncer e controle foram sequenciados em corridas diferentes.</li>
+      <li><b>O sinal que se sustenta é menor e mais local:</b> perda de <i>Lactobacillus</i> e ganho de anaeróbios (<i>Fusobacterium</i>, <i>Porphyromonas</i>, <i>Peptostreptococcus</i>) no câncer, dentro de projetos com controles próprios, principalmente na Nigéria (P19, AUC ≈ 0,80). Na meta-análise por projeto, <i>Fusobacterium</i> e <i>Sneathia</i> sobem no câncer em 4 de 4 estudos, e <i>Sneathia</i>, <i>Megasphaera</i> e <i>Atopobium</i> sobem na HSIL em 4 de 4. São efeitos pequenos. Para LSIL não há sinal.</li>
+    </ol>
+  </section>
+
+  <h2>1. O desenho mistura classe clínica com projeto</h2>
+  <div class="prose">
+    <p>Quatro projetos (P1, P6, P9, P16) têm só câncer, ou quase. Eles somam 181 das 288 amostras de câncer na tabela da Paola. O P21 (Espanha) tem 103 controles e 2 HSIL. Com isso, "câncer" e "controle" carregam junto o laboratório, o país, o kit de extração e a região do 16S. A associação entre classe e projeto tem Cramér V de 0,57 (0 = nenhuma, 1 = total).</p>
+    <p>A profundidade de sequenciamento também muda com a classe (mediana de 43.500 leituras no câncer contra 12.760 em LSIL; Kruskal p &lt; 10<sup>-15</sup>). Isso afeta riqueza observada e a detecção de gêneros raros.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Projeto</th><th>BioProject</th><th>País</th><th>Região</th><th class="n">Câncer</th><th class="n">HSIL</th><th class="n">LSIL</th><th class="n">Controle</th><th>Situação</th></tr></thead>
+      <tbody>
+        <tr><td>P1</td><td class="mono">PRJNA687644</td><td>China</td><td>V3-V4</td><td class="n">68</td><td class="n">0</td><td class="n">0</td><td class="n">4</td><td><span class="pill warn">quase só câncer</span></td></tr>
+        <tr><td>P6</td><td class="mono">PRJNA687331</td><td>China</td><td>V3-V4</td><td class="n">26</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="pill bad">só câncer</span></td></tr>
+        <tr><td>P9</td><td class="mono">PRJNA431248</td><td>EUA</td><td>V4</td><td class="n">58</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="pill bad">só câncer</span></td></tr>
+        <tr><td>P16</td><td class="mono">PRJNA1029035</td><td>EUA</td><td>V4</td><td class="n">29</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="pill bad">só câncer</span></td></tr>
+        <tr><td>P21</td><td class="mono">PRJEB83336</td><td>Espanha</td><td>V3-V4</td><td class="n">0</td><td class="n">2</td><td class="n">0</td><td class="n">103</td><td><span class="pill bad">só controle</span></td></tr>
+        <tr><td>P10</td><td class="mono">PRJEB51893</td><td>EUA</td><td>V4</td><td class="n">1</td><td class="n">59</td><td class="n">43</td><td class="n">214</td><td><span class="pill good">lesões + controle</span></td></tr>
+        <tr><td>P14</td><td class="mono">PRJNA933917</td><td>Brasil</td><td>V3-V4</td><td class="n">0</td><td class="n">13</td><td class="n">0</td><td class="n">14</td><td><span class="pill good">HSIL + controle</span></td></tr>
+        <tr><td>P2</td><td class="mono">PRJNA518153</td><td>EUA</td><td>V4</td><td class="n">10</td><td class="n">27</td><td class="n">11</td><td class="n">29</td><td><span class="pill good">4 classes</span></td></tr>
+        <tr><td>P19</td><td class="mono">PRJNA914231</td><td>Nigéria</td><td>V3-V4</td><td class="n">31</td><td class="n">60</td><td class="n">58</td><td class="n">18</td><td><span class="pill good">4 classes</span></td></tr>
+        <tr><td>P22</td><td class="mono">PRJNA725946</td><td>China</td><td>V3-V4</td><td class="n">65</td><td class="n">0</td><td class="n">0</td><td class="n">54</td><td><span class="pill warn">lote por classe</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">Contagens da tabela da Paola (997 amostras). Correspondência P-código → BioProject inferida pelo centro e pelas contagens da Tabela 1 do artigo.</p>
+
+  <h2>2. Machine learning: de onde vem o AUC</h2>
+  <div class="prose">
+    <p>Usamos o mesmo modelo do artigo (Random Forest, 500 árvores, abundância relativa por gênero, 4 classes) e mudamos só a forma de avaliar. "Só o projeto" é um Random Forest que recebe apenas o código do projeto, sem nenhuma bactéria. "Projeto novo" é leave-one-project-out: o modelo nunca viu o projeto que está prevendo.</p>
+  </div>
+  <div class="figure" id="fig-auc">
+    <h4>AUC por classe, conforme a forma de validar</h4>
+    <p class="cap">Tabela da Paola, 997 amostras. A linha tracejada marca 0,5, o acerto do acaso.</p>
+    <div class="legend" id="leg-auc"></div>
+    <div class="chart"><svg id="svg-auc" role="img" aria-label="AUC por classe e esquema de validação"></svg></div>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Forma de validar</th><th class="n">Câncer</th><th class="n">Controle</th><th class="n">HSIL</th><th class="n">LSIL</th></tr></thead>
+      <tbody>
+        <tr><td>Artigo (Fig. 7)</td><td class="n">1,000</td><td class="n">0,996</td><td class="n">0,999</td><td class="n">0,997</td></tr>
+        <tr><td>Avaliado no próprio treino</td><td class="n">1,000</td><td class="n">1,000</td><td class="n">1,000</td><td class="n">1,000</td></tr>
+        <tr><td>CV aleatória, 10 folds</td><td class="n">0,966</td><td class="n">0,849</td><td class="n">0,763</td><td class="n">0,737</td></tr>
+        <tr><td>Só o projeto, sem microbioma</td><td class="n">0,950</td><td class="n">0,846</td><td class="n">0,770</td><td class="n">0,787</td></tr>
+        <tr><td>Projeto novo (LOPO) · Paola</td><td class="n">0,701</td><td class="n">0,510</td><td class="n">0,458</td><td class="n">0,338</td></tr>
+        <tr><td>Projeto novo (LOPO) · Tassiane, P22 reprocessado</td><td class="n">0,64</td><td class="n">0,44</td><td class="n">0,48</td><td class="n">0,35</td></tr>
+        <tr><td>Projeto novo (LOPO) · Paola sem P21, P16 e amostras &lt; 1.000 leituras</td><td class="n">0,65</td><td class="n">0,39</td><td class="n">0,51</td><td class="n">0,37</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>Outras formas de avaliar honestamente dão o mesmo resultado que a CV aleatória: holdout de 30% (0,98 / 0,85 / 0,74 / 0,73), out-of-bag (0,97 / 0,85 / 0,75 / 0,74), nível de espécie e seleção de variáveis feita antes da CV. <b>Nenhuma delas chega a 0,996 nas lesões.</b> A explicação mais provável para a Fig. 7 é que as curvas ROC foram calculadas com as amostras de treino (no <span class="mono">caret</span>, por exemplo, com <span class="mono">predict(modelo, dados_de_treino)</span>).</p>
+    <p>A acurácia balanceada na CV aleatória é de 0,50 para 4 classes. O modelo acerta bem o câncer e confunde controle, HSIL e LSIL entre si.</p>
+    <p><b>Controle negativo:</b> a composição prevê o projeto de origem com 88% de acerto (acaso: 32%). Os gêneros que o RF usa para prever a classe são os mesmos que ele usa para prever o projeto (correlação de Spearman entre as duas importâncias: 0,84). Nos 20 gêneros mais importantes, o projeto explica mais variação que a classe clínica em 20 de 20.</p>
+  </div>
+
+  <h3>Busca exaustiva de classificadores</h3>
+  <div class="prose">
+    <p>Seguindo a sugestão do Pedro (abordagem do trabalho do Berry), testamos 30 combinações para câncer × controle:</p>
+    <ul class="tight">
+      <li>8 classificadores: RF, ExtraTrees, XGBoost, HistGB, regressão logística, SVM, kNN e Naive Bayes;</li>
+      <li>3 transformações: abundância relativa, CLR e presença/ausência;</li>
+      <li>com e sem SMOTE;</li>
+      <li>removendo gêneros presentes em menos de 10% das amostras.</li>
+    </ul>
+    <p>Nenhuma combinação escapa do padrão. O SMOTE não muda nada, porque o problema não é desbalanceamento de classes.</p>
+  </div>
+  <div class="figure" id="fig-bench">
+    <h4>AUC câncer × controle nas 30 combinações</h4>
+    <p class="cap">Cada ponto é uma combinação de modelo e pré-processamento. O traço vertical é a mediana. As quatro últimas linhas mostram o AUC dentro de cada projeto que tem câncer e controle, quando esse projeto ficou fora do treino.</p>
+    <div class="legend" id="leg-bench"></div>
+    <div class="chart"><svg id="svg-bench" role="img" aria-label="Distribuição de AUC nas 30 combinações"></svg></div>
+  </div>
+  <div class="prose">
+    <p>No P22, todos os modelos ficam abaixo de 0,5: o que eles aprenderam nos outros projetos aponta para o lado errado ali. Dentro do próprio P22, a profundidade de leitura sozinha separa câncer de controle com AUC 0,97 (câncer: 43 mil leituras; controle: 22 mil). Isso sugere que os dois grupos foram sequenciados em lotes diferentes. O único projeto em que o sinal de câncer se transfere de forma consistente é o P19 (Nigéria), com mediana de 0,71–0,73.</p>
+  </div>
+
+  <h2>3. Diversidade alfa</h2>
+  <div class="prose">
+    <p>Juntando todos os projetos, o câncer tem Shannon e riqueza bem maiores (p &lt; 10<sup>-20</sup>), como no artigo. Mas o efeito some quando o projeto entra no modelo, e muda de direção de um projeto para outro.</p>
+  </div>
+  <div class="figure" id="fig-alpha">
+    <h4>Diferença de Shannon, câncer menos controle</h4>
+    <p class="cap">Tabela da Paola, rarefeita a 5.000 leituras. "Todos juntos" e "Ajustado por projeto" são coeficientes de regressão linear; as linhas por projeto são diferenças de mediana. Valores positivos indicam mais diversidade no câncer.</p>
+    <div class="chart"><svg id="svg-alpha" role="img" aria-label="Diferença de Shannon por contexto"></svg></div>
+  </div>
+  <div class="prose">
+    <p>O mesmo acontece na tabela da Tassiane corrigida: o efeito de câncer cai de +0,99 para +0,14 (p = 0,24). O "Shannon maior em LSIL que em controle" do artigo também desaparece com o ajuste (de +0,26, p = 0,015, para +0,05, p = 0,64).</p>
+  </div>
+
+  <h2>4. PERMANOVA</h2>
+  <div class="figure" id="fig-perm">
+    <h4>Variação explicada (R², Bray-Curtis)</h4>
+    <p class="cap">"Classe além do projeto" usa permutações dentro de cada projeto, que é o teste certo quando as amostras vêm de estudos diferentes.</p>
+    <div class="legend" id="leg-perm"></div>
+    <div class="chart"><svg id="svg-perm" role="img" aria-label="R² de PERMANOVA"></svg></div>
+  </div>
+  <div class="prose">
+    <p>O p = 0,001 do artigo é verdadeiro, mas a classe sozinha explica cerca de 7% da variação, e quase tudo isso se sobrepõe ao projeto. Descontado o projeto, sobram 0,4% (p = 0,08 na Paola e 0,10 na Tassiane corrigida, com 499 permutações).</p>
+  </div>
+
+  <h2>5. De onde vêm os biomarcadores</h2>
+  <div class="prose">
+    <p>Para cada gênero citado no Boruta, no LEfSe e no heatmap, medimos quanto da abundância total está num único projeto e quanto da variação (η², em postos) é explicada pelo projeto e pela classe.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Gênero</th><th>Papel no artigo</th><th>Onde está</th><th class="n">% no projeto dominante</th><th class="n">η² projeto</th><th class="n">η² classe</th><th>Leitura</th></tr></thead>
+      <tbody>
+        <tr><td><i>Burkholderia-Caballeronia-Paraburkholderia</i></td><td>Boruta nº 1, marca controle</td><td>P21 (Espanha, só controles)</td><td class="n">96%</td><td class="n">0,48</td><td class="n">0,04</td><td><span class="pill bad">marca o projeto</span></td></tr>
+        <tr><td><i>Wolbachia</i></td><td>LEfSe, marca câncer</td><td>P1 (China)</td><td class="n">100%</td><td class="n">0,91</td><td class="n">0,15</td><td><span class="pill bad">endossimbionte de inseto</span></td></tr>
+        <tr><td><i>Aeribacillus</i></td><td>LEfSe, marca câncer</td><td>P9 (EUA, só câncer)</td><td class="n">100%</td><td class="n">1,00</td><td class="n">0,15</td><td><span class="pill bad">termófilo, contaminante</span></td></tr>
+        <tr><td><i>Halomonas</i></td><td>Boruta</td><td>P9</td><td class="n">95%</td><td class="n">0,64</td><td class="n">0,20</td><td><span class="pill bad">contaminante de kit</span></td></tr>
+        <tr><td><i>Rhodococcus</i></td><td>Boruta</td><td>P1</td><td class="n">92%</td><td class="n">0,62</td><td class="n">0,16</td><td><span class="pill bad">marca o projeto</span></td></tr>
+        <tr><td><i>Pseudomonas</i></td><td>Boruta nº 3, marca HSIL</td><td>P19 (Nigéria), também 5% nos controles</td><td class="n">64%</td><td class="n">0,35</td><td class="n">0,10</td><td><span class="pill warn">mais projeto que classe</span></td></tr>
+        <tr><td><i>Lactobacillus</i></td><td>Boruta nº 2, marca controle</td><td>espalhado</td><td class="n">46%</td><td class="n">0,32</td><td class="n">0,16</td><td><span class="pill good">sinal real, menor</span></td></tr>
+        <tr><td><i>Fusobacterium</i></td><td>heatmap e LEfSe, câncer</td><td>P9 (câncer), P1, P19</td><td class="n">55%</td><td class="n">0,29</td><td class="n">0,15</td><td><span class="pill good">mesma direção em 4/4 projetos</span></td></tr>
+        <tr><td><i>Porphyromonas</i></td><td>heatmap e LEfSe, câncer</td><td>P9, P19, P6</td><td class="n">33%</td><td class="n">0,27</td><td class="n">0,15</td><td><span class="pill warn">↑ em 3/4, ↓ no P22</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">Tabela da Paola. "Chloroplast" aparece no Boruta do artigo, mas não existe na <span class="mono">feature-table.txt</span> do Drive, e os Métodos dizem que cloroplasto foi removido. O Boruta da figura provavelmente usou outra versão da tabela.</p>
+
+  <h3>O que muda de verdade dentro dos projetos</h3>
+  <div class="prose">
+    <p>Câncer contra controle, testado separadamente em cada projeto que tem as duas classes. ↑ = maior no câncer; * p &lt; 0,05; ** p &lt; 0,001. Tabela da Paola.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Gênero</th><th>Todos juntos</th><th>P1 (68/4)</th><th>P19 (31/18)</th><th>P2 (10/29)</th><th>P22 (65/54)</th><th>Veredito</th></tr></thead>
+      <tbody>
+        <tr><td><i>Lactobacillus</i></td><td>↓**</td><td>↓</td><td>↓*</td><td>↓</td><td>↑</td><td>↓ em 3 de 4</td></tr>
+        <tr><td><i>Fusobacterium</i></td><td>↑**</td><td>↑</td><td>↑</td><td>↑</td><td>↑</td><td>↑ em 4 de 4</td></tr>
+        <tr><td><i>Prevotella</i></td><td>↑**</td><td>↑</td><td>↑</td><td>↑</td><td>↑</td><td>↑ em 4 de 4, fraco</td></tr>
+        <tr><td><i>Porphyromonas</i></td><td>↑**</td><td>↑*</td><td>↑*</td><td>↑</td><td>↓*</td><td>↑ em 3 de 4</td></tr>
+        <tr><td><i>Bacteroides</i></td><td>↑**</td><td>↑</td><td>↑*</td><td>↑</td><td>↓*</td><td>↑ em 3 de 4</td></tr>
+        <tr><td><i>Peptostreptococcus</i></td><td>↑**</td><td>↑</td><td>↑*</td><td>↑</td><td>↓*</td><td>↑ em 3 de 4</td></tr>
+        <tr><td><i>Gardnerella</i></td><td>↓**</td><td>↓</td><td>↓*</td><td>↑</td><td>↑</td><td>inconsistente</td></tr>
+        <tr><td><i>Streptococcus</i></td><td>↑**</td><td>↓</td><td>↓</td><td>↑</td><td>↑</td><td>inconsistente</td></tr>
+        <tr><td><i>Burkholderia-C.-P.</i></td><td>↓**</td><td>↑</td><td>↓</td><td>↓</td><td>↑**</td><td>inconsistente</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>Para HSIL e LSIL contra controle (P10, P14, P19, P2), os testes por projeto isolado raramente chegam a p &lt; 0,05, porque cada grupo é pequeno. Combinando os projetos numa meta-análise (seção 10), <i>Sneathia</i>, <i>Megasphaera</i> e <i>Atopobium</i> aparecem maiores na HSIL em 4 de 4 projetos.</p>
+  </div>
+
+  <h2>6. Os dois pipelines dão o mesmo resultado?</h2>
+  <div class="prose">
+    <p>Para as 870 amostras presentes nas duas tabelas, comparamos o perfil de gêneros da mesma amostra nos dois pipelines (Bray-Curtis: 0 = idêntico, 1 = nada em comum).</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Projeto</th><th class="n">Amostras</th><th class="n">Bray-Curtis antes</th><th class="n">Depois de corrigir o P22</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td>P10</td><td class="n">312</td><td class="n">0,002</td><td class="n">0,002</td><td>idênticos</td></tr>
+        <tr><td>P2</td><td class="n">77</td><td class="n">0,003</td><td class="n">0,003</td><td>idênticos</td></tr>
+        <tr><td>P6</td><td class="n">26</td><td class="n">0,008</td><td class="n">0,008</td><td>idênticos</td></tr>
+        <tr><td>P9</td><td class="n">53</td><td class="n">0,010</td><td class="n">0,010</td><td>idênticos</td></tr>
+        <tr><td>P14</td><td class="n">22</td><td class="n">0,023</td><td class="n">0,023</td><td>Tassiane tem 59% das leituras da Paola</td></tr>
+        <tr><td>P1</td><td class="n">72</td><td class="n">0,084</td><td class="n">0,084</td><td>próximos</td></tr>
+        <tr><td>P19</td><td class="n">160</td><td class="n">0,094</td><td class="n">0,094</td><td>Tassiane tem 2,3× mais leituras (correção do primer)</td></tr>
+        <tr><td>P16</td><td class="n">29</td><td class="n">0,492</td><td class="n">0,492</td><td>Paola: 39% Unassigned + 2,5% Eukaryota</td></tr>
+        <tr><td>P22</td><td class="n">119</td><td class="n">0,991</td><td class="n">0,020</td><td>ramo errado no pipeline da Tassiane</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout prose">
+    <p style="margin:0"><b>P22 no pipeline da Tassiane.</b> O P22 foi processado no ramo V4 (corte de 220 nt, classificador V4), mas as leituras começam em <span class="mono">TAGGGAATCTTCCACAATGG</span>, início da região V3 logo depois do primer 341F. Por isso 79% das leituras ficaram sem gênero (43% paradas em "classe Bacilli") e surgiram gêneros espúrios como <i>Dickeya</i> e <i>Nocardia</i>. O P22 foi reprocessado do zero: as 119 runs foram baixadas do SRA e passaram por cutadapt (341F), filtro de qualidade e deblur 1.1.1 (<span class="mono">p22_v3v4.sh</span>, <span class="mono">08b_reprocessa_p22.py</span>). O deblur reproduziu exatamente as ASVs do pipeline original (1.370 ASVs, mediana de 35.397 leituras por amostra), ou seja, o único erro era o classificador. A taxonomia agora vem das ASVs V3-V4 já classificadas no pipeline (correspondência exata cobre 93% das leituras; o resto vai por Naive Bayes de k-mers, confiança 0,7). Falta só rodar o classificador SILVA V3-V4 no QIIME 2.</p>
+  </div>
+  <div class="callout prose">
+    <p style="margin:0"><b>No P22, câncer e controle foram sequenciados em corridas diferentes.</b> Depois do corte do primer, as 65 amostras de câncer têm leituras de cerca de 222 nt e os 54 controles, de cerca de 274 nt. Com o corte de 250 nt usado no resto do ramo V3-V4, o deblur descarta todas as amostras de câncer; por isso o P22 usa 220 nt. Isso também explica por que a profundidade sozinha separa câncer de controle dentro do P22 (AUC 0,97): o contraste desse projeto é também um contraste entre corridas, e deve ser tratado com cautela no artigo.</p>
+  </div>
+  <div class="prose">
+    <p>Depois da correção, a correlação entre os pipelines por gênero fica em 0,99 para <i>Lactobacillus</i>, <i>Gardnerella</i>, <i>Sneathia</i> e <i>Streptococcus</i>, 0,98 para <i>Pseudomonas</i>, 0,97 para <i>Fusobacterium</i> e 1,00 para <i>Prevotella</i>. Todas as conclusões deste relatório valem para as duas tabelas. A diferença do P16 merece atenção na tabela da Paola: provável DNA humano não filtrado, e três contagens diferentes para o mesmo projeto (29 na tabela, 26 no artigo, 55 nos metadados).</p>
+  </div>
+
+  <h3>Incongruências entre as duas tabelas</h3>
+  <div class="prose">
+    <p>Lista completa do que difere entre a tabela da Paola e a da Tassiane, incluindo as amostras que estão em uma tabela e não na outra. Os metadados clínicos são idênticos nas duas (1.042 amostras, mesma classe em todas).</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>#</th><th>Ponto</th><th>Paola (artigo)</th><th>Tassiane</th><th>Lado a corrigir</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>P22 (China)</td><td>classificado corretamente</td><td>processado no ramo V4, mas é V3-V4; 79% das leituras sem gênero, <i>Dickeya</i> 9,6% e <i>Nocardia</i> 5,6%. Bray-Curtis 0,99 contra a Paola, 0,02 após a correção</td><td><span class="pill bad">Tassiane</span></td></tr>
+        <tr><td class="n">2</td><td>P21 (Espanha)</td><td>incluído: 103 controles e 2 HSIL</td><td>excluído por falta de primer publicado</td><td><span class="pill warn">decisão conjunta</span></td></tr>
+        <tr><td class="n">3</td><td>Amostras com menos de 1.000 leituras</td><td>26 mantidas (mínimo de 2 leituras; mediana de 95 nas 22 que só ela tem), em P19 (11), P10 (5), P9 (5) e P14 (5)</td><td>filtradas</td><td><span class="pill bad">Paola</span></td></tr>
+        <tr><td class="n">4</td><td>P16 (EUA)</td><td>29 amostras; mediana de 48% Unassigned + Eukaryota por amostra (até 57%), provável DNA humano. Nos outros projetos: 0%</td><td>47 amostras; Bray-Curtis 0,49 nas 29 em comum. Metadados: 55; artigo: 26; 8 amostras em nenhuma tabela</td><td><span class="pill bad">Paola</span></td></tr>
+        <tr><td class="n">5</td><td>Profundidade da mesma amostra</td><td>referência</td><td>P19 2,3× (correção do primer), P14 0,59×, P1 0,72×; demais 0,99–1,04×</td><td><span class="pill warn">conferir</span></td></tr>
+        <tr><td class="n">6</td><td>P14 (Brasil)</td><td>13 HSIL e 14 controles</td><td>11 e 11</td><td><span class="pill warn">as duas</span> artigo diz 22 e 21; 16 amostras em nenhuma tabela</td></tr>
+        <tr><td class="n">7</td><td>Total de amostras</td><td>997 na tabela, 1.008 no artigo</td><td>889</td><td><span class="pill bad">Paola</span></td></tr>
+        <tr><td class="n">8</td><td>Cloroplasto</td><td>"Chloroplast" é biomarcador do Boruta, mas a tabela não tem nenhum cloroplasto</td><td>removido</td><td><span class="pill bad">Paola</span></td></tr>
+        <tr><td class="n">9</td><td>Correção de ruído</td><td>DADA2 no texto; a pasta tem saídas de Deblur</td><td>Deblur, 220 nt em V4 e 250 nt em V3-V4</td><td><span class="pill warn">Paola esclarecer</span></td></tr>
+        <tr><td class="n">10</td><td>Classificação</td><td>um classificador SILVA de comprimento total; nível de espécie (2.450 táxons)</td><td>um classificador por região; nível de gênero (1.587)</td><td><span class="pill good">escolha de método</span></td></tr>
+        <tr><td class="n">11</td><td>V4 e V3-V4</td><td>juntas na mesma tabela</td><td>separadas até agrupar por gênero</td><td><span class="pill good">escolha de método</span></td></tr>
+        <tr><td class="n">12</td><td>P10 (EUA)</td><td>um lote</td><td>dois sublotes (com e sem primer); perfis idênticos aos da Paola</td><td><span class="pill good">sem efeito</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>Com o mesmo esquema de validação, as duas tabelas dão AUCs a 0,01–0,03 um do outro. As diferenças de método (DADA2 ou Deblur, espécie ou gênero, classificador único ou por região) quase não mudam o resultado. O que muda as conclusões é quais amostras e projetos entram: o P21, que concentra o principal biomarcador do artigo; o P16, com DNA não bacteriano; e as amostras de baixíssima profundidade.</p>
+  </div>
+
+  <h2>7. O que se sustenta no artigo</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Afirmação do manuscrito</th><th>Resultado</th><th>Situação</th></tr></thead>
+      <tbody>
+        <tr><td>AUC 1 / 0,999 / 0,997 / 0,996 no modelo multiclasse</td><td>Só reproduzido avaliando no treino. CV: 0,97 / 0,85 / 0,76 / 0,74. Projeto novo: 0,70 / 0,51 / 0,46 / 0,34.</td><td><span class="pill bad">não se sustenta</span></td></tr>
+        <tr><td>Microbioma como biomarcador diagnóstico de alta acurácia</td><td>O projeto sozinho dá o mesmo AUC; o desempenho não se transfere entre estudos.</td><td><span class="pill bad">não se sustenta</span></td></tr>
+        <tr><td>Câncer tem diversidade alfa maior</td><td>Efeito some com ajuste por projeto; ↑ no P19 e P1, ↓ no P22, nulo no P2.</td><td><span class="pill bad">não se sustenta</span></td></tr>
+        <tr><td>LSIL tem Shannon maior que controle</td><td>p = 0,64 com ajuste por projeto.</td><td><span class="pill bad">não se sustenta</span></td></tr>
+        <tr><td>Burkholderia, Pseudomonas, Wolbachia, Aeribacillus como biomarcadores</td><td>Cada um vem essencialmente de um projeto; vários são contaminantes conhecidos.</td><td><span class="pill bad">não se sustenta</span></td></tr>
+        <tr><td>PERMANOVA significativa por estágio clínico (p = 0,001)</td><td>Verdadeiro, mas R² de 0,4% depois do projeto.</td><td><span class="pill warn">precisa de ressalva</span></td></tr>
+        <tr><td>Diferenças geográficas na composição</td><td>Verdadeiro, mas país = 1 a 4 projetos, então geografia e laboratório não se separam.</td><td><span class="pill warn">precisa de ressalva</span></td></tr>
+        <tr><td>Perda de <i>Lactobacillus</i> no câncer</td><td>↓ em 3 de 4 projetos com controles (significativo no P19), mas a meta-análise não é significativa: g = −0,26, p = 0,55, I² = 86% (muita variação entre estudos).</td><td><span class="pill warn">inconsistente entre estudos</span></td></tr>
+        <tr><td>Enriquecimento de <i>Fusobacterium</i>, <i>Porphyromonas</i>, <i>Peptostreptococcus</i>, <i>Bacteroides</i>, <i>Prevotella</i> no câncer</td><td><i>Fusobacterium</i> e <i>Prevotella</i> ↑ em 4 de 4; os outros em 3 de 4.</td><td><span class="pill good">sustenta, com cautela</span></td></tr>
+        <tr><td>Assinaturas distintas para LSIL e HSIL</td><td>HSIL: <i>Sneathia</i>, <i>Megasphaera</i> e <i>Atopobium</i> sobem em 4 de 4 projetos (efeito pequeno, g = 0,2–0,5). LSIL: nada consistente. Os classificadores não separam lesões de controle (AUC dentro do projeto 0,42–0,68).</td><td><span class="pill warn">só HSIL, sinal fraco</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Outras correções no manuscrito</h3>
+  <ul class="tight prose">
+    <li>Tabela 1 não bate com a tabela de dados: total de 1.008 contra 997 amostras; Brasil com 22 HSIL e 21 controles contra 13 e 14; PRJNA1029035 com 26 contra 29 (e 55 nos metadados).</li>
+    <li>Métodos citam DADA2 e UniFrac, mas a pasta da Paola tem saídas de Deblur e a ordenação usa Bray-Curtis.</li>
+    <li>A Fig. 2D diz "DESeq2", mas mostra boxplots de abundância relativa com Wilcoxon.</li>
+    <li>"Wilcoxon (paired)": os grupos são independentes, então o teste certo é o de soma de postos (Mann-Whitney), não pareado.</li>
+    <li>A legenda da Fig. 7 descreve matriz de confusão e ROC, mas a figura é um gráfico radar.</li>
+    <li>O SHAP usa hashes de ASV, enquanto o resto do trabalho está em gênero.</li>
+    <li>Referências trocadas: a ref. 15 é o QUAST (montagem de genomas) e está citada para o SILVA; a ref. 10 é sobre miR-126 em câncer de mama e está citada para microbiota cervical.</li>
+    <li>"Chloroplast" aparece como biomarcador, mas os Métodos dizem que cloroplasto foi removido.</li>
+  </ul>
+
+  <h2>8. Texto sugerido para o manuscrito</h2>
+  <div class="prose">
+    <p>Proposta em inglês para as duas seções marcadas em amarelo no PDF. Ela mantém o que os dados sustentam e transforma o viés em achado, que é o diferencial do trabalho. Ajuste os números se a análise final usar outra tabela.</p>
+  </div>
+  <h3>Resultados de machine learning (substitui "DESCRIBE RESULTS")</h3>
+  <div class="draft" id="draft-results">
+    <button class="copy" type="button" data-target="draft-results">Copiar</button>
+    <p>When performance was estimated on the same samples used for training, the multiclass Random Forest reached near-perfect discrimination (AUC ≈ 1.00 for all classes). Under stratified 10-fold cross-validation, however, AUCs were 0.97 for cancer, 0.85 for control, 0.76 for HSIL and 0.74 for LSIL, with a balanced accuracy of 0.50 across the four classes. A classifier given only the study of origin, with no microbial information, achieved virtually the same AUCs (0.95, 0.85, 0.77 and 0.79), and microbial composition alone predicted the study of origin with 88% accuracy (chance: 32%). When entire studies were held out (leave-one-project-out), AUCs fell to 0.70 for cancer, 0.51 for control, 0.46 for HSIL and 0.34 for LSIL; no LSIL sample was correctly classified (0/112), only 11 of 161 HSIL samples were, and 128 of 436 controls were classified as cancer. An exhaustive search across eight classifiers, three data transformations and SMOTE oversampling (30 configurations) did not change this pattern: median AUC for cancer versus control was 0.96 under random cross-validation and 0.70 under leave-one-project-out. Within the only cohort with balanced cancer and control groups sequenced together (Nigeria, PRJNA914231), cancer was predicted from models trained on the remaining studies with AUC 0.71–0.82.</p>
+  </div>
+  <h3>Diversidade, PERMANOVA e táxons (substituem os parágrafos atuais)</h3>
+  <div class="draft" id="draft-other">
+    <button class="copy" type="button" data-target="draft-other">Copiar</button>
+    <p>Pooled across studies, cancer samples showed higher observed richness and Shannon diversity than controls (Kruskal-Wallis p &lt; 0.0001). This difference, however, was not robust to study of origin: in linear models including study as a fixed effect, the cancer effect on Shannon diversity fell from 0.97 to 0.09 (p = 0.43). Within the four studies that included both cancer and control samples, diversity was higher in cancer in PRJNA914231 (Nigeria; median difference 1.35, p = 0.005) and PRJNA687644 (China; 1.81, p = 0.02, only four controls), lower in PRJNA725946 (China; −0.48, p = 0.004), and not different in PRJNA518153 (USA; p = 0.34). The higher Shannon index in LSIL compared with controls (p = 0.015) was also not maintained after adjustment for study (p = 0.64).</p>
+    <p>Clinical status explained 7.1% of the variation in Bray-Curtis dissimilarity (PERMANOVA, p = 0.002), whereas study of origin alone explained 16.4%. When clinical status was tested conditional on study, with permutations restricted within studies, it explained 0.4% of the variation (p = 0.08).</p>
+    <p>To identify taxa that changed consistently across studies, effect sizes were estimated within each study and pooled with a random-effects model. In the four studies with both cancer and control samples, <i>Fusobacterium</i> (pooled Hedges' g = 0.35, 95% CI 0.08–0.63, p = 0.011) and <i>Sneathia</i> (g = 0.34, 0.06–0.61, p = 0.016) were enriched in cancer in every study, with no between-study heterogeneity (I² = 0%). <i>Lactobacillus</i> was depleted in cancer in three of four studies, but the pooled effect was not significant and heterogeneity was high (g = −0.26, p = 0.55, I² = 86%). In HSIL, <i>Sneathia</i> (g = 0.32, p = 0.005), <i>Atopobium</i> (g = 0.23, p = 0.043) and <i>Megasphaera</i> (g = 0.47, p = 0.021) were enriched in all four studies with HSIL and control samples. No genus changed consistently in LSIL. Candidate biomarkers concentrated in single studies, such as <i>Burkholderia-Caballeronia-Paraburkholderia</i> (96% of its reads in PRJEB83336, which contained only controls), <i>Wolbachia</i> and <i>Aeribacillus</i>, were not retained.</p>
+  </div>
+  <p class="meta prose">Um rascunho da seção de Métodos (exclusões de amostras, processamento, ajuste por projeto e esquema de validação) está em <span class="mono">analysis/texto_metodos_EN.md</span> no repositório.</p>
+  <h3>Conclusão</h3>
+  <div class="draft" id="draft-conclusion">
+    <button class="copy" type="button" data-target="draft-conclusion">Copiar</button>
+    <p>Across ten public 16S rRNA datasets, cervical cancer was associated with enrichment of <i>Fusobacterium</i> and <i>Sneathia</i>, which increased in all four studies that included their own controls (pooled Hedges' g ≈ 0.33, I² = 0%), while depletion of <i>Lactobacillus</i> was frequent but heterogeneous between studies. High-grade lesions showed a smaller but consistent enrichment of <i>Sneathia</i>, <i>Megasphaera</i> and <i>Atopobium</i>; no consistent signature was found for low-grade lesions. In contrast, differences in alpha diversity and several candidate biomarkers (including <i>Burkholderia-Caballeronia-Paraburkholderia</i>, <i>Wolbachia</i> and <i>Aeribacillus</i>) were driven by the study of origin rather than by clinical status. Because most cancer samples came from studies without controls, randomly split validation substantially overestimated diagnostic performance, and classifiers did not generalize to unseen studies. The cervicovaginal microbiome therefore carries a consistent dysbiotic signal associated with cervical cancer, but its use as a diagnostic biomarker requires study-aware validation, harmonized processing of 16S regions, and cohorts in which cases and controls are collected and sequenced together.</p>
+  </div>
+
+  <h2>9. O que falta em cada um</h2>
+  <div class="prose">
+    <p>Levantamento das amostras, análises e partes do texto que faltam em cada trabalho. Para as amostras, cada uma das 1.042 catalogadas foi rastreada até a etapa em que saiu (<span class="mono">analysis/10_contabilidade_amostras.py</span>).</p>
+  </div>
+
+  <h3>Amostras utilizáveis por projeto</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Projeto</th><th class="n">Catalogadas</th><th class="n">Paola (≥ 1.000 leituras)</th><th class="n">Tassiane</th><th class="n">Perdidas nas duas</th><th>Por quê</th></tr></thead>
+      <tbody>
+        <tr><td>P14 · Brasil</td><td class="n">43</td><td class="n">22</td><td class="n">22</td><td class="n">21</td><td>Sublote que não é 16S: as leituras são DNA humano (Alu, satélite), sem primer nem região V3. Exclusão correta nas duas tabelas.</td></tr>
+        <tr><td>P16 · EUA</td><td class="n">55</td><td class="n">29</td><td class="n">47</td><td class="n">8</td><td>Sublote de 16S com baixa profundidade (cerca de 2.000 leituras brutas; 97% com primer). A Paola não tem nenhuma das 26; a Tassiane mantém as 18 acima de 1.000 leituras.</td></tr>
+        <tr><td>P21 · Espanha</td><td class="n">105</td><td class="n">105</td><td class="n">0</td><td class="n">0</td><td>Excluído pela Tassiane por falta de primer publicado.</td></tr>
+        <tr><td>P19 · Nigéria</td><td class="n">168</td><td class="n">156</td><td class="n">160</td><td class="n">8</td><td>Baixa profundidade. A Paola mantém 11 amostras com menos de 1.000 leituras.</td></tr>
+        <tr><td>P10 · EUA</td><td class="n">319</td><td class="n">312</td><td class="n">313</td><td class="n">6</td><td>Baixa profundidade. A Paola mantém 5 com menos de 1.000 leituras.</td></tr>
+        <tr><td>P9 · EUA</td><td class="n">58</td><td class="n">53</td><td class="n">53</td><td class="n">5</td><td>Baixa profundidade. A Paola mantém as 5 (de 2 a 958 leituras).</td></tr>
+        <tr><td>P1, P2, P6, P22</td><td class="n">294</td><td class="n">294</td><td class="n">294</td><td class="n">0</td><td>Completos nas duas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout prose">
+    <p style="margin:0"><b>P14: 21 das 43 runs não são 16S.</b> Os FASTQ foram baixados direto do SRA e inspecionados. No sublote bom (22 amostras), 95% das leituras começam com o primer 341F. No outro (21 amostras: 10 controles e 11 HSIL), nenhuma leitura tem o primer ou o início da região V3, e as sequências mais comuns são humanas (elementos Alu, DNA satélite). São outro tipo de ensaio depositado no mesmo BioProject. Não há o que recuperar: a exclusão é correta e deve ser registrada nos Métodos, e a Tabela 1 do artigo (22 HSIL e 21 controles) conta essas runs como se fossem amostras de microbioma. <b>P16:</b> no sublote principal, só cerca de 45% das leituras têm o primer e o resto não é 16S, o que explica os 48% de Unassigned + Eukaryota na tabela da Paola. O cutadapt com descarte de leituras sem primer, usado pela Tassiane, remove esse material.</p>
+  </div>
+
+  <h3>Análises que faltam</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Análise</th><th>Paola (artigo)</th><th>Tassiane</th></tr></thead>
+      <tbody>
+        <tr><td>Validação que separa projeto de classe (leave-one-project-out, linha de base só com projeto)</td><td><span class="pill bad">falta</span></td><td><span class="pill good">tem</span></td></tr>
+        <tr><td>Controle negativo (prever o projeto)</td><td><span class="pill bad">falta</span></td><td><span class="pill good">tem</span></td></tr>
+        <tr><td>Ajuste por projeto na diversidade alfa e na abundância diferencial</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria</span></td></tr>
+        <tr><td>Filtro de profundidade e rarefação justificados</td><td><span class="pill bad">falta</span> (amostras com 2 leituras)</td><td><span class="pill good">tem</span> (1.000)</td></tr>
+        <tr><td>Remoção de DNA não bacteriano (Unassigned, Eukaryota)</td><td><span class="pill bad">falta</span> (P16)</td><td><span class="pill good">tem</span></td></tr>
+        <tr><td>Controle de contaminantes de kit (decontam ou lista de gêneros de reagente)</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria (seção 10)</span></td></tr>
+        <tr><td>Abundância diferencial com projeto como efeito (ANCOM-BC, MaAsLin2)</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria (seção 10)</span></td></tr>
+        <tr><td>Meta-análise por projeto (efeito por estudo + modelo de efeitos aleatórios)</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria (seção 10)</span></td></tr>
+        <tr><td>Diversidade alfa e composição taxonômica (barras, heatmap)</td><td><span class="pill good">tem</span></td><td><span class="pill warn">só na auditoria</span></td></tr>
+        <tr><td>LEfSe, DESeq2, Boruta, SHAP</td><td><span class="pill good">tem</span> (sem ajuste por projeto)</td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>Rede de coocorrência (NetCoMi)</td><td><span class="pill warn">nos Métodos, sem resultado</span></td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>GLLVM</td><td><span class="pill warn">no Drive (efeito de projeto removido), fora do artigo</span></td><td><span class="pill warn">refazer com P22 reprocessado (o pacote gllvm não pôde ser instalado nesta análise)</span></td></tr>
+        <tr><td>Matriz de confusão</td><td><span class="pill bad">citada na legenda da Fig. 7, não existe</span></td><td><span class="pill warn">feita na auditoria (seção 10)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>O que falta no texto do artigo</h3>
+  <ul class="tight prose">
+    <li>Seções vazias: Conclusão e o parágrafo de resultados do machine learning ("DESCRIBE RESULTS").</li>
+    <li>Link do ENA em branco nos Métodos ("available at:  and the National Center...").</li>
+    <li>Fluxo das amostras: 1.042 catalogadas → 1.008 no texto → 997 na tabela, sem explicar as perdas.</li>
+    <li>Métodos de LEfSe, DESeq2 e regressão logística: aparecem nos resultados e figuras, mas não nos Métodos.</li>
+    <li>Parâmetros do QIIME 2: corte de qualidade do DADA2 (ou Deblur), versão e confiança do classificador, e como V4 e V3-V4 foram juntados.</li>
+    <li>Parâmetros do machine learning: divisão treino/teste, número de folds, hiperparâmetros, semente e de onde saíram as curvas ROC.</li>
+    <li>Declarações de disponibilidade de dados e código, financiamento e contribuição de cada autor.</li>
+  </ul>
+
+  <h2>10. Análises que faltavam</h2>
+  <div class="prose">
+    <p>Feitas nas duas tabelas: a da Paola (997 amostras) e a da Tassiane com o P22 reprocessado (889 amostras). Os números abaixo são da tabela da Tassiane quando não há indicação; os da Paola vão na mesma direção.</p>
+  </div>
+
+  <h3>Meta-análise por projeto</h3>
+  <div class="prose">
+    <p>Para cada projeto que tem as duas classes comparadas, o efeito de cada gênero foi medido como g de Hedges na abundância CLR. Os efeitos foram combinados com modelo de efeitos aleatórios (DerSimonian-Laird). I² mede quanto os estudos discordam entre si (0% = concordam). Entram 4 projetos para câncer (P1, P2, P19, P22), 4 para HSIL (P2, P10, P14, P19) e 3 para LSIL (P2, P10, P19).</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Comparação</th><th>Gênero</th><th class="n">g combinado</th><th class="n">IC 95%</th><th class="n">p</th><th class="n">I²</th><th class="n">Mesma direção</th></tr></thead>
+      <tbody>
+        <tr><td>Câncer × controle</td><td><i>Fusobacterium</i></td><td class="n">+0,33</td><td class="n">0,05 a 0,61</td><td class="n">0,019</td><td class="n">0%</td><td class="n">4/4</td></tr>
+        <tr><td>Câncer × controle</td><td><i>Sneathia</i></td><td class="n">+0,33</td><td class="n">0,06 a 0,61</td><td class="n">0,018</td><td class="n">0%</td><td class="n">4/4</td></tr>
+        <tr><td>Câncer × controle</td><td><i>Pseudomonas</i></td><td class="n">+0,45</td><td class="n">0,15 a 0,76</td><td class="n">0,004</td><td class="n">10%</td><td class="n">3/4</td></tr>
+        <tr><td>Câncer × controle</td><td><i>Lactobacillus</i></td><td class="n">−0,26</td><td class="n">−1,12 a 0,59</td><td class="n">0,55</td><td class="n">86%</td><td class="n">3/4</td></tr>
+        <tr><td>Câncer × controle</td><td>Shannon</td><td class="n">+0,58</td><td class="n">−0,38 a 1,53</td><td class="n">0,23</td><td class="n">89%</td><td class="n">3/4</td></tr>
+        <tr><td>HSIL × controle</td><td><i>Sneathia</i></td><td class="n">+0,31</td><td class="n">0,08 a 0,53</td><td class="n">0,007</td><td class="n">0%</td><td class="n">4/4</td></tr>
+        <tr><td>HSIL × controle</td><td><i>Atopobium</i></td><td class="n">+0,23</td><td class="n">0,01 a 0,46</td><td class="n">0,041</td><td class="n">0%</td><td class="n">4/4</td></tr>
+        <tr><td>HSIL × controle</td><td><i>Megasphaera</i></td><td class="n">+0,42</td><td class="n">0,01 a 0,84</td><td class="n">0,048</td><td class="n">61%</td><td class="n">4/4</td></tr>
+        <tr><td>LSIL × controle</td><td>nenhum gênero</td><td class="n">—</td><td class="n">—</td><td class="n">≥ 0,09</td><td class="n">—</td><td class="n">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">Linhas de câncer para <i>Lactobacillus</i> e Shannon vêm da tabela da Paola, que dá o mesmo resultado. <i>Pseudomonas</i> pede cautela: no P19 ela está alta também nos controles e é um contaminante comum de reagente. Arquivos: <span class="mono">13_meta_combinado_*.csv</span>.</p>
+
+  <h3>Abundância diferencial com projeto no modelo</h3>
+  <div class="prose">
+    <p>Regressão linear na abundância CLR de cada gênero presente em pelo menos 10% das amostras, com correção de Benjamini-Hochberg. "Com projeto" inclui o projeto como efeito fixo, então só as comparações dentro de cada projeto contam.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Comparação</th><th class="n">Significativos sem projeto</th><th class="n">Com projeto</th><th>Os que sobram (com projeto)</th></tr></thead>
+      <tbody>
+        <tr><td>Câncer × controle</td><td class="n">72 de 95</td><td class="n">18</td><td>↑ <i>Fusobacterium</i>, <i>Pseudomonas</i>, <i>Peptostreptococcus</i>, <i>Bacteroides</i>, <i>Gemella</i>, <i>Enterococcus</i>, <i>Peptococcus</i>; ↓ sobretudo gêneros de ambiente/reagente (<i>Brevundimonas</i>, <i>Rhizobium</i>, <i>Methylobacterium</i>, <i>Delftia</i>, <i>Sphingomonas</i>) e <i>Finegoldia</i>, <i>Bifidobacterium</i></td></tr>
+        <tr><td>HSIL × controle</td><td class="n">14</td><td class="n">0</td><td>nenhum (na tabela da Paola: <i>Megasphaera</i> e <i>Pseudomonas</i> ↑, <i>Ralstonia</i> ↓)</td></tr>
+        <tr><td>LSIL × controle</td><td class="n">8</td><td class="n">0</td><td>nenhum</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Contaminantes de kit e de laboratório</h3>
+  <div class="prose">
+    <p>Sem controles negativos de extração nos BioProjects, não dá para usar o decontam. Usamos uma lista de 48 gêneros reconhecidos como contaminantes de reagente ou de laboratório (Salter et al., 2014; Eisenhofer et al., 2019), que inclui <i>Wolbachia</i>, <i>Aeribacillus</i>, <i>Thermus</i> e cloroplasto. Gêneros que também vivem no trato genital (<i>Streptococcus</i>, <i>Corynebacterium</i>, <i>Pseudomonas</i>) ficaram de fora. Eles são raros na maioria dos projetos (mediana de 0% a 0,3% das leituras), mas chegam a 7,7% das leituras no câncer do P1 e 2,8% no P9, dois projetos só de câncer. Tirá-los quase não muda o resultado: AUC de câncer no LOPO 0,63 com e sem eles, e o projeto continua previsível (85% contra 83% de acerto). O efeito de projeto vai muito além dos contaminantes.</p>
+  </div>
+
+  <h3>Scripts R originais da Tassiane, rodados de novo</h3>
+  <div class="prose">
+    <p>Os scripts <span class="mono">permanova.R</span>, <span class="mono">permanova_pares.R</span> e <span class="mono">random_forest.R</span> do Drive foram rodados sem mudanças, primeiro na tabela original (reproduzem exatamente os números do README) e depois na tabela com o P22 reprocessado.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Resultado</th><th>Tabela original</th><th>P22 reprocessado</th><th>Artigo</th></tr></thead>
+      <tbody>
+        <tr><td>PERMANOVA: condição / projeto</td><td>0,59% / 9,19%</td><td>0,47% (p = 0,032) / 6,36%</td><td>13,5% combinado</td></tr>
+        <tr><td>Controle × câncer</td><td>6,52%</td><td>6,00%</td><td>5,0%</td></tr>
+        <tr><td>HSIL × câncer</td><td>5,75%</td><td>3,35%</td><td>3,6%</td></tr>
+        <tr><td>LSIL × câncer</td><td>4,44%</td><td>2,52%</td><td>2,2%</td></tr>
+        <tr><td>RF, CV aleatória (macro-AUC)</td><td>0,809</td><td>0,808</td><td>—</td></tr>
+        <tr><td>RF, LOPO (macro-AUC), direção automática do pROC</td><td>0,596</td><td>0,596</td><td>—</td></tr>
+        <tr><td>RF, LOPO (macro-AUC), direção fixa</td><td>—</td><td><b>0,457</b> (câncer 0,61; controle 0,42; HSIL 0,47; LSIL 0,34)</td><td>—</td></tr>
+        <tr><td>Controle negativo (prever projeto)</td><td>83,0%</td><td>83,0%</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout prose">
+    <p style="margin:0"><b>O <span class="mono">random_forest.R</span> superestima o LOPO.</b> O <span class="mono">pROC::roc()</span> usa <span class="mono">direction = "auto"</span> por padrão: quando o classificador erra mais do que acerta, o pacote inverte a curva e devolve 1 − AUC. Por isso o script nunca mostra AUC abaixo de 0,5, e o LSIL aparecia com 0,66 no LOPO quando o valor real é 0,34. Com <span class="mono">direction = "&lt;"</span> (arquivo <span class="mono">random_forest_direcao_fixa.R</span>), o macro-AUC no LOPO cai de 0,596 para 0,457, abaixo do acaso. O valor "0,6" do README e do site deve ser corrigido onde for citado.</p>
+  </div>
+
+  <h3>Matriz de confusão com projeto fora do treino</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Real \ previsto</th><th class="n">Câncer</th><th class="n">Controle</th><th class="n">HSIL</th><th class="n">LSIL</th></tr></thead>
+      <tbody>
+        <tr><td>Câncer (288)</td><td class="n">192</td><td class="n">93</td><td class="n">3</td><td class="n">0</td></tr>
+        <tr><td>Controle (436)</td><td class="n">128</td><td class="n">250</td><td class="n">54</td><td class="n">4</td></tr>
+        <tr><td>HSIL (161)</td><td class="n">52</td><td class="n">98</td><td class="n">11</td><td class="n">0</td></tr>
+        <tr><td>LSIL (112)</td><td class="n">48</td><td class="n">59</td><td class="n">5</td><td class="n">0</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">Tabela da Paola, Random Forest, leave-one-project-out. Nenhuma amostra LSIL é reconhecida, 7% das HSIL são, e 29% dos controles são classificados como câncer. Na tabela da Tassiane: 1 de 110 LSIL e 21 de 155 HSIL. Esta é a matriz que falta na Fig. 7 do artigo.</p>
+
+  <h2>11. Próximos passos sugeridos</h2>
+  <ul class="tight prose">
+    <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas) e refazer o GLLVM.</li>
+    <li>Registrar no artigo que, no P22, câncer e controle foram sequenciados em corridas diferentes (leituras de ~222 e ~274 nt).</li>
+    <li>Registrar nos Métodos que 21 runs do P14 não são 16S (DNA humano) e corrigir a Tabela 1. Na tabela da Paola, refazer o P16 descartando leituras sem primer.</li>
+    <li>Investigar o P16 na tabela da Paola: filtrar leituras não bacterianas e conferir por que há 29, 26 e 55 amostras em lugares diferentes.</li>
+    <li>Refazer o Boruta e o LEfSe dentro de cada projeto, ou com projeto como bloco, e só reportar gêneros que se repetem em pelo menos dois projetos.</li>
+    <li>Reportar no artigo os três números de validação lado a lado: CV aleatória, só projeto e leave-one-project-out. É o resultado mais forte e mais original do trabalho.</li>
+  </ul>
+</div>
+
+<script>
+const CSSV=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e}
+const fmt=v=>v.toFixed(2).replace('.',',');
+function tip(fig){let t=fig.querySelector('.tip');if(!t){t=document.createElement('div');t.className='tip';t.hidden=true;fig.appendChild(t)}return t}
+function bindTip(node,fig,html){const t=tip(fig);
+  const show=e=>{const r=fig.getBoundingClientRect();const b=node.getBoundingClientRect();t.innerHTML=html;t.hidden=false;t.style.left=(b.left+b.width/2-r.left)+'px';t.style.top=(b.top-r.top)+'px'};
+  node.addEventListener('mouseenter',show);node.addEventListener('focus',show);
+  node.addEventListener('mouseleave',()=>t.hidden=true);node.addEventListener('blur',()=>t.hidden=true);node.setAttribute('tabindex','0')}
+function legend(id,items){const L=document.getElementById(id);L.innerHTML='';items.forEach(([c,l])=>{const s=document.createElement('span');s.innerHTML=`<i style="background:${c}"></i>${l}`;L.appendChild(s)})}
+
+/* ---------- Fig AUC ---------- */
+const AUC={classes:['Câncer','Controle','HSIL','LSIL'],series:[
+ {k:'Avaliado no treino',c:'--s4',v:[1,1,1,1]},
+ {k:'CV aleatória',c:'--s1',v:[0.966,0.849,0.763,0.737]},
+ {k:'Só o projeto',c:'--s2',v:[0.950,0.846,0.770,0.787]},
+ {k:'Projeto novo (LOPO)',c:'--s3',v:[0.701,0.510,0.458,0.338]}]};
+function drawAUC(){const svg=document.getElementById('svg-auc');svg.innerHTML='';const fig=document.getElementById('fig-auc');
+  const W=Math.max(520,svg.parentElement.clientWidth),rowH=56,top=10,left=86,right=24,H=top+rowH*4+34;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+  const x0=0.3,x1=1.0,X=v=>left+(v-x0)/(x1-x0)*(W-left-right);
+  [0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0].forEach(v=>{el('line',{x1:X(v),x2:X(v),y1:top,y2:top+rowH*4,class:v===0.5?'zero':'grid'},svg);el('text',{x:X(v),y:top+rowH*4+18,'text-anchor':'middle',class:'tick'},svg,fmt(v))});
+  AUC.classes.forEach((cl,i)=>{const yc=top+rowH*i+rowH/2;el('text',{x:left-12,y:yc+4,'text-anchor':'end','font-size':13,'font-weight':600},svg,cl);
+    const vals=AUC.series.map(s=>s.v[i]);el('line',{x1:X(Math.min(...vals)),x2:X(Math.max(...vals)),y1:yc,y2:yc,stroke:CSSV('--rule'),'stroke-width':2},svg);
+    AUC.series.forEach((s,j)=>{const y=yc+(j-1.5)*7;const c=el('circle',{cx:X(s.v[i]),cy:y,r:6,fill:CSSV(s.c),stroke:CSSV('--surface'),'stroke-width':2},svg);bindTip(c,fig,`${cl} · ${s.k}: <b>${fmt(s.v[i])}</b>`)});
+    const lv=AUC.series[3].v[i];el('text',{x:X(lv)-10,y:yc-12,'text-anchor':'end',class:'tick'},svg,fmt(lv))});
+  el('text',{x:X(0.5)+4,y:top+10,class:'tick'},svg,'acaso');
+  legend('leg-auc',AUC.series.map(s=>[CSSV(s.c),s.k]))}
+
+/* ---------- Fig Benchmark ---------- */
+const BENCH={"aleatoria":[0.968,0.965,0.958,0.956,0.858,0.963,0.966,0.968,0.969,0.941,0.967,0.963,0.961,0.959,0.87,0.968,0.967,0.968,0.965,0.952,0.953,0.968,0.879,0.873,0.85,0.966,0.966,0.858,0.969,0.847],"lopo":[0.621,0.697,0.742,0.741,0.72,0.679,0.657,0.692,0.695,0.464,0.653,0.728,0.791,0.782,0.736,0.709,0.677,0.689,0.732,0.602,0.618,0.739,0.708,0.704,0.666,0.709,0.688,0.641,0.761,0.584],"P19":[0.723,0.699,0.701,0.683,0.815,0.746,0.706,0.713,0.703,0.634,0.638,0.661,0.771,0.76,0.765,0.668,0.668,0.717,0.72,0.678,0.767,0.735,0.679,0.672,0.715,0.771,0.763,0.771,0.758,0.64],"P1":[0.689,0.548,0.82,0.831,0.702,0.665,0.631,0.776,0.632,0.603,0.489,0.456,0.761,0.761,0.441,0.463,0.533,0.471,0.647,0.632,0.581,0.548,0.926,0.919,0.562,0.539,0.64,0.643,0.787,0.785],"P2":[0.607,0.517,0.666,0.652,0.605,0.603,0.571,0.683,0.514,0.543,0.497,0.424,0.555,0.559,0.488,0.514,0.502,0.534,0.559,0.453,0.695,0.641,0.666,0.669,0.721,0.638,0.624,0.731,0.634,0.79],"P22":[0.384,0.446,0.466,0.446,0.314,0.36,0.364,0.388,0.462,0.49,0.419,0.429,0.439,0.425,0.346,0.406,0.397,0.325,0.387,0.463,0.317,0.429,0.381,0.37,0.384,0.356,0.354,0.4,0.437,0.36]};
+const BROWS=[['aleatoria','CV aleatória','--s1'],['lopo','Projeto novo (todos)','--s3'],['P19','  dentro do P19 · Nigéria','--s3'],['P1','  dentro do P1 · China','--s3'],['P2','  dentro do P2 · EUA','--s3'],['P22','  dentro do P22 · China','--s3']];
+function drawBench(){const svg=document.getElementById('svg-bench');svg.innerHTML='';const fig=document.getElementById('fig-bench');
+  const W=Math.max(520,svg.parentElement.clientWidth),rowH=36,top=8,left=180,right=24,H=top+rowH*BROWS.length+30;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+  const x0=0.25,x1=1.0,X=v=>left+(v-x0)/(x1-x0)*(W-left-right);
+  [0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0].forEach(v=>{el('line',{x1:X(v),x2:X(v),y1:top,y2:top+rowH*BROWS.length,class:v===0.5?'zero':'grid'},svg);el('text',{x:X(v),y:top+rowH*BROWS.length+18,'text-anchor':'middle',class:'tick'},svg,fmt(v))});
+  BROWS.forEach(([k,lab,c],i)=>{const yc=top+rowH*i+rowH/2;el('text',{x:left-12,y:yc+4,'text-anchor':'end','font-size':13,'font-weight':i<2?600:400},svg,lab.trim());
+    const v=BENCH[k];v.forEach((a,j)=>{const jit=((j*37)%11-5)*1.4;el('circle',{cx:X(a),cy:yc+jit,r:3.5,fill:CSSV(c),'fill-opacity':.55},svg)});
+    const s=[...v].sort((a,b)=>a-b),med=(s[14]+s[15])/2;const m=el('line',{x1:X(med),x2:X(med),y1:yc-12,y2:yc+12,stroke:CSSV('--ink'),'stroke-width':2.5},svg);
+    const hit=el('rect',{x:left,y:yc-rowH/2,width:W-left-right,height:rowH,fill:'transparent'},svg);bindTip(hit,fig,`${lab.trim()}: mediana <b>${fmt(med)}</b> · faixa ${fmt(s[0])}–${fmt(s[29])}`)});
+  legend('leg-bench',[[CSSV('--s1'),'CV aleatória'],[CSSV('--s3'),'Projeto fora do treino'],[CSSV('--ink'),'Mediana (traço)']])}
+
+/* ---------- Fig Alpha ---------- */
+const ALPHA=[['Todos juntos',0.97,'p < 10⁻²⁶'],['Ajustado por projeto',0.09,'p = 0,43'],['P1 · China (68/4)',1.81,'p = 0,02'],['P19 · Nigéria (27/13)',1.35,'p = 0,005'],['P2 · EUA (9/29)',0.61,'p = 0,34'],['P22 · China (65/54)',-0.48,'p = 0,004']];
+function drawAlpha(){const svg=document.getElementById('svg-alpha');svg.innerHTML='';const fig=document.getElementById('fig-alpha');
+  const W=Math.max(520,svg.parentElement.clientWidth),rowH=34,top=8,left=170,right=90,H=top+rowH*ALPHA.length+30;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+  const x0=-1,x1=2,X=v=>left+(v-x0)/(x1-x0)*(W-left-right);
+  [-1,-0.5,0,0.5,1,1.5,2].forEach(v=>{el('line',{x1:X(v),x2:X(v),y1:top,y2:top+rowH*ALPHA.length,class:v===0?'zero':'grid'},svg);el('text',{x:X(v),y:top+rowH*ALPHA.length+18,'text-anchor':'middle',class:'tick'},svg,(v>0?'+':'')+fmt(v).replace(',00',''))});
+  ALPHA.forEach(([lab,v,p],i)=>{const yc=top+rowH*i+rowH/2;el('text',{x:left-12,y:yc+4,'text-anchor':'end','font-size':13,'font-weight':i<2?600:400},svg,lab);
+    el('line',{x1:X(0),x2:X(v),y1:yc,y2:yc,stroke:CSSV('--s1'),'stroke-width':2},svg);
+    const c=el('circle',{cx:X(v),cy:yc,r:6,fill:CSSV('--s1'),stroke:CSSV('--surface'),'stroke-width':2},svg);bindTip(c,fig,`${lab}: <b>${(v>0?'+':'')+fmt(v)}</b> · ${p}`);
+    el('text',{x:W-right+8,y:yc+4,class:'tick'},svg,p)});
+}
+
+/* ---------- Fig PERMANOVA ---------- */
+const PERM={rows:['Classe sozinha','Projeto sozinho','Classe além do projeto'],series:[{k:'Paola',c:'--s1',v:[7.1,16.4,0.4]},{k:'Tassiane corrigida',c:'--s2',v:[6.6,14.5,0.4]}]};
+function drawPerm(){const svg=document.getElementById('svg-perm');svg.innerHTML='';const fig=document.getElementById('fig-perm');
+  const W=Math.max(520,svg.parentElement.clientWidth),rowH=48,top=8,left=170,right=40,H=top+rowH*3+30;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+  const X=v=>left+v/20*(W-left-right);
+  [0,5,10,15,20].forEach(v=>{el('line',{x1:X(v),x2:X(v),y1:top,y2:top+rowH*3,class:'grid'},svg);el('text',{x:X(v),y:top+rowH*3+18,'text-anchor':'middle',class:'tick'},svg,v+'%')});
+  PERM.rows.forEach((r,i)=>{const yc=top+rowH*i+rowH/2;el('text',{x:left-12,y:yc+4,'text-anchor':'end','font-size':13,'font-weight':600},svg,r);
+    PERM.series.forEach((s,j)=>{const y=yc-12+j*13;const w=Math.max(2,X(s.v[i])-X(0));
+      const b=el('rect',{x:X(0),y:y,width:w,height:11,rx:3,fill:CSSV(s.c)},svg);bindTip(b,fig,`${r} · ${s.k}: <b>${fmt(s.v[i]).replace(',00','')}%</b>`);
+      el('text',{x:X(0)+w+6,y:y+10,class:'tick'},svg,String(s.v[i]).replace('.',',')+'%')})});
+  legend('leg-perm',PERM.series.map(s=>[CSSV(s.c),s.k]))}
+
+function drawAll(){drawAUC();drawBench();drawAlpha();drawPerm()}
+drawAll();
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(drawAll,120)});
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawAll)}catch(e){}
+new MutationObserver(drawAll).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
+  const box=document.getElementById(b.dataset.target);const text=[...box.querySelectorAll('p')].map(p=>p.innerText).join('\n\n');
+  navigator.clipboard.writeText(text).then(()=>{b.textContent='Copiado';setTimeout(()=>b.textContent='Copiar',1500)}).catch(()=>{const r=document.createRange();r.selectNodeContents(box);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selecionado'})}));
+</script>

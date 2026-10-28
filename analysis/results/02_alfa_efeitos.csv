@@ -1,0 +1,53 @@
+tabela,metrica,comparacao,escopo,efeito,p
+PAOLA,obs,cancer vs control,todos (Kruskal global p),,5.962000243249242e-25
+PAOLA,obs,cancer vs control,modelo SEM projeto,0.8982688948127259,1.953095495019372e-24
+PAOLA,obs,cancer vs control,modelo COM projeto,-0.13296879537443632,0.21709211016509194
+PAOLA,obs,lesion high vs control,todos (Kruskal global p),,5.962000243249242e-25
+PAOLA,obs,lesion high vs control,modelo SEM projeto,-0.009217366493216788,0.9187532527701552
+PAOLA,obs,lesion high vs control,modelo COM projeto,-0.028411715330890635,0.749265802979609
+PAOLA,obs,lesion low vs control,todos (Kruskal global p),,5.962000243249242e-25
+PAOLA,obs,lesion low vs control,modelo SEM projeto,0.12268649218083508,0.24183276107059432
+PAOLA,obs,lesion low vs control,modelo COM projeto,0.0389934299196668,0.7040702454252473
+PAOLA,obs,cancer vs control,dentro de P1 (n=68/4),87.5,0.037751332883234436
+PAOLA,obs,cancer vs control,dentro de P2 (n=9/29),2.0,0.7179716141154289
+PAOLA,obs,cancer vs control,dentro de P19 (n=27/13),16.0,0.0024040000830177315
+PAOLA,obs,cancer vs control,dentro de P22 (n=65/54),-15.0,0.00022948657368040482
+PAOLA,shannon,cancer vs control,todos (Kruskal global p),,3.9565986563426e-27
+PAOLA,shannon,cancer vs control,modelo SEM projeto,0.9681700612227784,1.1105130716442833e-26
+PAOLA,shannon,cancer vs control,modelo COM projeto,0.0902525786257546,0.4332919172857375
+PAOLA,shannon,lesion high vs control,todos (Kruskal global p),,3.9565986563426e-27
+PAOLA,shannon,lesion high vs control,modelo SEM projeto,0.123318805925628,0.18333361826346684
+PAOLA,shannon,lesion high vs control,modelo COM projeto,-0.014230238762126675,0.8810152531058907
+PAOLA,shannon,lesion low vs control,todos (Kruskal global p),,3.9565986563426e-27
+PAOLA,shannon,lesion low vs control,modelo SEM projeto,0.2604960864347893,0.015481476796914398
+PAOLA,shannon,lesion low vs control,modelo COM projeto,0.05117968540128886,0.641115594368802
+PAOLA,shannon,cancer vs control,dentro de P1 (n=68/4),1.8142746035582518,0.021815919672625122
+PAOLA,shannon,cancer vs control,dentro de P2 (n=9/29),0.6102747293662274,0.33633357005702746
+PAOLA,shannon,cancer vs control,dentro de P19 (n=27/13),1.3450457460155008,0.004656243846620988
+PAOLA,shannon,cancer vs control,dentro de P22 (n=65/54),-0.48317498105733847,0.003783669920265368
+TASSI_V2,obs,cancer vs control,todos (Kruskal global p),,3.455383892967311e-20
+TASSI_V2,obs,cancer vs control,modelo SEM projeto,0.8644609057472921,1.6599620724085952e-20
+TASSI_V2,obs,cancer vs control,modelo COM projeto,-0.021879858283957845,0.8344371946733544
+TASSI_V2,obs,lesion high vs control,todos (Kruskal global p),,3.455383892967311e-20
+TASSI_V2,obs,lesion high vs control,modelo SEM projeto,0.03048133713409969,0.7473727524534367
+TASSI_V2,obs,lesion high vs control,modelo COM projeto,-0.006840256207116303,0.9375112419561229
+TASSI_V2,obs,lesion low vs control,todos (Kruskal global p),,3.455383892967311e-20
+TASSI_V2,obs,lesion low vs control,modelo SEM projeto,0.20468845030287644,0.05460571953612449
+TASSI_V2,obs,lesion low vs control,modelo COM projeto,0.08174228539800739,0.40822598157672885
+TASSI_V2,obs,cancer vs control,dentro de P1 (n=68/4),109.5,0.02957527979421018
+TASSI_V2,obs,cancer vs control,dentro de P2 (n=9/29),3.0,0.7834460463059258
+TASSI_V2,obs,cancer vs control,dentro de P19 (n=29/14),17.5,0.0006143803030585468
+TASSI_V2,obs,cancer vs control,dentro de P22 (n=65/54),-11.0,0.0018968487482711608
+TASSI_V2,shannon,cancer vs control,todos (Kruskal global p),,5.180572386107109e-23
+TASSI_V2,shannon,cancer vs control,modelo SEM projeto,0.9962879059754283,8.478880786841392e-24
+TASSI_V2,shannon,cancer vs control,modelo COM projeto,0.14019322440352885,0.2322170798715639
+TASSI_V2,shannon,lesion high vs control,todos (Kruskal global p),,5.180572386107109e-23
+TASSI_V2,shannon,lesion high vs control,modelo SEM projeto,0.15500770001049444,0.121903267767799
+TASSI_V2,shannon,lesion high vs control,modelo COM projeto,-0.007868109434333043,0.9358540982017522
+TASSI_V2,shannon,lesion low vs control,todos (Kruskal global p),,5.180572386107109e-23
+TASSI_V2,shannon,lesion low vs control,modelo SEM projeto,0.32537273875994344,0.003940666985213668
+TASSI_V2,shannon,lesion low vs control,modelo COM projeto,0.06831819156156506,0.5372741145755406
+TASSI_V2,shannon,cancer vs control,dentro de P1 (n=68/4),1.9052577982654433,0.02013627659677874
+TASSI_V2,shannon,cancer vs control,dentro de P2 (n=9/29),0.7064841996576232,0.3193875098174135
+TASSI_V2,shannon,cancer vs control,dentro de P19 (n=29/14),1.1897716107393974,0.0023239926279204496
+TASSI_V2,shannon,cancer vs control,dentro de P22 (n=65/54),-0.4474825896081278,0.006433026413846201

@@ -1,1 +1,4 @@
 node_modules
+analysis/data/
+analysis/results/*.pkl
+__pycache__/

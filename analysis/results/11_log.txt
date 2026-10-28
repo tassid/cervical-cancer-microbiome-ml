@@ -1,0 +1,37 @@
+
+== PAOLA: 41 gêneros contaminantes presentes; mediana 0.01% das leituras
+mediana (%) por projeto x classe:
+ tipo_amostra  cancer  control  lesion high  lesion low
+Project                                               
+P1              7.71     1.90          NaN         NaN
+P10             0.12     0.00         0.00         0.0
+P14              NaN     0.03         0.00         NaN
+P16             0.00      NaN          NaN         NaN
+P19             0.00     0.00         0.00         0.0
+P2              0.00     0.00         0.00         0.0
+P21              NaN     0.62         2.83         NaN
+P22             0.02     0.28          NaN         NaN
+P6              0.01      NaN          NaN         NaN
+P9              2.75      NaN          NaN         NaN
+mais abundantes (média %): {'Wolbachia': 0.637, 'Aeribacillus': 0.481, 'Burkholderia-Caballeronia-Paraburkholderia': 0.45, 'Rhodococcus': 0.28, 'Halomonas': 0.229, 'Delftia': 0.185, 'Thermus': 0.079, 'Sphingomonas': 0.051, 'Ralstonia': 0.041, 'Mesorhizobium': 0.038}
+  cv: com [0.965, 0.84, 0.745, 0.73]  sem [0.95, 0.806, 0.738, 0.696]
+  lopo: com [0.669, 0.497, 0.443, 0.33]  sem [0.653, 0.539, 0.419, 0.297]
+  acurácia ao prever projeto: com 0.871  sem 0.827
+
+== TASSI_V2: 43 gêneros contaminantes presentes; mediana 0.00% das leituras
+mediana (%) por projeto x classe:
+ tipo_amostra  cancer  control  lesion high  lesion low
+Project                                               
+P1              6.21     1.24          NaN         NaN
+P10             0.18     0.00         0.00        0.00
+P14              NaN     0.05         0.01         NaN
+P16             0.00      NaN          NaN         NaN
+P19             0.03     0.00         0.03        0.02
+P2              0.00     0.00         0.00        0.00
+P22             0.00     0.08          NaN         NaN
+P6              0.01      NaN          NaN         NaN
+P9              1.98      NaN          NaN         NaN
+mais abundantes (média %): {'Wolbachia': 0.665, 'Aeribacillus': 0.404, 'Rhodococcus': 0.276, 'Halomonas': 0.17, 'Cupriavidus': 0.095, 'Bacillus': 0.064, 'Delftia': 0.064, 'Sphingomonas': 0.044, 'Brevundimonas': 0.041, 'Burkholderia-Caballeronia-Paraburkholderia': 0.019}
+  cv: com [0.958, 0.808, 0.728, 0.695]  sem [0.951, 0.788, 0.724, 0.699]
+  lopo: com [0.628, 0.448, 0.466, 0.346]  sem [0.633, 0.457, 0.478, 0.343]
+  acurácia ao prever projeto: com 0.847  sem 0.829

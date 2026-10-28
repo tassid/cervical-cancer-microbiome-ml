@@ -1,0 +1,22 @@
+Loading required package: permute
+amostras na tabela: 889 
+amostras no metadata alinhado: 889 
+NA na tipo_amostra: 0 
+NA na Location: 0 
+NA na Project: 0 
+Permutation test for adonis under reduced model
+Marginal effects of terms
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist_bc ~ tipo_amostra + Location + Project, data = metadata, permutations = 999, by = "margin")
+              Df SumOfSqs      R2       F Pr(>F)    
+tipo_amostra   3     1.56 0.00467  1.5983  0.032 *  
+Location       0     0.00 0.00000     NaN           
+Project        5    21.33 0.06364 13.0761  0.001 ***
+Residual     877   286.16 0.85365                   
+Total        888   335.21 1.00000                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+permanova_resultado.csv salvo
