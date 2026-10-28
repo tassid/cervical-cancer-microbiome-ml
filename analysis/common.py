@@ -99,6 +99,14 @@ def tassi_fix():
     return out.loc[:, out.sum() >= 2]
 
 
+def paola_sem_nao_bacteriano():
+    """Tabela da Paola sem leituras 'Unassigned' e de Eukaryota (o que pesa no P16), e sem
+    amostras que ficam com < 1.000 leituras depois do filtro."""
+    df = paola_genus()
+    df = df.loc[:, [not (c.startswith("Unassigned") or c.startswith("d__Eukaryota")) for c in df.columns]]
+    return df[df.sum(axis=1) >= 1000]
+
+
 def paola_limpa():
     """Tabela da Paola sem P21, sem P16 (DNA não bacteriano) e sem amostras < 1.000 leituras."""
     df = paola_genus()
@@ -122,6 +130,7 @@ def tassi_v2():
 
 
 TABELAS = {"PAOLA": paola_genus, "TASSI": tassi, "TASSI_FIX": tassi_fix,
+           "PAOLA_FILTRADA": paola_sem_nao_bacteriano,
            "PAOLA_LIMPA": paola_limpa, "TASSI_V2": tassi_v2}
 
 
