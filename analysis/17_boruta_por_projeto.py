@@ -24,7 +24,8 @@ MINIMO = 8
 def boruta(X, y, seed=42):
     rf = RandomForestClassifier(n_jobs=-1, class_weight="balanced", max_depth=5, random_state=seed)
     b = BorutaPy(rf, n_estimators="auto", max_iter=100, alpha=0.05, random_state=seed, verbose=0)
-    b.fit(np.asarray(X, dtype=float), np.asarray(y).astype(str))
+    _, y_int = np.unique(np.asarray(y).astype(str), return_inverse=True)
+    b.fit(np.asarray(X, dtype=float), y_int.astype(int))
     return b.support_, b.support_weak_, b.ranking_
 
 

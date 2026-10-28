@@ -1,0 +1,18 @@
+
+== PAOLA: LEfSe global câncer x controle: 104 gêneros; 4 classes: 95
+   cancer vs control em P19: 14 gêneros
+   cancer vs control em P2: 2 gêneros
+   cancer vs control em P22: 37 gêneros
+   HSIL vs control em P10: 1 gêneros
+   HSIL vs control em P14: 3 gêneros
+   HSIL vs control em P19: 8 gêneros
+   HSIL vs control em P2: 8 gêneros
+   LSIL vs control em P10: 12 gêneros
+   LSIL vs control em P19: 8 gêneros
+   LSIL vs control em P2: 2 gêneros
+   em >= 2 projetos, mesma classe enriquecida:
+        contraste               genero      classe projeto  n_projetos  projetos_testados
+  HSIL vs control          Megasphaera lesion_high  P14,P2           2                  4
+  LSIL vs control Escherichia_Shigella  lesion_low P10,P19           2                  3
+cancer vs control              Gemella      cancer  P2,P22           2                  3
+   do LEfSe global câncer x controle (104 gêneros), 1 se repetem dentro de projetos
