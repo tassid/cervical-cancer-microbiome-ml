@@ -254,6 +254,33 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <p>Depois da correção, a correlação entre os pipelines por gênero fica em 0,99 para <i>Lactobacillus</i>, <i>Gardnerella</i>, <i>Sneathia</i> e <i>Streptococcus</i>, 0,98 para <i>Pseudomonas</i>, 0,97 para <i>Fusobacterium</i> e 1,00 para <i>Prevotella</i>. Todas as conclusões deste relatório valem para as duas tabelas. A diferença do P16 merece atenção na tabela da Paola: provável DNA humano não filtrado, e três contagens diferentes para o mesmo projeto (29 na tabela, 26 no artigo, 55 nos metadados).</p>
   </div>
 
+  <h3>Incongruências entre as duas tabelas</h3>
+  <div class="prose">
+    <p>Lista completa do que difere entre a tabela da Paola e a da Tassiane, incluindo as amostras que estão em uma tabela e não na outra. Os metadados clínicos são idênticos nas duas (1.042 amostras, mesma classe em todas).</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>#</th><th>Ponto</th><th>Paola (artigo)</th><th>Tassiane</th><th>Lado a corrigir</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>P22 (China)</td><td>classificado corretamente</td><td>processado no ramo V4, mas é V3-V4; 79% das leituras sem gênero, <i>Dickeya</i> 9,6% e <i>Nocardia</i> 5,6%. Bray-Curtis 0,99 contra a Paola, 0,02 após a correção</td><td><span class="pill bad">Tassiane</span></td></tr>
+        <tr><td class="n">2</td><td>P21 (Espanha)</td><td>incluído: 103 controles e 2 HSIL</td><td>excluído por falta de primer publicado</td><td><span class="pill warn">decisão conjunta</span></td></tr>
+        <tr><td class="n">3</td><td>Amostras com menos de 1.000 leituras</td><td>26 mantidas (mínimo de 2 leituras; mediana de 95 nas 22 que só ela tem), em P19 (11), P10 (5), P9 (5) e P14 (5)</td><td>filtradas</td><td><span class="pill bad">Paola</span></td></tr>
+        <tr><td class="n">4</td><td>P16 (EUA)</td><td>29 amostras; mediana de 48% Unassigned + Eukaryota por amostra (até 57%), provável DNA humano. Nos outros projetos: 0%</td><td>47 amostras; Bray-Curtis 0,49 nas 29 em comum. Metadados: 55; artigo: 26; 8 amostras em nenhuma tabela</td><td><span class="pill bad">Paola</span></td></tr>
+        <tr><td class="n">5</td><td>Profundidade da mesma amostra</td><td>referência</td><td>P19 2,3× (correção do primer), P14 0,59×, P1 0,72×; demais 0,99–1,04×</td><td><span class="pill warn">conferir</span></td></tr>
+        <tr><td class="n">6</td><td>P14 (Brasil)</td><td>13 HSIL e 14 controles</td><td>11 e 11</td><td><span class="pill warn">as duas</span> artigo diz 22 e 21; 16 amostras em nenhuma tabela</td></tr>
+        <tr><td class="n">7</td><td>Total de amostras</td><td>997 na tabela, 1.008 no artigo</td><td>889</td><td><span class="pill bad">Paola</span></td></tr>
+        <tr><td class="n">8</td><td>Cloroplasto</td><td>"Chloroplast" é biomarcador do Boruta, mas a tabela não tem nenhum cloroplasto</td><td>removido</td><td><span class="pill bad">Paola</span></td></tr>
+        <tr><td class="n">9</td><td>Correção de ruído</td><td>DADA2 no texto; a pasta tem saídas de Deblur</td><td>Deblur, 220 nt em V4 e 250 nt em V3-V4</td><td><span class="pill warn">Paola esclarecer</span></td></tr>
+        <tr><td class="n">10</td><td>Classificação</td><td>um classificador SILVA de comprimento total; nível de espécie (2.450 táxons)</td><td>um classificador por região; nível de gênero (1.587)</td><td><span class="pill good">escolha de método</span></td></tr>
+        <tr><td class="n">11</td><td>V4 e V3-V4</td><td>juntas na mesma tabela</td><td>separadas até agrupar por gênero</td><td><span class="pill good">escolha de método</span></td></tr>
+        <tr><td class="n">12</td><td>P10 (EUA)</td><td>um lote</td><td>dois sublotes (com e sem primer); perfis idênticos aos da Paola</td><td><span class="pill good">sem efeito</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>Com o mesmo esquema de validação, as duas tabelas dão AUCs a 0,01–0,03 um do outro. As diferenças de método (DADA2 ou Deblur, espécie ou gênero, classificador único ou por região) quase não mudam o resultado. O que muda as conclusões é quais amostras e projetos entram: o P21, que concentra o principal biomarcador do artigo; o P16, com DNA não bacteriano; e as amostras de baixíssima profundidade.</p>
+  </div>
+
   <h2>7. O que se sustenta no artigo</h2>
   <div class="tablewrap">
     <table>
