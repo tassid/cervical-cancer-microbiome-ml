@@ -82,6 +82,9 @@ Os resultados já calculados estão em `results/`.
 - **Scripts R originais rodados de novo** (`results/R_tassi_v2/`): PERMANOVA condição 0,47% e projeto 6,36%;
   o `random_forest.R` usa `pROC::roc()` com direção automática, que nunca devolve AUC < 0,5. Com
   `direction = "<"` (`random_forest_direcao_fixa.R`) o LOPO cai de 0,596 para 0,457 de macro-AUC.
+  O `gllvm_fit.R` reproduz a tabela original (AIC 313.373 → 300.307,4; η² por projeto 56,7% e 58,2%)
+  e, com o P22 reprocessado, o η² por projeto cai para 30,3% e 15,9% (condição: 15,0% e 4,1%).
+  η² calculado com `15_gllvm_eta2.py` sobre `gllvm_escores.csv`.
 - **Meta-análise por projeto** (`13_meta_analise.py`): *Fusobacterium* e *Sneathia* ↑ no câncer em 4/4
   estudos (g ≈ 0,33, I² = 0%); *Sneathia*, *Megasphaera* e *Atopobium* ↑ na HSIL em 4/4; LSIL sem sinal;
   *Lactobacillus* heterogêneo (I² = 86%).

@@ -559,8 +559,8 @@ function RealPermanovaChart() {
 }
 
 const REAL_GLLVM_ETA2 = [
-  { eixo: "LV1", projeto: 56.7, tipoAmostra: 11.1 },
-  { eixo: "LV2", projeto: 58.2, tipoAmostra: 7.9 },
+  { eixo: "LV1", projeto: 56.7, tipoAmostra: 11.1, projetoV2: 30.3, tipoAmostraV2: 15.0 },
+  { eixo: "LV2", projeto: 58.2, tipoAmostra: 7.9, projetoV2: 15.9, tipoAmostraV2: 4.1 },
 ];
 
 function RealGllvmChart() {
@@ -573,22 +573,29 @@ function RealGllvmChart() {
           <YAxis domain={[0, 70]} tick={{ fontSize: 12 }} unit="%" label={{ value: "η²", angle: -90, position: "insideLeft", fontSize: 12 }} />
           <Tooltip contentStyle={{ fontSize: 12 }} formatter={(v) => `${v}%`} />
           <Legend wrapperStyle={{ fontSize: 12 }} />
-          <Bar dataKey="projeto" fill="#a85b5b" name="Projeto de origem">
+          <Bar dataKey="projeto" fill="#a85b5b" name="Projeto (tabela original)">
             <LabelList dataKey="projeto" position="top" fontSize={11} formatter={(v: any) => `${v}%`} />
           </Bar>
-          <Bar dataKey="tipoAmostra" fill="#5b7a9e" name="Condição clínica">
+          <Bar dataKey="tipoAmostra" fill="#5b7a9e" name="Condição (tabela original)">
             <LabelList dataKey="tipoAmostra" position="top" fontSize={11} formatter={(v: any) => `${v}%`} />
+          </Bar>
+          <Bar dataKey="projetoV2" fill="#6f4a3a" name="Projeto (P22 reprocessado)">
+            <LabelList dataKey="projetoV2" position="top" fontSize={11} formatter={(v: any) => `${v}%`} />
+          </Bar>
+          <Bar dataKey="tipoAmostraV2" fill="#3f5873" name="Condição (P22 reprocessado)">
+            <LabelList dataKey="tipoAmostraV2" position="top" fontSize={11} formatter={(v: any) => `${v}%`} />
           </Bar>
         </BarChart>
       </ResponsiveContainer>
       <div style={{ fontSize: 12, textAlign: "center", color: "var(--ink-soft)", marginTop: 6, lineHeight: 1.5 }}>
         Fig. G. Variância de cada eixo latente do GLLVM (sem covariáveis)
         explicada por projeto de origem vs. condição clínica, execução
-        própria sobre as 889 amostras finais e os 98 gêneros mais
-        prevalentes. Os dois eixos, que juntos resumem a maior parte da
-        estrutura de composição do dataset, são dominados por projeto de
-        origem por uma margem de mais de 5 vezes, terceira confirmação
-        independente do mesmo achado do PERMANOVA (Fig. E).
+        própria sobre as 889 amostras finais. Na tabela original (98
+        gêneros), os dois eixos são dominados por projeto (η² 56,7% e
+        58,2%). Com o P22 reprocessado no ramo V3-V4 (102 gêneros), o
+        projeto ainda domina, mas bem menos (30,3% e 15,9%, contra 15,0% e
+        4,1% da condição): boa parte da separação vinha do P22 mal
+        classificado, que parecia uma comunidade totalmente diferente.
       </div>
     </div>
   );
@@ -2222,8 +2229,10 @@ export default function App() {
               e projeto 6,36%. O <code>random_forest.R</code> também tinha um
               problema: o <code>pROC::roc()</code> usa direção automática e
               nunca devolve AUC abaixo de 0,5; com a direção fixa, o
-              macro-AUC no LOPO é 0,457, não 0,6. O GLLVM ainda precisa ser
-              refeito.
+              macro-AUC no LOPO é 0,457, não 0,6. O <code>gllvm_fit.R</code>,
+              rodado de novo, reproduz exatamente a tabela original (AIC 313.373
+              e 300.307,4); com o P22 reprocessado, o η² por projeto dos eixos
+              cai de 56,7% e 58,2% para 30,3% e 15,9% (Fig. G).
             </p>
             <table className="formal">
               <caption><span className="cap-label">Tabela 2.</span> Etapas do pipeline próprio e status atual.</caption>
@@ -2238,7 +2247,7 @@ export default function App() {
                 <tr><td>5. Taxonomia SILVA (V3-V4 e V4)</td><td><span className="status-badge done">concluído (classificador retreinado localmente)</span></td></tr>
                 <tr><td>6. Filtragem e fusão por gênero</td><td><span className="status-badge done">concluído (889 amostras finais de um teto de 937)</span></td></tr>
                 <tr><td>7. PERMANOVA</td><td><span className="status-badge done">concluído (condição 0,59%, projeto 9,19%; com P22 reprocessado: 0,47% e 6,36%)</span></td></tr>
-                <tr><td>8. GLLVM</td><td><span className="status-badge partial">refazer com P22 corrigido (antes: eixos dominados por projeto, η² 56,7% e 58,2%)</span></td></tr>
+                <tr><td>8. GLLVM</td><td><span className="status-badge done">refeito com P22 reprocessado (η² por projeto 30,3% e 15,9%; antes 56,7% e 58,2%)</span></td></tr>
                 <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge done">refeito: com P22 reprocessado e direção da ROC fixa, macro-AUC 0,808 para 0,457; controle negativo 83,0%</span></td></tr>
                 <tr><td>10. Auditoria de viés e comparação com a tabela da Paola</td><td><span className="status-badge done">concluído (seção 6; scripts em analysis/)</span></td></tr>
               </tbody>
@@ -2514,9 +2523,6 @@ export default function App() {
                 leitura tem o primer ou o início de V3, e as sequências mais
                 comuns são humanas (Alu, satélite). A exclusão pelo cutadapt
                 é correta; a tabela da Paola também não as tem.
-              </li>
-              <li>
-                <strong>Refazer o GLLVM</strong> com a tabela corrigida.
               </li>
               <li>
                 <strong>Alinhar com a Paola</strong> as incongruências da
