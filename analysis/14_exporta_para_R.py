@@ -19,7 +19,9 @@ t.index.name = "#OTU ID"
 with open(os.path.join(dest, "export", "genus_table_final", "feature-table.tsv"), "w") as f:
     f.write("# Constructed from biom file\n")
     t.to_csv(f, sep="\t")
-m = meta().loc[t.columns].reset_index()
+m = meta().loc[t.columns]
+m.index.name = "sampleid"
+m = m.reset_index()
 m.to_csv(os.path.join(dest, "metadata_final_889.tsv"), sep="\t", index=False)
 print(f"{nome}: {t.shape[1]} amostras, {t.shape[0]} gêneros -> {dest}")
 print(m.groupby(["Project", "tipo_amostra"]).size().unstack(fill_value=0))
