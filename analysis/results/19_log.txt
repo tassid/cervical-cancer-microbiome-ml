@@ -16,3 +16,19 @@
   LSIL vs control Escherichia_Shigella  lesion_low P10,P19           2                  3
 cancer vs control              Gemella      cancer  P2,P22           2                  3
    do LEfSe global câncer x controle (104 gêneros), 1 se repetem dentro de projetos
+
+== TASSI_V2: LEfSe global câncer x controle: 104 gêneros; 4 classes: 93
+   cancer vs control em P19: 18 gêneros
+   cancer vs control em P2: 2 gêneros
+   cancer vs control em P22: 24 gêneros
+   HSIL vs control em P10: 1 gêneros
+   HSIL vs control em P14: 1 gêneros
+   HSIL vs control em P19: 11 gêneros
+   HSIL vs control em P2: 8 gêneros
+   LSIL vs control em P10: 12 gêneros
+   LSIL vs control em P19: 5 gêneros
+   LSIL vs control em P2: 1 gêneros
+   em >= 2 projetos, mesma classe enriquecida:
+        contraste  genero classe projeto  n_projetos  projetos_testados
+cancer vs control Gemella cancer  P2,P22           2                  3
+   do LEfSe global câncer x controle (104 gêneros), 1 se repetem dentro de projetos
