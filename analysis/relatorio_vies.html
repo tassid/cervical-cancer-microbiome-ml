@@ -435,6 +435,29 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <p>Sem controles negativos de extração nos BioProjects, não dá para usar o decontam. Usamos uma lista de 48 gêneros reconhecidos como contaminantes de reagente ou de laboratório (Salter et al., 2014; Eisenhofer et al., 2019), que inclui <i>Wolbachia</i>, <i>Aeribacillus</i>, <i>Thermus</i> e cloroplasto. Gêneros que também vivem no trato genital (<i>Streptococcus</i>, <i>Corynebacterium</i>, <i>Pseudomonas</i>) ficaram de fora. Eles são raros na maioria dos projetos (mediana de 0% a 0,3% das leituras), mas chegam a 7,7% das leituras no câncer do P1 e 2,8% no P9, dois projetos só de câncer. Tirá-los quase não muda o resultado: AUC de câncer no LOPO 0,63 com e sem eles, e o projeto continua previsível (85% contra 83% de acerto). O efeito de projeto vai muito além dos contaminantes.</p>
   </div>
 
+  <h3>Scripts R originais da Tassiane, rodados de novo</h3>
+  <div class="prose">
+    <p>Os scripts <span class="mono">permanova.R</span>, <span class="mono">permanova_pares.R</span> e <span class="mono">random_forest.R</span> do Drive foram rodados sem mudanças, primeiro na tabela original (reproduzem exatamente os números do README) e depois na tabela com o P22 reprocessado.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Resultado</th><th>Tabela original</th><th>P22 reprocessado</th><th>Artigo</th></tr></thead>
+      <tbody>
+        <tr><td>PERMANOVA: condição / projeto</td><td>0,59% / 9,19%</td><td>0,47% (p = 0,032) / 6,36%</td><td>13,5% combinado</td></tr>
+        <tr><td>Controle × câncer</td><td>6,52%</td><td>6,00%</td><td>5,0%</td></tr>
+        <tr><td>HSIL × câncer</td><td>5,75%</td><td>3,35%</td><td>3,6%</td></tr>
+        <tr><td>LSIL × câncer</td><td>4,44%</td><td>2,52%</td><td>2,2%</td></tr>
+        <tr><td>RF, CV aleatória (macro-AUC)</td><td>0,809</td><td>0,808</td><td>—</td></tr>
+        <tr><td>RF, LOPO (macro-AUC), direção automática do pROC</td><td>0,596</td><td>0,596</td><td>—</td></tr>
+        <tr><td>RF, LOPO (macro-AUC), direção fixa</td><td>—</td><td><b>0,457</b> (câncer 0,61; controle 0,42; HSIL 0,47; LSIL 0,34)</td><td>—</td></tr>
+        <tr><td>Controle negativo (prever projeto)</td><td>83,0%</td><td>83,0%</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout prose">
+    <p style="margin:0"><b>O <span class="mono">random_forest.R</span> superestima o LOPO.</b> O <span class="mono">pROC::roc()</span> usa <span class="mono">direction = "auto"</span> por padrão: quando o classificador erra mais do que acerta, o pacote inverte a curva e devolve 1 − AUC. Por isso o script nunca mostra AUC abaixo de 0,5, e o LSIL aparecia com 0,66 no LOPO quando o valor real é 0,34. Com <span class="mono">direction = "&lt;"</span> (arquivo <span class="mono">random_forest_direcao_fixa.R</span>), o macro-AUC no LOPO cai de 0,596 para 0,457, abaixo do acaso. O valor "0,6" do README e do site deve ser corrigido onde for citado.</p>
+  </div>
+
   <h3>Matriz de confusão com projeto fora do treino</h3>
   <div class="tablewrap">
     <table>

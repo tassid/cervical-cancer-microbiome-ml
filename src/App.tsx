@@ -444,10 +444,10 @@ function AucComparisonChart() {
 }
 
 const REAL_AUC_COMPARISON = [
-  { classe: "cancer", aleatoria: 0.959, lopo: 0.717, lopoFix: 0.622 },
-  { classe: "control", aleatoria: 0.815, lopo: 0.512, lopoFix: 0.427 },
-  { classe: "lesion high", aleatoria: 0.76, lopo: 0.51, lopoFix: 0.465 },
-  { classe: "lesion low", aleatoria: 0.71, lopo: 0.662, lopoFix: 0.354 },
+  { classe: "cancer", aleatoria: 0.959, lopo: 0.717, lopoFix: 0.606 },
+  { classe: "control", aleatoria: 0.815, lopo: 0.512, lopoFix: 0.419 },
+  { classe: "lesion high", aleatoria: 0.76, lopo: 0.51, lopoFix: 0.467 },
+  { classe: "lesion low", aleatoria: 0.71, lopo: 0.662, lopoFix: 0.337 },
 ];
 
 function RealAucComparisonChart() {
@@ -466,7 +466,7 @@ function RealAucComparisonChart() {
           <Bar dataKey="lopo" fill="#a85b5b" name="Leave-one-project-out">
             <LabelList dataKey="lopo" position="top" fontSize={11} formatter={(v: any) => v.toFixed(2)} />
           </Bar>
-          <Bar dataKey="lopoFix" fill="#6f4a3a" name="LOPO, P22 corrigido">
+          <Bar dataKey="lopoFix" fill="#6f4a3a" name="LOPO, P22 reprocessado, direção da ROC fixa">
             <LabelList dataKey="lopoFix" position="top" fontSize={11} formatter={(v: any) => v.toFixed(2)} />
           </Bar>
         </BarChart>
@@ -478,9 +478,12 @@ function RealAucComparisonChart() {
         na classe câncer (0,959 para 0,717), a mais desbalanceada entre
         projetos (Fig. A). A linha de 0,5 é o nível de acaso: controle e
         lesão alta ficam bem perto dela sob leave-one-project-out, ou seja,
-        quase não melhor que chutar. A terceira barra é o LOPO refeito
-        depois de reclassificar o P22 (que tinha entrado no ramo V4 sendo
-        V3-V4, ver seção 6): a queda fica ainda maior, câncer em 0,62.
+        quase não melhor que chutar. A terceira barra é o mesmo script
+        depois de reprocessar o P22 (que tinha entrado no ramo V4 sendo
+        V3-V4) e de fixar a direção da curva ROC no pROC: com a direção
+        automática, o pacote inverte curvas abaixo de 0,5, e por isso a
+        lesão baixa aparecia com 0,66. Com a direção fixa, o macro-AUC no
+        LOPO cai para 0,457, abaixo do acaso (ver seção 6).
       </div>
     </div>
   );
@@ -2207,12 +2210,20 @@ export default function App() {
               no classificador da V4. As leituras começam em{" "}
               <code>TAGGGAATCTTCCACAATGG</code>, início de V3, e o
               classificador V4 deixou 79% delas sem gênero, com gêneros
-              espúrios (<em>Dickeya</em> 9,6%, <em>Nocardia</em> 5,6%). Uma
-              correção provisória por correspondência de sequência com as
-              ASVs V3-V4 (<code>analysis/08_corrige_p22.py</code>) recupera
-              93% das leituras e deixa o P22 igual ao da Paola. Os números
-              recalculados estão na seção 6; o GLLVM ainda usa a tabela
-              antiga e o P22 precisa ser reprocessado no ramo V3-V4.
+              espúrios (<em>Dickeya</em> 9,6%, <em>Nocardia</em> 5,6%). O P22
+              foi reprocessado a partir do SRA (<code>analysis/p22_v3v4.sh</code>):
+              o deblur reproduziu exatamente as mesmas ASVs, então o único
+              erro era o classificador. No caminho apareceu outro problema:
+              no P22, as 65 amostras de câncer têm leituras de ~222 nt e os
+              54 controles, ~274 nt, ou seja, foram sequenciados em corridas
+              diferentes (por isso o corte de 220 nt, e por isso a
+              profundidade sozinha separa as classes dentro do P22). Com o
+              P22 reprocessado, o <code>permanova.R</code> dá condição 0,47%
+              e projeto 6,36%. O <code>random_forest.R</code> também tinha um
+              problema: o <code>pROC::roc()</code> usa direção automática e
+              nunca devolve AUC abaixo de 0,5; com a direção fixa, o
+              macro-AUC no LOPO é 0,457, não 0,6. O GLLVM ainda precisa ser
+              refeito.
             </p>
             <table className="formal">
               <caption><span className="cap-label">Tabela 2.</span> Etapas do pipeline próprio e status atual.</caption>
@@ -2223,12 +2234,12 @@ export default function App() {
                 <tr><td>3a. Confirmação de primers por BioProject</td><td><span className="status-badge done">concluído (8/10; nota do P10 misto)</span></td></tr>
                 <tr><td>3b. Import e corte de primers (cutadapt, 10 projetos)</td><td><span className="status-badge done">concluído</span></td></tr>
                 <tr><td>4a. Deblur região V3-V4 (P1, P6, P14, P19)</td><td><span className="status-badge done">concluído (289/309, 93,5%)</span></td></tr>
-                <tr><td>4b. Deblur região V4 (P2, P9, P10, P16, P22)</td><td><span className="status-badge partial">refazer o P22: é V3-V4, entrou no ramo V4 (627/628 retidas)</span></td></tr>
+                <tr><td>4b. Deblur região V4 (P2, P9, P10, P16, P22)</td><td><span className="status-badge partial">P22 reprocessado no ramo V3-V4 (corte 220); falta o classificador SILVA V3-V4</span></td></tr>
                 <tr><td>5. Taxonomia SILVA (V3-V4 e V4)</td><td><span className="status-badge done">concluído (classificador retreinado localmente)</span></td></tr>
                 <tr><td>6. Filtragem e fusão por gênero</td><td><span className="status-badge done">concluído (889 amostras finais de um teto de 937)</span></td></tr>
-                <tr><td>7. PERMANOVA</td><td><span className="status-badge done">concluído (condição 0,59%, projeto 9,19%; com P22 corrigido, classe além do projeto 0,4%)</span></td></tr>
+                <tr><td>7. PERMANOVA</td><td><span className="status-badge done">concluído (condição 0,59%, projeto 9,19%; com P22 reprocessado: 0,47% e 6,36%)</span></td></tr>
                 <tr><td>8. GLLVM</td><td><span className="status-badge partial">refazer com P22 corrigido (antes: eixos dominados por projeto, η² 56,7% e 58,2%)</span></td></tr>
-                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge done">concluído (macro-AUC 0,811 para 0,6; com P22 corrigido, câncer 0,96 para 0,62; controle negativo 86,4%)</span></td></tr>
+                <tr><td>9. Random Forest (CV aleatória vs. LOPO)</td><td><span className="status-badge done">refeito: com P22 reprocessado e direção da ROC fixa, macro-AUC 0,808 para 0,457; controle negativo 83,0%</span></td></tr>
                 <tr><td>10. Auditoria de viés e comparação com a tabela da Paola</td><td><span className="status-badge done">concluído (seção 6; scripts em analysis/)</span></td></tr>
               </tbody>
             </table>
@@ -2492,10 +2503,10 @@ export default function App() {
             <h3 style={{ fontSize: 15, marginTop: 24 }}>O que falta até o final</h3>
             <ol style={{ fontSize: 13.5, lineHeight: 1.7, paddingLeft: 20 }}>
               <li>
-                <strong>Reprocessar o P22 no ramo V3-V4</strong> (deblur com
-                trim 250 e classificador V3-V4) e refazer a fusão por gênero.
-                A correção por prefixo em <code>analysis/08_corrige_p22.py</code>{" "}
-                é provisória.
+                <strong>Classificar o P22 com o SILVA V3-V4</strong>: o P22 já
+                foi reprocessado (<code>analysis/p22_v3v4.sh</code>), mas a
+                taxonomia veio das ASVs V3-V4 já classificadas no pipeline;
+                falta rodar o classificador no QIIME 2.
               </li>
               <li>
                 <strong>Registrar o P14 nos Métodos</strong>: 21 das 43 runs
@@ -2624,16 +2635,18 @@ export default function App() {
             </p>
             <AuditAucChart />
             <table className="formal">
-              <caption><span className="cap-label">Tabela 5.</span> Mesmas análises nas duas tabelas (pipeline próprio com P22 corrigido).</caption>
+              <caption><span className="cap-label">Tabela 5.</span> Mesmas análises nas duas tabelas (pipeline próprio com P22 reprocessado).</caption>
               <thead><tr><th>Análise</th><th>Paola</th><th>Pipeline próprio</th></tr></thead>
               <tbody>
-                <tr><td>RF, CV aleatória (câncer / controle / HSIL / LSIL)</td><td>0,97 / 0,85 / 0,76 / 0,74</td><td>0,96 / 0,82 / 0,73 / 0,71</td></tr>
+                <tr><td>RF, CV aleatória (câncer / controle / HSIL / LSIL)</td><td>0,97 / 0,85 / 0,76 / 0,74</td><td>0,96 / 0,82 / 0,74 / 0,71</td></tr>
                 <tr><td>RF, só o projeto como preditor</td><td>0,95 / 0,85 / 0,77 / 0,79</td><td>0,94 / 0,81 / 0,75 / 0,76</td></tr>
-                <tr><td>RF, leave-one-project-out</td><td>0,70 / 0,51 / 0,46 / 0,34</td><td>0,62 / 0,43 / 0,47 / 0,35</td></tr>
-                <tr><td>Acurácia ao prever o projeto (acaso)</td><td>88,1% (31,8%)</td><td>86,4% (35,2%)</td></tr>
+                <tr><td>RF, leave-one-project-out</td><td>0,70 / 0,51 / 0,46 / 0,34</td><td>0,64 / 0,44 / 0,48 / 0,35</td></tr>
+                <tr><td>Acurácia ao prever o projeto (acaso)</td><td>88,1% (31,8%)</td><td>86,3% (35,2%)</td></tr>
                 <tr><td>PERMANOVA: classe / projeto / classe além do projeto</td><td>7,1% / 16,4% / 0,4%</td><td>6,6% / 14,5% / 0,4%</td></tr>
-                <tr><td>Shannon câncer − controle: sem / com ajuste por projeto</td><td>+0,97 (p &lt; 10⁻²⁶) / +0,09 (p = 0,43)</td><td>+0,99 / +0,14 (p = 0,24)</td></tr>
-                <tr><td>30 combinações de classificador, câncer × controle (mediana)</td><td>CV 0,96; LOPO 0,70</td><td>CV 0,95; LOPO 0,65</td></tr>
+                <tr><td>Shannon câncer − controle: sem / com ajuste por projeto</td><td>+0,97 (p &lt; 10⁻²⁶) / +0,09 (p = 0,43)</td><td>+1,00 / +0,14 (p = 0,23)</td></tr>
+                <tr><td>30 combinações de classificador, câncer × controle (mediana)</td><td>CV 0,96; LOPO 0,70</td><td>CV 0,95; LOPO 0,64</td></tr>
+                <tr><td>Meta-análise por projeto: gêneros que sobem em todos os estudos</td><td colSpan={2}>câncer: <em>Fusobacterium</em>, <em>Sneathia</em> (g ≈ 0,33, I² = 0%); HSIL: <em>Sneathia</em>, <em>Megasphaera</em>, <em>Atopobium</em>; LSIL: nenhum; <em>Lactobacillus</em> heterogêneo (I² = 86%)</td></tr>
+                <tr><td>Remover 48 gêneros contaminantes de kit</td><td colSpan={2}>não muda o LOPO (câncer 0,63) nem a previsão do projeto (83–85%)</td></tr>
               </tbody>
             </table>
             <p style={{ fontSize: 13.5 }}>
@@ -2653,7 +2666,7 @@ export default function App() {
               <caption><span className="cap-label">Tabela 6.</span> Incongruências entre a tabela da Paola e a do pipeline próprio.</caption>
               <thead><tr><th>Ponto</th><th>Paola (artigo)</th><th>Pipeline próprio</th><th>Corrigir</th></tr></thead>
               <tbody>
-                <tr><td>P22</td><td>classificado corretamente</td><td>processado como V4; 79% sem gênero (Bray-Curtis 0,99 contra a Paola; 0,02 após correção)</td><td><span className="status-badge notfound">pipeline próprio</span></td></tr>
+                <tr><td>P22</td><td>classificado corretamente</td><td>processado como V4; 79% sem gênero (Bray-Curtis 0,99 contra a Paola; 0,02 após reprocessar). Câncer e controle vêm de corridas diferentes (~222 vs. ~274 nt)</td><td><span className="status-badge partial">reprocessado; falta SILVA</span></td></tr>
                 <tr><td>P21 (Espanha)</td><td>incluído: 103 controles + 2 HSIL</td><td>excluído (primer não publicado)</td><td><span className="status-badge partial">decisão conjunta</span></td></tr>
                 <tr><td>Amostras com menos de 1.000 leituras</td><td>26 mantidas (mínimo de 2 leituras) em P19, P10, P9 e P14</td><td>filtradas</td><td><span className="status-badge notfound">Paola</span></td></tr>
                 <tr><td>P16</td><td>29 amostras; mediana de 48% Unassigned + Eukaryota (provável DNA humano)</td><td>47 amostras; Bray-Curtis 0,49 nas 29 em comum. Metadados: 55; artigo: 26</td><td><span className="status-badge notfound">Paola</span></td></tr>
