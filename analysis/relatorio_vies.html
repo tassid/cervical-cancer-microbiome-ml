@@ -78,8 +78,8 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
       <li><b>O AUC ≈ 1 do artigo só aparece quando o modelo é avaliado nas próprias amostras de treino.</b> Com validação cruzada, o mesmo Random Forest dá 0,97 para câncer, 0,85 para controle e 0,74–0,76 para as lesões.</li>
       <li><b>Saber só de qual projeto a amostra veio já dá quase o mesmo AUC</b> que usar o microbioma inteiro. Quando o modelo é testado num projeto que não viu, o AUC cai para 0,62–0,70 em câncer e fica no nível do acaso nas lesões.</li>
       <li><b>A diversidade "maior no câncer" e os principais biomarcadores do Boruta e do LEfSe vêm do projeto de origem.</b> Burkholderia está 96% no P21 (Espanha, quase só controles). Wolbachia está 100% no P1, Aeribacillus 100% no P9.</li>
-      <li><b>Os dois pipelines concordam depois de uma correção.</b> O P22 entrou no ramo V4 do pipeline da Tassiane, mas é V3-V4. Reclassificado, a concordância por gênero fica entre 0,97 e 1,00.</li>
-      <li><b>O sinal que se sustenta é menor e mais local:</b> perda de <i>Lactobacillus</i> e ganho de anaeróbios (<i>Fusobacterium</i>, <i>Porphyromonas</i>, <i>Peptostreptococcus</i>) no câncer, dentro de projetos com controles próprios, principalmente na Nigéria (P19, AUC ≈ 0,80). Para as lesões não há sinal que se repita.</li>
+      <li><b>Os dois pipelines concordam depois de reprocessar o P22.</b> Ele tinha entrado no ramo V4 do pipeline da Tassiane, mas é V3-V4. Reprocessado a partir do SRA, a concordância por gênero fica entre 0,97 e 1,00. No caminho apareceu outro problema: no P22, câncer e controle foram sequenciados em corridas diferentes.</li>
+      <li><b>O sinal que se sustenta é menor e mais local:</b> perda de <i>Lactobacillus</i> e ganho de anaeróbios (<i>Fusobacterium</i>, <i>Porphyromonas</i>, <i>Peptostreptococcus</i>) no câncer, dentro de projetos com controles próprios, principalmente na Nigéria (P19, AUC ≈ 0,80). Na meta-análise por projeto, <i>Fusobacterium</i> e <i>Sneathia</i> sobem no câncer em 4 de 4 estudos, e <i>Sneathia</i>, <i>Megasphaera</i> e <i>Atopobium</i> sobem na HSIL em 4 de 4. São efeitos pequenos. Para LSIL não há sinal.</li>
     </ol>
   </section>
 
@@ -126,7 +126,8 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
         <tr><td>CV aleatória, 10 folds</td><td class="n">0,966</td><td class="n">0,849</td><td class="n">0,763</td><td class="n">0,737</td></tr>
         <tr><td>Só o projeto, sem microbioma</td><td class="n">0,950</td><td class="n">0,846</td><td class="n">0,770</td><td class="n">0,787</td></tr>
         <tr><td>Projeto novo (LOPO) · Paola</td><td class="n">0,701</td><td class="n">0,510</td><td class="n">0,458</td><td class="n">0,338</td></tr>
-        <tr><td>Projeto novo (LOPO) · Tassiane corrigida</td><td class="n">0,62</td><td class="n">0,43</td><td class="n">0,47</td><td class="n">0,35</td></tr>
+        <tr><td>Projeto novo (LOPO) · Tassiane, P22 reprocessado</td><td class="n">0,64</td><td class="n">0,44</td><td class="n">0,48</td><td class="n">0,35</td></tr>
+        <tr><td>Projeto novo (LOPO) · Paola sem P21, P16 e amostras &lt; 1.000 leituras</td><td class="n">0,65</td><td class="n">0,39</td><td class="n">0,51</td><td class="n">0,37</td></tr>
       </tbody>
     </table>
   </div>
@@ -224,7 +225,7 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     </table>
   </div>
   <div class="prose">
-    <p>Para HSIL e LSIL contra controle (P10, P14, P19, P2), nenhum gênero muda na mesma direção em todos os projetos. A exceção parcial é <i>Megasphaera</i>, maior em HSIL em 4 de 4 projetos, com p &lt; 0,05 em dois deles.</p>
+    <p>Para HSIL e LSIL contra controle (P10, P14, P19, P2), os testes por projeto isolado raramente chegam a p &lt; 0,05, porque cada grupo é pequeno. Combinando os projetos numa meta-análise (seção 10), <i>Sneathia</i>, <i>Megasphaera</i> e <i>Atopobium</i> aparecem maiores na HSIL em 4 de 4 projetos.</p>
   </div>
 
   <h2>6. Os dois pipelines dão o mesmo resultado?</h2>
@@ -248,7 +249,10 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     </table>
   </div>
   <div class="callout prose">
-    <p style="margin:0"><b>P22 no pipeline da Tassiane.</b> O P22 foi processado no ramo V4 (trim 220, classificador V4), mas as leituras começam em <span class="mono">TAGGGAATCTTCCACAATGG</span>, início da região V3 logo depois do primer 341F. Por isso 79% das leituras ficaram sem gênero (43% paradas em "classe Bacilli") e surgiram gêneros espúrios como <i>Dickeya</i> e <i>Nocardia</i>. Para corrigir, cada ASV do P22 recebeu a taxonomia da ASV V3-V4 de mesmo prefixo de 220 nt, o que cobriu 93% das leituras (<span class="mono">08_corrige_p22.py</span>). A correção definitiva é reprocessar o P22 no ramo V3-V4.</p>
+    <p style="margin:0"><b>P22 no pipeline da Tassiane.</b> O P22 foi processado no ramo V4 (corte de 220 nt, classificador V4), mas as leituras começam em <span class="mono">TAGGGAATCTTCCACAATGG</span>, início da região V3 logo depois do primer 341F. Por isso 79% das leituras ficaram sem gênero (43% paradas em "classe Bacilli") e surgiram gêneros espúrios como <i>Dickeya</i> e <i>Nocardia</i>. O P22 foi reprocessado do zero: as 119 runs foram baixadas do SRA e passaram por cutadapt (341F), filtro de qualidade e deblur 1.1.1 (<span class="mono">p22_v3v4.sh</span>, <span class="mono">08b_reprocessa_p22.py</span>). O deblur reproduziu exatamente as ASVs do pipeline original (1.370 ASVs, mediana de 35.397 leituras por amostra), ou seja, o único erro era o classificador. A taxonomia agora vem das ASVs V3-V4 já classificadas no pipeline (correspondência exata cobre 93% das leituras; o resto vai por Naive Bayes de k-mers, confiança 0,7). Falta só rodar o classificador SILVA V3-V4 no QIIME 2.</p>
+  </div>
+  <div class="callout prose">
+    <p style="margin:0"><b>No P22, câncer e controle foram sequenciados em corridas diferentes.</b> Depois do corte do primer, as 65 amostras de câncer têm leituras de cerca de 222 nt e os 54 controles, de cerca de 274 nt. Com o corte de 250 nt usado no resto do ramo V3-V4, o deblur descarta todas as amostras de câncer; por isso o P22 usa 220 nt. Isso também explica por que a profundidade sozinha separa câncer de controle dentro do P22 (AUC 0,97): o contraste desse projeto é também um contraste entre corridas, e deve ser tratado com cautela no artigo.</p>
   </div>
   <div class="prose">
     <p>Depois da correção, a correlação entre os pipelines por gênero fica em 0,99 para <i>Lactobacillus</i>, <i>Gardnerella</i>, <i>Sneathia</i> e <i>Streptococcus</i>, 0,98 para <i>Pseudomonas</i>, 0,97 para <i>Fusobacterium</i> e 1,00 para <i>Prevotella</i>. Todas as conclusões deste relatório valem para as duas tabelas. A diferença do P16 merece atenção na tabela da Paola: provável DNA humano não filtrado, e três contagens diferentes para o mesmo projeto (29 na tabela, 26 no artigo, 55 nos metadados).</p>
@@ -293,9 +297,9 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
         <tr><td>Burkholderia, Pseudomonas, Wolbachia, Aeribacillus como biomarcadores</td><td>Cada um vem essencialmente de um projeto; vários são contaminantes conhecidos.</td><td><span class="pill bad">não se sustenta</span></td></tr>
         <tr><td>PERMANOVA significativa por estágio clínico (p = 0,001)</td><td>Verdadeiro, mas R² de 0,4% depois do projeto.</td><td><span class="pill warn">precisa de ressalva</span></td></tr>
         <tr><td>Diferenças geográficas na composição</td><td>Verdadeiro, mas país = 1 a 4 projetos, então geografia e laboratório não se separam.</td><td><span class="pill warn">precisa de ressalva</span></td></tr>
-        <tr><td>Perda de <i>Lactobacillus</i> no câncer</td><td>↓ em 3 de 4 projetos com controles (significativo no P19).</td><td><span class="pill good">sustenta, com cautela</span></td></tr>
+        <tr><td>Perda de <i>Lactobacillus</i> no câncer</td><td>↓ em 3 de 4 projetos com controles (significativo no P19), mas a meta-análise não é significativa: g = −0,26, p = 0,55, I² = 86% (muita variação entre estudos).</td><td><span class="pill warn">inconsistente entre estudos</span></td></tr>
         <tr><td>Enriquecimento de <i>Fusobacterium</i>, <i>Porphyromonas</i>, <i>Peptostreptococcus</i>, <i>Bacteroides</i>, <i>Prevotella</i> no câncer</td><td><i>Fusobacterium</i> e <i>Prevotella</i> ↑ em 4 de 4; os outros em 3 de 4.</td><td><span class="pill good">sustenta, com cautela</span></td></tr>
-        <tr><td>Assinaturas distintas para LSIL e HSIL</td><td>Nenhum gênero consistente entre projetos; AUC dentro do projeto 0,42–0,68.</td><td><span class="pill bad">não se sustenta</span></td></tr>
+        <tr><td>Assinaturas distintas para LSIL e HSIL</td><td>HSIL: <i>Sneathia</i>, <i>Megasphaera</i> e <i>Atopobium</i> sobem em 4 de 4 projetos (efeito pequeno, g = 0,2–0,5). LSIL: nada consistente. Os classificadores não separam lesões de controle (AUC dentro do projeto 0,42–0,68).</td><td><span class="pill warn">só HSIL, sinal fraco</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -324,7 +328,7 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
   <h3>Conclusão</h3>
   <div class="draft" id="draft-conclusion">
     <button class="copy" type="button" data-target="draft-conclusion">Copiar</button>
-    <p>Across ten public 16S rRNA datasets, cervical cancer was associated with depletion of <i>Lactobacillus</i> and enrichment of anaerobic genera, notably <i>Fusobacterium</i>, <i>Prevotella</i>, <i>Porphyromonas</i>, <i>Peptostreptococcus</i> and <i>Bacteroides</i>, a pattern that was reproducible in the direction of change within studies that included their own controls. In contrast, differences in alpha diversity, the separation of low- and high-grade lesions, and several candidate biomarkers (including <i>Burkholderia-Caballeronia-Paraburkholderia</i>, <i>Wolbachia</i> and <i>Aeribacillus</i>) were driven by the study of origin rather than by clinical status. Because most cancer samples came from studies without controls, randomly split validation substantially overestimated diagnostic performance, and classifiers did not generalize to unseen studies. The cervicovaginal microbiome therefore carries a consistent dysbiotic signal associated with cervical cancer, but its use as a diagnostic biomarker requires study-aware validation, harmonized processing of 16S regions, and cohorts in which cases and controls are collected and sequenced together.</p>
+    <p>Across ten public 16S rRNA datasets, cervical cancer was associated with enrichment of <i>Fusobacterium</i> and <i>Sneathia</i>, which increased in all four studies that included their own controls (pooled Hedges' g ≈ 0.33, I² = 0%), while depletion of <i>Lactobacillus</i> was frequent but heterogeneous between studies. High-grade lesions showed a smaller but consistent enrichment of <i>Sneathia</i>, <i>Megasphaera</i> and <i>Atopobium</i>; no consistent signature was found for low-grade lesions. In contrast, differences in alpha diversity and several candidate biomarkers (including <i>Burkholderia-Caballeronia-Paraburkholderia</i>, <i>Wolbachia</i> and <i>Aeribacillus</i>) were driven by the study of origin rather than by clinical status. Because most cancer samples came from studies without controls, randomly split validation substantially overestimated diagnostic performance, and classifiers did not generalize to unseen studies. The cervicovaginal microbiome therefore carries a consistent dysbiotic signal associated with cervical cancer, but its use as a diagnostic biomarker requires study-aware validation, harmonized processing of 16S regions, and cohorts in which cases and controls are collected and sequenced together.</p>
   </div>
 
   <h2>9. O que falta em cada um</h2>
@@ -361,14 +365,14 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
         <tr><td>Ajuste por projeto na diversidade alfa e na abundância diferencial</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria</span></td></tr>
         <tr><td>Filtro de profundidade e rarefação justificados</td><td><span class="pill bad">falta</span> (amostras com 2 leituras)</td><td><span class="pill good">tem</span> (1.000)</td></tr>
         <tr><td>Remoção de DNA não bacteriano (Unassigned, Eukaryota)</td><td><span class="pill bad">falta</span> (P16)</td><td><span class="pill good">tem</span></td></tr>
-        <tr><td>Controle de contaminantes de kit (decontam ou lista de gêneros de reagente)</td><td><span class="pill bad">falta</span></td><td><span class="pill bad">falta</span></td></tr>
-        <tr><td>Abundância diferencial com projeto como efeito (ANCOM-BC, MaAsLin2)</td><td><span class="pill bad">falta</span></td><td><span class="pill bad">falta</span></td></tr>
-        <tr><td>Meta-análise por projeto (efeito por estudo + modelo de efeitos aleatórios)</td><td><span class="pill bad">falta</span></td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>Controle de contaminantes de kit (decontam ou lista de gêneros de reagente)</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria (seção 10)</span></td></tr>
+        <tr><td>Abundância diferencial com projeto como efeito (ANCOM-BC, MaAsLin2)</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria (seção 10)</span></td></tr>
+        <tr><td>Meta-análise por projeto (efeito por estudo + modelo de efeitos aleatórios)</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria (seção 10)</span></td></tr>
         <tr><td>Diversidade alfa e composição taxonômica (barras, heatmap)</td><td><span class="pill good">tem</span></td><td><span class="pill warn">só na auditoria</span></td></tr>
         <tr><td>LEfSe, DESeq2, Boruta, SHAP</td><td><span class="pill good">tem</span> (sem ajuste por projeto)</td><td><span class="pill bad">falta</span></td></tr>
         <tr><td>Rede de coocorrência (NetCoMi)</td><td><span class="pill warn">nos Métodos, sem resultado</span></td><td><span class="pill bad">falta</span></td></tr>
-        <tr><td>GLLVM</td><td><span class="pill warn">no Drive (efeito de projeto removido), fora do artigo</span></td><td><span class="pill warn">refazer com P22 corrigido</span></td></tr>
-        <tr><td>Matriz de confusão</td><td><span class="pill bad">citada na legenda da Fig. 7, não existe</span></td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>GLLVM</td><td><span class="pill warn">no Drive (efeito de projeto removido), fora do artigo</span></td><td><span class="pill warn">refazer com P22 reprocessado (o pacote gllvm não pôde ser instalado nesta análise)</span></td></tr>
+        <tr><td>Matriz de confusão</td><td><span class="pill bad">citada na legenda da Fig. 7, não existe</span></td><td><span class="pill warn">feita na auditoria (seção 10)</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -384,14 +388,75 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <li>Declarações de disponibilidade de dados e código, financiamento e contribuição de cada autor.</li>
   </ul>
 
-  <h2>10. Próximos passos sugeridos</h2>
+  <h2>10. Análises que faltavam</h2>
+  <div class="prose">
+    <p>Feitas nas duas tabelas: a da Paola (997 amostras) e a da Tassiane com o P22 reprocessado (889 amostras). Os números abaixo são da tabela da Tassiane quando não há indicação; os da Paola vão na mesma direção.</p>
+  </div>
+
+  <h3>Meta-análise por projeto</h3>
+  <div class="prose">
+    <p>Para cada projeto que tem as duas classes comparadas, o efeito de cada gênero foi medido como g de Hedges na abundância CLR. Os efeitos foram combinados com modelo de efeitos aleatórios (DerSimonian-Laird). I² mede quanto os estudos discordam entre si (0% = concordam). Entram 4 projetos para câncer (P1, P2, P19, P22), 4 para HSIL (P2, P10, P14, P19) e 3 para LSIL (P2, P10, P19).</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Comparação</th><th>Gênero</th><th class="n">g combinado</th><th class="n">IC 95%</th><th class="n">p</th><th class="n">I²</th><th class="n">Mesma direção</th></tr></thead>
+      <tbody>
+        <tr><td>Câncer × controle</td><td><i>Fusobacterium</i></td><td class="n">+0,33</td><td class="n">0,05 a 0,61</td><td class="n">0,019</td><td class="n">0%</td><td class="n">4/4</td></tr>
+        <tr><td>Câncer × controle</td><td><i>Sneathia</i></td><td class="n">+0,33</td><td class="n">0,06 a 0,61</td><td class="n">0,018</td><td class="n">0%</td><td class="n">4/4</td></tr>
+        <tr><td>Câncer × controle</td><td><i>Pseudomonas</i></td><td class="n">+0,45</td><td class="n">0,15 a 0,76</td><td class="n">0,004</td><td class="n">10%</td><td class="n">3/4</td></tr>
+        <tr><td>Câncer × controle</td><td><i>Lactobacillus</i></td><td class="n">−0,26</td><td class="n">−1,12 a 0,59</td><td class="n">0,55</td><td class="n">86%</td><td class="n">3/4</td></tr>
+        <tr><td>Câncer × controle</td><td>Shannon</td><td class="n">+0,58</td><td class="n">−0,38 a 1,53</td><td class="n">0,23</td><td class="n">89%</td><td class="n">3/4</td></tr>
+        <tr><td>HSIL × controle</td><td><i>Sneathia</i></td><td class="n">+0,31</td><td class="n">0,08 a 0,53</td><td class="n">0,007</td><td class="n">0%</td><td class="n">4/4</td></tr>
+        <tr><td>HSIL × controle</td><td><i>Atopobium</i></td><td class="n">+0,23</td><td class="n">0,01 a 0,46</td><td class="n">0,041</td><td class="n">0%</td><td class="n">4/4</td></tr>
+        <tr><td>HSIL × controle</td><td><i>Megasphaera</i></td><td class="n">+0,42</td><td class="n">0,01 a 0,84</td><td class="n">0,048</td><td class="n">61%</td><td class="n">4/4</td></tr>
+        <tr><td>LSIL × controle</td><td>nenhum gênero</td><td class="n">—</td><td class="n">—</td><td class="n">≥ 0,09</td><td class="n">—</td><td class="n">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">Linhas de câncer para <i>Lactobacillus</i> e Shannon vêm da tabela da Paola, que dá o mesmo resultado. <i>Pseudomonas</i> pede cautela: no P19 ela está alta também nos controles e é um contaminante comum de reagente. Arquivos: <span class="mono">13_meta_combinado_*.csv</span>.</p>
+
+  <h3>Abundância diferencial com projeto no modelo</h3>
+  <div class="prose">
+    <p>Regressão linear na abundância CLR de cada gênero presente em pelo menos 10% das amostras, com correção de Benjamini-Hochberg. "Com projeto" inclui o projeto como efeito fixo, então só as comparações dentro de cada projeto contam.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Comparação</th><th class="n">Significativos sem projeto</th><th class="n">Com projeto</th><th>Os que sobram (com projeto)</th></tr></thead>
+      <tbody>
+        <tr><td>Câncer × controle</td><td class="n">72 de 95</td><td class="n">18</td><td>↑ <i>Fusobacterium</i>, <i>Pseudomonas</i>, <i>Peptostreptococcus</i>, <i>Bacteroides</i>, <i>Gemella</i>, <i>Enterococcus</i>, <i>Peptococcus</i>; ↓ sobretudo gêneros de ambiente/reagente (<i>Brevundimonas</i>, <i>Rhizobium</i>, <i>Methylobacterium</i>, <i>Delftia</i>, <i>Sphingomonas</i>) e <i>Finegoldia</i>, <i>Bifidobacterium</i></td></tr>
+        <tr><td>HSIL × controle</td><td class="n">14</td><td class="n">0</td><td>nenhum (na tabela da Paola: <i>Megasphaera</i> e <i>Pseudomonas</i> ↑, <i>Ralstonia</i> ↓)</td></tr>
+        <tr><td>LSIL × controle</td><td class="n">8</td><td class="n">0</td><td>nenhum</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Contaminantes de kit e de laboratório</h3>
+  <div class="prose">
+    <p>Sem controles negativos de extração nos BioProjects, não dá para usar o decontam. Usamos uma lista de 48 gêneros reconhecidos como contaminantes de reagente ou de laboratório (Salter et al., 2014; Eisenhofer et al., 2019), que inclui <i>Wolbachia</i>, <i>Aeribacillus</i>, <i>Thermus</i> e cloroplasto. Gêneros que também vivem no trato genital (<i>Streptococcus</i>, <i>Corynebacterium</i>, <i>Pseudomonas</i>) ficaram de fora. Eles são raros na maioria dos projetos (mediana de 0% a 0,3% das leituras), mas chegam a 7,7% das leituras no câncer do P1 e 2,8% no P9, dois projetos só de câncer. Tirá-los quase não muda o resultado: AUC de câncer no LOPO 0,63 com e sem eles, e o projeto continua previsível (85% contra 83% de acerto). O efeito de projeto vai muito além dos contaminantes.</p>
+  </div>
+
+  <h3>Matriz de confusão com projeto fora do treino</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Real \ previsto</th><th class="n">Câncer</th><th class="n">Controle</th><th class="n">HSIL</th><th class="n">LSIL</th></tr></thead>
+      <tbody>
+        <tr><td>Câncer (288)</td><td class="n">192</td><td class="n">93</td><td class="n">3</td><td class="n">0</td></tr>
+        <tr><td>Controle (436)</td><td class="n">128</td><td class="n">250</td><td class="n">54</td><td class="n">4</td></tr>
+        <tr><td>HSIL (161)</td><td class="n">52</td><td class="n">98</td><td class="n">11</td><td class="n">0</td></tr>
+        <tr><td>LSIL (112)</td><td class="n">48</td><td class="n">59</td><td class="n">5</td><td class="n">0</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">Tabela da Paola, Random Forest, leave-one-project-out. Nenhuma amostra LSIL é reconhecida, 7% das HSIL são, e 29% dos controles são classificados como câncer. Na tabela da Tassiane: 1 de 110 LSIL e 21 de 155 HSIL. Esta é a matriz que falta na Fig. 7 do artigo.</p>
+
+  <h2>11. Próximos passos sugeridos</h2>
   <ul class="tight prose">
-    <li>Reprocessar o P22 no ramo V3-V4 do pipeline da Tassiane (a correção por prefixo é provisória).</li>
+    <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas) e refazer o GLLVM.</li>
+    <li>Registrar no artigo que, no P22, câncer e controle foram sequenciados em corridas diferentes (leituras de ~222 e ~274 nt).</li>
     <li>Registrar nos Métodos que 21 runs do P14 não são 16S (DNA humano) e corrigir a Tabela 1. Na tabela da Paola, refazer o P16 descartando leituras sem primer.</li>
     <li>Investigar o P16 na tabela da Paola: filtrar leituras não bacterianas e conferir por que há 29, 26 e 55 amostras em lugares diferentes.</li>
     <li>Refazer o Boruta e o LEfSe dentro de cada projeto, ou com projeto como bloco, e só reportar gêneros que se repetem em pelo menos dois projetos.</li>
     <li>Reportar no artigo os três números de validação lado a lado: CV aleatória, só projeto e leave-one-project-out. É o resultado mais forte e mais original do trabalho.</li>
-    <li>Verificar com a Débora e o Robson se o P22 (câncer e controle com profundidades muito diferentes) foi sequenciado em corridas separadas.</li>
   </ul>
 </div>
 
