@@ -1,0 +1,51 @@
+Loading required package: permute
+
+=== control vs. cancer ( n = 624 ) ===
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = sub_dist ~ tipo_amostra, data = sub_meta, permutations = 999)
+          Df SumOfSqs      R2     F Pr(>F)    
+Model      1   14.449 0.06004 39.73  0.001 ***
+Residual 622  226.209 0.93996                 
+Total    623  240.658 1.00000                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+=== lesion high vs. cancer ( n = 454 ) ===
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = sub_dist ~ tipo_amostra, data = sub_meta, permutations = 999)
+          Df SumOfSqs      R2      F Pr(>F)    
+Model      1    6.177 0.03347 15.651  0.001 ***
+Residual 452  178.379 0.96653                  
+Total    453  184.556 1.00000                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+=== lesion low vs. cancer ( n = 409 ) ===
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = sub_dist ~ tipo_amostra, data = sub_meta, permutations = 999)
+          Df SumOfSqs      R2      F Pr(>F)    
+Model      1    4.219 0.02518 10.515  0.001 ***
+Residual 407  163.323 0.97482                  
+Total    408  167.543 1.00000                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+=== lesion high vs. lesion low ( n = 265 ) ===
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = sub_dist ~ tipo_amostra, data = sub_meta, permutations = 999)
+          Df SumOfSqs      R2      F Pr(>F)
+Model      1    0.561 0.00606 1.6027  0.115
+Residual 263   92.010 0.99394              
+Total    264   92.571 1.00000              
