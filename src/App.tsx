@@ -2498,6 +2498,13 @@ export default function App() {
                 é provisória.
               </li>
               <li>
+                <strong>Recuperar o sublote sem primer do P14</strong>: 21
+                das 43 amostras (10 controles, 11 HSIL, 2×250 nt) já vêm sem
+                primer e foram descartadas pelo cutadapt (sobram 0,02% das
+                leituras). Mesmo caso do P10b: processar à parte, sem corte
+                de primer. A tabela da Paola perdeu as mesmas 21.
+              </li>
+              <li>
                 <strong>Refazer o GLLVM</strong> com a tabela corrigida.
               </li>
               <li>
@@ -2650,6 +2657,7 @@ export default function App() {
                 <tr><td>P21 (Espanha)</td><td>incluído: 103 controles + 2 HSIL</td><td>excluído (primer não publicado)</td><td><span className="status-badge partial">decisão conjunta</span></td></tr>
                 <tr><td>Amostras com menos de 1.000 leituras</td><td>26 mantidas (mínimo de 2 leituras) em P19, P10, P9 e P14</td><td>filtradas</td><td><span className="status-badge notfound">Paola</span></td></tr>
                 <tr><td>P16</td><td>29 amostras; mediana de 48% Unassigned + Eukaryota (provável DNA humano)</td><td>47 amostras; Bray-Curtis 0,49 nas 29 em comum. Metadados: 55; artigo: 26</td><td><span className="status-badge notfound">Paola</span></td></tr>
+                <tr><td>P14, sublote sem primer (21 amostras)</td><td>5 com 2–4 leituras, 16 ausentes</td><td>todas perdidas no cutadapt/deblur</td><td><span className="status-badge notfound">as duas</span></td></tr>
                 <tr><td>Profundidade da mesma amostra</td><td>referência</td><td>P19 2,3×, P14 0,59×, P1 0,72× (demais 0,99–1,04×)</td><td><span className="status-badge partial">conferir</span></td></tr>
                 <tr><td>P14 (Brasil)</td><td>13 HSIL / 14 controles</td><td>11 / 11 (artigo: 22 / 21)</td><td><span className="status-badge partial">as duas</span></td></tr>
                 <tr><td>Total e cloroplasto</td><td>997 na tabela, 1.008 no artigo; "Chloroplast" no Boruta, ausente da tabela</td><td>889</td><td><span className="status-badge notfound">Paola</span></td></tr>

@@ -30,6 +30,7 @@ python 05_abundancia_dentro_do_projeto.py
 python 06_permanova.py                  # R² classe, projeto e classe além do projeto
 python 07_compara_pipelines.py          # mesma amostra nos dois pipelines
 python 09_forca_bruta.py                # 30 combinações de modelo/pré-processamento (demora ~1 h)
+python 10_contabilidade_amostras.py     # onde cada uma das 1.042 amostras se perdeu (precisa de V3V4_stats.qza, V4_stats.qza, P14_cutadapt_stats.qza)
 ```
 
 Os resultados já calculados estão em `results/`.
@@ -57,5 +58,6 @@ Os resultados já calculados estão em `results/`.
   `TAGGGAATCTTCCACAATGG`, início de V3). Com isso 79% das leituras ficaram sem gênero. Depois
   da correção, as duas tabelas concordam (Spearman 0,97–1,00 nos gêneros principais;
   Bray-Curtis mediano por amostra ≤ 0,09 em todos os projetos exceto P16).
+- **P14 tem dois sublotes**: 21 amostras (10 controles, 11 HSIL) já vêm sem primer; no pipeline da Tassiane o cutadapt as descarta (sobram 0,02% das leituras) e na tabela da Paola elas também faltam (16 ausentes, 5 com 2–4 leituras). Metade do único projeto brasileiro está fora das duas tabelas.
 - **P16 na tabela da Paola**: 39% "Unassigned" e 2,5% Eukaryota, provável DNA do hospedeiro
   não filtrado; 29 amostras contra 47 na da Tassiane e 26 no artigo.

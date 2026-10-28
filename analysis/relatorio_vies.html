@@ -327,9 +327,67 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <p>Across ten public 16S rRNA datasets, cervical cancer was associated with depletion of <i>Lactobacillus</i> and enrichment of anaerobic genera, notably <i>Fusobacterium</i>, <i>Prevotella</i>, <i>Porphyromonas</i>, <i>Peptostreptococcus</i> and <i>Bacteroides</i>, a pattern that was reproducible in the direction of change within studies that included their own controls. In contrast, differences in alpha diversity, the separation of low- and high-grade lesions, and several candidate biomarkers (including <i>Burkholderia-Caballeronia-Paraburkholderia</i>, <i>Wolbachia</i> and <i>Aeribacillus</i>) were driven by the study of origin rather than by clinical status. Because most cancer samples came from studies without controls, randomly split validation substantially overestimated diagnostic performance, and classifiers did not generalize to unseen studies. The cervicovaginal microbiome therefore carries a consistent dysbiotic signal associated with cervical cancer, but its use as a diagnostic biomarker requires study-aware validation, harmonized processing of 16S regions, and cohorts in which cases and controls are collected and sequenced together.</p>
   </div>
 
-  <h2>9. Próximos passos sugeridos</h2>
+  <h2>9. O que falta em cada um</h2>
+  <div class="prose">
+    <p>Levantamento das amostras, análises e partes do texto que faltam em cada trabalho. Para as amostras, cada uma das 1.042 catalogadas foi rastreada até a etapa em que saiu (<span class="mono">analysis/10_contabilidade_amostras.py</span>).</p>
+  </div>
+
+  <h3>Amostras utilizáveis por projeto</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Projeto</th><th class="n">Catalogadas</th><th class="n">Paola (≥ 1.000 leituras)</th><th class="n">Tassiane</th><th class="n">Perdidas nas duas</th><th>Por quê</th></tr></thead>
+      <tbody>
+        <tr><td>P14 · Brasil</td><td class="n">43</td><td class="n">22</td><td class="n">22</td><td class="n">21</td><td>Sublote sem primer. O cutadapt descartou as leituras e o deblur ficou com menos de 1%. A Paola tem 5 dessas amostras com 2–4 leituras e não tem as outras 16.</td></tr>
+        <tr><td>P16 · EUA</td><td class="n">55</td><td class="n">29</td><td class="n">47</td><td class="n">8</td><td>Sublote de baixa profundidade (cerca de 1.500 leituras brutas por amostra). A Paola não tem nenhuma das 26 desse sublote; a Tassiane mantém 18 acima de 1.000 leituras.</td></tr>
+        <tr><td>P21 · Espanha</td><td class="n">105</td><td class="n">105</td><td class="n">0</td><td class="n">0</td><td>Excluído pela Tassiane por falta de primer publicado.</td></tr>
+        <tr><td>P19 · Nigéria</td><td class="n">168</td><td class="n">156</td><td class="n">160</td><td class="n">8</td><td>Baixa profundidade. A Paola mantém 11 amostras com menos de 1.000 leituras.</td></tr>
+        <tr><td>P10 · EUA</td><td class="n">319</td><td class="n">312</td><td class="n">313</td><td class="n">6</td><td>Baixa profundidade. A Paola mantém 5 com menos de 1.000 leituras.</td></tr>
+        <tr><td>P9 · EUA</td><td class="n">58</td><td class="n">53</td><td class="n">53</td><td class="n">5</td><td>Baixa profundidade. A Paola mantém as 5 (de 2 a 958 leituras).</td></tr>
+        <tr><td>P1, P2, P6, P22</td><td class="n">294</td><td class="n">294</td><td class="n">294</td><td class="n">0</td><td>Completos nas duas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout prose">
+    <p style="margin:0"><b>P14: metade do Brasil está faltando nas duas tabelas.</b> O projeto tem dois sublotes, como o P10. No primeiro (22 amostras, 2×300 nt), o primer está presente em 99% das leituras. No segundo (21 amostras: 10 controles e 11 HSIL, 2×250 nt), o primer já vem removido (1–2% das leituras). Com o cutadapt configurado para descartar leituras sem primer, sobram 0,02% delas. A solução é a mesma do P10b: processar esse sublote à parte, sem corte de primer, e conferir se o comprimento das leituras aguenta o corte do deblur. O P14 é o único projeto do Brasil, então essas 21 amostras dobram o tamanho do grupo brasileiro.</p>
+  </div>
+
+  <h3>Análises que faltam</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Análise</th><th>Paola (artigo)</th><th>Tassiane</th></tr></thead>
+      <tbody>
+        <tr><td>Validação que separa projeto de classe (leave-one-project-out, linha de base só com projeto)</td><td><span class="pill bad">falta</span></td><td><span class="pill good">tem</span></td></tr>
+        <tr><td>Controle negativo (prever o projeto)</td><td><span class="pill bad">falta</span></td><td><span class="pill good">tem</span></td></tr>
+        <tr><td>Ajuste por projeto na diversidade alfa e na abundância diferencial</td><td><span class="pill bad">falta</span></td><td><span class="pill warn">feito na auditoria</span></td></tr>
+        <tr><td>Filtro de profundidade e rarefação justificados</td><td><span class="pill bad">falta</span> (amostras com 2 leituras)</td><td><span class="pill good">tem</span> (1.000)</td></tr>
+        <tr><td>Remoção de DNA não bacteriano (Unassigned, Eukaryota)</td><td><span class="pill bad">falta</span> (P16)</td><td><span class="pill good">tem</span></td></tr>
+        <tr><td>Controle de contaminantes de kit (decontam ou lista de gêneros de reagente)</td><td><span class="pill bad">falta</span></td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>Abundância diferencial com projeto como efeito (ANCOM-BC, MaAsLin2)</td><td><span class="pill bad">falta</span></td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>Meta-análise por projeto (efeito por estudo + modelo de efeitos aleatórios)</td><td><span class="pill bad">falta</span></td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>Diversidade alfa e composição taxonômica (barras, heatmap)</td><td><span class="pill good">tem</span></td><td><span class="pill warn">só na auditoria</span></td></tr>
+        <tr><td>LEfSe, DESeq2, Boruta, SHAP</td><td><span class="pill good">tem</span> (sem ajuste por projeto)</td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>Rede de coocorrência (NetCoMi)</td><td><span class="pill warn">nos Métodos, sem resultado</span></td><td><span class="pill bad">falta</span></td></tr>
+        <tr><td>GLLVM</td><td><span class="pill warn">no Drive (efeito de projeto removido), fora do artigo</span></td><td><span class="pill warn">refazer com P22 corrigido</span></td></tr>
+        <tr><td>Matriz de confusão</td><td><span class="pill bad">citada na legenda da Fig. 7, não existe</span></td><td><span class="pill bad">falta</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>O que falta no texto do artigo</h3>
+  <ul class="tight prose">
+    <li>Seções vazias: Conclusão e o parágrafo de resultados do machine learning ("DESCRIBE RESULTS").</li>
+    <li>Link do ENA em branco nos Métodos ("available at:  and the National Center...").</li>
+    <li>Fluxo das amostras: 1.042 catalogadas → 1.008 no texto → 997 na tabela, sem explicar as perdas.</li>
+    <li>Métodos de LEfSe, DESeq2 e regressão logística: aparecem nos resultados e figuras, mas não nos Métodos.</li>
+    <li>Parâmetros do QIIME 2: corte de qualidade do DADA2 (ou Deblur), versão e confiança do classificador, e como V4 e V3-V4 foram juntados.</li>
+    <li>Parâmetros do machine learning: divisão treino/teste, número de folds, hiperparâmetros, semente e de onde saíram as curvas ROC.</li>
+    <li>Declarações de disponibilidade de dados e código, financiamento e contribuição de cada autor.</li>
+  </ul>
+
+  <h2>10. Próximos passos sugeridos</h2>
   <ul class="tight prose">
     <li>Reprocessar o P22 no ramo V3-V4 do pipeline da Tassiane (a correção por prefixo é provisória).</li>
+    <li>Recuperar as 21 amostras do sublote sem primer do P14, nos dois pipelines, processando-as à parte como foi feito com o P10b.</li>
     <li>Investigar o P16 na tabela da Paola: filtrar leituras não bacterianas e conferir por que há 29, 26 e 55 amostras em lugares diferentes.</li>
     <li>Refazer o Boruta e o LEfSe dentro de cada projeto, ou com projeto como bloco, e só reportar gêneros que se repetem em pelo menos dois projetos.</li>
     <li>Reportar no artigo os três números de validação lado a lado: CV aleatória, só projeto e leave-one-project-out. É o resultado mais forte e mais original do trabalho.</li>
