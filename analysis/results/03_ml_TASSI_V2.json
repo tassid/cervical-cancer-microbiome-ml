@@ -1,0 +1,158 @@
+{
+ "tabela": "TASSI_V2",
+ "n": 889,
+ "treino_no_treino": {
+  "cancer": 1.0,
+  "control": 1.0,
+  "lesion high": 1.0,
+  "lesion low": 1.0
+ },
+ "cv_aleatoria": {
+  "cancer": 0.9628932600192733,
+  "control": 0.8214320785597381,
+  "lesion high": 0.7366485013623979,
+  "lesion low": 0.7081806511845022
+ },
+ "cv_aleatoria_acc_balanceada": 0.48937401308369055,
+ "so_projeto": {
+  "cancer": 0.9423842185817131,
+  "control": 0.8088979814511731,
+  "lesion high": 0.7543333040344555,
+  "lesion low": 0.7634554790523982
+ },
+ "lopo": {
+  "cancer": 0.6361572473215804,
+  "control": 0.44219585379159854,
+  "lesion high": 0.4786411180451789,
+  "lesion low": 0.35395028591434236
+ },
+ "lopo_acc_balanceada": 0.30189620337586676,
+ "matriz_confusao_cv_aleatoria": {
+  "cancer": {
+   "cancer": 276,
+   "control": 31,
+   "lesion high": 30,
+   "lesion low": 24
+  },
+  "control": {
+   "cancer": 19,
+   "control": 277,
+   "lesion high": 99,
+   "lesion low": 67
+  },
+  "lesion high": {
+   "cancer": 4,
+   "control": 14,
+   "lesion high": 24,
+   "lesion low": 16
+  },
+  "lesion low": {
+   "cancer": 0,
+   "control": 3,
+   "lesion high": 2,
+   "lesion low": 3
+  }
+ },
+ "matriz_confusao_lopo": {
+  "cancer": {
+   "cancer": 224,
+   "control": 138,
+   "lesion high": 68,
+   "lesion low": 59
+  },
+  "control": {
+   "cancer": 71,
+   "control": 102,
+   "lesion high": 65,
+   "lesion low": 38
+  },
+  "lesion high": {
+   "cancer": 4,
+   "control": 77,
+   "lesion high": 21,
+   "lesion low": 12
+  },
+  "lesion low": {
+   "cancer": 0,
+   "control": 8,
+   "lesion high": 1,
+   "lesion low": 1
+  }
+ },
+ "acuracia_prever_projeto": 0.8627671541057368,
+ "acuracia_prever_projeto_acaso": 0.35208098987626546,
+ "dentro_do_projeto": {
+  "P10": {
+   "control": 0.4777110412463047,
+   "lesion high": 0.42872658159109417,
+   "lesion low": 0.5115414541367684,
+   "n": {
+    "control": 211,
+    "lesion high": 58,
+    "lesion low": 43
+   }
+  },
+  "P14": {
+   "control": 0.5041322314049587,
+   "lesion high": 0.5041322314049587,
+   "n": {
+    "control": 11,
+    "lesion high": 11
+   }
+  },
+  "P19": {
+   "cancer": 0.7840221110818635,
+   "control": 0.5060763888888888,
+   "lesion high": 0.5529451250209767,
+   "lesion low": 0.5862809065934066,
+   "n": {
+    "cancer": 29,
+    "control": 16,
+    "lesion high": 59,
+    "lesion low": 56
+   }
+  },
+  "P2": {
+   "cancer": 0.3947761194029851,
+   "control": 0.5369971264367815,
+   "lesion high": 0.6522222222222221,
+   "lesion low": 0.522038567493113,
+   "n": {
+    "cancer": 10,
+    "control": 29,
+    "lesion high": 27,
+    "lesion low": 11
+   }
+  },
+  "P22": {
+   "cancer": 0.9722222222222222,
+   "control": 0.9722222222222223,
+   "n": {
+    "cancer": 65,
+    "control": 54
+   }
+  }
+ },
+ "so_profundidade_dentro_do_projeto": {
+  "P10": {
+   "lesion high vs control": 0.5768099362640954,
+   "lesion low vs control": 0.4977405488812961
+  },
+  "P14": {
+   "lesion high vs control": 0.33884297520661155
+  },
+  "P19": {
+   "cancer vs control": 0.3760775862068966,
+   "lesion high vs control": 0.49470338983050843,
+   "lesion low vs control": 0.5334821428571429
+  },
+  "P2": {
+   "cancer vs control": 0.43103448275862066,
+   "lesion high vs control": 0.5798212005108556,
+   "lesion low vs control": 0.5862068965517242
+  },
+  "P22": {
+   "cancer vs control": 0.9726495726495726
+  }
+ }
+}

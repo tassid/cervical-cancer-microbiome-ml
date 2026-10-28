@@ -27,6 +27,58 @@
   "lesion low": 0.3377522195318805
  },
  "lopo_acc_balanceada": 0.32709603586149255,
+ "matriz_confusao_cv_aleatoria": {
+  "cancer": {
+   "cancer": 253,
+   "control": 16,
+   "lesion high": 19,
+   "lesion low": 15
+  },
+  "control": {
+   "cancer": 24,
+   "control": 410,
+   "lesion high": 116,
+   "lesion low": 75
+  },
+  "lesion high": {
+   "cancer": 10,
+   "control": 10,
+   "lesion high": 21,
+   "lesion low": 17
+  },
+  "lesion low": {
+   "cancer": 1,
+   "control": 0,
+   "lesion high": 5,
+   "lesion low": 5
+  }
+ },
+ "matriz_confusao_lopo": {
+  "cancer": {
+   "cancer": 192,
+   "control": 128,
+   "lesion high": 52,
+   "lesion low": 48
+  },
+  "control": {
+   "cancer": 93,
+   "control": 250,
+   "lesion high": 98,
+   "lesion low": 59
+  },
+  "lesion high": {
+   "cancer": 3,
+   "control": 54,
+   "lesion high": 11,
+   "lesion low": 5
+  },
+  "lesion low": {
+   "cancer": 0,
+   "control": 4,
+   "lesion high": 0,
+   "lesion low": 0
+  }
+ },
  "acuracia_prever_projeto": 0.880641925777332,
  "acuracia_prever_projeto_acaso": 0.31795386158475425,
  "dentro_do_projeto": {
