@@ -45,6 +45,19 @@ leave-one-project-out) and after removing genera recognised as reagent contamina
 ## Results: biomarker selection (replaces the Boruta and LEfSe paragraphs)
 
 Feature selection was repeated within each study that contained both groups being
-compared, so that study of origin could not contribute to the result, and a genus was
-retained as a candidate biomarker only when it was selected in at least two studies with the
-same direction of change. [Completar com 17_boruta_repetidos_*.csv e 19_lefse_repetidos_*.csv.]
+compared (at least eight samples per group), so that study of origin could not contribute to
+the result, and a genus was retained as a candidate biomarker only when it was selected in at
+least two studies with the same direction of change. With all studies pooled, Boruta
+confirmed 50 genera and LEfSe identified 104 genera discriminating cancer from controls.
+Within studies, no genus was confirmed by Boruta in two studies, and only *Gemella*
+(enriched in cancer in PRJNA518153 and PRJNA725946) was selected by LEfSe in two studies;
+for HSIL and LSIL, LEfSe selected *Megasphaera* (PRJNA933917 and PRJNA518153) and
+*Escherichia-Shigella* (PRJEB51893 and PRJNA914231), respectively. In PRJNA725946, where
+cancer and control samples were sequenced in different runs, most genera selected within the
+study were reagent-associated taxa (*Brevundimonas*, *Rhizobium*, *Ralstonia*,
+*Delftia*), consistent with a batch effect. In PRJNA914231, the only study with cancer,
+lesion and control samples sequenced together, cancer was characterised by enrichment of
+anaerobes (*Anaerococcus*, *Peptoniphilus*, *Porphyromonas*). The genera that
+remained consistent across studies were therefore those identified by the random-effects
+meta-analysis (*Fusobacterium* and *Sneathia* in cancer; *Sneathia*,
+*Megasphaera* and *Atopobium* in HSIL), each with modest effect sizes.

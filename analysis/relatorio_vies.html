@@ -483,14 +483,60 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
   </div>
   <p class="meta">Tabela da Paola, Random Forest, leave-one-project-out. Nenhuma amostra LSIL é reconhecida, 7% das HSIL são, e 29% dos controles são classificados como câncer. Na tabela da Tassiane: 1 de 110 LSIL e 21 de 155 HSIL. Esta é a matriz que falta na Fig. 7 do artigo.</p>
 
-  <h2>11. Próximos passos sugeridos</h2>
+  <h2>11. Biomarcadores refeitos por projeto, P16 e tabelas do artigo</h2>
+
+  <h3>Boruta e LEfSe dentro de cada projeto</h3>
+  <div class="prose">
+    <p>Os dois métodos do artigo foram rodados de novo de duas formas. Primeiro, com todos os projetos juntos, como no artigo. Depois, dentro de cada projeto que tem pelo menos 8 amostras em cada grupo comparado, onde o projeto não pode influenciar o resultado. Um gênero só conta como biomarcador se aparecer em pelo menos dois projetos com a mesma direção. Foi usado o LEfSe oficial (bioconda, LDA ≥ 2) e o BorutaPy.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Método</th><th>Todos os projetos juntos</th><th>Dentro dos projetos: em ≥ 2 projetos</th></tr></thead>
+      <tbody>
+        <tr><td>Boruta (4 classes)</td><td>50 gêneros (Paola); 37 (Tassiane)</td><td><b>nenhum</b>, em nenhum contraste e nas duas tabelas</td></tr>
+        <tr><td>LEfSe, câncer × controle</td><td>104 gêneros nas duas tabelas</td><td>só <i>Gemella</i> (P2 e P22)</td></tr>
+        <tr><td>LEfSe, HSIL × controle</td><td>—</td><td><i>Megasphaera</i> (P14 e P2, só na tabela da Paola)</td></tr>
+        <tr><td>LEfSe, LSIL × controle</td><td>—</td><td><i>Escherichia-Shigella</i> (P10 e P19, só na tabela da Paola)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>Dentro do P22, o Boruta escolhe sobretudo gêneros de reagente (<i>Brevundimonas</i>, <i>Rhizobium</i>, <i>Ralstonia</i>, <i>Delftia</i>, <i>Thermus</i>) e marca <i>Lactobacillus</i> como <b>mais alto</b> no câncer, o padrão esperado de um efeito de corrida. No P19 (Nigéria), o projeto mais limpo, o câncer aparece com mais anaeróbios: <i>Anaerococcus</i>, <i>Peptoniphilus</i> e <i>Porphyromonas</i>. Os gêneros que se mantêm entre estudos continuam sendo os da meta-análise (seção 10). Arquivos: <span class="mono">17_boruta_*.csv</span>, <span class="mono">19_lefse_*.csv</span>.</p>
+  </div>
+
+  <h3>Por que o P16 aparece com 55, 29 e 26 amostras</h3>
+  <div class="prose">
+    <p>As 55 runs do P16 formam dois grupos. As 26 runs SRR26410xxx têm BioSample (SAMN37857xxx), foram carregadas no SRA em 17/10/2023 e têm cerca de 1.600 leituras cada. É o número da Tabela 1 do artigo e do TCC. As 29 runs SRR26495xxx não têm BioSample no metadado, foram carregadas uma semana depois e têm ~120 mil leituras, das quais só ~45% têm o primer 16S. A tabela da Paola usa só essas 29, ou seja, a Tabela 1 conta um grupo de runs e a análise usa outro. Vale conferir no SRA Run Selector se as 29 runs pertencem mesmo ao PRJNA1029035.</p>
+    <p>Filtrar o "Unassigned" e os eucariotos da tabela da Paola resolve o P16: a diferença para a tabela da Tassiane cai de 0,49 para 0,09 (Bray-Curtis mediano), e o perfil passa a ser o mesmo (<i>Lactobacillus</i>, <i>Enterococcus</i> e <i>Staphylococcus</i> à frente). Os resultados de machine learning não mudam (LOPO 0,70 / 0,50 / 0,48 / 0,34).</p>
+  </div>
+
+  <h3>Tabela 1 corrigida</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>BioProject</th><th>Artigo</th><th>Catalogadas</th><th>Paola (≥ 1.000 leituras)</th><th>Tassiane (P22 reprocessado)</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">PRJNA687644</td><td class="mono">68/0/0/4</td><td class="mono">68/0/0/4</td><td class="mono">68/0/0/4</td><td class="mono">68/0/0/4</td><td></td></tr>
+        <tr><td class="mono">PRJNA518153</td><td class="mono">10/27/11/29</td><td class="mono">10/27/11/29</td><td class="mono">10/27/11/29</td><td class="mono">10/27/11/29</td><td></td></tr>
+        <tr><td class="mono">PRJNA687331</td><td class="mono">26/0/0/0</td><td class="mono">26/0/0/0</td><td class="mono">26/0/0/0</td><td class="mono">26/0/0/0</td><td></td></tr>
+        <tr><td class="mono">PRJNA431248</td><td class="mono">58/0/0/0</td><td class="mono">58/0/0/0</td><td class="mono">53/0/0/0</td><td class="mono">53/0/0/0</td><td>5 com pouca leitura</td></tr>
+        <tr><td class="mono">PRJEB51893</td><td class="mono">1/59/43/214</td><td class="mono">1/59/43/216</td><td class="mono">1/58/43/210</td><td class="mono">1/58/43/211</td><td></td></tr>
+        <tr><td class="mono">PRJNA933917</td><td class="mono">0/22/0/21</td><td class="mono">0/22/0/21</td><td class="mono">0/11/0/11</td><td class="mono">0/11/0/11</td><td>21 runs são DNA humano</td></tr>
+        <tr><td class="mono">PRJNA1029035</td><td class="mono">26/0/0/0</td><td class="mono">55/0/0/0</td><td class="mono">29/0/0/0</td><td class="mono">47/0/0/0</td><td>dois grupos de runs</td></tr>
+        <tr><td class="mono">PRJNA914231</td><td class="mono">31/60/58/19</td><td class="mono">31/60/58/19</td><td class="mono">29/56/55/16</td><td class="mono">29/59/56/16</td><td></td></tr>
+        <tr><td class="mono">PRJEB83336</td><td class="mono">0/2/0/100</td><td class="mono">0/2/0/103</td><td class="mono">0/2/0/103</td><td class="mono">—</td><td>primer não publicado</td></tr>
+        <tr><td class="mono">PRJNA725946</td><td class="mono">65/0/0/54</td><td class="mono">65/0/0/54</td><td class="mono">65/0/0/54</td><td class="mono">65/0/0/54</td><td>corridas diferentes por classe</td></tr>
+        <tr><td><b>Total</b></td><td class="mono">285/170/112/441</td><td class="mono">314/170/112/446</td><td class="mono">281/154/109/427</td><td class="mono">299/155/110/325</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="meta">Câncer/HSIL/LSIL/controle. Versão em inglês, com notas e a tabela de validação (os três esquemas lado a lado), em <span class="mono">analysis/results/18_tabelas_artigo.md</span>. Parágrafos prontos para Métodos e Resultados em <span class="mono">analysis/texto_artigo_EN.md</span>.</p>
+
+  <h2>12. Próximos passos sugeridos</h2>
   <ul class="tight prose">
     <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas).</li>
-    <li>Registrar no artigo que, no P22, câncer e controle foram sequenciados em corridas diferentes (leituras de ~222 e ~274 nt).</li>
-    <li>Registrar nos Métodos que 21 runs do P14 não são 16S (DNA humano) e corrigir a Tabela 1. Na tabela da Paola, refazer o P16 descartando leituras sem primer.</li>
-    <li>Investigar o P16 na tabela da Paola: filtrar leituras não bacterianas e conferir por que há 29, 26 e 55 amostras em lugares diferentes.</li>
-    <li>Refazer o Boruta e o LEfSe dentro de cada projeto, ou com projeto como bloco, e só reportar gêneros que se repetem em pelo menos dois projetos.</li>
-    <li>Reportar no artigo os três números de validação lado a lado: CV aleatória, só projeto e leave-one-project-out. É o resultado mais forte e mais original do trabalho.</li>
+    <li>Conferir no SRA Run Selector a qual BioProject pertencem as 29 runs SRR26495xxx do P16.</li>
+    <li>Levar para o artigo a Tabela 1 corrigida, a tabela de validação e os parágrafos de <span class="mono">texto_artigo_EN.md</span> (P14, P16, P22, validação e biomarcadores).</li>
+    <li>Substituir as figuras de Boruta, LEfSe e SHAP por resultados por projeto ou pela meta-análise.</li>
   </ul>
 </div>
 

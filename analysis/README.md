@@ -34,7 +34,17 @@ python 10_contabilidade_amostras.py     # onde cada uma das 1.042 amostras se pe
 python 11_contaminantes.py              # gêneros de kit/laboratório: peso por projeto e sensibilidade do ML
 python 12_abundancia_com_projeto.py     # abundância diferencial em CLR com e sem projeto no modelo
 python 13_meta_analise.py               # efeito por projeto (g de Hedges) + efeitos aleatórios (DerSimonian-Laird)
+python 14_exporta_para_R.py             # exporta TABELA=... para os scripts R originais (R_DIR=...)
+python 15_gllvm_eta2.py results/R_tassi_v2/gllvm_escores.csv   # η² dos eixos do GLLVM
+python 16_p16_sublotes.py               # os dois grupos de runs do P16 (26 com BioSample, 29 sem)
+python 17_boruta_por_projeto.py         # Boruta global e dentro de cada projeto (pip install Boruta)
+LEFSE_BIN=... python 19_lefse_por_projeto.py   # LEfSe global e por projeto (lefse 1.1.2, python 3.9, rpy2 < 3.5)
+python 18_tabelas_artigo.py             # Tabela 1 corrigida e tabela de validação (depois do 03)
 ```
+
+Textos para o artigo: `texto_metodos_EN.md` (Métodos) e `texto_artigo_EN.md` (exclusões, notas da
+Tabela 1, validação e biomarcadores). A tabela `PAOLA_FILTRADA` é a da Paola sem leituras
+"Unassigned" e de Eukaryota (corrige o P16).
 
 As tabelas analisadas vêm da variável `TABELAS` (padrão: `PAOLA,TASSI_V2`). Opções: `PAOLA`,
 `PAOLA_LIMPA` (sem P21, sem P16 e sem amostras < 1.000 leituras), `TASSI` (como está no Drive),
