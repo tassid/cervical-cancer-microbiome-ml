@@ -4,9 +4,10 @@ Para o pipeline da Tassiane usa as estatísticas do deblur (V3V4_stats, V4_stats
 tabelas por região antes do filtro de 1.000 leituras. Para a Paola só há a tabela
 final, então a ausência é registrada sem etapa.
 
-Também separa os sublotes do P14: amostras em que o deblur descartou >90% das
-leituras na derreplicação (corte de 250 nt) e cujo primer já vinha removido na origem
-(cutadapt encontrou o primer em ~1-2% das leituras, contra ~99% no outro sublote).
+Também separa os sublotes do P14: 21 runs em que o cutadapt encontrou o primer em
+~1-2% das leituras (contra ~99% no outro sublote). Inspeção dos FASTQ do SRA mostrou
+que essas runs não são 16S: nenhuma leitura com primer ou início de V3, e as
+sequências mais comuns são humanas (Alu, satélite). A exclusão é correta.
 """
 import glob
 import os

@@ -337,8 +337,8 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <table>
       <thead><tr><th>Projeto</th><th class="n">Catalogadas</th><th class="n">Paola (≥ 1.000 leituras)</th><th class="n">Tassiane</th><th class="n">Perdidas nas duas</th><th>Por quê</th></tr></thead>
       <tbody>
-        <tr><td>P14 · Brasil</td><td class="n">43</td><td class="n">22</td><td class="n">22</td><td class="n">21</td><td>Sublote sem primer. O cutadapt descartou as leituras e o deblur ficou com menos de 1%. A Paola tem 5 dessas amostras com 2–4 leituras e não tem as outras 16.</td></tr>
-        <tr><td>P16 · EUA</td><td class="n">55</td><td class="n">29</td><td class="n">47</td><td class="n">8</td><td>Sublote de baixa profundidade (cerca de 1.500 leituras brutas por amostra). A Paola não tem nenhuma das 26 desse sublote; a Tassiane mantém 18 acima de 1.000 leituras.</td></tr>
+        <tr><td>P14 · Brasil</td><td class="n">43</td><td class="n">22</td><td class="n">22</td><td class="n">21</td><td>Sublote que não é 16S: as leituras são DNA humano (Alu, satélite), sem primer nem região V3. Exclusão correta nas duas tabelas.</td></tr>
+        <tr><td>P16 · EUA</td><td class="n">55</td><td class="n">29</td><td class="n">47</td><td class="n">8</td><td>Sublote de 16S com baixa profundidade (cerca de 2.000 leituras brutas; 97% com primer). A Paola não tem nenhuma das 26; a Tassiane mantém as 18 acima de 1.000 leituras.</td></tr>
         <tr><td>P21 · Espanha</td><td class="n">105</td><td class="n">105</td><td class="n">0</td><td class="n">0</td><td>Excluído pela Tassiane por falta de primer publicado.</td></tr>
         <tr><td>P19 · Nigéria</td><td class="n">168</td><td class="n">156</td><td class="n">160</td><td class="n">8</td><td>Baixa profundidade. A Paola mantém 11 amostras com menos de 1.000 leituras.</td></tr>
         <tr><td>P10 · EUA</td><td class="n">319</td><td class="n">312</td><td class="n">313</td><td class="n">6</td><td>Baixa profundidade. A Paola mantém 5 com menos de 1.000 leituras.</td></tr>
@@ -348,7 +348,7 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     </table>
   </div>
   <div class="callout prose">
-    <p style="margin:0"><b>P14: metade do Brasil está faltando nas duas tabelas.</b> O projeto tem dois sublotes, como o P10. No primeiro (22 amostras, 2×300 nt), o primer está presente em 99% das leituras. No segundo (21 amostras: 10 controles e 11 HSIL, 2×250 nt), o primer já vem removido (1–2% das leituras). Com o cutadapt configurado para descartar leituras sem primer, sobram 0,02% delas. A solução é a mesma do P10b: processar esse sublote à parte, sem corte de primer, e conferir se o comprimento das leituras aguenta o corte do deblur. O P14 é o único projeto do Brasil, então essas 21 amostras dobram o tamanho do grupo brasileiro.</p>
+    <p style="margin:0"><b>P14: 21 das 43 runs não são 16S.</b> Os FASTQ foram baixados direto do SRA e inspecionados. No sublote bom (22 amostras), 95% das leituras começam com o primer 341F. No outro (21 amostras: 10 controles e 11 HSIL), nenhuma leitura tem o primer ou o início da região V3, e as sequências mais comuns são humanas (elementos Alu, DNA satélite). São outro tipo de ensaio depositado no mesmo BioProject. Não há o que recuperar: a exclusão é correta e deve ser registrada nos Métodos, e a Tabela 1 do artigo (22 HSIL e 21 controles) conta essas runs como se fossem amostras de microbioma. <b>P16:</b> no sublote principal, só cerca de 45% das leituras têm o primer e o resto não é 16S, o que explica os 48% de Unassigned + Eukaryota na tabela da Paola. O cutadapt com descarte de leituras sem primer, usado pela Tassiane, remove esse material.</p>
   </div>
 
   <h3>Análises que faltam</h3>
@@ -387,7 +387,7 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
   <h2>10. Próximos passos sugeridos</h2>
   <ul class="tight prose">
     <li>Reprocessar o P22 no ramo V3-V4 do pipeline da Tassiane (a correção por prefixo é provisória).</li>
-    <li>Recuperar as 21 amostras do sublote sem primer do P14, nos dois pipelines, processando-as à parte como foi feito com o P10b.</li>
+    <li>Registrar nos Métodos que 21 runs do P14 não são 16S (DNA humano) e corrigir a Tabela 1. Na tabela da Paola, refazer o P16 descartando leituras sem primer.</li>
     <li>Investigar o P16 na tabela da Paola: filtrar leituras não bacterianas e conferir por que há 29, 26 e 55 amostras em lugares diferentes.</li>
     <li>Refazer o Boruta e o LEfSe dentro de cada projeto, ou com projeto como bloco, e só reportar gêneros que se repetem em pelo menos dois projetos.</li>
     <li>Reportar no artigo os três números de validação lado a lado: CV aleatória, só projeto e leave-one-project-out. É o resultado mais forte e mais original do trabalho.</li>
