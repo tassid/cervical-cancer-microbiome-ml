@@ -134,7 +134,7 @@ def f02():
         ax.set_ylim(-1, len(w) + 0.8)
     salvar(fig, "f02_forca_bruta_30_modelos", "No classifier survives a new study",
            "Exhaustive search: 9 classifiers x 3 preprocessings (relative abundance, CLR, presence/absence), with and without SMOTE. "
-           "Every combination reaches 0.85-0.97 under random CV and falls to 0.46-0.79 when the test study is unseen.")
+           "Every combination reaches 0.83-0.97 under random CV and falls to 0.41-0.79 when the test study is unseen.")
 
 
 def f03():
