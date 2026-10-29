@@ -49,8 +49,8 @@ python 24_busca_sra.py                  # candidatos no SRA com caso e controle 
 python 21_figuras.py                    # 26 figuras do artigo em figuras/ (PNG e PDF); explicação de cada uma em figuras/EXPLICACOES.md
 ```
 
-Textos para o artigo: `texto_metodos_EN.md` (Métodos) e `texto_artigo_EN.md` (exclusões, notas da
-Tabela 1, validação e biomarcadores). A tabela `PAOLA_FILTRADA` é a da Paola sem leituras
+Textos para o artigo: `texto_metodos_EN.md` (Métodos) e `texto_artigo_EN.md` (exclusões, CSTs, N e pareamento, limitações, notas da
+Tabela 1, validação e biomarcadores). Versão em português para a dissertação: `texto_dissertacao_PT.md`. A tabela `PAOLA_FILTRADA` é a da Paola sem leituras
 "Unassigned" e de Eukaryota (corrige o P16).
 
 As tabelas analisadas vêm da variável `TABELAS` (padrão: `PAOLA,TASSI_V2`). Opções: `PAOLA`,
@@ -121,8 +121,8 @@ Os resultados já calculados estão em `results/`.
   Sem o P22, ~100 amostras pareadas dão o mesmo AUC num estudo novo (0,74–0,75) que somar 350–450 amostras de
   estudos de uma classe (0,67–0,76). Para g ≈ 0,3 com 80% de poder seriam ~175 por grupo pareado.
 - **CSTs (VALENCIA)** (`23_cst_valencia.py`): espécies de Lactobacillus por alinhamento ao vSpeciateDB (85% das
-  leituras). CST IV (pouco Lactobacillus) mais frequente no câncer em P1, P2 e P19: OR 4,4 (1,7–11,2; p = 0,002) sem o
-  P22, contra 6,0 com tudo junto. L. crispatus (CST I) menos frequente no câncer nos 4 estudos (n.s.). Lesões: mesma
+  leituras). CST IV (pouco Lactobacillus) mais frequente no câncer no P19 e no P2: OR 4,5 (1,7–12,2; p = 0,003) sem o
+  P22, contra 6,0 com tudo junto (P1 fora: 4 controles). L. crispatus (CST I) menos frequente no câncer nos 3 estudos (n.s.). Lesões: mesma
   direção, sem significância.
 - **P16 na tabela da Paola**: 39% "Unassigned" e 2,5% Eukaryota, provável DNA do hospedeiro
   não filtrado; 29 amostras contra 47 na da Tassiane e 26 no artigo.

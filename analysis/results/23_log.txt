@@ -40,7 +40,6 @@ P9      cancer         1   0    1     2    49  0
 
 Dentro de cada estudo:
                                 desfecho         contraste projeto  n_caso  n_controle  pct_caso  pct_controle  log_or  var  p_fisher
-CST IV (sem dominância de Lactobacillus) cancer vs control      P1      68           4     97.06        100.00    1.08 2.64      1.00
 CST IV (sem dominância de Lactobacillus) cancer vs control     P19      29          16     82.76         50.00    1.49 0.46      0.04
 CST IV (sem dominância de Lactobacillus) cancer vs control      P2      10          29     70.00         31.03    1.53 0.57      0.06
 CST IV (sem dominância de Lactobacillus) cancer vs control     P22      65          54     44.62         57.41   -0.51 0.14      0.20
@@ -51,7 +50,6 @@ CST IV (sem dominância de Lactobacillus)   HSIL vs control      P2      27     
 CST IV (sem dominância de Lactobacillus)   LSIL vs control     P10      43         211     41.86         37.44    0.19 0.11      0.61
 CST IV (sem dominância de Lactobacillus)   LSIL vs control     P19      56          16     73.21         50.00    0.98 0.32      0.13
 CST IV (sem dominância de Lactobacillus)   LSIL vs control      P2      11          29     54.55         31.03    0.94 0.49      0.27
-                      CST III (L. iners) cancer vs control      P1      68           4      2.94          0.00   -1.08 2.64      1.00
                       CST III (L. iners) cancer vs control     P19      29          16      6.90         37.50   -1.92 0.69      0.02
                       CST III (L. iners) cancer vs control      P2      10          29     30.00         37.93   -0.29 0.56      0.72
                       CST III (L. iners) cancer vs control     P22      65          54     43.08         22.22    0.95 0.17      0.02
@@ -62,7 +60,6 @@ CST IV (sem dominância de Lactobacillus)   LSIL vs control      P2      11     
                       CST III (L. iners)   LSIL vs control     P10      43         211     25.58         35.07   -0.43 0.14      0.29
                       CST III (L. iners)   LSIL vs control     P19      56          16     17.86         37.50   -1.01 0.37      0.17
                       CST III (L. iners)   LSIL vs control      P2      11          29     27.27         37.93   -0.41 0.54      0.72
-                    CST I (L. crispatus) cancer vs control      P1      68           4      0.00          0.00   -2.72 4.24      1.00
                     CST I (L. crispatus) cancer vs control     P19      29          16      6.90         12.50   -0.64 0.91      0.61
                     CST I (L. crispatus) cancer vs control      P2      10          29      0.00         24.14   -1.95 2.27      0.16
                     CST I (L. crispatus) cancer vs control     P22      65          54     12.31         16.67   -0.35 0.26      0.60
@@ -76,12 +73,12 @@ CST IV (sem dominância de Lactobacillus)   LSIL vs control      P2      11     
 
 Meta-análise (OR > 1 = mais frequente no caso):
                                 desfecho         contraste  k    OR  ic_inf  ic_sup     p     I2 mesma_direcao  OR_sem_P22  ic_inf_sem_P22  ic_sup_sem_P22  p_sem_P22  OR_ingenuo_todos_juntos
-CST IV (sem dominância de Lactobacillus) cancer vs control  4 2.155   0.567   8.187 0.260 71.997           3/4       4.362           1.697          11.215      0.002                    5.964
+CST IV (sem dominância de Lactobacillus) cancer vs control  3 2.097   0.455   9.656 0.342 80.812           2/3       4.529           1.685          12.175      0.003                    5.964
 CST IV (sem dominância de Lactobacillus)   HSIL vs control  4 1.289   0.752   2.212 0.356 19.045           3/4         NaN             NaN             NaN        NaN                    1.520
 CST IV (sem dominância de Lactobacillus)   LSIL vs control  3 1.608   0.952   2.718 0.076  0.000           3/3         NaN             NaN             NaN        NaN                    1.949
-                      CST III (L. iners) cancer vs control  4 0.672   0.155   2.915 0.596 72.704           3/4       0.355           0.121           1.046      0.060                    0.307
+                      CST III (L. iners) cancer vs control  3 0.738   0.138   3.934 0.722 80.641           2/3       0.345           0.070           1.704      0.192                    0.307
                       CST III (L. iners)   HSIL vs control  4 0.996   0.469   2.118 0.992 43.507           2/4         NaN             NaN             NaN        NaN                    0.999
                       CST III (L. iners)   LSIL vs control  3 0.572   0.323   1.012 0.055  0.000           3/3         NaN             NaN             NaN        NaN                    0.609
-                    CST I (L. crispatus) cancer vs control  4 0.533   0.233   1.220 0.136  0.000           4/4       0.290           0.067           1.259      0.098                    0.171
+                    CST I (L. crispatus) cancer vs control  3 0.584   0.250   1.362 0.213  0.000           3/3       0.363           0.075           1.760      0.208                    0.171
                     CST I (L. crispatus)   HSIL vs control  4 0.621   0.339   1.140 0.124  0.000           3/4         NaN             NaN             NaN        NaN                    0.611
                     CST I (L. crispatus)   LSIL vs control  3 0.872   0.456   1.667 0.678  0.000           2/3         NaN             NaN             NaN        NaN                    0.633

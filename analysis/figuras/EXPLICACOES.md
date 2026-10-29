@@ -363,17 +363,17 @@ modelo usa**, não se aquilo é biologia.
 
 **O que significa.**
 - Os estudos só ou quase só de câncer (P1, P6, P9, P16) são quase todos CST IV vermelho, o que reforça por que eles "ensinam" disbiose ao modelo.
-- Nos estudos com os dois grupos, o câncer tem mais CST IV que o controle no P1, no P2 e no P19. No P22 isso não acontece, por causa do efeito de corrida.
+- Nos estudos com os dois grupos, o câncer tem mais CST IV que o controle no P2 e no P19. No P1 os 4 controles também são CST IV, e no P22 o câncer tem menos CST IV, por causa do efeito de corrida.
 - Nas lesões (P10, P2, P19) as barras de caso e controle são parecidas.
 
 ### f29. CSTs dentro de cada estudo
 
-**O que mostra.** O odds ratio de ter cada CST no caso em relação ao controle, dentro de cada estudo (quadrados, com IC 95%; o P22 em cinza vazado). Os losangos são o efeito combinado (efeitos aleatórios), com e sem o P22.
+**O que mostra.** O odds ratio de ter cada CST no caso em relação ao controle, dentro de cada estudo com pelo menos 5 amostras por grupo (quadrados, com IC 95%; o P22 em cinza vazado). O P1 fica fora porque tem só 4 controles. Os losangos são o efeito combinado (efeitos aleatórios), com e sem o P22.
 
 **Como ler.** À direita de 1, o CST é mais frequente no caso; à esquerda, no controle.
 
 **O que significa.**
-- **CST IV no câncer:** OR 4,4 (IC 1,7–11,2; p = 0,002) sem o P22, mesma direção em P1, P2 e P19. É o resultado de composição mais sólido do trabalho.
-- ***L. crispatus* (CST I):** menos frequente no câncer nos 4 estudos, mas sem significância.
+- **CST IV no câncer:** OR 4,5 (IC 1,7–12,2; p = 0,003) sem o P22, com P19 e P2 na mesma direção. É o resultado de composição mais sólido do trabalho, mas se apoia em dois estudos.
+- ***L. crispatus* (CST I):** menos frequente no câncer nos 3 estudos comparáveis, mas sem significância.
 - **Lesões:** CST IV um pouco mais frequente (LSIL p = 0,08) e *L. iners* menos frequente na LSIL (p = 0,06); nada significativo.
 - Com todos os dados juntos, o OR do CST IV no câncer seria 6,0. Comparar dentro dos estudos dá um número menor, mas confiável.
