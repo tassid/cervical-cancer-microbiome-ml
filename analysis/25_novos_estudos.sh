@@ -30,6 +30,13 @@ um() {
     cp "$r1" "$t/trim.fastq"
   else
     cutadapt -g "$PRIMER" --discard-untrimmed -e 0.15 -O 10 -o "$t/trim.fastq" "$r1" > "$W/$EST/log/$id.cutadapt.txt"
+    # Algumas runs foram depositadas já sem o primer (no PRJEB40437, 134 de 245 começam logo
+    # depois do 27F). Se menos de 10% das leituras têm o primer, usa a leitura como está.
+    n_in=$(($(wc -l < "$r1") / 4)); n_out=$(($(wc -l < "$t/trim.fastq") / 4))
+    if [ "$n_in" -gt 0 ] && [ $((n_out * 10)) -lt "$n_in" ]; then
+      cp "$r1" "$t/trim.fastq"
+      echo "$id sem primer: usada sem corte" >> "$W/$EST/log/sem_primer.txt"
+    fi
   fi
   python3 "$DIR/qfilter_q2.py" "$t/trim.fastq" "$W/$EST/qf/$id.fastq"
   rm -rf "$t"
