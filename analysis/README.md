@@ -47,6 +47,9 @@ python 22c_curva_sem_p22.py             # curva de aprendizado: N pareado x N de
 SPECIATEIT_DIR=... VALENCIA_DIR=... P22_DEBLUR_DIR=... python 23_cst_valencia.py   # CSTs (VALENCIA) e comparação dentro dos estudos
 python 24_busca_sra.py                  # candidatos no SRA com caso e controle (precisa de acesso a eutils.ncbi.nlm.nih.gov)
 python 24b_atributos_candidatos.py      # metadados completos dos candidatos da triagem (results/24_triagem_candidatos.csv)
+python 24d_metadados_por_amostra.py     # grupo clínico de cada amostra dos estudos novos (precisa de acesso ao NCBI)
+bash 25_novos_estudos.sh ESTUDO runs.txt PASTA PRIMER TRIM   # baixa e processa um estudo novo (ver cabeçalho)
+NOVOS_DIR=... python 25_novos_estudos.py   # tabelas, CSTs e meta-análise com os estudos novos
 python 21_figuras.py                    # 26 figuras do artigo em figuras/ (PNG e PDF); explicação de cada uma em figuras/EXPLICACOES.md
 ```
 
@@ -125,5 +128,9 @@ Os resultados já calculados estão em `results/`.
   leituras). CST IV (pouco Lactobacillus) mais frequente no câncer no P19 e no P2: OR 4,5 (1,7–12,2; p = 0,003) sem o
   P22, contra 6,0 com tudo junto (P1 fora: 4 controles). L. crispatus (CST I) menos frequente no câncer nos 3 estudos (n.s.). Lesões: mesma
   direção, sem significância.
+- **Estudos novos** (`25_novos_estudos.*`): PRJNA1085021, PRJEB40437, PRJNA622998 e PRJNA308947, processados com o mesmo
+  pipeline. Replicam os achados: CST IV no câncer 67% × 35% (meta sem P22: OR 4,0, 2,1–7,5, I² = 0); Lactobacillus ↓ no câncer
+  em 5/5 estudos (g −0,88); Dialister, Megasphaera e Sneathia ↑ na HSIL em 6–7/7 estudos; na LSIL, CST IV ↑ (OR 1,8) e
+  L. iners ↓ (OR 0,52).
 - **P16 na tabela da Paola**: 39% "Unassigned" e 2,5% Eukaryota, provável DNA do hospedeiro
   não filtrado; 29 amostras contra 47 na da Tassiane e 26 no artigo.
