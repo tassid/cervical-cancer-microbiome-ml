@@ -211,7 +211,7 @@ for desfecho, col in [("CST IV (sem dominância de Lactobacillus)", "IV"), ("CST
         ys, vs = [], []
         for pj, s in o.groupby("Project"):
             ca, co = s[s.tipo_amostra == classe], s[s.tipo_amostra == "control"]
-            if len(ca) < 4 or len(co) < 4:
+            if len(ca) < 5 or len(co) < 5:  # o P1 tem 4 controles: com uma célula zero, a correção de 0,5 inverte o sinal
                 continue
             a, b = int(ca.y.sum()), len(ca) - int(ca.y.sum())
             c, d = int(co.y.sum()), len(co) - int(co.y.sum())

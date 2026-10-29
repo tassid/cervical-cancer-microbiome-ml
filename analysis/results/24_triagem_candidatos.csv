@@ -1,0 +1,22 @@
+bioproject,runs,desfecho,prioridade,descricao_resumida,a_conferir
+PRJNA1085021,154,cancer+HSIL,alta,"controles saudáveis, HSIL e câncer; swab cervical 16S (China)",grupos e região do 16S
+PRJNA1479850,97,cancer,alta,"cervicovaginal 16S, mulheres com e sem câncer (2026)",grupos e região
+PRJNA1433670,64,cancer,media,"câncer e saudáveis, V3-V4 MiSeq; só 4 BioSamples",metadados por amostra
+PRJNA905720,317,cancer+lesao,media,"câncer ou lesões em populações diferentes",grupos
+PRJNA1025964,30,cancer,media,"saudáveis e câncer (Índia); descrição diz metagenomic",se é 16S
+PRJNA771720,151,cancer,media,"progressão do câncer cervical; não marcado como amplicon",estratégia e grupos
+PRJNA770453,125,cancer,media,"composição vaginal na progressão HPV-câncer; não marcado como amplicon",estratégia e grupos
+PRJEB43410,70,cancer,baixa,"câncer antes/depois de radioquimioterapia, Ion Torrent",se há controles
+PRJNA1262983,144,cancer+lesao,media,"Marrocos: câncer pós-radioquimioterapia, lesões e controles",câncer é pós-tratamento
+PRJNA668516,360,cancer+lesao,media,"consórcio ACCME (Nigéria e outros)",sobreposição com PRJNA914231
+PRJNA308947,29,cancer+lesao,baixa,"piloto HPV, SIL e câncer; 454",pequeno e antigo
+PRJNA392354,567,lesao,alta,"NIC de grau mais alto em mulheres hrHPV",grupos e região
+PRJNA622998,333,lesao,alta,"NIC, HPV+ sem lesão e HPV- (Ohio)",grupos
+PRJNA993994,254,lesao,alta,"estágios de displasia com covariáveis (China)",grupos
+PRJNA1344883,232,lesao,alta,"estados de HPV e estágios de NIC, swab cervical",grupos
+PRJNA1041987,165,lesao,alta,"quatro grupos por citologia/histologia (Rússia), DNBSEQ",grupos
+PRJDB34239,114,lesao,alta,"controles HPV-, HPV+ e NIC, secreção cervicovaginal",grupos
+PRJNA1532026,206,lesao,media,"lesões HPV+",se há controles
+PRJNA1126028,30,lesao,baixa,"lesões NIC",controles
+PRJNA1282320,172,lesao_sem_controle,baixa,"103 LSIL e 69 HSIL, todas HPV+; sem controles",serve só para HSIL x LSIL
+PRJEB40437,245,lesao,baixa,"NIC antes/depois da excisão",se há controles sem lesão

@@ -590,8 +590,8 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <table>
       <thead><tr><th>Comparação</th><th>Todos juntos (OR)</th><th>Dentro dos estudos (OR, p)</th><th>Sem o P22 (OR, IC 95%, p)</th></tr></thead>
       <tbody>
-        <tr><td>CST IV no câncer</td><td class="mono">6,0</td><td class="mono">2,2 · p = 0,26 (3/4)</td><td class="mono"><b>4,4 · 1,7–11,2 · p = 0,002</b></td></tr>
-        <tr><td>CST I (<i>L. crispatus</i>) no câncer</td><td class="mono">0,17</td><td class="mono">0,53 · p = 0,14 (4/4)</td><td class="mono">0,29 · 0,07–1,26 · p = 0,10</td></tr>
+        <tr><td>CST IV no câncer</td><td class="mono">6,0</td><td class="mono">2,1 · p = 0,34 (2/3)</td><td class="mono"><b>4,5 · 1,7–12,2 · p = 0,003</b></td></tr>
+        <tr><td>CST I (<i>L. crispatus</i>) no câncer</td><td class="mono">0,17</td><td class="mono">0,58 · p = 0,21 (3/3)</td><td class="mono">0,36 · 0,08–1,76 · p = 0,21</td></tr>
         <tr><td>CST IV na HSIL</td><td class="mono">1,5</td><td class="mono">1,3 · p = 0,36 (3/4)</td><td class="mono">—</td></tr>
         <tr><td>CST IV na LSIL</td><td class="mono">1,9</td><td class="mono">1,6 · p = 0,08 (3/3)</td><td class="mono">—</td></tr>
         <tr><td>CST III (<i>L. iners</i>) na LSIL</td><td class="mono">0,61</td><td class="mono">0,57 · p = 0,06 (3/3)</td><td class="mono">—</td></tr>
@@ -599,13 +599,33 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     </table>
   </div>
   <div class="prose">
-    <p><b>O resultado mais claro é a perda da dominância de <i>Lactobacillus</i> no câncer.</b> O CST IV é mais frequente no câncer no P1, no P2 e no P19, e o efeito combinado é significativo sem o P22 (OR 4,4). O P22 é o único com sinal contrário, de novo por ter câncer e controle em corridas diferentes. <i>L. crispatus</i> (CST I) é menos frequente no câncer nos 4 estudos, mas sem significância. Nas lesões os efeitos vão na mesma direção, porém são menores e não significativos.</p>
-    <p>Como nas outras análises, juntar todos os estudos exagera o efeito: o OR do CST IV no câncer cai de 6,0 para 2,2–4,4 quando a comparação é feita dentro dos estudos. Esse resultado é biologicamente interpretável e conversa com a literatura (CST IV associado a HPV, lesões e câncer), por isso pode entrar no artigo como resultado principal de composição. Ressalvas: 45% das amostras têm similaridade abaixo de 0,5 com o CST atribuído, o que é comum em coortes fora da América do Norte e em câncer; e as atribuições de espécie dependem do trecho do 16S (V4 ou V3-V4). Figuras: <span class="mono">f28_cst_por_projeto</span> e <span class="mono">f29_cst_meta</span>.</p>
+    <p><b>O resultado mais claro é a perda da dominância de <i>Lactobacillus</i> no câncer.</b> O CST IV é mais frequente no câncer no P19 (83% contra 50%) e no P2 (70% contra 31%), e o efeito combinado é significativo sem o P22 (OR 4,5). O P1 fica fora da comparação porque tem só 4 controles. O P22 é o único com sinal contrário, de novo por ter câncer e controle em corridas diferentes. <i>L. crispatus</i> (CST I) é menos frequente no câncer nos 3 estudos comparáveis, mas sem significância. Nas lesões os efeitos vão na mesma direção, porém são menores e não significativos.</p>
+    <p>Como nas outras análises, juntar todos os estudos exagera o efeito: o OR do CST IV no câncer cai de 6,0 para 2,1–4,5 quando a comparação é feita dentro dos estudos. Esse resultado é biologicamente interpretável e conversa com a literatura (CST IV associado a HPV, lesões e câncer), por isso pode entrar no artigo como resultado principal de composição. Ressalvas: 45% das amostras têm similaridade abaixo de 0,5 com o CST atribuído, o que é comum em coortes fora da América do Norte e em câncer; e as atribuições de espécie dependem do trecho do 16S (V4 ou V3-V4). Figuras: <span class="mono">f28_cst_por_projeto</span> e <span class="mono">f29_cst_meta</span>.</p>
   </div>
 
   <h2>15. Busca de estudos com caso e controle no SRA</h2>
   <div class="prose">
-    <p>O script <span class="mono">24_busca_sra.py</span> procura no NCBI BioProjects 16S cervicovaginais (câncer, NIC, lesões, HPV), baixa o runinfo e os atributos das BioSamples e marca os que parecem ter caso e controle no mesmo estudo. Ele não rodou nesta sessão porque o acesso a <span class="mono">eutils.ncbi.nlm.nih.gov</span> está bloqueado na rede do ambiente. As contagens por palavra-chave são uma triagem; cada candidato precisa ser conferido no artigo correspondente.</p>
+    <p>O <span class="mono">24_busca_sra.py</span> (rodado no computador da Tassiane, porque o NCBI fica bloqueado no ambiente em nuvem) encontrou 111 BioProjects cervicovaginais ligados a câncer, NIC, lesões ou HPV. A triagem automática por palavras-chave errou nos dois sentidos, então a seleção foi feita lendo título e descrição; depois o <span class="mono">24b_atributos_candidatos.py</span> baixou os metadados completos de 21 candidatos para conferir os grupos. Resultado em <span class="mono">results/24c_triagem_conferida.csv</span>.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>BioProject</th><th>Situação</th><th>Caso</th><th>Controle</th><th>Observação</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">PRJNA1085021</td><td>confirmado</td><td class="mono">52 câncer + 51 HSIL</td><td class="mono">51</td><td>três classes no mesmo estudo (China, NovaSeq)</td></tr>
+        <tr><td class="mono">PRJEB40437</td><td>confirmado</td><td class="mono">103 NIC</td><td class="mono">39</td><td>NIC antes da excisão × normais (Reino Unido)</td></tr>
+        <tr><td class="mono">PRJNA622998</td><td>confirmado</td><td class="mono">45 LSIL + 6 HSIL</td><td class="mono">~200</td><td>citologia, HPV e menopausa (Ohio)</td></tr>
+        <tr><td class="mono">PRJEB43410</td><td>confirmado</td><td class="mono">16 câncer</td><td class="mono">31</td><td>só o câncer antes do tratamento; Ion Torrent</td></tr>
+        <tr><td class="mono">PRJNA308947</td><td>confirmado</td><td class="mono">8 câncer + 4 LSIL</td><td class="mono">7</td><td>pequeno, 454</td></tr>
+        <tr><td class="mono">PRJNA1479850</td><td>provável</td><td class="mono">~77 câncer</td><td class="mono">~20</td><td>grupos pelo prefixo do nome (P e C)</td></tr>
+        <tr><td class="mono">PRJNA1433670</td><td>provável</td><td class="mono">16 câncer</td><td class="mono">16</td><td>dois sítios; usar um só</td></tr>
+        <tr><td class="mono">PRJNA1532026</td><td>provável</td><td class="mono">11 câncer, 40 HSIL, 74 LSIL</td><td class="mono">81 "CMI"</td><td>conferir se CMI são controles sem lesão</td></tr>
+        <tr><td>8 projetos</td><td>a conferir</td><td colspan="2">sem grupo nos metadados</td><td>precisam da tabela suplementar do artigo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p><b>O que isso muda no N pareado de câncer × controle.</b> Hoje (sem o P22) há 109 cânceres e 51 controles em estudos com os dois grupos. Os três estudos confirmados de câncer somam 76 cânceres e 89 controles (185 × 140). Com os prováveis, chega a cerca de 290 × 260, acima das ~175 por grupo do cálculo de poder. Para HSIL e LSIL o N pareado já era maior; os novos estudos acrescentam 154 NIC/HSIL e 49 LSIL com controles próprios.</p>
+    <p>Os novos estudos usam outras regiões, primers e plataformas (NovaSeq, MiSeq, Ion Torrent, 454), o que reforça a necessidade de comparar dentro de cada estudo. O próximo passo é baixar os FASTQ dos confirmados (o espelho do SRA na AWS é acessível do ambiente), identificar o primer e reprocessar com o mesmo pipeline.</p>
   </div>
 
   <h2>16. Próximos passos sugeridos</h2>

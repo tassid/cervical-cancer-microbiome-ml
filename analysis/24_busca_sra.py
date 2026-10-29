@@ -94,39 +94,45 @@ def biosamples(accs):
     return txts
 
 
-linhas = []
-vistos = {}
-for termo in BUSCAS:
-    uids = bioprojects(termo)
-    print(f"{len(uids):4d} BioProjects para: {termo[:90]}")
-    vistos.update(resumo_projetos([u for u in uids if u not in {v['uid'] for v in vistos.values()}]))
-print(f"{len(vistos)} BioProjects únicos")
 
-for acc, info in vistos.items():
-    try:
-        ri = runinfo(acc)
-    except Exception as e:  # noqa: BLE001 - um projeto com erro não deve parar o levantamento
-        print("erro", acc, e)
-        continue
-    if ri.empty:
-        continue
-    amplicon = ri.LibraryStrategy.astype(str).str.upper().eq("AMPLICON").mean() if "LibraryStrategy" in ri else 0
-    humano = ri.ScientificName.astype(str).str.contains("vaginal|human|Homo|metagenome", case=False).mean() \
-        if "ScientificName" in ri else 0
-    bs = biosamples(list(ri.BioSample.dropna().unique())) if "BioSample" in ri else []
-    n_caso = sum(bool(CASO.search(t)) for t in bs)
-    n_ctrl = sum(bool(CONTROLE.search(t)) for t in bs)
-    texto = f"{info['titulo']} {info['descricao']}"
-    linhas.append(dict(bioproject=acc, ja_usado=acc in JA_USADOS, titulo=info["titulo"], data=info["data"],
-                       runs=len(ri), biosamples=len(bs), fracao_amplicon=round(amplicon, 2),
-                       menciona_16S=bool(re.search(r"16S", texto, re.I)), amostras_caso=n_caso,
-                       amostras_controle=n_ctrl, tem_caso_e_controle=n_caso >= 5 and n_ctrl >= 5,
-                       plataforma=", ".join(ri.Platform.dropna().astype(str).unique()[:2]) if "Platform" in ri else "",
-                       descricao=info["descricao"]))
-    print(f"  {acc}: {len(ri)} runs, caso~{n_caso}, controle~{n_ctrl}  {info['titulo'][:70]}")
+def main():
+    linhas = []
+    vistos = {}
+    for termo in BUSCAS:
+        uids = bioprojects(termo)
+        print(f"{len(uids):4d} BioProjects para: {termo[:90]}")
+        vistos.update(resumo_projetos([u for u in uids if u not in {v['uid'] for v in vistos.values()}]))
+    print(f"{len(vistos)} BioProjects únicos")
 
-R = pd.DataFrame(linhas).sort_values(["tem_caso_e_controle", "ja_usado", "runs"], ascending=[False, True, False])
-R.to_csv(f"{OUT_DIR}/24_candidatos_sra.csv", index=False)
-cand = R[R.tem_caso_e_controle & ~R.ja_usado & (R.fracao_amplicon > 0.5)]
-print(f"\n{len(cand)} candidatos novos com caso e controle (amplicon):")
-print(cand[["bioproject", "runs", "amostras_caso", "amostras_controle", "titulo"]].to_string(index=False))
+    for acc, info in vistos.items():
+        try:
+            ri = runinfo(acc)
+        except Exception as e:  # noqa: BLE001 - um projeto com erro não deve parar o levantamento
+            print("erro", acc, e)
+            continue
+        if ri.empty:
+            continue
+        amplicon = ri.LibraryStrategy.astype(str).str.upper().eq("AMPLICON").mean() if "LibraryStrategy" in ri else 0
+        humano = ri.ScientificName.astype(str).str.contains("vaginal|human|Homo|metagenome", case=False).mean() \
+            if "ScientificName" in ri else 0
+        bs = biosamples(list(ri.BioSample.dropna().unique())) if "BioSample" in ri else []
+        n_caso = sum(bool(CASO.search(t)) for t in bs)
+        n_ctrl = sum(bool(CONTROLE.search(t)) for t in bs)
+        texto = f"{info['titulo']} {info['descricao']}"
+        linhas.append(dict(bioproject=acc, ja_usado=acc in JA_USADOS, titulo=info["titulo"], data=info["data"],
+                           runs=len(ri), biosamples=len(bs), fracao_amplicon=round(amplicon, 2),
+                           menciona_16S=bool(re.search(r"16S", texto, re.I)), amostras_caso=n_caso,
+                           amostras_controle=n_ctrl, tem_caso_e_controle=n_caso >= 5 and n_ctrl >= 5,
+                           plataforma=", ".join(ri.Platform.dropna().astype(str).unique()[:2]) if "Platform" in ri else "",
+                           descricao=info["descricao"]))
+        print(f"  {acc}: {len(ri)} runs, caso~{n_caso}, controle~{n_ctrl}  {info['titulo'][:70]}")
+
+    R = pd.DataFrame(linhas).sort_values(["tem_caso_e_controle", "ja_usado", "runs"], ascending=[False, True, False])
+    R.to_csv(f"{OUT_DIR}/24_candidatos_sra.csv", index=False)
+    cand = R[R.tem_caso_e_controle & ~R.ja_usado & (R.fracao_amplicon > 0.5)]
+    print(f"\n{len(cand)} candidatos novos com caso e controle (amplicon):")
+    print(cand[["bioproject", "runs", "amostras_caso", "amostras_controle", "titulo"]].to_string(index=False))
+
+
+if __name__ == "__main__":
+    main()
