@@ -582,7 +582,33 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <p><b>A preocupação com N é justa, mas o N que conta é o pareado.</b> Para detectar efeitos do tamanho que a meta-análise achou (g ≈ 0,3) com 80% de poder, são necessárias cerca de 175 amostras por grupo dentro dos mesmos estudos. Hoje há 174 cânceres e 105 controles em estudos mistos, e só 109 e 51 sem o P22. O caminho para mais N é procurar mais estudos com caso e controle (ou controles da mesma população), não somar estudos de uma classe. Figura: <span class="mono">figuras/f27_n_e_pareamento.png</span>.</p>
   </div>
 
-  <h2>14. Próximos passos sugeridos</h2>
+  <h2>14. Tipos de comunidade vaginal (CSTs)</h2>
+  <div class="prose">
+    <p>Classificamos as 889 amostras da tabela reprocessada nos tipos de comunidade do VALENCIA (France et al. 2020): I = <i>L. crispatus</i>, II = <i>L. gasseri</i>, III = <i>L. iners</i>, V = <i>L. jensenii</i>, IV = pouco <i>Lactobacillus</i>. O SILVA 138 não separa <i>L. crispatus</i> nas nossas ASVs, então as ASVs de <i>Lactobacillus</i>, <i>Gardnerella</i>, <i>Atopobium</i> e <i>Sneathia</i> receberam espécie por alinhamento às referências do vSpeciateDB (speciateIT, Holm et al. 2024): 85% das leituras de <i>Lactobacillus</i> ficaram com espécie. Depois comparamos a frequência de cada CST entre caso e controle dentro de cada estudo. Script: <span class="mono">23_cst_valencia.py</span>.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Comparação</th><th>Todos juntos (OR)</th><th>Dentro dos estudos (OR, p)</th><th>Sem o P22 (OR, IC 95%, p)</th></tr></thead>
+      <tbody>
+        <tr><td>CST IV no câncer</td><td class="mono">6,0</td><td class="mono">2,2 · p = 0,26 (3/4)</td><td class="mono"><b>4,4 · 1,7–11,2 · p = 0,002</b></td></tr>
+        <tr><td>CST I (<i>L. crispatus</i>) no câncer</td><td class="mono">0,17</td><td class="mono">0,53 · p = 0,14 (4/4)</td><td class="mono">0,29 · 0,07–1,26 · p = 0,10</td></tr>
+        <tr><td>CST IV na HSIL</td><td class="mono">1,5</td><td class="mono">1,3 · p = 0,36 (3/4)</td><td class="mono">—</td></tr>
+        <tr><td>CST IV na LSIL</td><td class="mono">1,9</td><td class="mono">1,6 · p = 0,08 (3/3)</td><td class="mono">—</td></tr>
+        <tr><td>CST III (<i>L. iners</i>) na LSIL</td><td class="mono">0,61</td><td class="mono">0,57 · p = 0,06 (3/3)</td><td class="mono">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p><b>O resultado mais claro é a perda da dominância de <i>Lactobacillus</i> no câncer.</b> O CST IV é mais frequente no câncer no P1, no P2 e no P19, e o efeito combinado é significativo sem o P22 (OR 4,4). O P22 é o único com sinal contrário, de novo por ter câncer e controle em corridas diferentes. <i>L. crispatus</i> (CST I) é menos frequente no câncer nos 4 estudos, mas sem significância. Nas lesões os efeitos vão na mesma direção, porém são menores e não significativos.</p>
+    <p>Como nas outras análises, juntar todos os estudos exagera o efeito: o OR do CST IV no câncer cai de 6,0 para 2,2–4,4 quando a comparação é feita dentro dos estudos. Esse resultado é biologicamente interpretável e conversa com a literatura (CST IV associado a HPV, lesões e câncer), por isso pode entrar no artigo como resultado principal de composição. Ressalvas: 45% das amostras têm similaridade abaixo de 0,5 com o CST atribuído, o que é comum em coortes fora da América do Norte e em câncer; e as atribuições de espécie dependem do trecho do 16S (V4 ou V3-V4). Figuras: <span class="mono">f28_cst_por_projeto</span> e <span class="mono">f29_cst_meta</span>.</p>
+  </div>
+
+  <h2>15. Busca de estudos com caso e controle no SRA</h2>
+  <div class="prose">
+    <p>O script <span class="mono">24_busca_sra.py</span> procura no NCBI BioProjects 16S cervicovaginais (câncer, NIC, lesões, HPV), baixa o runinfo e os atributos das BioSamples e marca os que parecem ter caso e controle no mesmo estudo. Ele não rodou nesta sessão porque o acesso a <span class="mono">eutils.ncbi.nlm.nih.gov</span> está bloqueado na rede do ambiente. As contagens por palavra-chave são uma triagem; cada candidato precisa ser conferido no artigo correspondente.</p>
+  </div>
+
+  <h2>16. Próximos passos sugeridos</h2>
   <ul class="tight prose">
     <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas).</li>
     <li>Conferir no SRA Run Selector a qual BioProject pertencem as 29 runs SRR26495xxx do P16.</li>

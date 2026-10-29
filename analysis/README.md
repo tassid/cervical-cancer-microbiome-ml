@@ -44,6 +44,8 @@ python 20_shap.py                       # SHAP global, do modelo que prevê o pr
 python 22_teste_n_pareamento.py        # estudos de uma classe ajudam? (N efetivo, cenários de treino, embaralhamento)
 python 22b_seguimento_n.py              # cenários sem P22, regras simples, poder
 python 22c_curva_sem_p22.py             # curva de aprendizado: N pareado x N de estudos de uma classe
+SPECIATEIT_DIR=... VALENCIA_DIR=... P22_DEBLUR_DIR=... python 23_cst_valencia.py   # CSTs (VALENCIA) e comparação dentro dos estudos
+python 24_busca_sra.py                  # candidatos no SRA com caso e controle (precisa de acesso a eutils.ncbi.nlm.nih.gov)
 python 21_figuras.py                    # 26 figuras do artigo em figuras/ (PNG e PDF); explicação de cada uma em figuras/EXPLICACOES.md
 ```
 
@@ -118,5 +120,9 @@ Os resultados já calculados estão em `results/`.
   classe. Embaralhar os rótulos dentro de cada estudo mantém ~95% do AUC da CV aleatória (câncer 0,96 → 0,92).
   Sem o P22, ~100 amostras pareadas dão o mesmo AUC num estudo novo (0,74–0,75) que somar 350–450 amostras de
   estudos de uma classe (0,67–0,76). Para g ≈ 0,3 com 80% de poder seriam ~175 por grupo pareado.
+- **CSTs (VALENCIA)** (`23_cst_valencia.py`): espécies de Lactobacillus por alinhamento ao vSpeciateDB (85% das
+  leituras). CST IV (pouco Lactobacillus) mais frequente no câncer em P1, P2 e P19: OR 4,4 (1,7–11,2; p = 0,002) sem o
+  P22, contra 6,0 com tudo junto. L. crispatus (CST I) menos frequente no câncer nos 4 estudos (n.s.). Lesões: mesma
+  direção, sem significância.
 - **P16 na tabela da Paola**: 39% "Unassigned" e 2,5% Eukaryota, provável DNA do hospedeiro
   não filtrado; 29 amostras contra 47 na da Tassiane e 26 no artigo.
