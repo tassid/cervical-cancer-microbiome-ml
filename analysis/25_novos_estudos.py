@@ -7,8 +7,10 @@ não precisa do 24d: o grupo está no nome da amostra (CC, HS, He).
 Taxonomia:
   - V3-V4 (250 nt) e V4 (220 nt): mesma região e comprimento das ASVs do pipeline da Tassiane.
     Cada ASV recebe a taxonomia SILVA da ASV idêntica já classificada (consenso, se houver mais
-    de uma) ou, sem correspondência exata, a de um Naive Bayes de k-mers (k = 7) treinado nessas
-    ASVs, truncada onde a confiança cai abaixo de 0,7 (o mesmo método do 08b para o P22).
+    de uma; parte das ASVs V3-V4 do pipeline começa uma base antes, e isso é levado em conta) ou,
+    sem correspondência exata, o consenso dos melhores acertos por alinhamento global (vsearch,
+    identidade >= 97%) contra essas ASVs, como o classify-consensus-vsearch do QIIME 2. O alinhamento
+    tolera os erros de homopolímero do 454 melhor que o Naive Bayes de k-mers.
   - V1-V3 (PRJEB40437): não há ASVs dessa região no pipeline; o gênero vem do melhor acerto
     (vsearch, identidade >= 97%) nas referências V1-V3 do vSpeciateDB (taxonomia GTDB; Fannyhessea
     renomeado para Atopobium, como no SILVA). Gêneros fora do banco vaginal ficam sem gênero.
@@ -31,8 +33,6 @@ import numpy as np
 import pandas as pd
 import scipy.sparse as sp
 from scipy.stats import fisher_exact, norm
-from sklearn.feature_extraction.text import HashingVectorizer
-from sklearn.naive_bayes import MultinomialNB
 
 from common import OUT_DIR, fasta, genero, path, unzip_qza
 
@@ -103,66 +103,68 @@ def consenso(taxas):
     return "; ".join(out) if out else "Unassigned"
 
 
-def consenso_confianca(probs, classes, limite=0.7):
-    top = classes[probs.argmax()].split("; ")
-    out = []
-    for nivel in range(1, len(top) + 1):
-        pref = "; ".join(top[:nivel])
-        if probs[[c == pref or c.startswith(pref + ";") for c in classes]].sum() < limite:
-            break
-        out.append(top[nivel - 1])
-    return "; ".join(out) if out else "Unassigned"
-
-
 _ref = {}
 
 
-def classificador(regiao, trim):
+def referencia(regiao, trim):
+    """ASVs já classificadas do pipeline da Tassiane, por sequência (consenso se repetida).
+    Parte das ASVs V3-V4 começa uma base antes (o corte do primer deixou o último G), então
+    cada sequência entra também sem a primeira base."""
     if (regiao, trim) not in _ref:
         nome = "V3V4" if regiao == "V3V4" else "V4"
         sq = fasta(os.path.join(unzip_qza(path("tassi", f"{nome}_repseqs.qza")), "dna-sequences.fasta"))
         tx = pd.read_csv(os.path.join(unzip_qza(path("tassi", f"{nome}_taxonomy.qza")), "taxonomy.tsv"),
                          sep="\t", index_col=0)["Taxon"]
-        ref = pd.DataFrame({"seq": pd.Series(sq), "tax": tx}).dropna()
-        ref["seq"] = ref.seq.str.upper().str[:trim]
-        por_seq = ref.groupby("seq").tax.agg(lambda t: consenso(list(t)))
-        vec = HashingVectorizer(analyzer="char", ngram_range=(7, 7), n_features=8192, alternate_sign=False, norm="l1")
-        nb = MultinomialNB(alpha=0.001, fit_prior=False).fit(vec.transform(por_seq.index), por_seq.values)
-        _ref[(regiao, trim)] = (por_seq, vec, nb)
+        ref = pd.DataFrame({"seq": pd.Series(sq).str.upper(), "tax": tx}).dropna()
+        chaves = pd.concat([ref.assign(k=ref.seq.str[:trim - 1]), ref.assign(k=ref.seq.str[1:trim])])
+        por_chave = chaves.groupby("k").tax.agg(lambda t: consenso(list(t)))
+        por_seq = ref.assign(s=ref.seq.str[:trim]).groupby("s").tax.agg(lambda t: consenso(list(t)))
+        _ref[(regiao, trim)] = (por_chave, por_seq)
     return _ref[(regiao, trim)]
+
+
+def vsearch_consenso(asvs, db_seqs, db_tax, ident=0.97):
+    """Consenso da taxonomia dos melhores acertos (mesma identidade máxima), como o
+    classify-consensus-vsearch do QIIME 2. Tolera os erros de homopolímero do 454."""
+    with tempfile.TemporaryDirectory() as d:
+        with open(f"{d}/q.fa", "w") as fh:
+            for i, s in enumerate(asvs):
+                fh.write(f">q{i}\n{s}\n")
+        with open(f"{d}/db.fa", "w") as fh:
+            for i, s in enumerate(db_seqs):
+                fh.write(f">r{i}\n{s}\n")
+        subprocess.run([VSEARCH, "--usearch_global", f"{d}/q.fa", "--db", f"{d}/db.fa", "--id", str(ident),
+                        "--maxaccepts", "10", "--maxrejects", "100", "--blast6out", f"{d}/h.tsv", "--threads", "4",
+                        "--quiet"], check=True)
+        h = pd.read_csv(f"{d}/h.tsv", sep="\t", header=None) if os.path.getsize(f"{d}/h.tsv") else None
+    out = pd.Series("Unassigned", index=range(len(asvs)))
+    if h is not None:
+        for q, g in h.groupby(0):
+            top = g[g[2] == g[2].max()]
+            out[int(q[1:])] = consenso([db_tax[int(r[1:])] for r in top[1]])
+    return out.values
 
 
 def taxonomia(asvs, regiao, trim):
     asvs = pd.Series(asvs, index=asvs)
     if regiao == "V1V3":
-        with tempfile.TemporaryDirectory() as d:
-            with open(f"{d}/q.fa", "w") as fh:
-                for i, s in enumerate(asvs):
-                    fh.write(f">a{i}\n{s}\n")
-            refs, lin = [], {}
-            nome = None
-            for l in open(f"{SPEC}/training_data/vSpeciateIT_V1V3.fasta"):
-                if l.startswith(">"):
-                    k = l[1:].split()[0]
-                    lin[k] = l.split(" ", 1)[1].split(" [")[0] if " " in l else ""
-                    nome = k
-            subprocess.run([VSEARCH, "--usearch_global", f"{d}/q.fa", "--db", f"{SPEC}/training_data/vSpeciateIT_V1V3.fasta",
-                            "--id", "0.97", "--blast6out", f"{d}/hits.tsv", "--maxaccepts", "1", "--threads", "4",
-                            "--quiet"], check=True)
-            hits = pd.read_csv(f"{d}/hits.tsv", sep="\t", header=None) if os.path.getsize(f"{d}/hits.tsv") else pd.DataFrame()
-        tax = pd.Series("Unassigned", index=asvs.index)
-        for _, h in hits.iterrows():
-            l = lin.get(h[1], "").replace("g__Fannyhessea", "g__Atopobium")
-            partes = [p.strip() for p in l.split(";")][:6]
-            tax.iloc[int(h[0][1:])] = "; ".join(partes)
+        lin, seqs, tax_db = {}, [], []
+        nome = None
+        for l in open(f"{SPEC}/training_data/vSpeciateIT_V1V3.fasta"):
+            if l.startswith(">"):
+                nome = l.split(" ", 1)[1].split(" [")[0].replace("g__Fannyhessea", "g__Atopobium") if " " in l else ""
+            else:
+                seqs.append(l.strip().upper())
+                tax_db.append("; ".join(p.strip() for p in nome.split(";")[:6]))
+        tax = pd.Series(vsearch_consenso(list(asvs), seqs, tax_db), index=asvs.index)
         return tax, pd.Series(np.where(tax != "Unassigned", "vSpeciateDB", "sem acerto"), index=asvs.index)
-    por_seq, vec, nb = classificador(regiao, trim)
+    por_chave, por_seq = referencia(regiao, trim)
     tax = asvs.map(por_seq)
-    origem = pd.Series(np.where(tax.notna(), "exata", "naive_bayes"), index=asvs.index)
+    tax = tax.fillna(asvs.str[:trim - 1].map(por_chave))
+    origem = pd.Series(np.where(tax.notna(), "exata", "vsearch"), index=asvs.index)
     faltam = tax.index[tax.isna()]
     if len(faltam):
-        P = nb.predict_proba(vec.transform(asvs[faltam]))
-        tax.loc[faltam] = [consenso_confianca(p, nb.classes_) for p in P]
+        tax.loc[faltam] = vsearch_consenso(list(asvs[faltam]), list(por_seq.index), list(por_seq.values))
     return tax, origem
 
 
