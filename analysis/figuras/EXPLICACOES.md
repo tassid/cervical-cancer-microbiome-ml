@@ -350,3 +350,30 @@ modelo usa**, não se aquilo é biologia.
 - **Painel A:** o AUC quase não cai (câncer 0,96 → 0,92). O desempenho do modelo com todos os dados juntos vem de reconhecer o estudo, não a doença.
 - **Painel B:** com ~100 amostras pareadas o AUC já é 0,74–0,75. Somar 350–450 amostras de estudos de uma classe não melhora (Paola, 0,76) ou piora (Tassiane, 0,67).
 - O N que ajuda é o pareado. Para efeitos do tamanho achado na meta-análise (g ≈ 0,3), seriam necessárias ~175 amostras por grupo dentro dos mesmos estudos. O caminho é buscar mais estudos com caso e controle, não somar estudos de uma classe.
+
+---
+
+## Tipos de comunidade (CSTs)
+
+### f28. CSTs por estudo e classe
+
+**O que mostra.** A proporção de amostras em cada tipo de comunidade vaginal do VALENCIA, em cada estudo e classe (só grupos com pelo menos 4 amostras; o número em cima da barra é o N).
+- **Azul, verde-água, violeta e verde:** comunidades dominadas por *Lactobacillus* (I = *L. crispatus*, II = *L. gasseri*, III = *L. iners*, V = *L. jensenii*).
+- **Amarelo e vermelho:** CST IV, com pouco *Lactobacillus* (IV-B = *Gardnerella*/*Atopobium*; IV-C = outros anaeróbios, *Streptococcus*, *Enterococcus* etc.).
+
+**O que significa.**
+- Os estudos só ou quase só de câncer (P1, P6, P9, P16) são quase todos CST IV vermelho, o que reforça por que eles "ensinam" disbiose ao modelo.
+- Nos estudos com os dois grupos, o câncer tem mais CST IV que o controle no P1, no P2 e no P19. No P22 isso não acontece, por causa do efeito de corrida.
+- Nas lesões (P10, P2, P19) as barras de caso e controle são parecidas.
+
+### f29. CSTs dentro de cada estudo
+
+**O que mostra.** O odds ratio de ter cada CST no caso em relação ao controle, dentro de cada estudo (quadrados, com IC 95%; o P22 em cinza vazado). Os losangos são o efeito combinado (efeitos aleatórios), com e sem o P22.
+
+**Como ler.** À direita de 1, o CST é mais frequente no caso; à esquerda, no controle.
+
+**O que significa.**
+- **CST IV no câncer:** OR 4,4 (IC 1,7–11,2; p = 0,002) sem o P22, mesma direção em P1, P2 e P19. É o resultado de composição mais sólido do trabalho.
+- ***L. crispatus* (CST I):** menos frequente no câncer nos 4 estudos, mas sem significância.
+- **Lesões:** CST IV um pouco mais frequente (LSIL p = 0,08) e *L. iners* menos frequente na LSIL (p = 0,06); nada significativo.
+- Com todos os dados juntos, o OR do CST IV no câncer seria 6,0. Comparar dentro dos estudos dá um número menor, mas confiável.

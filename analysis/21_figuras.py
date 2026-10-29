@@ -812,6 +812,100 @@ def f27():
            "samples give the same AUC on an unseen study as adding 350-450 samples from cancer-only and control-only studies.")
 
 
+CSTCOR = {"I": "#2a78d6", "II": "#1baf7a", "III": "#6250d6", "V": "#008300", "IV-B": "#eda100", "IV-C": "#e34948"}
+CSTLAB = {"I": "I · L. crispatus", "II": "II · L. gasseri", "III": "III · L. iners", "V": "V · L. jensenii",
+          "IV-B": "IV-B · Gardnerella/Atopobium", "IV-C": "IV-C · other anaerobes, Streptococcus…"}
+
+
+def f28():
+    d = pd.read_csv(f"{R}/23_cst_por_amostra.csv")
+    grupos = [(p, c) for p in ORDEM_PJ for c in CLS if ((d.Project == p) & (d.tipo_amostra == c)).sum() >= 4]
+    fig, ax = plt.subplots(figsize=(12, 4.4))
+    x, ticks, labs, xp = 0, [], [], {}
+    ultimo = None
+    for p, c in grupos:
+        if ultimo and p != ultimo:
+            x += 0.7
+        s = d[(d.Project == p) & (d.tipo_amostra == c)]
+        base = 0
+        for k in CSTCOR:
+            v = 100 * (s.CST == k).mean()
+            ax.bar(x, v, bottom=base, color=CSTCOR[k], width=0.82, edgecolor=SURF, lw=0.8)
+            base += v
+        ax.text(x, 101.5, f"{len(s)}", ha="center", fontsize=6.5, color=INK2)
+        ticks.append(x)
+        labs.append(CLSLAB[c])
+        xp.setdefault(p, []).append(x)
+        ultimo = p
+        x += 1
+    ax.set_xticks(ticks, labs, rotation=90, fontsize=7)
+    for p, xs in xp.items():
+        ax.text(np.mean(xs), -36, p, ha="center", fontsize=8.5, fontweight="bold", color=INK)
+    ax.set_ylabel("Samples (%)")
+    ax.set_ylim(0, 106)
+    h = [plt.Rectangle((0, 0), 1, 1, color=CSTCOR[k], label=CSTLAB[k]) for k in CSTCOR]
+    ax.legend(handles=h, loc="upper left", bbox_to_anchor=(1.0, 1.0), fontsize=7.5)
+    salvar(fig, "f28_cst_por_projeto", "Vaginal community state types (VALENCIA) by study and clinical group",
+           "Reprocessed table; Lactobacillus species assigned by alignment to vSpeciateDB references. Number above each bar = samples "
+           "(groups with at least 4). CST IV = low Lactobacillus.")
+
+
+def f29():
+    L = pd.read_csv(f"{R}/23_cst_por_estudo.csv")
+    K = pd.read_csv(f"{R}/23_cst_meta.csv")
+    desf = [("CST IV (sem dominância de Lactobacillus)", "CST IV (low Lactobacillus)"),
+            ("CST I (L. crispatus)", "CST I (L. crispatus)"), ("CST III (L. iners)", "CST III (L. iners)")]
+    comps = [("cancer vs control", "Cancer"), ("HSIL vs control", "HSIL"), ("LSIL vs control", "LSIL")]
+    fig, axs = plt.subplots(1, 3, figsize=(12, 5.2), sharey=True)
+    for ax, (dk, dl_) in zip(axs, desf):
+        y, rot = 0, []
+        for ck, cl_ in comps:
+            s = L[(L.desfecho == dk) & (L.contraste == ck)]
+            for _, r in s.iterrows():
+                e = 1.96 * np.sqrt(r["var"])
+                lo = np.clip([r.log_or - e, r.log_or, r.log_or + e], -4, 4)
+                cor = MUTED if r.projeto == "P22" else INK2
+                ax.hlines(y, lo[0], lo[2], color=cor, lw=1.2)
+                ax.plot(lo[1], y, "s", color=cor, ms=5, mfc=SURF if r.projeto == "P22" else cor)
+                rot.append(f"{cl_} · {r.projeto} ({int(r.n_caso)}/{int(r.n_controle)})")
+                y += 1
+            k = K[(K.desfecho == dk) & (K.contraste == ck)].iloc[0]
+            for j, (orv, a, b, p, lab, cor) in enumerate([
+                    (k.OR, k.ic_inf, k.ic_sup, k.p, "pooled", CLSCOR["cancer" if ck.startswith("cancer") else
+                                                                     "lesion high" if ck.startswith("HSIL") else "lesion low"]),
+                    (k.OR_sem_P22, k.ic_inf_sem_P22, k.ic_sup_sem_P22, k.p_sem_P22, "pooled without P22", INK)]):
+                if not np.isfinite(orv):
+                    continue
+                lm, la, lb = np.log(orv), np.log(a), np.log(b)
+                ax.fill([la, lm, lb, lm], [y, y + 0.28, y, y - 0.28], color=cor)
+                ax.text(4.1, y, f"p = {p:.2g}", fontsize=6.5, color=INK2, va="center")
+                rot.append(f"{cl_} · {lab}")
+                y += 1
+            y += 0.6
+        ax.axvline(0, color=INK2, lw=0.8)
+        ax.set_xlim(-4, 5)
+        ax.set_xticks(np.log([0.05, 0.2, 1, 5, 20]), ["0.05", "0.2", "1", "5", "20"])
+        ax.set_xlabel("Odds ratio, case vs control (log scale)")
+        ax.set_title(dl_)
+        grade(ax)
+        ax.invert_yaxis()
+    ys, labs = [], []
+    yy = 0
+    for ck, cl_ in comps:
+        s = L[(L.desfecho == desf[0][0]) & (L.contraste == ck)]
+        for _, r in s.iterrows():
+            ys.append(yy); labs.append(f"{cl_} · {r.projeto} ({int(r.n_caso)}/{int(r.n_controle)})"); yy += 1
+        k = K[(K.desfecho == desf[0][0]) & (K.contraste == ck)].iloc[0]
+        ys.append(yy); labs.append(f"{cl_} · pooled"); yy += 1
+        if np.isfinite(k.OR_sem_P22):
+            ys.append(yy); labs.append(f"{cl_} · pooled without P22"); yy += 1
+        yy += 0.6
+    axs[0].set_yticks(ys, labs, fontsize=7.5)
+    salvar(fig, "f29_cst_meta", "Community state types inside each study",
+           "Squares: odds ratio inside each study (n case/control), 95% CI; hollow grey = P22 (case and control in different runs). "
+           "Diamonds: random-effects pooled estimate, with and without P22. Right of 1 = more frequent in the case group.")
+
+
 if __name__ == "__main__":
     import sys
     so = sys.argv[1:]
