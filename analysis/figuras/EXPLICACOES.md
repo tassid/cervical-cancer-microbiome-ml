@@ -335,3 +335,18 @@ modelo usa**, não se aquilo é biologia.
 - **Câncer:** *Lactobacillus* aparece em azul (mais alto nos controles) e *Corynebacterium* em vermelho no P19 e no P2.
 - **P22:** é dominado por gêneros de reagente em azul (*Ralstonia*, *Brevundimonas*, *Rhizobium*), mais um sinal de efeito de corrida.
 - Dentro dos projetos, o SHAP concorda com a meta-análise. É esta a versão do SHAP que faz sentido levar para o artigo.
+
+---
+
+## N e pareamento
+
+### f27. Os estudos de uma classe ajudam?
+
+**O que mostra.** Responde à dúvida de que ajustar pelo projeto diminuiria o N.
+- **Painel A:** o AUC da validação cruzada aleatória com os rótulos reais (ponto cheio) e com os rótulos embaralhados dentro de cada estudo (ponto vazio, média de 10 vezes). Embaralhar dentro do estudo apaga a informação de doença, mas mantém de qual estudo cada amostra veio.
+- **Painel B:** o AUC num estudo novo (P1, P2 ou P19, sem o P22) conforme aumenta o N de treino. Na linha cheia, o N vem de estudos com câncer e controle (pareados); na tracejada, somam-se os estudos só de câncer (P6, P9, P16) e só de controle (P10, P14, P21).
+
+**O que significa.**
+- **Painel A:** o AUC quase não cai (câncer 0,96 → 0,92). O desempenho do modelo com todos os dados juntos vem de reconhecer o estudo, não a doença.
+- **Painel B:** com ~100 amostras pareadas o AUC já é 0,74–0,75. Somar 350–450 amostras de estudos de uma classe não melhora (Paola, 0,76) ou piora (Tassiane, 0,67).
+- O N que ajuda é o pareado. Para efeitos do tamanho achado na meta-análise (g ≈ 0,3), seriam necessárias ~175 amostras por grupo dentro dos mesmos estudos. O caminho é buscar mais estudos com caso e controle, não somar estudos de uma classe.

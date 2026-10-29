@@ -1,0 +1,1489 @@
+tabela,contraste,modelo,estudo_teste,fonte,n_treino,auc
+PAOLA,cancer,RF,P1,estudos mistos,51,0.8602941176470589
+PAOLA,cancer,RF,P1,estudos mistos,51,0.44485294117647056
+PAOLA,cancer,RF,P1,estudos mistos,51,0.23529411764705882
+PAOLA,cancer,RF,P1,estudos mistos,51,0.6911764705882353
+PAOLA,cancer,RF,P1,estudos mistos,51,0.6470588235294118
+PAOLA,cancer,RF,P1,estudos mistos,51,0.5441176470588235
+PAOLA,cancer,RF,P1,estudos mistos,51,0.7757352941176471
+PAOLA,cancer,RF,P1,estudos mistos,51,0.5992647058823529
+PAOLA,cancer,RF,P1,estudos mistos,51,0.5
+PAOLA,cancer,RF,P1,estudos mistos,51,0.7279411764705881
+PAOLA,cancer,RF,P1,estudos mistos,103,0.6213235294117647
+PAOLA,cancer,RF,P1,estudos mistos,103,0.7022058823529411
+PAOLA,cancer,RF,P1,estudos mistos,103,0.7279411764705883
+PAOLA,cancer,RF,P1,estudos mistos,103,0.5772058823529411
+PAOLA,cancer,RF,P1,estudos mistos,103,0.761029411764706
+PAOLA,cancer,RF,P1,estudos mistos,103,0.6654411764705883
+PAOLA,cancer,RF,P1,estudos mistos,103,0.8860294117647058
+PAOLA,cancer,RF,P1,estudos mistos,103,0.7316176470588235
+PAOLA,cancer,RF,P1,estudos mistos,103,0.7132352941176471
+PAOLA,cancer,RF,P1,estudos mistos,103,0.46691176470588236
+PAOLA,cancer,RF,P1,estudos mistos,156,0.7720588235294118
+PAOLA,cancer,RF,P1,estudos mistos,156,0.75
+PAOLA,cancer,RF,P1,estudos mistos,156,0.5661764705882353
+PAOLA,cancer,RF,P1,estudos mistos,156,0.625
+PAOLA,cancer,RF,P1,estudos mistos,156,0.5551470588235294
+PAOLA,cancer,RF,P1,estudos mistos,156,0.6838235294117647
+PAOLA,cancer,RF,P1,estudos mistos,156,0.75
+PAOLA,cancer,RF,P1,estudos mistos,156,0.7316176470588235
+PAOLA,cancer,RF,P1,estudos mistos,156,0.625
+PAOLA,cancer,RF,P1,estudos mistos,156,0.625
+PAOLA,cancer,RF,P1,estudos mistos,207,0.7352941176470589
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.5220588235294117
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.5919117647058824
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.47058823529411764
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.6286764705882353
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.6102941176470589
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.6102941176470589
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.4264705882352941
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.6691176470588236
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.5477941176470589
+PAOLA,cancer,RF,P1,+ estudos de uma classe,318,0.724264705882353
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.6470588235294117
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.5183823529411764
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.5367647058823529
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.5955882352941176
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.5955882352941176
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.5919117647058824
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.6544117647058824
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.6360294117647058
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.5367647058823529
+PAOLA,cancer,RF,P1,+ estudos de uma classe,429,0.5808823529411764
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.5661764705882353
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.6691176470588235
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.6286764705882353
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.6213235294117647
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.5514705882352942
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.5477941176470588
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.6911764705882353
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.6838235294117647
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.6544117647058822
+PAOLA,cancer,RF,P1,+ estudos de uma classe,540,0.5698529411764706
+PAOLA,cancer,RF,P1,+ estudos de uma classe,651,0.625
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.7279411764705883
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.36764705882352944
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.5147058823529411
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.7132352941176471
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.6691176470588235
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.7573529411764706
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.5955882352941176
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.5992647058823529
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.7904411764705882
+PAOLA,cancer,LogReg,P1,estudos mistos,51,0.6911764705882353
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.5955882352941176
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.5808823529411764
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.6470588235294118
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.6764705882352942
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.7941176470588236
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.7499999999999999
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.6911764705882353
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.7757352941176471
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.676470588235294
+PAOLA,cancer,LogReg,P1,estudos mistos,103,0.5808823529411764
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.7279411764705882
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.6911764705882353
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.7573529411764706
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.761029411764706
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.6580882352941176
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.7205882352941176
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.7095588235294118
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.6397058823529411
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.6617647058823529
+PAOLA,cancer,LogReg,P1,estudos mistos,156,0.75
+PAOLA,cancer,LogReg,P1,estudos mistos,207,0.7463235294117647
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.7610294117647058
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.7683823529411765
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.5404411764705882
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.7720588235294118
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.7757352941176471
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.6801470588235294
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.7647058823529411
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.5441176470588235
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.6727941176470588
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,318,0.7904411764705883
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.7647058823529411
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.6433823529411764
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.7058823529411764
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.599264705882353
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.6654411764705883
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.7720588235294118
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.7095588235294118
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.6875
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.6727941176470589
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,429,0.5551470588235294
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.6433823529411764
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.7022058823529412
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.5919117647058824
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.6102941176470588
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.75
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.6286764705882353
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.6213235294117647
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.613970588235294
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.6360294117647058
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,540,0.6213235294117647
+PAOLA,cancer,LogReg,P1,+ estudos de uma classe,651,0.5882352941176471
+PAOLA,cancer,RF,P2,estudos mistos,60,0.5413793103448274
+PAOLA,cancer,RF,P2,estudos mistos,60,0.6517241379310343
+PAOLA,cancer,RF,P2,estudos mistos,60,0.503448275862069
+PAOLA,cancer,RF,P2,estudos mistos,60,0.48965517241379314
+PAOLA,cancer,RF,P2,estudos mistos,60,0.4689655172413793
+PAOLA,cancer,RF,P2,estudos mistos,60,0.45862068965517244
+PAOLA,cancer,RF,P2,estudos mistos,60,0.6827586206896552
+PAOLA,cancer,RF,P2,estudos mistos,60,0.6172413793103448
+PAOLA,cancer,RF,P2,estudos mistos,60,0.5448275862068965
+PAOLA,cancer,RF,P2,estudos mistos,60,0.5758620689655173
+PAOLA,cancer,RF,P2,estudos mistos,120,0.6448275862068965
+PAOLA,cancer,RF,P2,estudos mistos,120,0.41034482758620683
+PAOLA,cancer,RF,P2,estudos mistos,120,0.5689655172413792
+PAOLA,cancer,RF,P2,estudos mistos,120,0.5586206896551724
+PAOLA,cancer,RF,P2,estudos mistos,120,0.4551724137931034
+PAOLA,cancer,RF,P2,estudos mistos,120,0.5448275862068965
+PAOLA,cancer,RF,P2,estudos mistos,120,0.5137931034482758
+PAOLA,cancer,RF,P2,estudos mistos,120,0.5517241379310345
+PAOLA,cancer,RF,P2,estudos mistos,120,0.5931034482758621
+PAOLA,cancer,RF,P2,estudos mistos,120,0.4862068965517241
+PAOLA,cancer,RF,P2,estudos mistos,180,0.5896551724137931
+PAOLA,cancer,RF,P2,estudos mistos,180,0.6448275862068965
+PAOLA,cancer,RF,P2,estudos mistos,180,0.5551724137931034
+PAOLA,cancer,RF,P2,estudos mistos,180,0.5896551724137931
+PAOLA,cancer,RF,P2,estudos mistos,180,0.5827586206896552
+PAOLA,cancer,RF,P2,estudos mistos,180,0.4620689655172414
+PAOLA,cancer,RF,P2,estudos mistos,180,0.5655172413793104
+PAOLA,cancer,RF,P2,estudos mistos,180,0.5379310344827586
+PAOLA,cancer,RF,P2,estudos mistos,180,0.5655172413793103
+PAOLA,cancer,RF,P2,estudos mistos,180,0.5448275862068965
+PAOLA,cancer,RF,P2,estudos mistos,240,0.5862068965517242
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6241379310344828
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6068965517241379
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6241379310344827
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.5827586206896551
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6689655172413793
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6068965517241378
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6034482758620691
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6000000000000001
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6241379310344828
+PAOLA,cancer,RF,P2,+ estudos de uma classe,351,0.6310344827586206
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6241379310344828
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6241379310344828
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6379310344827587
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6379310344827586
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6068965517241379
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6448275862068965
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6379310344827586
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6275862068965518
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6551724137931034
+PAOLA,cancer,RF,P2,+ estudos de uma classe,462,0.6551724137931035
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6172413793103448
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6517241379310345
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.606896551724138
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6241379310344827
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6655172413793103
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6448275862068965
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6448275862068966
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6551724137931034
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6448275862068965
+PAOLA,cancer,RF,P2,+ estudos de uma classe,573,0.6275862068965518
+PAOLA,cancer,RF,P2,+ estudos de uma classe,684,0.6551724137931034
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.5620689655172414
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.6
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.5275862068965518
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.4517241379310345
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.3551724137931034
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.39999999999999997
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.6310344827586206
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.5448275862068965
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.5482758620689655
+PAOLA,cancer,LogReg,P2,estudos mistos,60,0.4793103448275862
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.5172413793103449
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.4793103448275862
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.5413793103448276
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.5896551724137932
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.5310344827586208
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.5275862068965517
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.5862068965517241
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.6620689655172414
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.5965517241379311
+PAOLA,cancer,LogReg,P2,estudos mistos,120,0.4827586206896552
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5793103448275863
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5517241379310346
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5034482758620689
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.6
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5517241379310345
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5275862068965518
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5482758620689655
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5620689655172414
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5482758620689656
+PAOLA,cancer,LogReg,P2,estudos mistos,180,0.5275862068965518
+PAOLA,cancer,LogReg,P2,estudos mistos,240,0.5896551724137932
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.5793103448275861
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.5724137931034483
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.5103448275862068
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.5379310344827586
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.6137931034482759
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.5103448275862069
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.506896551724138
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.48275862068965514
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.5517241379310345
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,351,0.5689655172413793
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5448275862068965
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5241379310344828
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5379310344827586
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5448275862068965
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5448275862068965
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5655172413793104
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5758620689655173
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5379310344827587
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5482758620689655
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,462,0.5655172413793104
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5793103448275861
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5517241379310345
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5241379310344828
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5482758620689656
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5827586206896552
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5275862068965517
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5344827586206897
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5620689655172414
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5620689655172414
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,573,0.5586206896551724
+PAOLA,cancer,LogReg,P2,+ estudos de uma classe,684,0.5793103448275863
+PAOLA,cancer,RF,P19,estudos mistos,57,0.5645161290322581
+PAOLA,cancer,RF,P19,estudos mistos,57,0.6039426523297491
+PAOLA,cancer,RF,P19,estudos mistos,57,0.3673835125448029
+PAOLA,cancer,RF,P19,estudos mistos,57,0.4605734767025089
+PAOLA,cancer,RF,P19,estudos mistos,57,0.3924731182795699
+PAOLA,cancer,RF,P19,estudos mistos,57,0.4426523297491039
+PAOLA,cancer,RF,P19,estudos mistos,57,0.6362007168458781
+PAOLA,cancer,RF,P19,estudos mistos,57,0.45878136200716846
+PAOLA,cancer,RF,P19,estudos mistos,57,0.3853046594982079
+PAOLA,cancer,RF,P19,estudos mistos,57,0.6397849462365591
+PAOLA,cancer,RF,P19,estudos mistos,114,0.33333333333333337
+PAOLA,cancer,RF,P19,estudos mistos,114,0.3781362007168459
+PAOLA,cancer,RF,P19,estudos mistos,114,0.496415770609319
+PAOLA,cancer,RF,P19,estudos mistos,114,0.4211469534050179
+PAOLA,cancer,RF,P19,estudos mistos,114,0.5483870967741935
+PAOLA,cancer,RF,P19,estudos mistos,114,0.46774193548387094
+PAOLA,cancer,RF,P19,estudos mistos,114,0.5179211469534051
+PAOLA,cancer,RF,P19,estudos mistos,114,0.4086021505376344
+PAOLA,cancer,RF,P19,estudos mistos,114,0.5161290322580645
+PAOLA,cancer,RF,P19,estudos mistos,114,0.5842293906810035
+PAOLA,cancer,RF,P19,estudos mistos,173,0.4946236559139785
+PAOLA,cancer,RF,P19,estudos mistos,173,0.5
+PAOLA,cancer,RF,P19,estudos mistos,173,0.532258064516129
+PAOLA,cancer,RF,P19,estudos mistos,173,0.5448028673835126
+PAOLA,cancer,RF,P19,estudos mistos,173,0.4408602150537635
+PAOLA,cancer,RF,P19,estudos mistos,173,0.48566308243727596
+PAOLA,cancer,RF,P19,estudos mistos,173,0.5161290322580645
+PAOLA,cancer,RF,P19,estudos mistos,173,0.46953405017921146
+PAOLA,cancer,RF,P19,estudos mistos,173,0.5412186379928317
+PAOLA,cancer,RF,P19,estudos mistos,173,0.5053763440860215
+PAOLA,cancer,RF,P19,estudos mistos,230,0.49103942652329746
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.6630824372759857
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.7293906810035843
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.6792114695340502
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.6738351254480287
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.7347670250896058
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.7007168458781362
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.6792114695340502
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.7240143369175628
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.7419354838709677
+PAOLA,cancer,RF,P19,+ estudos de uma classe,341,0.6630824372759856
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7383512544802867
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7921146953405018
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7616487455197133
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7867383512544803
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7652329749103943
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7365591397849462
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7921146953405017
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7992831541218638
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7311827956989247
+PAOLA,cancer,RF,P19,+ estudos de uma classe,452,0.7526881720430108
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.8082437275985663
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.7956989247311829
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.7921146953405017
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.8010752688172044
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.7831541218637993
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.8118279569892474
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.7831541218637993
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.7813620071684588
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.7813620071684587
+PAOLA,cancer,RF,P19,+ estudos de uma classe,563,0.8010752688172043
+PAOLA,cancer,RF,P19,+ estudos de uma classe,674,0.8028673835125447
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.611111111111111
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.5788530465949822
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.3835125448028674
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.5555555555555556
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.3369175627240143
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.42652329749103945
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.5949820788530465
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.4336917562724015
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.3727598566308244
+PAOLA,cancer,LogReg,P19,estudos mistos,57,0.5770609318996416
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.3369175627240143
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.41935483870967744
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.5340501792114696
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.3924731182795699
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.568100358422939
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.517921146953405
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.5197132616487455
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.4982078853046595
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.5663082437275986
+PAOLA,cancer,LogReg,P19,estudos mistos,114,0.5412186379928314
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.525089605734767
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.4605734767025089
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.5663082437275986
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.5681003584229392
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.503584229390681
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.5161290322580645
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.5232974910394265
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.5412186379928315
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.5609318996415771
+PAOLA,cancer,LogReg,P19,estudos mistos,173,0.568100358422939
+PAOLA,cancer,LogReg,P19,estudos mistos,230,0.510752688172043
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.6505376344086022
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.5985663082437276
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.6702508960573477
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.6397849462365592
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.6630824372759856
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.7114695340501792
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.6362007168458781
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.6415770609318997
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.6684587813620072
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,341,0.6487455197132616
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.6863799283154123
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.6971326164874552
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.6738351254480287
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.6164874551971327
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.7329749103942652
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.6792114695340502
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.6738351254480287
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.7007168458781363
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.6487455197132617
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,452,0.6577060931899641
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.6827956989247311
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.6899641577060932
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.7007168458781362
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.6881720430107526
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.6792114695340502
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.6917562724014337
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.6810035842293908
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.6971326164874553
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.6684587813620072
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,563,0.7096774193548387
+PAOLA,cancer,LogReg,P19,+ estudos de uma classe,674,0.6810035842293907
+PAOLA,cancer,RF,P22,estudos mistos,39,0.3641025641025641
+PAOLA,cancer,RF,P22,estudos mistos,39,0.39316239316239315
+PAOLA,cancer,RF,P22,estudos mistos,39,0.34672364672364675
+PAOLA,cancer,RF,P22,estudos mistos,39,0.32535612535612535
+PAOLA,cancer,RF,P22,estudos mistos,39,0.3507122507122507
+PAOLA,cancer,RF,P22,estudos mistos,39,0.3737891737891738
+PAOLA,cancer,RF,P22,estudos mistos,39,0.3475783475783476
+PAOLA,cancer,RF,P22,estudos mistos,39,0.33475783475783477
+PAOLA,cancer,RF,P22,estudos mistos,39,0.34700854700854705
+PAOLA,cancer,RF,P22,estudos mistos,39,0.34159544159544164
+PAOLA,cancer,RF,P22,estudos mistos,80,0.3723646723646724
+PAOLA,cancer,RF,P22,estudos mistos,80,0.32165242165242164
+PAOLA,cancer,RF,P22,estudos mistos,80,0.31965811965811963
+PAOLA,cancer,RF,P22,estudos mistos,80,0.35413105413105417
+PAOLA,cancer,RF,P22,estudos mistos,80,0.3210826210826211
+PAOLA,cancer,RF,P22,estudos mistos,80,0.34273504273504274
+PAOLA,cancer,RF,P22,estudos mistos,80,0.3253561253561254
+PAOLA,cancer,RF,P22,estudos mistos,80,0.3296296296296296
+PAOLA,cancer,RF,P22,estudos mistos,80,0.3002849002849003
+PAOLA,cancer,RF,P22,estudos mistos,80,0.3652421652421652
+PAOLA,cancer,RF,P22,estudos mistos,121,0.32336182336182334
+PAOLA,cancer,RF,P22,estudos mistos,121,0.36353276353276354
+PAOLA,cancer,RF,P22,estudos mistos,121,0.3262108262108262
+PAOLA,cancer,RF,P22,estudos mistos,121,0.34188034188034194
+PAOLA,cancer,RF,P22,estudos mistos,121,0.3407407407407408
+PAOLA,cancer,RF,P22,estudos mistos,121,0.3384615384615385
+PAOLA,cancer,RF,P22,estudos mistos,121,0.337037037037037
+PAOLA,cancer,RF,P22,estudos mistos,121,0.3336182336182336
+PAOLA,cancer,RF,P22,estudos mistos,121,0.3321937321937322
+PAOLA,cancer,RF,P22,estudos mistos,121,0.32307692307692304
+PAOLA,cancer,RF,P22,estudos mistos,160,0.32763532763532766
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.35356125356125356
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.34501424501424505
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.3472934472934473
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.33589743589743587
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.3410256410256411
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.35698005698005697
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.3481481481481482
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.34159544159544164
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.3398860398860399
+PAOLA,cancer,RF,P22,+ estudos de uma classe,271,0.34672364672364675
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.33219373219373216
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.3441595441595442
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.35384615384615387
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.35413105413105417
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.34273504273504274
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.3452991452991453
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.35441595441595447
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.34843304843304845
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.3421652421652422
+PAOLA,cancer,RF,P22,+ estudos de uma classe,382,0.35384615384615387
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.3475783475783476
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.335042735042735
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.34444444444444444
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.343019943019943
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.34843304843304845
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.34102564102564104
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.3461538461538462
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.360968660968661
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.34017094017094024
+PAOLA,cancer,RF,P22,+ estudos de uma classe,493,0.34159544159544164
+PAOLA,cancer,RF,P22,+ estudos de uma classe,604,0.34700854700854705
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.3823361823361824
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.49971509971509975
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.5017094017094017
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.4347578347578348
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.47606837606837604
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.5376068376068377
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.40683760683760684
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.5074074074074074
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.3871794871794872
+PAOLA,cancer,LogReg,P22,estudos mistos,39,0.4364672364672365
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.4435897435897436
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.45156695156695154
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.4763532763532764
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.45413105413105415
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.5623931623931625
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.3883190883190884
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.3398860398860399
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.41310541310541316
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.2250712250712251
+PAOLA,cancer,LogReg,P22,estudos mistos,80,0.5578347578347579
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.42934472934472934
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.5042735042735043
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.4811965811965812
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.47663817663817665
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.45982905982905986
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.4515669515669516
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.42820512820512824
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.4638176638176638
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.3703703703703704
+PAOLA,cancer,LogReg,P22,estudos mistos,121,0.4398860398860399
+PAOLA,cancer,LogReg,P22,estudos mistos,160,0.41424501424501425
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.45327635327635324
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.4259259259259259
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.37635327635327637
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.35413105413105417
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.4170940170940171
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.38803418803418804
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.46210826210826217
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.33219373219373227
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.41566951566951565
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,271,0.4786324786324787
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.4413105413105413
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.4088319088319089
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.33390313390313386
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.34529914529914535
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.396011396011396
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.5541310541310541
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.5131054131054131
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.4974358974358975
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.45498575498575505
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,382,0.42792022792022794
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.35327635327635337
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.41424501424501425
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.3561253561253561
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.362962962962963
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.37293447293447296
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.4014245014245015
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.36923076923076925
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.33789173789173793
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.3424501424501425
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,493,0.3512820512820513
+PAOLA,cancer,LogReg,P22,+ estudos de uma classe,604,0.3772079772079773
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.4974655472833835
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.5597180421352763
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.5940123554569935
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.5697766513543482
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.52265167115476
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.5374623792174877
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.5004752098843657
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.5514810708062727
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.5370663709805163
+PAOLA,lesion high,RF,P10,estudos mistos,40,0.510137810866466
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5498178362109932
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5578172025978141
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5319974655472834
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5478377950261366
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5443529225407888
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5384127989862189
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5254237288135594
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5339775067321401
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5410264533502297
+PAOLA,lesion high,RF,P10,estudos mistos,80,0.5589260256613336
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.547679391731348
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5420560747663552
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5526690955171868
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5602724536670364
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5555995564707746
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5513226675114843
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5397592269919214
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5682718200538571
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5384127989862189
+PAOLA,lesion high,RF,P10,estudos mistos,121,0.5359575479169967
+PAOLA,lesion high,RF,P10,estudos mistos,161,0.555124346586409
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.541105654997624
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.5416600665293837
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.5506890543323301
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.5577380009504197
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.5514810708062727
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.5152859179470933
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.41802629494693483
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.5658165689846348
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.5078409630920323
+PAOLA,lesion high,LogReg,P10,estudos mistos,40,0.5046728971962616
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.5172659591319498
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.5504514493901473
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.4792491683827024
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.5373831775700935
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.4919214319657849
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.48930777760177413
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.5180579756058926
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.4671313163313797
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.5148107080627278
+PAOLA,lesion high,LogReg,P10,estudos mistos,80,0.5527482971645811
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5319182638998892
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5178995723111041
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5493426263266277
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5067321400285125
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5425312846507208
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5384127989862189
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5453825439569142
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5305718358941867
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.518453983842864
+PAOLA,lesion high,LogReg,P10,estudos mistos,121,0.5392048154601616
+PAOLA,lesion high,LogReg,P10,estudos mistos,161,0.5529859021067638
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.42307692307692313
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.4340659340659341
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.46703296703296704
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.42307692307692313
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.4285714285714286
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.45054945054945056
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.5
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.48901098901098905
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.39010989010989017
+PAOLA,lesion high,RF,P14,estudos mistos,102,0.554945054945055
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.42307692307692313
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.38461538461538464
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.4120879120879122
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.46153846153846156
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.4945054945054945
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.4560439560439561
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.46153846153846156
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.4065934065934066
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.4340659340659341
+PAOLA,lesion high,RF,P14,estudos mistos,204,0.4560439560439561
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.41208791208791207
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.4505494505494505
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.39560439560439564
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.48901098901098905
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.4065934065934067
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.39010989010989017
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.543956043956044
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.5
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.37912087912087916
+PAOLA,lesion high,RF,P14,estudos mistos,305,0.47802197802197804
+PAOLA,lesion high,RF,P14,estudos mistos,407,0.4340659340659341
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.39010989010989017
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.5439560439560439
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.543956043956044
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.6428571428571429
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.4945054945054945
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.45054945054945056
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.6263736263736264
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.554945054945055
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.6043956043956044
+PAOLA,lesion high,LogReg,P14,estudos mistos,102,0.6153846153846154
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.5714285714285714
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.6043956043956045
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.6263736263736264
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.5604395604395604
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.7307692307692307
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.6923076923076923
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.6373626373626373
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.5934065934065934
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.5714285714285714
+PAOLA,lesion high,LogReg,P14,estudos mistos,204,0.521978021978022
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.6428571428571429
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.6923076923076923
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.6538461538461539
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.7362637362637363
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.6538461538461539
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.5714285714285714
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.6318681318681318
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.7252747252747251
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.6153846153846154
+PAOLA,lesion high,LogReg,P14,estudos mistos,305,0.7252747252747253
+PAOLA,lesion high,LogReg,P14,estudos mistos,407,0.6648351648351649
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.673148148148148
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.6083333333333333
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.3925925925925926
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.4731481481481481
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.5148148148148148
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.42592592592592593
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.7
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.4759259259259259
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.6212962962962963
+PAOLA,lesion high,RF,P19,estudos mistos,90,0.5916666666666667
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.4462962962962963
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.46111111111111114
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.5324074074074074
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.4564814814814815
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.5657407407407408
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.5027777777777778
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.47222222222222227
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.4675925925925926
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.4462962962962963
+PAOLA,lesion high,RF,P19,estudos mistos,178,0.5675925925925926
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.39629629629629637
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.4305555555555556
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.39907407407407414
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.48703703703703705
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.5138888888888888
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.48148148148148145
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.47222222222222227
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.43888888888888894
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.5064814814814814
+PAOLA,lesion high,RF,P19,estudos mistos,266,0.5416666666666666
+PAOLA,lesion high,RF,P19,estudos mistos,356,0.40740740740740744
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.6416666666666667
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.36666666666666664
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.32592592592592595
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.3462962962962963
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.3166666666666667
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.4925925925925926
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.3712962962962963
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.3666666666666667
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.4101851851851852
+PAOLA,lesion high,LogReg,P19,estudos mistos,90,0.35185185185185186
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.3685185185185185
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.4342592592592592
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.5037037037037038
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.4462962962962963
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.4101851851851852
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.3620370370370371
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.4527777777777778
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.3657407407407407
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.3490740740740741
+PAOLA,lesion high,LogReg,P19,estudos mistos,178,0.5740740740740741
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.462037037037037
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.4009259259259259
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.4546296296296296
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.4916666666666667
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.4046296296296296
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.37685185185185194
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.40185185185185185
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.42037037037037034
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.4018518518518519
+PAOLA,lesion high,LogReg,P19,estudos mistos,266,0.4833333333333333
+PAOLA,lesion high,LogReg,P19,estudos mistos,356,0.4148148148148148
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.45338441890166026
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.4840357598978288
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.44061302681992337
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.4648786717752235
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.27969348659003834
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.3499361430395913
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.4789272030651341
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.46871008939974457
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.3844189016602809
+PAOLA,lesion high,RF,P2,estudos mistos,95,0.44827586206896547
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.3933588761174968
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.3448275862068965
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.4406130268199234
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.243933588761175
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.40485312899105996
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.39719029374201786
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.4125159642401022
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.40868454661558107
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.42273307790549175
+PAOLA,lesion high,RF,P2,estudos mistos,189,0.36781609195402304
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.34355044699872284
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.34738186462324394
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.25925925925925924
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.4521072796934866
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.4176245210727969
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.3601532567049809
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.3384418901660281
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.29757343550446996
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.3269476372924649
+PAOLA,lesion high,RF,P2,estudos mistos,283,0.25031928480204346
+PAOLA,lesion high,RF,P2,estudos mistos,378,0.34355044699872284
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.5031928480204342
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.4814814814814814
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.5389527458492976
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.34738186462324394
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.3639846743295019
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.36015325670498083
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.5836526181353767
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.5287356321839081
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.3767560664112388
+PAOLA,lesion high,LogReg,P2,estudos mistos,95,0.49297573435504466
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.44572158365261816
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.3844189016602809
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.4035759897828863
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.4048531289910601
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.49297573435504466
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.5185185185185185
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.47509578544061304
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.4636015325670498
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.3575989782886334
+PAOLA,lesion high,LogReg,P2,estudos mistos,189,0.4278416347381864
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.46871008939974457
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.38186462324393355
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.2988505747126437
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.384418901660281
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.4674329501915709
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.4291187739463601
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.3652618135376756
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.40740740740740733
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.43678160919540227
+PAOLA,lesion high,LogReg,P2,estudos mistos,283,0.3997445721583653
+PAOLA,lesion high,LogReg,P2,estudos mistos,378,0.3856960408684547
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.4375
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.7095588235294118
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.4779411764705882
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.5367647058823529
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.7647058823529411
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.3088235294117647
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.7647058823529412
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.7426470588235294
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.7683823529411764
+TASSI_V2,cancer,RF,P1,estudos mistos,50,0.42647058823529416
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.5477941176470589
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.6875
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.3860294117647059
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.3125
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.5183823529411764
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.40441176470588236
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.4779411764705882
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.39705882352941174
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.7279411764705882
+TASSI_V2,cancer,RF,P1,estudos mistos,100,0.6286764705882353
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.5845588235294118
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.5882352941176471
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.6066176470588235
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.5551470588235294
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.6213235294117647
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.5220588235294118
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.6213235294117647
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.6397058823529411
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.5404411764705882
+TASSI_V2,cancer,RF,P1,estudos mistos,153,0.625
+TASSI_V2,cancer,RF,P1,estudos mistos,203,0.6102941176470589
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.4632352941176471
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.5367647058823529
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.40441176470588236
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.5147058823529411
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.4007352941176471
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.32352941176470584
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.33088235294117646
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.5625
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.6580882352941176
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,290,0.40808823529411764
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.4301470588235294
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.43014705882352944
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.29411764705882354
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.3345588235294118
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.36397058823529416
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.3382352941176471
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.38970588235294124
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.3639705882352941
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.5183823529411765
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,378,0.3161764705882353
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.3676470588235294
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.4411764705882353
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.4448529411764706
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.36397058823529416
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.375
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.4007352941176471
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.4191176470588235
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.4117647058823529
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.39338235294117646
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,464,0.36764705882352944
+TASSI_V2,cancer,RF,P1,+ estudos de uma classe,551,0.4742647058823529
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.6102941176470589
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.6801470588235294
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.8529411764705883
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.6838235294117647
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.8308823529411765
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.6948529411764706
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.786764705882353
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.8088235294117647
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.7757352941176472
+TASSI_V2,cancer,LogReg,P1,estudos mistos,50,0.7279411764705882
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.8198529411764706
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.8455882352941176
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.8823529411764706
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.8198529411764706
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.8088235294117647
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.8529411764705883
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.911764705882353
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.7536764705882353
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.8897058823529412
+TASSI_V2,cancer,LogReg,P1,estudos mistos,100,0.8014705882352942
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.9044117647058822
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.8676470588235294
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.8198529411764707
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.7830882352941176
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.8125
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.8933823529411764
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.8860294117647058
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.8566176470588235
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.8161764705882353
+TASSI_V2,cancer,LogReg,P1,estudos mistos,153,0.8786764705882354
+TASSI_V2,cancer,LogReg,P1,estudos mistos,203,0.8676470588235294
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.8308823529411764
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.8198529411764706
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.8088235294117647
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.7867647058823529
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.8235294117647058
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.8125
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.6764705882352942
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.8272058823529411
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.8014705882352942
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,290,0.8492647058823529
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.8566176470588236
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.7279411764705883
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.7242647058823529
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.7205882352941176
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.8198529411764706
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.8455882352941178
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.8382352941176471
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.8088235294117647
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.7757352941176472
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,378,0.7647058823529411
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7683823529411764
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7610294117647058
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7830882352941176
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7941176470588236
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.8125
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7316176470588236
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7610294117647058
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7316176470588236
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7426470588235294
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,464,0.7389705882352942
+TASSI_V2,cancer,LogReg,P1,+ estudos de uma classe,551,0.7316176470588236
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.5172413793103449
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.5827586206896551
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.4862068965517241
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.4655172413793104
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.45862068965517233
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.6206896551724138
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.4379310344827586
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.5586206896551723
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.46896551724137936
+TASSI_V2,cancer,RF,P2,estudos mistos,59,0.5551724137931036
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.6413793103448275
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.503448275862069
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.4620689655172414
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.5724137931034483
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.506896551724138
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.5724137931034482
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.5551724137931034
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.5517241379310345
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.6241379310344828
+TASSI_V2,cancer,RF,P2,estudos mistos,117,0.5724137931034483
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.5103448275862069
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.6241379310344828
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.5034482758620689
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.496551724137931
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.5482758620689655
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.4517241379310345
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.5172413793103449
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.506896551724138
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.5172413793103448
+TASSI_V2,cancer,RF,P2,estudos mistos,177,0.503448275862069
+TASSI_V2,cancer,RF,P2,estudos mistos,236,0.5482758620689655
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.5896551724137931
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.593103448275862
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.6413793103448275
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.5965517241379311
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.596551724137931
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.6
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.5620689655172414
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.593103448275862
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.5896551724137932
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,323,0.6517241379310345
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6137931034482758
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6413793103448275
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6103448275862069
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6103448275862068
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.606896551724138
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6206896551724138
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6172413793103448
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6068965517241379
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6379310344827586
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,411,0.6
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.6103448275862069
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.5896551724137931
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.6068965517241379
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.6275862068965516
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.6068965517241379
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.6241379310344828
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.6
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.6000000000000001
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.593103448275862
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,497,0.6241379310344827
+TASSI_V2,cancer,RF,P2,+ estudos de uma classe,584,0.6137931034482759
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.6137931034482759
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.4137931034482758
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.5310344827586206
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.5482758620689655
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.4655172413793103
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.6586206896551724
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.496551724137931
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.5862068965517241
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.5103448275862069
+TASSI_V2,cancer,LogReg,P2,estudos mistos,59,0.4862068965517242
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.6241379310344828
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.5448275862068965
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.5310344827586206
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.46551724137931033
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.5275862068965518
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.5517241379310346
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.5586206896551724
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.5379310344827586
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.6275862068965518
+TASSI_V2,cancer,LogReg,P2,estudos mistos,117,0.5793103448275861
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.6896551724137931
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.6310344827586207
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.6172413793103448
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.6068965517241379
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.6137931034482759
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.49999999999999994
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.5862068965517241
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.5896551724137931
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.5896551724137931
+TASSI_V2,cancer,LogReg,P2,estudos mistos,177,0.5931034482758621
+TASSI_V2,cancer,LogReg,P2,estudos mistos,236,0.596551724137931
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.5241379310344827
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.5793103448275863
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.5827586206896552
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.593103448275862
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.5655172413793104
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.6034482758620691
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.46206896551724136
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.5655172413793104
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.5517241379310345
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,323,0.6379310344827586
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.5655172413793104
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.5655172413793104
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.5793103448275863
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.5413793103448276
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.5413793103448276
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.6103448275862069
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.6310344827586206
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.5241379310344827
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.596551724137931
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,411,0.5551724137931033
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.6
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.5551724137931034
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.5793103448275861
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.6000000000000001
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.6103448275862069
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.5689655172413793
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.5793103448275863
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.5896551724137931
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.5827586206896551
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,497,0.5758620689655173
+TASSI_V2,cancer,LogReg,P2,+ estudos de uma classe,584,0.5620689655172413
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.7435344827586208
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.7155172413793104
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.40948275862068967
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.6099137931034483
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.665948275862069
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.49353448275862066
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.6702586206896552
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.5150862068965517
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.35991379310344823
+TASSI_V2,cancer,RF,P19,estudos mistos,57,0.7176724137931035
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.4525862068965517
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.4892241379310345
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.7047413793103448
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.4806034482758621
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.7068965517241379
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.6400862068965517
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.6293103448275862
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.6206896551724138
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.6422413793103448
+TASSI_V2,cancer,RF,P19,estudos mistos,114,0.6810344827586208
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.6400862068965517
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.622844827586207
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.5948275862068966
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.6250000000000001
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.6336206896551724
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.6379310344827586
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.6314655172413792
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.603448275862069
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.5797413793103449
+TASSI_V2,cancer,RF,P19,estudos mistos,173,0.5883620689655172
+TASSI_V2,cancer,RF,P19,estudos mistos,230,0.6142241379310345
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.665948275862069
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.7758620689655172
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.6875
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.7995689655172413
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.7047413793103448
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.7413793103448276
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.7241379310344828
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.7521551724137931
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.7543103448275862
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,317,0.6767241379310345
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.7629310344827587
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.75
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.8060344827586207
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.7607758620689655
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.8232758620689655
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.7974137931034483
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.7866379310344828
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.7995689655172414
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.7952586206896552
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,405,0.7780172413793104
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7758620689655171
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7887931034482759
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7758620689655172
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.8146551724137931
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7801724137931034
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7931034482758621
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7801724137931034
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7629310344827587
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7866379310344828
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,491,0.7801724137931034
+TASSI_V2,cancer,RF,P19,+ estudos de uma classe,578,0.793103448275862
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.644396551724138
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.603448275862069
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.41594827586206895
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.5775862068965517
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.5969827586206896
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.4073275862068966
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.6853448275862069
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.5150862068965517
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.3448275862068965
+TASSI_V2,cancer,LogReg,P19,estudos mistos,57,0.5452586206896552
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.46336206896551724
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.5797413793103448
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.6745689655172414
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.45258620689655177
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.6314655172413793
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.6185344827586208
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.5969827586206896
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.5991379310344828
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.4719827586206896
+TASSI_V2,cancer,LogReg,P19,estudos mistos,114,0.5711206896551725
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.6443965517241379
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.5517241379310345
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.5775862068965517
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.6077586206896551
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.6142241379310345
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.5258620689655172
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.6099137931034483
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.5172413793103449
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.5474137931034483
+TASSI_V2,cancer,LogReg,P19,estudos mistos,173,0.5732758620689655
+TASSI_V2,cancer,LogReg,P19,estudos mistos,230,0.6056034482758621
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6875
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6918103448275862
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6594827586206896
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6875
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6142241379310345
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6745689655172413
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6012931034482759
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6594827586206897
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.6228448275862069
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,317,0.5797413793103448
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.6357758620689656
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.6293103448275862
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.6206896551724137
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.6702586206896552
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.709051724137931
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.7241379310344829
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.6422413793103449
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.6745689655172413
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.6336206896551724
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,405,0.6422413793103449
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6637931034482758
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6853448275862069
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6530172413793104
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6961206896551724
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6724137931034483
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6702586206896552
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6530172413793104
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6573275862068966
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6702586206896551
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,491,0.6551724137931034
+TASSI_V2,cancer,LogReg,P19,+ estudos de uma classe,578,0.6637931034482758
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.39715099715099716
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.4011396011396012
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.37492877492877497
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.35413105413105417
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.403988603988604
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.3925925925925926
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.38119658119658123
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.38746438746438744
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.40484330484330483
+TASSI_V2,cancer,RF,P22,estudos mistos,38,0.4301994301994303
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.3492877492877493
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.36980056980056986
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.3871794871794872
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.4253561253561254
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.36438746438746444
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.36609686609686604
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.37606837606837606
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.37293447293447296
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.4017094017094017
+TASSI_V2,cancer,RF,P22,estudos mistos,77,0.3823361823361824
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.33960113960113963
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.3746438746438747
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.3772079772079773
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.3398860398860398
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.3831908831908833
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.36267806267806263
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.36524216524216524
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.3572649572649573
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.3985754985754986
+TASSI_V2,cancer,RF,P22,estudos mistos,118,0.36581196581196584
+TASSI_V2,cancer,RF,P22,estudos mistos,156,0.35384615384615387
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.36125356125356123
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.34814814814814815
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.35413105413105417
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.34529914529914535
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.34444444444444444
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.3595441595441595
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.34415954415954414
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.3424501424501425
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.36039886039886043
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,243,0.360968660968661
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.34843304843304845
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.3621082621082621
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.347008547008547
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.3663817663817664
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.3698005698005699
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.3777777777777778
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.3658119658119658
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.35584045584045587
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.3601139601139602
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,331,0.3455840455840456
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.3683760683760684
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.36467236467236475
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.3660968660968661
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.3578347578347579
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.3541310541310541
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.3606837606837607
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.34729344729344735
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.36609686609686615
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.36695156695156694
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,417,0.3686609686609687
+TASSI_V2,cancer,RF,P22,+ estudos de uma classe,504,0.3680911680911681
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.4435897435897436
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.5028490028490029
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.4381766381766382
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.40769230769230774
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.4962962962962963
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.4641025641025642
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.47378917378917385
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.4356125356125356
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.4538461538461539
+TASSI_V2,cancer,LogReg,P22,estudos mistos,38,0.5076923076923077
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.3683760683760684
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.4740740740740741
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.32962962962962966
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.545014245014245
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.4849002849002849
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.4190883190883191
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.45982905982905986
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.5102564102564102
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.45156695156695165
+TASSI_V2,cancer,LogReg,P22,estudos mistos,77,0.39914529914529917
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.38319088319088324
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.45327635327635324
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.37549857549857546
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.3478632478632478
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.38774928774928774
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.4396011396011396
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.3851851851851852
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.41253561253561255
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.41481481481481486
+TASSI_V2,cancer,LogReg,P22,estudos mistos,118,0.39829059829059826
+TASSI_V2,cancer,LogReg,P22,estudos mistos,156,0.37549857549857557
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.372934472934473
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.39800569800569807
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.39173789173789175
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.37834757834757843
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.40056980056980057
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.40712250712250714
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.40541310541310543
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.36239316239316244
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.3891737891737892
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,243,0.39515669515669516
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.3766381766381766
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.3806267806267806
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.3598290598290599
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.4028490028490028
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.4202279202279203
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.4236467236467236
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.396011396011396
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.378917378917379
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.38461538461538464
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,331,0.38461538461538464
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.401994301994302
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.3806267806267807
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.41111111111111115
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.40398860398860403
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.41452991452991456
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.38803418803418804
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.39230769230769236
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.3857549857549858
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.3982905982905984
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,417,0.4011396011396011
+TASSI_V2,cancer,LogReg,P22,+ estudos de uma classe,504,0.3965811965811966
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5268834776924334
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5293348586370322
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5263114888053604
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5132374571008336
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.525535218172904
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5125020428174538
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5624285013891159
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5377512665468214
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5549926458571662
+TASSI_V2,lesion high,RF,P10,estudos mistos,39,0.5447785585880046
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.5589965680666775
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.4931361333551234
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.5127471809119137
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.5539303807811734
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.52010132374571
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.5527864030070273
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.5304788364111783
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.5387318189246609
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.5506618728550418
+TASSI_V2,lesion high,RF,P10,estudos mistos,78,0.5221441411995424
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.5451871220787711
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.5425723157378657
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.5314593887890178
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.5579343029906847
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.531786239581631
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.528190880862886
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.5487007680993627
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.5534401045922536
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.548537342703056
+TASSI_V2,lesion high,RF,P10,estudos mistos,114,0.5082529825134826
+TASSI_V2,lesion high,RF,P10,estudos mistos,153,0.5383232554338944
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5087432587024023
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5435528681157051
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5300702729204119
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5640627553521818
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5252492237293676
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5525412649125674
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5674946886746199
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5196110475567903
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5764830854714823
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,39,0.5566268998202321
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5340741951299232
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5155254126491257
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5537669553848669
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.562183363294656
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5551560712534729
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5397123713025004
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5120934793266874
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5356267363948358
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5560549109331591
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,78,0.5656970093152476
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.5400392220951136
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.546004249060304
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.553276679195947
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.551887563327341
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.5003268507926132
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.5288445824481125
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.5671678378820069
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.5701912077136786
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.5507435855531949
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,114,0.5299885602222586
+TASSI_V2,lesion high,LogReg,P10,estudos mistos,153,0.560222258538977
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.4628099173553719
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.4049586776859504
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.24793388429752067
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.4462809917355372
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.25619834710743805
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.34710743801652894
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.49586776859504134
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.4628099173553719
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.4628099173553719
+TASSI_V2,lesion high,RF,P14,estudos mistos,100,0.45454545454545453
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.5289256198347108
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.4297520661157025
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.3305785123966942
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.4628099173553719
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.3884297520661157
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.6033057851239669
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.5123966942148761
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.5371900826446281
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.4462809917355372
+TASSI_V2,lesion high,RF,P14,estudos mistos,201,0.33884297520661155
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.3884297520661157
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.5123966942148761
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.3801652892561984
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.47107438016528924
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.39669421487603307
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.5041322314049587
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.4545454545454546
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.39669421487603307
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.4545454545454546
+TASSI_V2,lesion high,RF,P14,estudos mistos,300,0.4628099173553719
+TASSI_V2,lesion high,RF,P14,estudos mistos,400,0.45454545454545453
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.6115702479338843
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.6198347107438017
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.3140495867768595
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.6363636363636364
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.7272727272727273
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.33884297520661155
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.5537190082644627
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.5371900826446281
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.5702479338842975
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,100,0.5619834710743802
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.7355371900826446
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.4545454545454546
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.5619834710743801
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.578512396694215
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.5537190082644627
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.7107438016528925
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.628099173553719
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.6446280991735537
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.743801652892562
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,201,0.6694214876033058
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.7190082644628099
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.7024793388429752
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.6611570247933884
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.6942148760330579
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.7272727272727273
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.652892561983471
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.6033057851239669
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.7520661157024794
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.7272727272727273
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,300,0.7933884297520661
+TASSI_V2,lesion high,LogReg,P14,estudos mistos,400,0.7107438016528925
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.6218220338983051
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.6197033898305084
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.4067796610169491
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.5497881355932204
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.3951271186440678
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.4088983050847458
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.5497881355932204
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.3707627118644068
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.6366525423728814
+TASSI_V2,lesion high,RF,P19,estudos mistos,87,0.5158898305084746
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.4290254237288136
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.5656779661016949
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.3908898305084746
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.3792372881355932
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.3156779661016949
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.34004237288135597
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.32944915254237284
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.44491525423728817
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.590042372881356
+TASSI_V2,lesion high,RF,P19,estudos mistos,175,0.3442796610169492
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.3527542372881356
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.4036016949152542
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.4216101694915254
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.4417372881355932
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.4353813559322034
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.3686440677966102
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.3961864406779661
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.43220338983050854
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.44385593220338987
+TASSI_V2,lesion high,RF,P19,estudos mistos,260,0.426906779661017
+TASSI_V2,lesion high,RF,P19,estudos mistos,347,0.36758474576271183
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.5116525423728814
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.4353813559322034
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.3601694915254237
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.5127118644067796
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.4152542372881356
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.40889830508474573
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.4311440677966102
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.3866525423728814
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.510593220338983
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,87,0.5942796610169492
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.41631355932203395
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.45233050847457623
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.45338983050847453
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.4491525423728814
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.44279661016949157
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.34004237288135597
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.5010593220338982
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.413135593220339
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.4798728813559322
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,175,0.4120762711864407
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.4671610169491525
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.4417372881355932
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.3908898305084746
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.4798728813559322
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.4735169491525424
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.3527542372881356
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.4396186440677966
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.375
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.5158898305084746
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,260,0.4968220338983051
+TASSI_V2,lesion high,LogReg,P19,estudos mistos,347,0.4141949152542373
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.521072796934866
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.43039591315453385
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.4061302681992337
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.44572158365261816
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.34865900383141757
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.3869731800766284
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.4342273307790549
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.565772669220945
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.44572158365261816
+TASSI_V2,lesion high,RF,P2,estudos mistos,92,0.3524904214559387
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.5619412515964239
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.43039591315453374
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.40357598978288634
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.33205619412515963
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.4482758620689655
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.3908045977011494
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.3346104725415071
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.2733077905491698
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.39846743295019155
+TASSI_V2,lesion high,RF,P2,estudos mistos,185,0.33077905491698595
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.34227330779054915
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.40357598978288634
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.4099616858237548
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.39846743295019155
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.4444444444444444
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.38186462324393355
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.37931034482758624
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.3486590038314176
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.3946360153256705
+TASSI_V2,lesion high,RF,P2,estudos mistos,274,0.4393358876117497
+TASSI_V2,lesion high,RF,P2,estudos mistos,366,0.34738186462324394
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.5836526181353767
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.5530012771392082
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.45849297573435505
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.574712643678161
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.5300127713920817
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.6040868454661559
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.47509578544061304
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.6411238825031929
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.5964240102171137
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,92,0.3729246487867177
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.6577266922094508
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.4763729246487867
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.42911877394636017
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.4776500638569604
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.545338441890166
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.5964240102171137
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.47509578544061304
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.3652618135376756
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.578544061302682
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,185,0.4904214559386973
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.4189016602809706
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.4636015325670498
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.48275862068965514
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.39846743295019155
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.5134099616858236
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.4802043422733078
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.49297573435504466
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.5031928480204342
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.5478927203065134
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,274,0.5210727969348659
+TASSI_V2,lesion high,LogReg,P2,estudos mistos,366,0.4674329501915709

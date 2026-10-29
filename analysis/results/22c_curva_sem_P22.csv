@@ -1,0 +1,625 @@
+tabela,modelo,estudo_teste,fonte,fracao,n_treino,auc
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.7830882352941176
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.7757352941176471
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.7610294117647058
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.7720588235294118
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.8823529411764707
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.8786764705882353
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.8051470588235294
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.7977941176470589
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.775735294117647
+PAOLA,RF,P1,estudos mistos (pareados),0.25,21,0.7022058823529412
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.786764705882353
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.7794117647058825
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.8161764705882353
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.7757352941176471
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.7830882352941178
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.7316176470588236
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.676470588235294
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.7352941176470588
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.7720588235294118
+PAOLA,RF,P1,estudos mistos (pareados),0.5,44,0.8161764705882353
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.7794117647058824
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.8198529411764706
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.8088235294117647
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.7830882352941176
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.7794117647058824
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.8088235294117647
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.7794117647058824
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.8492647058823529
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.7867647058823529
+PAOLA,RF,P1,estudos mistos (pareados),0.75,67,0.8014705882352942
+PAOLA,RF,P1,estudos mistos (pareados),1.0,88,0.7941176470588236
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.8198529411764707
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.8382352941176471
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.7977941176470589
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.7205882352941176
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.6875
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.8088235294117647
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.7977941176470589
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.8198529411764706
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.8382352941176471
+PAOLA,RF,P1,+ estudos de uma classe,0.25,199,0.7169117647058824
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.8125
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.7720588235294118
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.7205882352941176
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.8272058823529411
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.7316176470588235
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.7205882352941176
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.8161764705882353
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.724264705882353
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.6948529411764706
+PAOLA,RF,P1,+ estudos de uma classe,0.5,310,0.7830882352941176
+PAOLA,RF,P1,+ estudos de uma classe,1.0,532,0.7426470588235294
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.4779411764705882
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.9301470588235294
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.5698529411764706
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.7058823529411765
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.7389705882352942
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.9191176470588235
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.5919117647058824
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.6727941176470589
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.7830882352941178
+PAOLA,LogReg,P1,estudos mistos (pareados),0.25,21,0.33088235294117646
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.5735294117647058
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.5183823529411765
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.8125
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.4926470588235294
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.7132352941176471
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.4705882352941177
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.4632352941176471
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.5698529411764706
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.6213235294117647
+PAOLA,LogReg,P1,estudos mistos (pareados),0.5,44,0.6397058823529411
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.625
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.713235294117647
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.8419117647058824
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.613970588235294
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.7352941176470588
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.6433823529411764
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.5514705882352942
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.849264705882353
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.7389705882352942
+PAOLA,LogReg,P1,estudos mistos (pareados),0.75,67,0.8235294117647058
+PAOLA,LogReg,P1,estudos mistos (pareados),1.0,88,0.6801470588235294
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.75
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.5661764705882353
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.625
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.5367647058823528
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.5110294117647058
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.7095588235294118
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.5808823529411765
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.5919117647058824
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.6029411764705882
+PAOLA,LogReg,P1,+ estudos de uma classe,0.25,199,0.5036764705882353
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.6948529411764706
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.6985294117647058
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.6360294117647058
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.5698529411764706
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.5477941176470588
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.5772058823529411
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.7242647058823529
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.5919117647058824
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.5735294117647058
+PAOLA,LogReg,P1,+ estudos de uma classe,0.5,310,0.75
+PAOLA,LogReg,P1,+ estudos de uma classe,1.0,532,0.6213235294117647
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.6241379310344827
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.5344827586206896
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.5689655172413792
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.6172413793103448
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.693103448275862
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.560344827586207
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.5827586206896552
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.6
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.5655172413793104
+PAOLA,RF,P2,estudos mistos (pareados),0.25,30,0.496551724137931
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.5551724137931033
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.5965517241379311
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.603448275862069
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.5758620689655172
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.6275862068965518
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.6310344827586207
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.5103448275862069
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.5689655172413793
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.5517241379310345
+PAOLA,RF,P2,estudos mistos (pareados),0.5,61,0.5827586206896552
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.6241379310344828
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.593103448275862
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.5827586206896551
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.6275862068965516
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.5517241379310345
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.6068965517241379
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.6
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.6241379310344828
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.603448275862069
+PAOLA,RF,P2,estudos mistos (pareados),0.75,91,0.5689655172413793
+PAOLA,RF,P2,estudos mistos (pareados),1.0,121,0.610344827586207
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6241379310344828
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6137931034482759
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6275862068965518
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6586206896551724
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6482758620689655
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.603448275862069
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6241379310344828
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6206896551724138
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6206896551724137
+PAOLA,RF,P2,+ estudos de uma classe,0.25,232,0.6448275862068966
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6517241379310345
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6241379310344828
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6344827586206896
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6275862068965516
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6241379310344828
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6482758620689655
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6448275862068965
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6517241379310346
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6275862068965518
+PAOLA,RF,P2,+ estudos de uma classe,0.5,343,0.6103448275862069
+PAOLA,RF,P2,+ estudos de uma classe,1.0,565,0.6517241379310345
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.5517241379310345
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.5103448275862069
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.5103448275862069
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.5586206896551724
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.6000000000000001
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.5172413793103449
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.5172413793103449
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.5620689655172414
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.48620689655172417
+PAOLA,LogReg,P2,estudos mistos (pareados),0.25,30,0.496551724137931
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5172413793103449
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5620689655172413
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5241379310344827
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5103448275862068
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5896551724137931
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5620689655172414
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5275862068965517
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5517241379310345
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5379310344827586
+PAOLA,LogReg,P2,estudos mistos (pareados),0.5,61,0.5586206896551724
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5758620689655172
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5689655172413793
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5137931034482759
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5896551724137932
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5758620689655172
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5793103448275861
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5241379310344828
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5517241379310345
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.4862068965517241
+PAOLA,LogReg,P2,estudos mistos (pareados),0.75,91,0.5793103448275861
+PAOLA,LogReg,P2,estudos mistos (pareados),1.0,121,0.5793103448275861
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.6206896551724138
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.5827586206896551
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.5724137931034483
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.5862068965517242
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.6241379310344828
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.5689655172413792
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.5586206896551724
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.5793103448275863
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.6241379310344828
+PAOLA,LogReg,P2,+ estudos de uma classe,0.25,232,0.6413793103448275
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.6068965517241379
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.6655172413793103
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.596551724137931
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.613793103448276
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.6137931034482759
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.5655172413793104
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.6310344827586207
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.6827586206896551
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.5896551724137931
+PAOLA,LogReg,P2,+ estudos de uma classe,0.5,343,0.6379310344827587
+PAOLA,LogReg,P2,+ estudos de uma classe,1.0,565,0.6206896551724138
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.7956989247311828
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.8189964157706093
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.7867383512544803
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.9086021505376344
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.8709677419354838
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.8261648745519714
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.8602150537634409
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.85663082437276
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.8118279569892473
+PAOLA,RF,P19,estudos mistos (pareados),0.25,27,0.8351254480286738
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8512544802867383
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8064516129032258
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8476702508960573
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.7795698924731183
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8279569892473119
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8620071684587813
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8369175627240143
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8136200716845878
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8207885304659498
+PAOLA,RF,P19,estudos mistos (pareados),0.5,55,0.8602150537634409
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.7992831541218638
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8261648745519713
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8225806451612901
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8100358422939069
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8369175627240143
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8118279569892473
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8010752688172043
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8387096774193549
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8172043010752688
+PAOLA,RF,P19,estudos mistos (pareados),0.75,84,0.8476702508960573
+PAOLA,RF,P19,estudos mistos (pareados),1.0,111,0.8351254480286738
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8996415770609318
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8799283154121864
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8763440860215054
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8745519713261648
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8745519713261648
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8655913978494624
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8727598566308244
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8637992831541219
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8584229390681004
+PAOLA,RF,P19,+ estudos de uma classe,0.25,222,0.8745519713261649
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8799283154121864
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8835125448028673
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8853046594982079
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8655913978494625
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8942652329749105
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8763440860215054
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8906810035842294
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8817204301075269
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.888888888888889
+PAOLA,RF,P19,+ estudos de uma classe,0.5,333,0.8853046594982079
+PAOLA,RF,P19,+ estudos de uma classe,1.0,555,0.8763440860215054
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.7956989247311828
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.7078853046594982
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.7598566308243727
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.8835125448028673
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.8422939068100359
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.7347670250896058
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.7849462365591398
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.8602150537634409
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.7634408602150538
+PAOLA,LogReg,P19,estudos mistos (pareados),0.25,27,0.8064516129032258
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.888888888888889
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.7311827956989247
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.8189964157706093
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.7437275985663082
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.8369175627240144
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.8333333333333334
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.8297491039426522
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.8494623655913979
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.7455197132616488
+PAOLA,LogReg,P19,estudos mistos (pareados),0.5,55,0.867383512544803
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.8261648745519713
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.8010752688172043
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.8207885304659498
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.7831541218637993
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.8082437275985663
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.8046594982078853
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.7706093189964158
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.8136200716845878
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.8118279569892474
+PAOLA,LogReg,P19,estudos mistos (pareados),0.75,84,0.8494623655913978
+PAOLA,LogReg,P19,estudos mistos (pareados),1.0,111,0.8261648745519713
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8602150537634408
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8620071684587813
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8584229390681003
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8243727598566309
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8512544802867383
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8494623655913978
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8297491039426523
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8566308243727597
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.7956989247311828
+PAOLA,LogReg,P19,+ estudos de uma classe,0.25,222,0.8405017921146953
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8440860215053764
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8369175627240143
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8387096774193549
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8458781362007168
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8530465949820788
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8315412186379928
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8512544802867383
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8064516129032258
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8440860215053764
+PAOLA,LogReg,P19,+ estudos de uma classe,0.5,333,0.8422939068100359
+PAOLA,LogReg,P19,+ estudos de uma classe,1.0,555,0.8333333333333334
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.7757352941176471
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.7720588235294118
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.5955882352941176
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.7573529411764707
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.7977941176470589
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.8933823529411764
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.8198529411764707
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.8345588235294118
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.7720588235294118
+TASSI_V2,RF,P1,estudos mistos (pareados),0.25,20,0.6875
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.8492647058823529
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.7830882352941176
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.8455882352941176
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.7941176470588236
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.6507352941176471
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.7867647058823529
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.7536764705882354
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.7794117647058824
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.7720588235294118
+TASSI_V2,RF,P1,estudos mistos (pareados),0.5,41,0.7794117647058824
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.7904411764705883
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.7536764705882353
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.8308823529411765
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.8419117647058824
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.8272058823529412
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.8051470588235294
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.7573529411764706
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.8235294117647058
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.7904411764705882
+TASSI_V2,RF,P1,estudos mistos (pareados),0.75,64,0.8823529411764706
+TASSI_V2,RF,P1,estudos mistos (pareados),1.0,84,0.8198529411764706
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.7830882352941178
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.7794117647058825
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.6911764705882353
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.7683823529411764
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.4963235294117647
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.7867647058823529
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.6102941176470589
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.6875
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.8088235294117647
+TASSI_V2,RF,P1,+ estudos de uma classe,0.25,171,0.7169117647058825
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.7426470588235294
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.6948529411764706
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.7977941176470589
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.7426470588235293
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.5588235294117647
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.7205882352941178
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.7610294117647058
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.5588235294117647
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.6507352941176471
+TASSI_V2,RF,P1,+ estudos de uma classe,0.5,259,0.5441176470588235
+TASSI_V2,RF,P1,+ estudos de uma classe,1.0,432,0.5551470588235294
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.8529411764705883
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.40441176470588236
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.36397058823529416
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.5992647058823529
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.7022058823529411
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.6176470588235294
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.45955882352941174
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.44485294117647056
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.823529411764706
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.25,20,0.5330882352941176
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.8014705882352942
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.7720588235294117
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.849264705882353
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.7647058823529412
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.6066176470588235
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.4595588235294118
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.7205882352941176
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.8051470588235294
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.676470588235294
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.5,41,0.5882352941176471
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.8308823529411764
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.7904411764705882
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.8125
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.8419117647058824
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.9191176470588236
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.6764705882352942
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.7610294117647058
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.801470588235294
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.775735294117647
+TASSI_V2,LogReg,P1,estudos mistos (pareados),0.75,64,0.9154411764705883
+TASSI_V2,LogReg,P1,estudos mistos (pareados),1.0,84,0.8235294117647058
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.7647058823529412
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.75
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.5992647058823529
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.7867647058823529
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.6985294117647058
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.6139705882352942
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.6286764705882353
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.6580882352941176
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.8566176470588236
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.25,171,0.7389705882352942
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.7463235294117647
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.6433823529411764
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.7683823529411764
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.676470588235294
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.7463235294117647
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.7316176470588235
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.8014705882352942
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.6213235294117647
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.7720588235294118
+TASSI_V2,LogReg,P1,+ estudos de uma classe,0.5,259,0.761029411764706
+TASSI_V2,LogReg,P1,+ estudos de uma classe,1.0,432,0.7132352941176471
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.5724137931034482
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.5689655172413792
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.5551724137931034
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.5724137931034482
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.506896551724138
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.5931034482758621
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.503448275862069
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.596551724137931
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.5689655172413792
+TASSI_V2,RF,P2,estudos mistos (pareados),0.25,29,0.496551724137931
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.6
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.5758620689655172
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.5620689655172414
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.5137931034482759
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.49310344827586206
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.5862068965517242
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.5689655172413793
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.5620689655172414
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.5793103448275863
+TASSI_V2,RF,P2,estudos mistos (pareados),0.5,58,0.5862068965517241
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5655172413793104
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5931034482758621
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5586206896551724
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5724137931034483
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5655172413793104
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5482758620689656
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5413793103448276
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5448275862068965
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5586206896551724
+TASSI_V2,RF,P2,estudos mistos (pareados),0.75,88,0.5206896551724138
+TASSI_V2,RF,P2,estudos mistos (pareados),1.0,117,0.5655172413793103
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.6206896551724138
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.6172413793103448
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.603448275862069
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.6310344827586207
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.6137931034482759
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.6275862068965518
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.6
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.5896551724137932
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.6103448275862069
+TASSI_V2,RF,P2,+ estudos de uma classe,0.25,204,0.6206896551724138
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.6137931034482759
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.6137931034482759
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.6000000000000001
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.6172413793103448
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.5965517241379311
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.6137931034482759
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.603448275862069
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.6275862068965518
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.6344827586206896
+TASSI_V2,RF,P2,+ estudos de uma classe,0.5,292,0.6137931034482759
+TASSI_V2,RF,P2,+ estudos de uma classe,1.0,465,0.6137931034482759
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.596551724137931
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.5413793103448276
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.5379310344827586
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.5758620689655173
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.5655172413793104
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.5896551724137931
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.506896551724138
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.6379310344827587
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.6103448275862069
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.25,29,0.48275862068965514
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.5724137931034483
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.5517241379310345
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.596551724137931
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.5448275862068966
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.496551724137931
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.596551724137931
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.5758620689655173
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.5793103448275863
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.5931034482758621
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.5,58,0.5689655172413793
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.6379310344827586
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.5793103448275863
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.5586206896551724
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.5413793103448276
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.5551724137931034
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.5896551724137931
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.5724137931034483
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.6172413793103448
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.5413793103448277
+TASSI_V2,LogReg,P2,estudos mistos (pareados),0.75,88,0.5379310344827586
+TASSI_V2,LogReg,P2,estudos mistos (pareados),1.0,117,0.5896551724137931
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6137931034482759
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6068965517241379
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6482758620689655
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.5758620689655172
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6241379310344828
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6137931034482759
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6275862068965518
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6275862068965516
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6310344827586207
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.25,204,0.6103448275862069
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6137931034482759
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6827586206896552
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6068965517241379
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6103448275862069
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6068965517241379
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6965517241379311
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6103448275862069
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6448275862068966
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6482758620689655
+TASSI_V2,LogReg,P2,+ estudos de uma classe,0.5,292,0.6344827586206896
+TASSI_V2,LogReg,P2,+ estudos de uma classe,1.0,465,0.6103448275862069
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.8232758620689655
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.7801724137931034
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.8362068965517242
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.8728448275862069
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.8706896551724138
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.8405172413793103
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.8081896551724137
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.8728448275862069
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.7543103448275862
+TASSI_V2,RF,P19,estudos mistos (pareados),0.25,27,0.8405172413793104
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8642241379310345
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8232758620689655
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.7499999999999999
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8038793103448276
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8081896551724137
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8405172413793104
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8685344827586207
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8448275862068966
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8362068965517241
+TASSI_V2,RF,P19,estudos mistos (pareados),0.5,55,0.8556034482758621
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.8038793103448276
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.8146551724137931
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.8275862068965516
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.8168103448275861
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.8125
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.7974137931034483
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.8038793103448276
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.8491379310344827
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.8232758620689655
+TASSI_V2,RF,P19,estudos mistos (pareados),0.75,84,0.853448275862069
+TASSI_V2,RF,P19,estudos mistos (pareados),1.0,111,0.8211206896551724
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.8448275862068966
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.877155172413793
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.8663793103448274
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.872844827586207
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.8706896551724138
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.8663793103448276
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.8642241379310345
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.855603448275862
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.8577586206896552
+TASSI_V2,RF,P19,+ estudos de uma classe,0.25,198,0.8663793103448276
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8642241379310345
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8685344827586207
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8771551724137931
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.853448275862069
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8663793103448276
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8685344827586207
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8642241379310346
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8642241379310345
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8749999999999999
+TASSI_V2,RF,P19,+ estudos de uma classe,0.5,286,0.8706896551724138
+TASSI_V2,RF,P19,+ estudos de uma classe,1.0,459,0.8512931034482758
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.7650862068965516
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.7478448275862069
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.728448275862069
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.8900862068965517
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.875
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.7435344827586208
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.7650862068965518
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.8814655172413792
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.7327586206896552
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.25,27,0.8426724137931034
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.8922413793103448
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.75
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.8060344827586207
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.7672413793103448
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.8491379310344828
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.8017241379310345
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.8297413793103449
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.853448275862069
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.7650862068965516
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.5,55,0.9008620689655172
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.814655172413793
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.771551724137931
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.810344827586207
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.8060344827586207
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.7823275862068966
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.8103448275862069
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.7693965517241379
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.8318965517241379
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.8168103448275862
+TASSI_V2,LogReg,P19,estudos mistos (pareados),0.75,84,0.8448275862068966
+TASSI_V2,LogReg,P19,estudos mistos (pareados),1.0,111,0.8275862068965517
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.853448275862069
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.8362068965517242
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.8340517241379312
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.8297413793103449
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.8405172413793104
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.8426724137931034
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.8103448275862069
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.8426724137931034
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.810344827586207
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.25,198,0.8146551724137931
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8297413793103448
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8275862068965517
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8275862068965517
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8038793103448275
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8556034482758621
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8448275862068966
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8275862068965517
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.834051724137931
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8168103448275863
+TASSI_V2,LogReg,P19,+ estudos de uma classe,0.5,286,0.8275862068965517
+TASSI_V2,LogReg,P19,+ estudos de uma classe,1.0,459,0.7995689655172414

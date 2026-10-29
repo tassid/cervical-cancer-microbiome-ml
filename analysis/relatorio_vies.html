@@ -559,7 +559,30 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <p><b>Para o artigo:</b> a figura de SHAP com todos os projetos juntos mostra o que o modelo usa, não biologia. Sugiro trocá-la pelos gráficos de SHAP dentro dos projetos (P19 e P2 para câncer, P10/P14/P2 para HSIL), ou mostrar a global junto do η² do projeto, como em <span class="mono">results/20_shap_cancer_*.png</span>.</p>
   </div>
 
-  <h2>13. Próximos passos sugeridos</h2>
+  <h2>13. N grande e pareamento: os estudos de uma classe ajudam?</h2>
+  <div class="prose">
+    <p>A dúvida da Paola: ajustar pelo projeto parece diminuir o N, e artigos de biomarcador de câncer pedem N grande e casos e controles pareados; por isso entram estudos só de câncer (P6, P9, P16) ou quase só de controle (P21). Testamos se essas amostras ajudam a separar câncer de controle num estudo novo. Scripts: <span class="mono">22_teste_n_pareamento.py</span>, <span class="mono">22b_seguimento_n.py</span> e <span class="mono">22c_curva_sem_p22.py</span>.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Pergunta</th><th>Paola</th><th>Tassiane</th></tr></thead>
+      <tbody>
+        <tr><td>Cânceres que vêm de estudos sem nenhum controle</td><td class="mono">113 de 287 (39%)</td><td class="mono">126 de 298 (42%)</td></tr>
+        <tr><td>Controles que vêm de estudos sem nenhum câncer (P10, P14, P21)</td><td class="mono">331 de 436 (76%)</td><td class="mono">222 de 325 (68%)</td></tr>
+        <tr><td>AUC de câncer na CV aleatória: rótulos reais → embaralhados dentro de cada estudo</td><td class="mono">0,96 → 0,92</td><td class="mono">0,96 → 0,91</td></tr>
+        <tr><td>Estudo novo (P1, P2, P19; sem P22), Random Forest: ~105 amostras pareadas</td><td class="mono">0,75</td><td class="mono">0,74</td></tr>
+        <tr><td>O mesmo + todos os estudos de uma classe (N ≈ 450–550)</td><td class="mono">0,76</td><td class="mono">0,67</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p><b>O N extra não informa a comparação.</b> Embaralhar câncer e controle dentro de cada estudo, o que apaga a informação de doença, mantém cerca de 95% do AUC da validação cruzada. O AUC alto vem de saber de qual estudo a amostra é, e é isso que os estudos de uma classe acrescentam.</p>
+    <p><b>Mais N só ajuda se for pareado.</b> Com o P22 fora (lote confundido com a classe), cerca de 100 amostras de estudos com os dois grupos dão o mesmo AUC num estudo novo que 4–5 vezes mais amostras incluindo os estudos de uma classe. Na tabela da Tassiane, somar esses estudos piora o resultado (0,74 → 0,67). Num primeiro teste, os estudos de uma classe pareciam ajudar no P19, mas isso acontecia porque o P22 estava no treino dos estudos mistos, ensinando um sinal invertido.</p>
+    <p><b>O que eles ensinam é "menos <i>Lactobacillus</i> e mais anaeróbios = câncer"</b>, misturado com artefatos (leituras sem gênero do P16, <i>Aeribacillus</i> e <i>Oceanobacillus</i> do P9). Dentro do P19, a diversidade de Shannon sozinha já dá AUC 0,80, o mesmo que os modelos.</p>
+    <p><b>A preocupação com N é justa, mas o N que conta é o pareado.</b> Para detectar efeitos do tamanho que a meta-análise achou (g ≈ 0,3) com 80% de poder, são necessárias cerca de 175 amostras por grupo dentro dos mesmos estudos. Hoje há 174 cânceres e 105 controles em estudos mistos, e só 109 e 51 sem o P22. O caminho para mais N é procurar mais estudos com caso e controle (ou controles da mesma população), não somar estudos de uma classe. Figura: <span class="mono">figuras/f27_n_e_pareamento.png</span>.</p>
+  </div>
+
+  <h2>14. Próximos passos sugeridos</h2>
   <ul class="tight prose">
     <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas).</li>
     <li>Conferir no SRA Run Selector a qual BioProject pertencem as 29 runs SRR26495xxx do P16.</li>
