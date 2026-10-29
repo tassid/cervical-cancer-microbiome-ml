@@ -46,6 +46,7 @@ python 22b_seguimento_n.py              # cenários sem P22, regras simples, pod
 python 22c_curva_sem_p22.py             # curva de aprendizado: N pareado x N de estudos de uma classe
 SPECIATEIT_DIR=... VALENCIA_DIR=... P22_DEBLUR_DIR=... python 23_cst_valencia.py   # CSTs (VALENCIA) e comparação dentro dos estudos
 python 24_busca_sra.py                  # candidatos no SRA com caso e controle (precisa de acesso a eutils.ncbi.nlm.nih.gov)
+python 24b_atributos_candidatos.py      # metadados completos dos candidatos da triagem (results/24_triagem_candidatos.csv)
 python 21_figuras.py                    # 26 figuras do artigo em figuras/ (PNG e PDF); explicação de cada uma em figuras/EXPLICACOES.md
 ```
 
