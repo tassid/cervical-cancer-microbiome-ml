@@ -1,0 +1,22 @@
+bioproject,situacao,comparacoes,n_caso,n_controle,grupos_nos_metadados,plataforma,observacao
+PRJNA1085021,confirmado,cancer e HSIL x controle,52 CC + 51 HSIL,51,"nome da amostra: CC (52), HS (51), He (51)",NovaSeq 2x250 amplicon,o melhor candidato: tres classes no mesmo estudo
+PRJEB43410,confirmado,cancer x controle,16 (antes do tratamento),31,"gynecological disorder: cervical cancer (39), control (31); treatment status: pre (16), post (14), post 3 meses (9)",Ion Torrent PGM single ~206 nt,usar só o câncer antes do tratamento
+PRJNA308947,confirmado,cancer e LSIL x controle,8 CC + 4 LSIL,7 (+10 HPV+ sem lesão),"health_state: CC (8), LSIL (4), Healthy (7), HPV+ sem lesão (10)",454 GS FLX+,pequeno e antigo
+PRJEB40437,confirmado,NIC x controle,103 (NIC antes da excisão),39,"gynecological disorder: PRE (103), POST (103), Normal (39)",MiSeq 2x300 amplicon,usar só PRE x Normal; grau da NIC a conferir no artigo
+PRJNA622998,confirmado,LSIL (e HSIL) x controle,45 LGSIL + 6 HGSIL (+55 ASCUS),"~200 citologia normal (excluir 25 brancos/mock)","Cytology: LGSIL 45, HGSIL 6, ASCUS 55, sem anormalidade 224; Hr_hpv; menopausa",MiSeq 2x250 amplicon,HSIL só 6; tem HPV e menopausa como covariáveis
+PRJNA1532026,provavel,cancer/HSIL/LSIL x CMI,11 CC + 40 HSIL + 74 LSIL,81 CMI,"título: CMI (81), LSIL (74), HSIL (40), CC (11)",NovaSeq amplicon,conferir no artigo o que é CMI (provável HPV+ sem lesão ou inflamação crônica)
+PRJNA1479850,provavel,cancer x controle,~77,~20,"nome da amostra: P#P (77), C#c (20)",NovaSeq amplicon,"conferir no artigo se P = paciente, C = controle"
+PRJNA1433670,provavel,cancer x controle,32 (16 por sítio),32 (16 por sítio),"nome da amostra: A-G, A-Y, C-G, C-Y (16 cada); colo e vagina",MiSeq amplicon V3-V4,conferir qual letra é câncer e usar um sítio só
+PRJNA905720,a_conferir,cancer/lesao x controle,?,?,sem grupo nos metadados (RGA 317),NovaSeq amplicon,precisa da tabela suplementar do artigo
+PRJNA1025964,a_conferir,cancer x controle,?,?,sem grupo nos metadados,MiSeq amplicon,precisa do artigo
+PRJNA392354,a_conferir,NIC x controle,?,?,sem grupo nos metadados (prefixos S/T/R),MiSeq amplicon,precisa do artigo
+PRJNA993994,a_conferir,displasia x controle,?,?,sem grupo nos metadados,NovaSeq amplicon,precisa do artigo
+PRJNA1041987,a_conferir,SIL x controle,?,?,sem grupo nos metadados,DNBSEQ amplicon,precisa do artigo
+PRJDB34239,a_conferir,NIC x controle,?,?,"grupos WA (27), WB (24), WC (11), WD (32) + 10 brancos",NovaSeq amplicon,conferir no GSA PRJCA035167 qual letra é cada grupo
+PRJNA1126028,a_conferir,NIC x controle,?,?,sem grupo nos metadados,NovaSeq amplicon,pequeno
+PRJNA1262983,a_conferir,cancer/lesao x controle,?,?,o runinfo devolveu runs de outros projetos,MiSeq amplicon,refazer a consulta deste projeto
+PRJNA1344883,sem_controle,NIC1 x NIC2/3,59 NIC1,173 NIC2/3,"cin_stage: 1 (59), 2 (123), 3 (50)",NovaSeq amplicon,serve só para grau de lesão
+PRJNA1282320,sem_controle,HSIL x LSIL,69 HSIL,103 LSIL,"histology: LSIL 103, HSIL 69",NovaSeq amplicon,serve só para grau de lesão
+PRJNA668516,descartado,HPV,,,"baseline/follow-up, HPV e HIV; sem citologia",MiSeq amplicon,só HPV
+PRJNA771720,descartado,,,,,HiSeq OTHER ~36 milhões de leituras,não é amplicon (provável shotgun)
+PRJNA770453,descartado,,,,,NovaSeq RNA-Seq,não é 16S
