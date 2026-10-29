@@ -762,6 +762,56 @@ def f26():
            "leave-one-study-out AUC (0.63) or study prediction (83-85%).")
 
 
+def f27():
+    fig, axs = plt.subplots(1, 2, figsize=(11, 3.8), gridspec_kw={"width_ratios": [1, 1.2]})
+    ax = axs[0]
+    d = pd.read_csv(f"{R}/22_embaralhado_dentro_estudo.csv")
+    for k, t in enumerate(TAB):
+        s = d[d.tabela == t]
+        real = s[s.rotulos == "reais"][CLS].iloc[0]
+        emb = s[s.rotulos != "reais"][CLS].mean()
+        for i, c in enumerate(CLS):
+            y = i + (k - 0.5) * 0.3
+            ax.hlines(y, emb[c], real[c], color=GRID, lw=3)
+            ax.plot(real[c], y, "o", color=TAB[t], ms=7)
+            ax.plot(emb[c], y, "o", mfc=SURF, mec=TAB[t], mew=1.6, ms=7)
+    ax.set_yticks(range(4), [CLSLAB[c] for c in CLS])
+    ax.invert_yaxis()
+    ax.axvline(0.5, color=MUTED, lw=0.8, ls="--")
+    ax.set_xlim(0.45, 1.0)
+    ax.set_xlabel("AUC, random 10-fold CV")
+    ax.set_title("A. Labels shuffled within each study")
+    h = [plt.Line2D([], [], marker="o", ls="", color=INK2, label="true labels"),
+         plt.Line2D([], [], marker="o", ls="", mfc=SURF, mec=INK2, label="shuffled within study (mean of 10)")]
+    ax.legend(handles=h, loc="lower left", fontsize=7)
+    grade(ax)
+    ax = axs[1]
+    c = pd.read_csv(f"{R}/22c_curva_sem_P22.csv")
+    c = c[c.modelo == "RF"]
+    for t in TAB:
+        for fonte, ls, mk in [("estudos mistos (pareados)", "-", "o"), ("+ estudos de uma classe", "--", "s")]:
+            s = c[(c.tabela == t) & (c.fonte == fonte)].groupby("fracao").agg(n=("n_treino", "mean"), auc=("auc", "mean"))
+            if fonte.startswith("+"):
+                base = c[(c.tabela == t) & (c.fonte.str.startswith("estudos")) & (c.fracao == 1.0)].agg(
+                    n=("n_treino", "mean"), auc=("auc", "mean"))
+                s = pd.concat([pd.DataFrame({"n": [base.loc["n", "n_treino"]], "auc": [base.loc["auc", "auc"]]}), s])
+            ax.plot(s.n, s.auc, ls=ls, marker=mk, color=TAB[t], ms=5, lw=1.5)
+    ax.axhline(0.5, color=MUTED, lw=0.8, ls="--")
+    ax.set_xlabel("Training samples, cancer vs control")
+    ax.set_ylabel("AUC in the held-out study (P1, P2, P19)")
+    ax.set_ylim(0.45, 0.9)
+    ax.set_title("B. More samples: paired vs single-class studies")
+    h = [plt.Line2D([], [], ls="-", marker="o", color=INK2, label="from studies with both groups (paired)"),
+         plt.Line2D([], [], ls="--", marker="s", color=INK2, label="adding single-class studies")]
+    h += [plt.Line2D([], [], marker="o", ls="", color=TAB[t], label=TABLAB[t]) for t in TAB]
+    ax.legend(handles=h, loc="lower right", fontsize=7)
+    grade(ax, "y")
+    salvar(fig, "f27_n_e_pareamento", "Does a larger N from single-class studies help?",
+           "A: shuffling the clinical labels inside each study keeps about 95% of the random-CV AUC, so the pooled AUC "
+           "comes from which study a sample belongs to. B: Random Forest, P22 excluded (batch confounded). About 100 paired "
+           "samples give the same AUC on an unseen study as adding 350-450 samples from cancer-only and control-only studies.")
+
+
 if __name__ == "__main__":
     import sys
     so = sys.argv[1:]

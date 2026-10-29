@@ -1,0 +1,59 @@
+
+== PAOLA
+   teste  P1 RF    : A(sem P22)=0.79 (N=88)  B(sem P22)=0.74  C=0.78
+   teste  P1 LogReg: A(sem P22)=0.68 (N=88)  B(sem P22)=0.62  C=0.81
+   teste  P2 RF    : A(sem P22)=0.61 (N=121)  B(sem P22)=0.65  C=0.64
+   teste  P2 LogReg: A(sem P22)=0.58 (N=121)  B(sem P22)=0.62  C=0.60
+   teste P19 RF    : A(sem P22)=0.84 (N=111)  B(sem P22)=0.88  C=0.86
+   teste P19 LogReg: A(sem P22)=0.83 (N=111)  B(sem P22)=0.83  C=0.80
+   regras simples dentro de cada estudo misto:
+tabela estudo  n_cancer  n_controle  auc_menos_lactobacillus  auc_shannon
+ PAOLA     P1        68           4                     0.38         0.82
+ PAOLA     P2        10          29                     0.70         0.64
+ PAOLA    P19        31          18                     0.76         0.80
+ PAOLA    P22        65          54                     0.40         0.35
+   gêneros mais importantes no modelo treinado só com estudos de uma classe:
+tabela             genero  importancia  media_cancer_uma_classe  media_controle_uma_classe
+ PAOLA         sem_genero        0.116                   14.810                      0.658
+ PAOLA      Lactobacillus        0.097                    6.528                     61.080
+ PAOLA    Corynebacterium        0.075                    1.618                      0.248
+ PAOLA     Oceanobacillus        0.038                    0.370                      0.000
+ PAOLA       Aeribacillus        0.036                    4.392                      0.000
+ PAOLA       Enterococcus        0.034                    3.817                      0.443
+ PAOLA Peptostreptococcus        0.030                    2.720                      0.073
+ PAOLA      Porphyromonas        0.028                    5.272                      0.172
+ PAOLA     Staphylococcus        0.025                    2.974                      0.038
+ PAOLA        Gardnerella        0.024                    2.943                     13.080
+
+== TASSI_V2
+   teste  P1 RF    : A(sem P22)=0.82 (N=84)  B(sem P22)=0.56  C=0.61
+   teste  P1 LogReg: A(sem P22)=0.82 (N=84)  B(sem P22)=0.71  C=0.72
+   teste  P2 RF    : A(sem P22)=0.57 (N=117)  B(sem P22)=0.61  C=0.62
+   teste  P2 LogReg: A(sem P22)=0.59 (N=117)  B(sem P22)=0.61  C=0.64
+   teste P19 RF    : A(sem P22)=0.82 (N=111)  B(sem P22)=0.85  C=0.86
+   teste P19 LogReg: A(sem P22)=0.83 (N=111)  B(sem P22)=0.80  C=0.80
+   regras simples dentro de cada estudo misto:
+  tabela estudo  n_cancer  n_controle  auc_menos_lactobacillus  auc_shannon
+TASSI_V2     P1        68           4                     0.39         0.84
+TASSI_V2     P2        10          29                     0.70         0.65
+TASSI_V2    P19        29          16                     0.75         0.79
+TASSI_V2    P22        65          54                     0.41         0.37
+   gêneros mais importantes no modelo treinado só com estudos de uma classe:
+  tabela          genero  importancia  media_cancer_uma_classe  media_controle_uma_classe
+TASSI_V2   Lactobacillus        0.113                    6.667                     60.260
+TASSI_V2 Corynebacterium        0.087                    3.238                      0.393
+TASSI_V2  Shuttleworthia        0.045                    0.107                      1.902
+TASSI_V2   Porphyromonas        0.039                    6.666                      0.191
+TASSI_V2    Anaerococcus        0.038                    3.825                      0.363
+TASSI_V2   Peptoniphilus        0.037                    5.274                      0.259
+TASSI_V2  Staphylococcus        0.032                    4.320                      0.044
+TASSI_V2    Enterococcus        0.032                    4.788                      0.581
+TASSI_V2     Gardnerella        0.028                    3.705                     12.462
+TASSI_V2      Fenollaria        0.023                    1.010                      0.026
+
+   N por grupo (pareado, mesmo estudo) para 80% de poder:
+   g  n_por_grupo_80pct
+0.20                393
+0.30                175
+0.35                129
+0.50                 63

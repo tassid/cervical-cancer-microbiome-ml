@@ -41,6 +41,9 @@ python 17_boruta_por_projeto.py         # Boruta global e dentro de cada projeto
 LEFSE_BIN=... python 19_lefse_por_projeto.py   # LEfSe global e por projeto (lefse 1.1.2, python 3.9, rpy2 < 3.5)
 python 18_tabelas_artigo.py             # Tabela 1 corrigida e tabela de validação (depois do 03)
 python 20_shap.py                       # SHAP global, do modelo que prevê o projeto, LOPO e dentro de cada projeto (~15 min)
+python 22_teste_n_pareamento.py        # estudos de uma classe ajudam? (N efetivo, cenários de treino, embaralhamento)
+python 22b_seguimento_n.py              # cenários sem P22, regras simples, poder
+python 22c_curva_sem_p22.py             # curva de aprendizado: N pareado x N de estudos de uma classe
 python 21_figuras.py                    # 26 figuras do artigo em figuras/ (PNG e PDF); explicação de cada uma em figuras/EXPLICACOES.md
 ```
 
@@ -111,5 +114,9 @@ Os resultados já calculados estão em `results/`.
   repete *Atopobium* ↑ (HSIL, 3 de 4 projetos), *Sneathia* ↑ (HSIL), *Lactobacillus* ↓ e *Corynebacterium* ↑
   (câncer, P19 e P2), em linha com a meta-análise. Figuras: `results/20_shap_cancer_*.png` e
   `results/20_shap_beeswarm_cancer_*.png`.
+- **N e pareamento** (`22*_*.py`): 39–42% dos cânceres e 68–76% dos controles vêm de estudos sem a outra
+  classe. Embaralhar os rótulos dentro de cada estudo mantém ~95% do AUC da CV aleatória (câncer 0,96 → 0,92).
+  Sem o P22, ~100 amostras pareadas dão o mesmo AUC num estudo novo (0,74–0,75) que somar 350–450 amostras de
+  estudos de uma classe (0,67–0,76). Para g ≈ 0,3 com 80% de poder seriam ~175 por grupo pareado.
 - **P16 na tabela da Paola**: 39% "Unassigned" e 2,5% Eukaryota, provável DNA do hospedeiro
   não filtrado; 29 amostras contra 47 na da Tassiane e 26 no artigo.

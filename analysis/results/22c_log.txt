@@ -1,0 +1,54 @@
+
+== PAOLA
+                                               n    auc
+modelo fonte                     fracao                
+LogReg + estudos de uma classe   0.25    217.667  0.679
+                                 0.50    328.667  0.699
+                                 1.00    550.667  0.692
+       estudos mistos (pareados) 0.25     26.000  0.666
+                                 0.50     53.333  0.649
+                                 0.75     80.667  0.692
+                                 1.00    106.667  0.695
+RF     + estudos de uma classe   0.25    217.667  0.762
+                                 0.50    328.667  0.759
+                                 1.00    550.667  0.757
+       estudos mistos (pareados) 0.25     26.000  0.738
+                                 0.50     53.333  0.726
+                                 0.75     80.667  0.740
+                                 1.00    106.667  0.747
+   por estudo de teste (N máximo de cada fonte):
+fonte                + estudos de uma classe  estudos mistos (pareados)
+modelo estudo_teste                                                    
+LogReg P1                               0.62                       0.68
+       P19                              0.83                       0.83
+       P2                               0.62                       0.58
+RF     P1                               0.74                       0.79
+       P19                              0.88                       0.84
+       P2                               0.65                       0.61
+
+== TASSI_V2
+                                               n    auc
+modelo fonte                     fracao                
+LogReg + estudos de uma classe   0.25    191.000  0.720
+                                 0.50    279.000  0.731
+                                 1.00    452.000  0.708
+       estudos mistos (pareados) 0.25     25.333  0.647
+                                 0.50     51.333  0.698
+                                 0.75     78.667  0.730
+                                 1.00    104.000  0.747
+RF     + estudos de uma classe   0.25    191.000  0.730
+                                 0.50    279.000  0.719
+                                 1.00    452.000  0.673
+       estudos mistos (pareados) 0.25     25.333  0.718
+                                 0.50     51.333  0.724
+                                 0.75     78.667  0.729
+                                 1.00    104.000  0.735
+   por estudo de teste (N máximo de cada fonte):
+fonte                + estudos de uma classe  estudos mistos (pareados)
+modelo estudo_teste                                                    
+LogReg P1                               0.71                       0.82
+       P19                              0.80                       0.83
+       P2                               0.61                       0.59
+RF     P1                               0.56                       0.82
+       P19                              0.85                       0.82
+       P2                               0.61                       0.57

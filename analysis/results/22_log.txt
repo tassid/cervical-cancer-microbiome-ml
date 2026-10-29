@@ -1,0 +1,67 @@
+
+==================== PAOLA: 997 amostras
+tabela  classe  total  em_estudos_mistos  de_estudos_de_uma_classe  pct_uma_classe
+ PAOLA  cancer    287                174                       113       39.372822
+ PAOLA control    436                105                       331       75.917431
+   teste  P1 RF    : A=0.74  B=0.62  C=0.78  D=0.75   (N treino A=207, B=651)
+   teste  P1 LogReg: A=0.75  B=0.59  C=0.81  D=0.70   (N treino A=207, B=651)
+   teste  P2 RF    : A=0.59  B=0.66  C=0.64  D=0.65   (N treino A=240, B=684)
+   teste  P2 LogReg: A=0.59  B=0.58  C=0.60  D=0.58   (N treino A=240, B=684)
+   teste P19 RF    : A=0.49  B=0.80  C=0.86  D=0.84   (N treino A=230, B=674)
+   teste P19 LogReg: A=0.51  B=0.68  C=0.80  D=0.71   (N treino A=230, B=674)
+   teste P22 RF    : A=0.33  B=0.35  C=0.30  D=0.33   (N treino A=160, B=604)
+   teste P22 LogReg: A=0.41  B=0.38  C=0.41  D=0.40   (N treino A=160, B=604)
+   curva cancer:
+      LogReg + estudos de uma classe  N≈320: 0.58  N≈431: 0.59  N≈542: 0.56  N≈653: 0.56
+      LogReg estudos mistos           N≈57: 0.51  N≈114: 0.54  N≈169: 0.59  N≈225: 0.62
+      RF     + estudos de uma classe  N≈320: 0.56  N≈431: 0.58  N≈542: 0.60  N≈653: 0.61
+      RF     estudos mistos           N≈57: 0.47  N≈114: 0.51  N≈169: 0.57  N≈225: 0.60
+   curva lesion high:
+      LogReg estudos mistos           N≈88: 0.50  N≈189: 0.49  N≈284: 0.50  N≈380: 0.49
+      RF     estudos mistos           N≈88: 0.51  N≈189: 0.44  N≈284: 0.42  N≈380: 0.40
+   CV aleatória, rótulos reais x embaralhados dentro de cada estudo (média de 10 ):
+                               cancer  control  lesion high  lesion low
+rotulos                                                                
+embaralhados dentro do estudo   0.917    0.806        0.719       0.726
+reais                           0.963    0.843        0.748       0.752
+
+==================== TASSI_V2: 889 amostras
+  tabela  classe  total  em_estudos_mistos  de_estudos_de_uma_classe  pct_uma_classe
+TASSI_V2  cancer    298                172                       126       42.281879
+TASSI_V2 control    325                103                       222       68.307692
+   teste  P1 RF    : A=0.61  B=0.47  C=0.61  D=0.48   (N treino A=203, B=551)
+   teste  P1 LogReg: A=0.87  B=0.73  C=0.72  D=0.72   (N treino A=203, B=551)
+   teste  P2 RF    : A=0.55  B=0.61  C=0.62  D=0.62   (N treino A=236, B=584)
+   teste  P2 LogReg: A=0.60  B=0.56  C=0.64  D=0.57   (N treino A=236, B=584)
+   teste P19 RF    : A=0.61  B=0.79  C=0.86  D=0.80   (N treino A=230, B=578)
+   teste P19 LogReg: A=0.61  B=0.66  C=0.80  D=0.70   (N treino A=230, B=578)
+   teste P22 RF    : A=0.35  B=0.37  C=0.34  D=0.34   (N treino A=156, B=504)
+   teste P22 LogReg: A=0.38  B=0.40  C=0.46  D=0.41   (N treino A=156, B=504)
+   curva cancer:
+      LogReg + estudos de uma classe  N≈293: 0.60  N≈381: 0.60  N≈467: 0.60  N≈554: 0.59
+      LogReg estudos mistos           N≈56: 0.54  N≈112: 0.59  N≈167: 0.67  N≈223: 0.69
+      RF     + estudos de uma classe  N≈293: 0.54  N≈381: 0.54  N≈467: 0.54  N≈554: 0.56
+      RF     estudos mistos           N≈56: 0.49  N≈112: 0.51  N≈167: 0.57  N≈223: 0.59
+   curva lesion high:
+      LogReg estudos mistos           N≈85: 0.53  N≈185: 0.53  N≈278: 0.54  N≈371: 0.53
+      RF     estudos mistos           N≈85: 0.49  N≈185: 0.42  N≈278: 0.42  N≈371: 0.39
+   CV aleatória, rótulos reais x embaralhados dentro de cada estudo (média de 10 ):
+                               cancer  control  lesion high  lesion low
+rotulos                                                                
+embaralhados dentro do estudo   0.913    0.782        0.704       0.681
+reais                           0.958    0.813        0.725       0.695
+
+==================== resumo dos cenários (média nos estudos de teste)
+                 A_so_mistos  B_mistos_mais_uma_classe  C_so_uma_classe  D_B_com_N_de_A
+tabela   modelo                                                                        
+PAOLA    LogReg        0.565                     0.556            0.655           0.596
+         RF            0.535                     0.608            0.643           0.640
+TASSI_V2 LogReg        0.611                     0.589            0.656           0.599
+         RF            0.532                     0.562            0.607           0.561
+   sem P22 como teste:
+                 A_so_mistos  B_mistos_mais_uma_classe  C_so_uma_classe  D_B_com_N_de_A
+tabela   modelo                                                                        
+PAOLA    LogReg        0.616                     0.616            0.735           0.663
+         RF            0.604                     0.694            0.757           0.745
+TASSI_V2 LogReg        0.690                     0.652            0.722           0.661
+         RF            0.591                     0.627            0.696           0.634
