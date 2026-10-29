@@ -5,7 +5,8 @@ amostra de 24d_metadados_por_amostra.py (results/24d_metadados_por_amostra.csv).
 não precisa do 24d: o grupo está no nome da amostra (CC, HS, He).
 
 Taxonomia:
-  - V3-V4 (250 nt) e V4 (220 nt): mesma região e comprimento das ASVs do pipeline da Tassiane.
+  - V3-V4 (250 nt; 220 nt no PRJNA1085021, cujas leituras têm 227 nt após o primer) e V4 (220 nt):
+    mesma região das ASVs do pipeline da Tassiane (comparadas pelos primeiros 220 ou 250 nt).
     Cada ASV recebe a taxonomia SILVA da ASV idêntica já classificada (consenso, se houver mais
     de uma; parte das ASVs V3-V4 do pipeline começa uma base antes, e isso é levado em conta) ou,
     sem correspondência exata, o consenso dos melhores acertos por alinhamento global (vsearch,
@@ -40,7 +41,7 @@ NOVOS = os.environ["NOVOS_DIR"]
 SPEC = os.environ["SPECIATEIT_DIR"]
 VAL = os.environ["VALENCIA_DIR"]
 VSEARCH = os.path.join(os.environ.get("ENV_BIN", ""), "vsearch")
-ESTUDOS = {"PRJNA1085021": ("V3V4", 250), "PRJNA308947": ("V3V4", 250),
+ESTUDOS = {"PRJNA1085021": ("V3V4", 220), "PRJNA308947": ("V3V4", 250),
            "PRJNA622998": ("V4", 220), "PRJEB40437": ("V1V3", 250)}
 GENEROS = ["Lactobacillus", "Gardnerella", "Prevotella", "Fusobacterium", "Porphyromonas", "Bacteroides",
            "Peptostreptococcus", "Streptococcus", "Sneathia", "Atopobium", "Megasphaera", "Dialister",

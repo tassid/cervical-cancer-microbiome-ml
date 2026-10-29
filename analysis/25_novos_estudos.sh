@@ -7,7 +7,7 @@
 # Requer sra-tools, cutadapt e deblur 1.1.1 no PATH (variáveis ENV_BIN e DEBLUR_BIN).
 #
 # Primers encontrados nas leituras (ver 25_novos_estudos.py):
-#   PRJNA1085021  341F CCTAYGGGRBGCASCAG + 806R (V3-V4)      -> PRIMER_5=CCTAYGGGRBGCASCAG TRIM=250
+#   PRJNA1085021  341F CCTAYGGGRBGCASCAG + 806R (V3-V4)      -> PRIMER_5=CCTAYGGGRBGCASCAG TRIM=220 (leituras de 227 nt após o primer)
 #   PRJNA308947   454, leituras começam em GGAGGCAGCAG (fim do 338F/341F) -> PRIMER_5=GGAGGCAGCAG TRIM=250
 #   PRJNA622998   leituras já começam no V4 (TACG...)        -> PRIMER_5=nenhum TRIM=220
 #   PRJEB40437    27F (V1-V3), processado à parte             -> PRIMER_5=GAGTTTGATCMTGGCTCAG TRIM=250
