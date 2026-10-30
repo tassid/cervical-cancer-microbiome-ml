@@ -50,6 +50,8 @@ python 24b_atributos_candidatos.py      # metadados completos dos candidatos da 
 python 24d_metadados_por_amostra.py     # grupo clínico de cada amostra dos estudos novos (precisa de acesso ao NCBI)
 bash 25_novos_estudos.sh ESTUDO runs.txt PASTA PRIMER TRIM   # baixa e processa um estudo novo (ver cabeçalho)
 NOVOS_DIR=... python 25_novos_estudos.py   # tabelas, CSTs e meta-análise com os estudos novos
+python 26_filtro_e_balanceamento.py     # sugestões do Pedro (23/10): colunas com > 25% de zeros e variações de SMOTE/undersampling
+                                        # no Colab: notebooks/26_filtro_e_balanceamento_colab.ipynb
 python 21_figuras.py                    # 26 figuras do artigo em figuras/ (PNG e PDF); explicação de cada uma em figuras/EXPLICACOES.md
 ```
 
