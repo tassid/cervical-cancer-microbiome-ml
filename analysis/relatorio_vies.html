@@ -628,7 +628,44 @@ ul.tight{padding-left:20px;display:grid;gap:6px}
     <p>Os novos estudos usam outras regiões, primers e plataformas (NovaSeq, MiSeq, Ion Torrent, 454), o que reforça a necessidade de comparar dentro de cada estudo. O próximo passo é baixar os FASTQ dos confirmados (o espelho do SRA na AWS é acessível do ambiente), identificar o primer e reprocessar com o mesmo pipeline.</p>
   </div>
 
-  <h2>16. Próximos passos sugeridos</h2>
+  <h2>16. Estudos novos: os achados se repetem?</h2>
+  <div class="prose">
+    <p>Quatro dos estudos confirmados foram baixados do espelho do SRA e processados com o mesmo pipeline (<span class="mono">25_novos_estudos.sh</span> e <span class="mono">25_novos_estudos.py</span>). O primer foi identificado nas próprias leituras; três estudos têm a mesma região das ASVs da Tassiane (V3-V4 ou V4) e receberam a taxonomia da ASV idêntica, ou por alinhamento (vsearch) quando não havia ASV idêntica. O PRJEB40437 (V1-V3) foi classificado com as referências do vSpeciateDB. O PRJEB43410 ficou de fora porque o kit Ion mistura várias regiões. Os grupos vieram dos metadados por amostra (<span class="mono">24d_metadados_por_amostra.py</span>).</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Estudo</th><th>Região</th><th>Amostras</th><th>Câncer</th><th>HSIL/NIC</th><th>LSIL</th><th>Controle</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">PRJNA1085021</td><td>V3-V4</td><td class="mono">154</td><td class="mono">52</td><td class="mono">51</td><td class="mono">—</td><td class="mono">51</td></tr>
+        <tr><td class="mono">PRJEB40437</td><td>V1-V3</td><td class="mono">245</td><td class="mono">—</td><td class="mono">103</td><td class="mono">—</td><td class="mono">39</td></tr>
+        <tr><td class="mono">PRJNA622998</td><td>V4</td><td class="mono">318</td><td class="mono">—</td><td class="mono">6</td><td class="mono">44</td><td class="mono">199</td></tr>
+        <tr><td class="mono">PRJNA308947</td><td>V3-V4 (454)</td><td class="mono">22</td><td class="mono">4</td><td class="mono">—</td><td class="mono">4</td><td class="mono">6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Achado</th><th>Antes (estudos originais, sem P22)</th><th>Só nos estudos novos</th><th>Todos juntos, sem P22</th></tr></thead>
+      <tbody>
+        <tr><td>CST IV no câncer</td><td class="mono">OR 4,5 (2 estudos)</td><td class="mono">67% × 35%, p &lt; 0,001</td><td class="mono"><b>OR 4,0 (2,1–7,5), p &lt; 0,001, I² = 0</b></td></tr>
+        <tr><td><i>Lactobacillus</i> ↓ no câncer</td><td class="mono">g −0,73</td><td class="mono">g −1,45, p = 0,03</td><td class="mono"><b>g −0,88, p &lt; 0,001, 5/5</b></td></tr>
+        <tr><td><i>Sneathia</i> ↑ no câncer</td><td class="mono">g 0,33</td><td class="mono">g 0,39, p = 0,04</td><td class="mono">g 0,33, p = 0,02, 5/5</td></tr>
+        <tr><td><i>Peptoniphilus</i> ↑ no câncer</td><td class="mono">n.s.</td><td class="mono">g 0,64, p = 0,001</td><td class="mono">g 0,61, p &lt; 0,001, 5/5</td></tr>
+        <tr><td><i>Fusobacterium</i> ↑ no câncer</td><td class="mono">g 0,60</td><td class="mono">g 1,32, p = 0,29 (2/2 positivos)</td><td class="mono">g 0,57, p = 0,02, 5/5</td></tr>
+        <tr><td><i>Dialister</i> ↑ na HSIL</td><td class="mono">n.s.</td><td class="mono">g 0,52, p &lt; 0,001</td><td class="mono"><b>g 0,31, p &lt; 0,001, 7/7</b></td></tr>
+        <tr><td><i>Megasphaera</i> ↑ na HSIL</td><td class="mono">g 0,42</td><td class="mono">g 0,40, p = 0,003</td><td class="mono">g 0,38, p = 0,001, 6/7</td></tr>
+        <tr><td><i>Sneathia</i> ↑ na HSIL</td><td class="mono">g 0,31</td><td class="mono">g 0,28, p = 0,08</td><td class="mono">g 0,31, p &lt; 0,001, 6/7</td></tr>
+        <tr><td>CST IV na LSIL</td><td class="mono">OR 1,6, p = 0,08</td><td class="mono">59% × 41%, p = 0,03</td><td class="mono">OR 1,8 (1,2–2,7), p = 0,006</td></tr>
+        <tr><td>CST III (<i>L. iners</i>) ↓ na LSIL</td><td class="mono">OR 0,57, p = 0,06</td><td class="mono">20% × 38%, p = 0,04</td><td class="mono">OR 0,52 (0,33–0,82), p = 0,005</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p><b>Os achados da meta-análise se repetem em dados independentes.</b> No câncer, o PRJNA1085021 (52 cânceres e 51 controles do mesmo estudo) reproduz a perda de dominância de <i>Lactobacillus</i> (CST IV em 67% contra 35%) e o aumento de anaeróbios (<i>Peptoniphilus</i>, <i>Sneathia</i>, <i>Anaerococcus</i>, <i>Porphyromonas</i>). Na HSIL, <i>Dialister</i>, <i>Megasphaera</i> e <i>Sneathia</i> sobem nos estudos novos, e a meta-análise passa de 4 para 7 estudos. Na LSIL, aparecem dois sinais que antes não eram significativos: mais CST IV e menos <i>L. iners</i>.</p>
+    <p>Os efeitos continuam pequenos a moderados (g entre 0,2 e 0,9), e o PRJNA622998 tem só 6 HSIL. Mas agora eles vêm de 5 a 7 estudos com caso e controle próprios, em quatro regiões do 16S e cinco países, sem o P22 e sem estudos de uma classe só. É esse o resultado que sustenta o artigo. Arquivos: <span class="mono">results/25_*</span>.</p>
+  </div>
+
+  <h2>17. Próximos passos sugeridos</h2>
   <ul class="tight prose">
     <li>Rodar o classificador SILVA V3-V4 no QIIME 2 sobre as ASVs do P22 reprocessado (a taxonomia atual vem das ASVs V3-V4 já classificadas).</li>
     <li>Conferir no SRA Run Selector a qual BioProject pertencem as 29 runs SRR26495xxx do P16.</li>

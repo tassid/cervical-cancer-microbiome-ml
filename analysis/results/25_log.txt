@@ -1,0 +1,70 @@
+{'estudo': 'PRJNA1085021', 'regiao': 'V3V4', 'amostras': 154, 'com_grupo': 154, 'n_cancer': 52, 'n_lesion high': 51, 'n_lesion low': 0, 'n_control': 51, 'leituras_mediana': 59957, 'asvs': 4563, 'pct_leituras_asv_identica': np.float64(96.1), 'pct_sem_genero': np.float64(2.3), 'lactobacillus_pct': np.float64(46.6)}
+{'estudo': 'PRJNA308947', 'regiao': 'V3V4', 'amostras': 22, 'com_grupo': 14, 'n_cancer': 4, 'n_lesion high': 0, 'n_lesion low': 4, 'n_control': 6, 'leituras_mediana': 3959, 'asvs': 979, 'pct_leituras_asv_identica': np.float64(8.6), 'pct_sem_genero': np.float64(4.6), 'lactobacillus_pct': np.float64(43.3)}
+{'estudo': 'PRJNA622998', 'regiao': 'V4', 'amostras': 318, 'com_grupo': 249, 'n_cancer': 0, 'n_lesion high': 6, 'n_lesion low': 44, 'n_control': 199, 'leituras_mediana': 22778, 'asvs': 596, 'pct_leituras_asv_identica': np.float64(98.6), 'pct_sem_genero': np.float64(1.0), 'lactobacillus_pct': np.float64(48.7)}
+{'estudo': 'PRJEB40437', 'regiao': 'V1V3', 'amostras': 245, 'com_grupo': 142, 'n_cancer': 0, 'n_lesion high': 103, 'n_lesion low': 0, 'n_control': 39, 'leituras_mediana': 20358, 'asvs': 768, 'pct_leituras_asv_identica': None, 'pct_sem_genero': np.float64(2.2), 'lactobacillus_pct': np.float64(81.3)}
+
+Meta-análise com os estudos novos (sem P22), p < 0,1:
+        contraste           variavel conjunto  k                                           projetos      g  ic_inf  ic_sup     p     I2 mesma_direcao
+  HSIL vs control          Dialister  sem P22  7 P10,P14,P19,P2,PRJNA1085021,PRJNA622998,PRJEB40437  0.313   0.142   0.485 0.000  2.229           7/7
+  HSIL vs control           Sneathia  sem P22  7 P10,P14,P19,P2,PRJNA1085021,PRJNA622998,PRJEB40437  0.305   0.137   0.474 0.000  0.000           6/7
+  HSIL vs control        Megasphaera  sem P22  7 P10,P14,P19,P2,PRJNA1085021,PRJNA622998,PRJEB40437  0.383   0.151   0.614 0.001 38.006           6/7
+  HSIL vs control          Atopobium  sem P22  7 P10,P14,P19,P2,PRJNA1085021,PRJNA622998,PRJEB40437  0.218   0.050   0.386 0.011  0.000           6/7
+  HSIL vs control         Prevotella  sem P22  7 P10,P14,P19,P2,PRJNA1085021,PRJNA622998,PRJEB40437  0.199   0.031   0.367 0.020  0.000           5/7
+  HSIL vs control            Shannon  sem P22  7 P10,P14,P19,P2,PRJNA1085021,PRJNA622998,PRJEB40437  0.199   0.031   0.367 0.020  0.000           7/7
+  HSIL vs control        Pseudomonas  sem P22  6            P10,P14,P19,P2,PRJNA1085021,PRJNA622998  0.344  -0.029   0.718 0.071 68.188           4/6
+  HSIL vs control      Lactobacillus  sem P22  7 P10,P14,P19,P2,PRJNA1085021,PRJNA622998,PRJEB40437 -0.192  -0.413   0.029 0.088 33.792           4/7
+  LSIL vs control        Bacteroides  sem P22  4                             P10,P19,P2,PRJNA622998  0.229   0.024   0.433 0.029  0.000           3/4
+  LSIL vs control            Shannon  sem P22  5                 P10,P19,P2,PRJNA308947,PRJNA622998  0.372   0.001   0.744 0.049 59.703           5/5
+  LSIL vs control      Lactobacillus  sem P22  5                 P10,P19,P2,PRJNA308947,PRJNA622998 -0.295  -0.591   0.001 0.051 40.828           4/5
+cancer vs control      Lactobacillus  sem P22  5                 P1,P19,P2,PRJNA1085021,PRJNA308947 -0.884  -1.290  -0.477 0.000 34.523           5/5
+cancer vs control            Shannon  sem P22  5                 P1,P19,P2,PRJNA1085021,PRJNA308947  0.784   0.383   1.185 0.000 35.007           5/5
+cancer vs control      Peptoniphilus  sem P22  5                 P1,P19,P2,PRJNA1085021,PRJNA308947  0.614   0.299   0.929 0.000  9.801           5/5
+cancer vs control      Campylobacter  sem P22  5                 P1,P19,P2,PRJNA1085021,PRJNA308947  0.523   0.239   0.806 0.000  0.000           4/5
+cancer vs control       Anaerococcus  sem P22  4                             P1,P19,P2,PRJNA1085021  0.750   0.272   1.229 0.002 53.025           4/4
+cancer vs control Peptostreptococcus  sem P22  4                             P1,P19,P2,PRJNA1085021  0.401   0.113   0.689 0.006  0.000           4/4
+cancer vs control      Porphyromonas  sem P22  4                             P1,P19,P2,PRJNA1085021  0.622   0.150   1.093 0.010 52.323           4/4
+cancer vs control          Dialister  sem P22  5                 P1,P19,P2,PRJNA1085021,PRJNA308947  0.342   0.061   0.622 0.017  0.000           4/5
+cancer vs control      Fusobacterium  sem P22  5                 P1,P19,P2,PRJNA1085021,PRJNA308947  0.573   0.090   1.055 0.020 52.845           5/5
+cancer vs control           Sneathia  sem P22  5                 P1,P19,P2,PRJNA1085021,PRJNA308947  0.330   0.050   0.610 0.021  0.000           5/5
+
+CSTs por estudo novo:
+desfecho         contraste      projeto  n_caso  n_controle  pct_caso  pct_controle  log_or  var  p_fisher      origem
+  CST IV cancer vs control PRJNA1085021      52          51     67.31         35.29    1.30 0.17      0.00 estudo novo
+  CST IV   HSIL vs control   PRJEB40437     103          39     19.42          0.00    2.97 2.09      0.00 estudo novo
+  CST IV   HSIL vs control PRJNA1085021      51          51     43.14         35.29    0.32 0.16      0.54 estudo novo
+  CST IV   HSIL vs control  PRJNA622998       6         199     16.67         40.70   -0.92 0.87      0.41 estudo novo
+  CST IV   LSIL vs control  PRJNA622998      44         199     59.09         40.70    0.73 0.11      0.03 estudo novo
+   CST I cancer vs control PRJNA1085021      52          51      1.92          5.88   -0.91 0.99      0.36 estudo novo
+   CST I   HSIL vs control   PRJEB40437     103          39     38.83         48.72   -0.40 0.14      0.34 estudo novo
+   CST I   HSIL vs control PRJNA1085021      51          51      0.00          5.88   -2.01 2.33      0.24 estudo novo
+   CST I   HSIL vs control  PRJNA622998       6         199     16.67         16.58    0.30 0.88      1.00 estudo novo
+   CST I   LSIL vs control  PRJNA622998      44         199     18.18         16.58    0.15 0.18      0.82 estudo novo
+ CST III cancer vs control PRJNA1085021      52          51     28.85         50.98   -0.92 0.17      0.03 estudo novo
+ CST III   HSIL vs control   PRJEB40437     103          39     34.95         43.59   -0.36 0.14      0.44 estudo novo
+ CST III   HSIL vs control PRJNA1085021      51          51     56.86         50.98    0.23 0.16      0.69 estudo novo
+ CST III   HSIL vs control  PRJNA622998       6         199     50.00         38.19    0.48 0.59      0.68 estudo novo
+ CST III   LSIL vs control  PRJNA622998      44         199     20.45         38.19   -0.84 0.15      0.04 estudo novo
+
+CSTs, meta-análise com os estudos novos:
+desfecho         contraste         conjunto  k                                           projetos    OR  ic_inf  ic_sup     p     I2
+   CST I   HSIL vs control            todos  7 P10,P14,P19,P2,PRJEB40437,PRJNA1085021,PRJNA622998 0.647   0.413   1.013 0.057  0.000
+   CST I   HSIL vs control          sem P22  7 P10,P14,P19,P2,PRJEB40437,PRJNA1085021,PRJNA622998 0.647   0.413   1.013 0.057  0.000
+   CST I   HSIL vs control só estudos novos  3                PRJEB40437,PRJNA1085021,PRJNA622998 0.679   0.349   1.320 0.254  0.000
+   CST I   LSIL vs control            todos  4                             P10,P19,P2,PRJNA622998 0.970   0.582   1.618 0.907  0.000
+   CST I   LSIL vs control          sem P22  4                             P10,P19,P2,PRJNA622998 0.970   0.582   1.618 0.907  0.000
+   CST I cancer vs control            todos  4                            P19,P2,P22,PRJNA1085021 0.551   0.253   1.198 0.133  0.000
+   CST I cancer vs control          sem P22  3                                P19,P2,PRJNA1085021 0.379   0.111   1.292 0.121  0.000
+ CST III   HSIL vs control            todos  7 P10,P14,P19,P2,PRJEB40437,PRJNA1085021,PRJNA622998 1.062   0.713   1.580 0.768 17.778
+ CST III   HSIL vs control          sem P22  7 P10,P14,P19,P2,PRJEB40437,PRJNA1085021,PRJNA622998 1.062   0.713   1.580 0.768 17.778
+ CST III   HSIL vs control só estudos novos  3                PRJEB40437,PRJNA1085021,PRJNA622998 0.985   0.595   1.632 0.954  0.000
+ CST III   LSIL vs control            todos  4                             P10,P19,P2,PRJNA622998 0.518   0.327   0.819 0.005  0.000
+ CST III   LSIL vs control          sem P22  4                             P10,P19,P2,PRJNA622998 0.518   0.327   0.819 0.005  0.000
+ CST III cancer vs control            todos  4                            P19,P2,P22,PRJNA1085021 0.635   0.185   2.180 0.471 80.536
+ CST III cancer vs control          sem P22  3                                P19,P2,PRJNA1085021 0.382   0.192   0.763 0.006  7.310
+  CST IV   HSIL vs control            todos  7 P10,P14,P19,P2,PRJEB40437,PRJNA1085021,PRJNA622998 1.327   0.793   2.220 0.281 32.379
+  CST IV   HSIL vs control          sem P22  7 P10,P14,P19,P2,PRJEB40437,PRJNA1085021,PRJNA622998 1.327   0.793   2.220 0.281 32.379
+  CST IV   HSIL vs control só estudos novos  3                PRJEB40437,PRJNA1085021,PRJNA622998 1.568   0.327   7.517 0.574 61.046
+  CST IV   LSIL vs control            todos  4                             P10,P19,P2,PRJNA622998 1.778   1.180   2.680 0.006  0.000
+  CST IV   LSIL vs control          sem P22  4                             P10,P19,P2,PRJNA622998 1.778   1.180   2.680 0.006  0.000
+  CST IV cancer vs control            todos  4                            P19,P2,P22,PRJNA1085021 2.399   0.765   7.526 0.134 80.227
+  CST IV cancer vs control          sem P22  3                                P19,P2,PRJNA1085021 3.994   2.138   7.460 0.000  0.000
